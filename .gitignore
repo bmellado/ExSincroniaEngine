@@ -1,3 +1,4 @@
 .vscode/
+.vs/
 source/grafica/root_directory.h
 build/
