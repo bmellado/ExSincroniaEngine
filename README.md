@@ -1,13 +1,13 @@
-**Sincronia Engine
+# Sincronia Engine
 
 Sincronia Engine is a rhythm game oriented engine.
 
 
-**From source:
+### **From source:**
 
 Sincronia Engine can be compiled using <>CMake<>
 
-**Licensing terms
+### **Licensing terms**
 
 For specific information/legalese:
 
