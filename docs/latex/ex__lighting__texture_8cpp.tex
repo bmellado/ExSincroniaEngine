@@ -1,0 +1,80 @@
+\hypertarget{ex__lighting__texture_8cpp}{}\doxysection{source/examples/ex\+\_\+lighting\+\_\+texture.cpp File Reference}
+\label{ex__lighting__texture_8cpp}\index{source/examples/ex\_lighting\_texture.cpp@{source/examples/ex\_lighting\_texture.cpp}}
+
+
+Showing lighting effects over two textured objects with Phong.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$numbers$>$}\newline
+{\ttfamily \#include $<$ciso646$>$}\newline
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/root\+\_\+directory.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/basic\+\_\+shapes.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/load\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/performance\+\_\+monitor.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/easy\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/gpu\+\_\+shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/transformations.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_controller}{Controller}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ex__lighting__texture_8cpp_a286930f4e8ede059b83ff6eafa2ff718}{key\+\_\+callback}} (GLFWwindow $\ast$window, int key, int scancode, int action, int mods)
+\item 
+\mbox{\hyperlink{struct_grafica_1_1_shape}{gr\+::\+Shape}} \mbox{\hyperlink{ex__lighting__texture_8cpp_a8e8020c628ceb46ae6d5b6e1ad40eb0b}{create\+Dice}} ()
+\item 
+int \mbox{\hyperlink{ex__lighting__texture_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_controller}{Controller}} \mbox{\hyperlink{ex__lighting__texture_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}{controller}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Showing lighting effects over two textured objects with Phong. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ex__lighting__texture_8cpp_a8e8020c628ceb46ae6d5b6e1ad40eb0b}\label{ex__lighting__texture_8cpp_a8e8020c628ceb46ae6d5b6e1ad40eb0b}} 
+\index{ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}!createDice@{createDice}}
+\index{createDice@{createDice}!ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}}
+\doxysubsubsection{\texorpdfstring{createDice()}{createDice()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_grafica_1_1_shape}{gr\+::\+Shape}} create\+Dice (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__lighting__texture_8cpp_a286930f4e8ede059b83ff6eafa2ff718}\label{ex__lighting__texture_8cpp_a286930f4e8ede059b83ff6eafa2ff718}} 
+\index{ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}!key\_callback@{key\_callback}}
+\index{key\_callback@{key\_callback}!ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}}
+\doxysubsubsection{\texorpdfstring{key\_callback()}{key\_callback()}}
+{\footnotesize\ttfamily void key\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{window,  }\item[{int}]{key,  }\item[{int}]{scancode,  }\item[{int}]{action,  }\item[{int}]{mods }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__lighting__texture_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{ex__lighting__texture_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}!main@{main}}
+\index{main@{main}!ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{ex__lighting__texture_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}\label{ex__lighting__texture_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}} 
+\index{ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}!controller@{controller}}
+\index{controller@{controller}!ex\_lighting\_texture.cpp@{ex\_lighting\_texture.cpp}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_controller}{Controller}} controller}
+

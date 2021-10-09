@@ -1,0 +1,104 @@
+\hypertarget{scene__graph_8h_source}{}\doxysection{scene\+\_\+graph.\+h}
+\label{scene__graph_8h_source}\index{source/grafica/scene\_graph.h@{source/grafica/scene\_graph.h}}
+\mbox{\hyperlink{scene__graph_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <optional>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <ciso646>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{gpu__shape_8h}{gpu\_shape.h}}"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{shape_8h}{shape.h}}"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{simple__eigen_8h}{simple\_eigen.h}}"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{transformations_8h}{transformations.h}}"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_grafica}{Grafica}}}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{struct }SceneGraphNode;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_a223d0e13fd19168c288ac988fe6d88ff}{GPUShapePtr}} = std::shared\_ptr<GPUShape>;}
+\DoxyCodeLine{27 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{SceneGraphNodePtr}} = std::shared\_ptr<SceneGraphNode>;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{class }\mbox{\hyperlink{class_grafica_1_1_scene_graph_node}{SceneGraphNode}}}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     std::string \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a587faab6c2e77ac7ab0dee56ce717ee8}{name}};}
+\DoxyCodeLine{33     \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}} \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a4181c0ce77470bccca7cc3a179652e58}{transform}};}
+\DoxyCodeLine{34     std::optional<GPUShapePtr> \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a6b932c5f5f41fcb3547ac09136a3b446}{gpuShapeMaybe}};}
+\DoxyCodeLine{35     std::vector<SceneGraphNodePtr> \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_aa6b1def626ba73d2c4db280193d3ad7b}{childs}};}
+\DoxyCodeLine{36     }
+\DoxyCodeLine{37     \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a2f4f49ffca4316cfce0468c46005c20b}{SceneGraphNode}}(}
+\DoxyCodeLine{38         \textcolor{keyword}{const} std::string\& name\_) : }
+\DoxyCodeLine{39         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a587faab6c2e77ac7ab0dee56ce717ee8}{name}}(name\_),}
+\DoxyCodeLine{40         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a4181c0ce77470bccca7cc3a179652e58}{transform}}(Transformations::\mbox{\hyperlink{namespace_grafica_1_1_transformations_aba8ff645d8bdeca25ac6dc4f635ddf7d}{identity}}()),}
+\DoxyCodeLine{41         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a6b932c5f5f41fcb3547ac09136a3b446}{gpuShapeMaybe}}(std::nullopt),}
+\DoxyCodeLine{42         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_aa6b1def626ba73d2c4db280193d3ad7b}{childs}}()}
+\DoxyCodeLine{43     \{\}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_abdadc161eca99690b9871276b8c85e4a}{SceneGraphNode}}(}
+\DoxyCodeLine{46         \textcolor{keyword}{const} std::string\& name\_,}
+\DoxyCodeLine{47         \textcolor{keyword}{const} \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}}\& transform\_) : }
+\DoxyCodeLine{48         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a587faab6c2e77ac7ab0dee56ce717ee8}{name}}(name\_),}
+\DoxyCodeLine{49         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a4181c0ce77470bccca7cc3a179652e58}{transform}}(transform\_),}
+\DoxyCodeLine{50         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a6b932c5f5f41fcb3547ac09136a3b446}{gpuShapeMaybe}}(std::nullopt),}
+\DoxyCodeLine{51         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_aa6b1def626ba73d2c4db280193d3ad7b}{childs}}()}
+\DoxyCodeLine{52     \{\}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a18c9b209069713996bbccb696a437a2b}{SceneGraphNode}}(}
+\DoxyCodeLine{55         \textcolor{keyword}{const} std::string\& name\_,}
+\DoxyCodeLine{56         \textcolor{keyword}{const} \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}}\& transform\_,}
+\DoxyCodeLine{57         \mbox{\hyperlink{namespace_grafica_a223d0e13fd19168c288ac988fe6d88ff}{GPUShapePtr}} gpuShapePtr\_) : }
+\DoxyCodeLine{58         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a587faab6c2e77ac7ab0dee56ce717ee8}{name}}(name\_),}
+\DoxyCodeLine{59         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a4181c0ce77470bccca7cc3a179652e58}{transform}}(transform\_),}
+\DoxyCodeLine{60         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a6b932c5f5f41fcb3547ac09136a3b446}{gpuShapeMaybe}}(gpuShapePtr\_),}
+\DoxyCodeLine{61         \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_aa6b1def626ba73d2c4db280193d3ad7b}{childs}}()}
+\DoxyCodeLine{62     \{\}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_grafica_1_1_scene_graph_node_a718e82fb86360dc016dd57fae4cd5dc8}{clear}}();}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 std::optional<SceneGraphNodePtr> \mbox{\hyperlink{namespace_grafica_ad104c01b56e79c2bfa4094af0d3ba086}{findNode}}(}
+\DoxyCodeLine{68     \mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{SceneGraphNodePtr}} nodePtr,}
+\DoxyCodeLine{69     \textcolor{keyword}{const} std::string\& name);}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 std::optional<Matrix4f> \mbox{\hyperlink{namespace_grafica_af6fe3d4cb0330f5f4d10030525818987}{findTransform}}(}
+\DoxyCodeLine{72     \mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{SceneGraphNodePtr}} nodePtr,}
+\DoxyCodeLine{73     \textcolor{keyword}{const} std::string\& name,}
+\DoxyCodeLine{74     \textcolor{keyword}{const} \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}}\& parentTransform = \mbox{\hyperlink{namespace_grafica_1_1_transformations_aba8ff645d8bdeca25ac6dc4f635ddf7d}{Transformations::identity}}());}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 std::optional<Vector4f> \mbox{\hyperlink{namespace_grafica_a51761f1cc6bcfcb94b60da91dba0613f}{findPosition}}(}
+\DoxyCodeLine{77     \mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{SceneGraphNodePtr}} nodePtr,}
+\DoxyCodeLine{78     \textcolor{keyword}{const} std::string\& name,}
+\DoxyCodeLine{79     \textcolor{keyword}{const} \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}}\& parentTransform = \mbox{\hyperlink{namespace_grafica_1_1_transformations_aba8ff645d8bdeca25ac6dc4f635ddf7d}{Transformations::identity}}());}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{template} <\textcolor{keyword}{typename} PipelineType>}
+\DoxyCodeLine{82 \textcolor{keywordtype}{void} \mbox{\hyperlink{namespace_grafica_a3122c46e924ef670078188175a0e12a8}{drawSceneGraphNode}}(}
+\DoxyCodeLine{83     \mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{SceneGraphNodePtr}} nodePtr,}
+\DoxyCodeLine{84     \textcolor{keyword}{const} PipelineType\& pipeline,}
+\DoxyCodeLine{85     \textcolor{keyword}{const} std::string\& transformName,}
+\DoxyCodeLine{86     \textcolor{keyword}{const} \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}}\& parentTransform = \mbox{\hyperlink{namespace_grafica_1_1_transformations_aba8ff645d8bdeca25ac6dc4f635ddf7d}{Transformations::identity}}())}
+\DoxyCodeLine{87 \{}
+\DoxyCodeLine{88     \textcolor{comment}{// Composing the transformations through this path}}
+\DoxyCodeLine{89     \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}} newTransform = parentTransform * nodePtr-\/>transform;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{keywordflow}{if} (nodePtr-\/>gpuShapeMaybe.has\_value())}
+\DoxyCodeLine{92     \{}
+\DoxyCodeLine{93         \textcolor{keyword}{auto} \textcolor{keyword}{const} shapePtr = nodePtr-\/>gpuShapeMaybe.value();}
+\DoxyCodeLine{94         \textcolor{keyword}{auto} \textcolor{keyword}{const}\& shape = *shapePtr;}
+\DoxyCodeLine{95         glUniformMatrix4fv(glGetUniformLocation(pipeline.shaderProgram, transformName.c\_str()), 1, GL\_FALSE, newTransform.data());}
+\DoxyCodeLine{96         pipeline.drawCall(shape);}
+\DoxyCodeLine{97     \}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     \textcolor{comment}{// If the child node is not a leaf, it MUST be a SceneGraphNode,}}
+\DoxyCodeLine{100     \textcolor{comment}{// so this draw function is called recursively}}
+\DoxyCodeLine{101     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} childPtr : nodePtr-\/>childs)}
+\DoxyCodeLine{102         \mbox{\hyperlink{namespace_grafica_a3122c46e924ef670078188175a0e12a8}{drawSceneGraphNode}}(childPtr, pipeline, transformName, newTransform);}
+\DoxyCodeLine{103 \}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 \} \textcolor{comment}{// Grafica}}
+
+\end{DoxyCode}

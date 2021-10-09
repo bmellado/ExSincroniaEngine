@@ -1,0 +1,37 @@
+\hypertarget{load__shaders_8h_source}{}\doxysection{load\+\_\+shaders.\+h}
+\label{load__shaders_8h_source}\index{source/grafica/load\_shaders.h@{source/grafica/load\_shaders.h}}
+\mbox{\hyperlink{load__shaders_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <initializer\_list>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_grafica}{Grafica}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_shader_code}{ShaderCode}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     GLenum \textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_shader_code_ad2137f0af267cc9aa77d69430892e407}{type}};}
+\DoxyCodeLine{21     std::string \textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_shader_code_aa1df8a4eecb297c06ed4def374ac77aa}{sourceCode}};}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_shader_file}{ShaderFile}}}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26     GLenum \textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_shader_file_a7b819802f24873e8bcb2f03a0d42c69b}{type}};}
+\DoxyCodeLine{27     std::string \textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_shader_file_a8d06b5a63420c041d8cf28048368e2b0}{filename}};}
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \mbox{\hyperlink{struct_grafica_1_1_shader_code}{ShaderCode}} \mbox{\hyperlink{namespace_grafica_a2a08d69a64112fc75d1a3c0fb6878d66}{readShaderFile}}(GLenum type, \textcolor{keyword}{const} std::string\& filename);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 GLuint \mbox{\hyperlink{namespace_grafica_ab6287b17f5ef35b1a501c2a7cee2967e}{compileShader}}(GLenum type, \textcolor{keyword}{const} std::string\& sourceCode);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 GLuint \mbox{\hyperlink{namespace_grafica_af19a52ad8f0ecfa69b7bf4640bc6012e}{createShaderProgramFromCode}}(std::initializer\_list<ShaderCode> shaderCodes);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 GLuint \mbox{\hyperlink{namespace_grafica_afa8120bb76014c2013143ce1defb9a0b}{createShaderProgramFromFiles}}(std::initializer\_list<ShaderFile> shaderFiles);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \} \textcolor{comment}{// Grafica}}
+
+\end{DoxyCode}

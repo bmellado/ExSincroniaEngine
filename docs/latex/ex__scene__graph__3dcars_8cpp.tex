@@ -1,0 +1,81 @@
+\hypertarget{ex__scene__graph__3dcars_8cpp}{}\doxysection{source/examples/ex\+\_\+scene\+\_\+graph\+\_\+3dcars.cpp File Reference}
+\label{ex__scene__graph__3dcars_8cpp}\index{source/examples/ex\_scene\_graph\_3dcars.cpp@{source/examples/ex\_scene\_graph\_3dcars.cpp}}
+
+
+Drawing 3D cars via scene graph.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$numbers$>$}\newline
+{\ttfamily \#include $<$ciso646$>$}\newline
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/basic\+\_\+shapes.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/load\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/easy\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/gpu\+\_\+shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/transformations.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/scene\+\_\+graph.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_controller}{Controller}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ex__scene__graph__3dcars_8cpp_a286930f4e8ede059b83ff6eafa2ff718}{key\+\_\+callback}} (GLFWwindow $\ast$window, int key, int scancode, int action, int mods)
+\item 
+{\footnotesize template$<$typename PipelineT $>$ }\\\mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{gr\+::\+Scene\+Graph\+Node\+Ptr}} \mbox{\hyperlink{ex__scene__graph__3dcars_8cpp_a6c007e9095b934cf9b2ff187901425ee}{create\+Car}} (const PipelineT \&pipeline, \mbox{\hyperlink{namespace_grafica_aadc8f26347acb396d29a4ab974132cde}{gr\+::\+Coord}} r, \mbox{\hyperlink{namespace_grafica_aadc8f26347acb396d29a4ab974132cde}{gr\+::\+Coord}} g, \mbox{\hyperlink{namespace_grafica_aadc8f26347acb396d29a4ab974132cde}{gr\+::\+Coord}} b)
+\item 
+int \mbox{\hyperlink{ex__scene__graph__3dcars_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_controller}{Controller}} \mbox{\hyperlink{ex__scene__graph__3dcars_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}{controller}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Drawing 3D cars via scene graph. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ex__scene__graph__3dcars_8cpp_a6c007e9095b934cf9b2ff187901425ee}\label{ex__scene__graph__3dcars_8cpp_a6c007e9095b934cf9b2ff187901425ee}} 
+\index{ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}!createCar@{createCar}}
+\index{createCar@{createCar}!ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}}
+\doxysubsubsection{\texorpdfstring{createCar()}{createCar()}}
+{\footnotesize\ttfamily template$<$typename PipelineT $>$ \\
+\mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{gr\+::\+Scene\+Graph\+Node\+Ptr}} create\+Car (\begin{DoxyParamCaption}\item[{const PipelineT \&}]{pipeline,  }\item[{\mbox{\hyperlink{namespace_grafica_aadc8f26347acb396d29a4ab974132cde}{gr\+::\+Coord}}}]{r,  }\item[{\mbox{\hyperlink{namespace_grafica_aadc8f26347acb396d29a4ab974132cde}{gr\+::\+Coord}}}]{g,  }\item[{\mbox{\hyperlink{namespace_grafica_aadc8f26347acb396d29a4ab974132cde}{gr\+::\+Coord}}}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__scene__graph__3dcars_8cpp_a286930f4e8ede059b83ff6eafa2ff718}\label{ex__scene__graph__3dcars_8cpp_a286930f4e8ede059b83ff6eafa2ff718}} 
+\index{ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}!key\_callback@{key\_callback}}
+\index{key\_callback@{key\_callback}!ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}}
+\doxysubsubsection{\texorpdfstring{key\_callback()}{key\_callback()}}
+{\footnotesize\ttfamily void key\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{window,  }\item[{int}]{key,  }\item[{int}]{scancode,  }\item[{int}]{action,  }\item[{int}]{mods }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__scene__graph__3dcars_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{ex__scene__graph__3dcars_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}!main@{main}}
+\index{main@{main}!ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{ex__scene__graph__3dcars_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}\label{ex__scene__graph__3dcars_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}} 
+\index{ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}!controller@{controller}}
+\index{controller@{controller}!ex\_scene\_graph\_3dcars.cpp@{ex\_scene\_graph\_3dcars.cpp}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_controller}{Controller}} controller}
+

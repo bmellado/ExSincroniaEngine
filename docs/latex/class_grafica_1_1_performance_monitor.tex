@@ -1,0 +1,56 @@
+\hypertarget{class_grafica_1_1_performance_monitor}{}\doxysection{Grafica\+::Performance\+Monitor Class Reference}
+\label{class_grafica_1_1_performance_monitor}\index{Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}}
+
+
+{\ttfamily \#include $<$performance\+\_\+monitor.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_grafica_1_1_performance_monitor_a2e03f0d9e3fe5c0a0ab1d5eec9dc5946}{Performance\+Monitor}} (float current\+Time, float period)
+\item 
+void \mbox{\hyperlink{class_grafica_1_1_performance_monitor_a0cafe9f913a660145e149070c5446065}{update}} (float current\+Time)
+\item 
+float \mbox{\hyperlink{class_grafica_1_1_performance_monitor_a3d253dbbb111eb406dbdaa337f0385b0}{get\+FPS}} () const
+\item 
+float \mbox{\hyperlink{class_grafica_1_1_performance_monitor_af32e6f981d88e6909855aada1ad9b217}{get\+MS}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Convenience class to measure simple performance metrics 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_grafica_1_1_performance_monitor_a2e03f0d9e3fe5c0a0ab1d5eec9dc5946}\label{class_grafica_1_1_performance_monitor_a2e03f0d9e3fe5c0a0ab1d5eec9dc5946}} 
+\index{Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}!PerformanceMonitor@{PerformanceMonitor}}
+\index{PerformanceMonitor@{PerformanceMonitor}!Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{PerformanceMonitor()}{PerformanceMonitor()}}
+{\footnotesize\ttfamily Grafica\+::\+Performance\+Monitor\+::\+Performance\+Monitor (\begin{DoxyParamCaption}\item[{float}]{current\+Time,  }\item[{float}]{period }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the first reference time and the period of time over to compute the average frames per second 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_grafica_1_1_performance_monitor_a3d253dbbb111eb406dbdaa337f0385b0}\label{class_grafica_1_1_performance_monitor_a3d253dbbb111eb406dbdaa337f0385b0}} 
+\index{Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}!getFPS@{getFPS}}
+\index{getFPS@{getFPS}!Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getFPS()}{getFPS()}}
+{\footnotesize\ttfamily float Grafica\+::\+Performance\+Monitor\+::get\+FPS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_grafica_1_1_performance_monitor_af32e6f981d88e6909855aada1ad9b217}\label{class_grafica_1_1_performance_monitor_af32e6f981d88e6909855aada1ad9b217}} 
+\index{Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}!getMS@{getMS}}
+\index{getMS@{getMS}!Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{getMS()}{getMS()}}
+{\footnotesize\ttfamily float Grafica\+::\+Performance\+Monitor\+::get\+MS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_grafica_1_1_performance_monitor_a0cafe9f913a660145e149070c5446065}\label{class_grafica_1_1_performance_monitor_a0cafe9f913a660145e149070c5446065}} 
+\index{Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}!update@{update}}
+\index{update@{update}!Grafica::PerformanceMonitor@{Grafica::PerformanceMonitor}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Grafica\+::\+Performance\+Monitor\+::update (\begin{DoxyParamCaption}\item[{float}]{current\+Time }\end{DoxyParamCaption})}
+
+It must be called once per frame to update the internal metrics 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/grafica/\mbox{\hyperlink{performance__monitor_8h}{performance\+\_\+monitor.\+h}}\item 
+source/grafica/\mbox{\hyperlink{performance__monitor_8cpp}{performance\+\_\+monitor.\+cpp}}\end{DoxyCompactItemize}

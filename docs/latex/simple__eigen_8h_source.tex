@@ -1,0 +1,25 @@
+\hypertarget{simple__eigen_8h_source}{}\doxysection{simple\+\_\+eigen.\+h}
+\label{simple__eigen_8h_source}\index{source/grafica/simple\_eigen.h@{source/grafica/simple\_eigen.h}}
+\mbox{\hyperlink{simple__eigen_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <Eigen/Core>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <Eigen/Dense>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_grafica}{Grafica}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_aadc8f26347acb396d29a4ab974132cde}{Coord}} = float;}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{comment}{// Special types to prevent eigen alignment problem}}
+\DoxyCodeLine{21 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_a762c3a0582df5e367952ed3044333584}{Matrix4f}} = Eigen::Matrix<Coord,4,4,Eigen::DontAlign>;}
+\DoxyCodeLine{22 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_aa5c049162076e3e8d29fa31d004fe02c}{Matrix34f}} = Eigen::Matrix<Coord,3,4,Eigen::DontAlign>;}
+\DoxyCodeLine{23 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_a88b0f7d51ec9e4215d8ea8b777837b24}{Vector2f}} = Eigen::Matrix<Coord,2,1,Eigen::DontAlign>;}
+\DoxyCodeLine{24 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_a8ac53625962e9966bcb3b3f7847e9955}{Vector3f}} = Eigen::Matrix<Coord,3,1,Eigen::DontAlign>;}
+\DoxyCodeLine{25 \textcolor{keyword}{using} \mbox{\hyperlink{namespace_grafica_aa3299840ac3456f7232ecf31ab892fd6}{Vector4f}} = Eigen::Matrix<Coord,4,1,Eigen::DontAlign>;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \} \textcolor{comment}{// Grafica}}
+
+\end{DoxyCode}

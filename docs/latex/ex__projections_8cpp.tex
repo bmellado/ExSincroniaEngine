@@ -1,0 +1,101 @@
+\hypertarget{ex__projections_8cpp}{}\doxysection{source/examples/ex\+\_\+projections.cpp File Reference}
+\label{ex__projections_8cpp}\index{source/examples/ex\_projections.cpp@{source/examples/ex\_projections.cpp}}
+
+
+Projections example.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$numbers$>$}\newline
+{\ttfamily \#include $<$ciso646$>$}\newline
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/basic\+\_\+shapes.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/load\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/easy\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/gpu\+\_\+shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/transformations.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_controller}{Controller}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3}{Projection\+Type}} \{ \mbox{\hyperlink{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3a03424250432f2aa71de95579d2c0eaeb}{Orthographic}}
+, \mbox{\hyperlink{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3a6662e570aa6f4c7113c69b4c240dab96}{Frustum}}
+, \mbox{\hyperlink{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3aa80420eef88d11f77532f1b9cb467fa3}{Perspective}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ex__projections_8cpp_a286930f4e8ede059b83ff6eafa2ff718}{key\+\_\+callback}} (GLFWwindow $\ast$window, int key, int scancode, int action, int mods)
+\item 
+int \mbox{\hyperlink{ex__projections_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_controller}{Controller}} \mbox{\hyperlink{ex__projections_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}{controller}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Projections example. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3}\label{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3}} 
+\index{ex\_projections.cpp@{ex\_projections.cpp}!ProjectionType@{ProjectionType}}
+\index{ProjectionType@{ProjectionType}!ex\_projections.cpp@{ex\_projections.cpp}}
+\doxysubsubsection{\texorpdfstring{ProjectionType}{ProjectionType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3}{Projection\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orthographic@{Orthographic}!ex\_projections.cpp@{ex\_projections.cpp}}\index{ex\_projections.cpp@{ex\_projections.cpp}!Orthographic@{Orthographic}}}\mbox{\Hypertarget{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3a03424250432f2aa71de95579d2c0eaeb}\label{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3a03424250432f2aa71de95579d2c0eaeb}} 
+Orthographic&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Frustum@{Frustum}!ex\_projections.cpp@{ex\_projections.cpp}}\index{ex\_projections.cpp@{ex\_projections.cpp}!Frustum@{Frustum}}}\mbox{\Hypertarget{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3a6662e570aa6f4c7113c69b4c240dab96}\label{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3a6662e570aa6f4c7113c69b4c240dab96}} 
+Frustum&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Perspective@{Perspective}!ex\_projections.cpp@{ex\_projections.cpp}}\index{ex\_projections.cpp@{ex\_projections.cpp}!Perspective@{Perspective}}}\mbox{\Hypertarget{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3aa80420eef88d11f77532f1b9cb467fa3}\label{ex__projections_8cpp_addbdeb0c4a9113fece681e37faca81d3aa80420eef88d11f77532f1b9cb467fa3}} 
+Perspective&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ex__projections_8cpp_a286930f4e8ede059b83ff6eafa2ff718}\label{ex__projections_8cpp_a286930f4e8ede059b83ff6eafa2ff718}} 
+\index{ex\_projections.cpp@{ex\_projections.cpp}!key\_callback@{key\_callback}}
+\index{key\_callback@{key\_callback}!ex\_projections.cpp@{ex\_projections.cpp}}
+\doxysubsubsection{\texorpdfstring{key\_callback()}{key\_callback()}}
+{\footnotesize\ttfamily void key\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{window,  }\item[{int}]{key,  }\item[{int}]{scancode,  }\item[{int}]{action,  }\item[{int}]{mods }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__projections_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{ex__projections_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{ex\_projections.cpp@{ex\_projections.cpp}!main@{main}}
+\index{main@{main}!ex\_projections.cpp@{ex\_projections.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{ex__projections_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}\label{ex__projections_8cpp_a949c907f7c03ad6ca40aa7deccf224b6}} 
+\index{ex\_projections.cpp@{ex\_projections.cpp}!controller@{controller}}
+\index{controller@{controller}!ex\_projections.cpp@{ex\_projections.cpp}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{struct_controller}{Controller}} controller}
+

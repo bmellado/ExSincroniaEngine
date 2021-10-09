@@ -1,0 +1,52 @@
+\hypertarget{scene__graph_8h}{}\doxysection{source/grafica/scene\+\_\+graph.h File Reference}
+\label{scene__graph_8h}\index{source/grafica/scene\_graph.h@{source/grafica/scene\_graph.h}}
+
+
+Convenience struct Scene\+Graph\+Node to store a hierarchy of transformations and shapes meant to be drawn with Open\+GL.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$ciso646$>$}\newline
+{\ttfamily \#include \char`\"{}gpu\+\_\+shape.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shape.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}simple\+\_\+eigen.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}transformations.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_grafica_1_1_scene_graph_node}{Grafica\+::\+Scene\+Graph\+Node}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_grafica}{Grafica}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespace_grafica_a223d0e13fd19168c288ac988fe6d88ff}{Grafica\+::\+GPUShape\+Ptr}} = std\+::shared\+\_\+ptr$<$ GPUShape $>$
+\item 
+using \mbox{\hyperlink{namespace_grafica_a739437f7e5e9918fda2466a9537b97aa}{Grafica\+::\+Scene\+Graph\+Node\+Ptr}} = std\+::shared\+\_\+ptr$<$ Scene\+Graph\+Node $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ Scene\+Graph\+Node\+Ptr $>$ \mbox{\hyperlink{namespace_grafica_ad104c01b56e79c2bfa4094af0d3ba086}{Grafica\+::find\+Node}} (Scene\+Graph\+Node\+Ptr node\+Ptr, const std\+::string \&name)
+\item 
+std\+::optional$<$ Matrix4f $>$ \mbox{\hyperlink{namespace_grafica_af6fe3d4cb0330f5f4d10030525818987}{Grafica\+::find\+Transform}} (Scene\+Graph\+Node\+Ptr node\+Ptr, const std\+::string \&name, const Matrix4f \&parent\+Transform)
+\item 
+std\+::optional$<$ Vector4f $>$ \mbox{\hyperlink{namespace_grafica_a51761f1cc6bcfcb94b60da91dba0613f}{Grafica\+::find\+Position}} (Scene\+Graph\+Node\+Ptr node\+Ptr, const std\+::string \&name, const Matrix4f \&parent\+Transform)
+\item 
+{\footnotesize template$<$typename Pipeline\+Type $>$ }\\void \mbox{\hyperlink{namespace_grafica_a3122c46e924ef670078188175a0e12a8}{Grafica\+::draw\+Scene\+Graph\+Node}} (Scene\+Graph\+Node\+Ptr node\+Ptr, const Pipeline\+Type \&pipeline, const std\+::string \&transform\+Name, const Matrix4f \&parent\+Transform=Transformations\+::identity())
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Convenience struct Scene\+Graph\+Node to store a hierarchy of transformations and shapes meant to be drawn with Open\+GL. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}

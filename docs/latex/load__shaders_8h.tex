@@ -1,0 +1,41 @@
+\hypertarget{load__shaders_8h}{}\doxysection{source/grafica/load\+\_\+shaders.h File Reference}
+\label{load__shaders_8h}\index{source/grafica/load\_shaders.h@{source/grafica/load\_shaders.h}}
+
+
+Convenience functions to load shaders from strings or files.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$initializer\+\_\+list$>$}\newline
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_grafica_1_1_shader_code}{Grafica\+::\+Shader\+Code}}
+\item 
+struct \mbox{\hyperlink{struct_grafica_1_1_shader_file}{Grafica\+::\+Shader\+File}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_grafica}{Grafica}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Shader\+Code \mbox{\hyperlink{namespace_grafica_a2a08d69a64112fc75d1a3c0fb6878d66}{Grafica\+::read\+Shader\+File}} (GLenum type, const std\+::string \&filename)
+\item 
+GLuint \mbox{\hyperlink{namespace_grafica_ab6287b17f5ef35b1a501c2a7cee2967e}{Grafica\+::compile\+Shader}} (GLenum type, std\+::string const \&source\+Code)
+\item 
+GLuint \mbox{\hyperlink{namespace_grafica_af19a52ad8f0ecfa69b7bf4640bc6012e}{Grafica\+::create\+Shader\+Program\+From\+Code}} (std\+::initializer\+\_\+list$<$ Shader\+Code $>$ shader\+Codes)
+\item 
+GLuint \mbox{\hyperlink{namespace_grafica_afa8120bb76014c2013143ce1defb9a0b}{Grafica\+::create\+Shader\+Program\+From\+Files}} (std\+::initializer\+\_\+list$<$ Shader\+File $>$ shader\+Files)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Convenience functions to load shaders from strings or files. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}

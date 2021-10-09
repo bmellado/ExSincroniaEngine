@@ -1,0 +1,55 @@
+\hypertarget{transformations_8cpp}{}\doxysection{source/grafica/transformations.cpp File Reference}
+\label{transformations_8cpp}\index{source/grafica/transformations.cpp@{source/grafica/transformations.cpp}}
+
+
+Convenience transformation matrices written in 3D homogeneous coordinates (i.\+e. matrices shape is 4x4). Under the hood, Eigen matrices are used.  
+
+
+{\ttfamily \#include \char`\"{}transformations.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$numbers$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Geometry$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_grafica}{Grafica}}
+\item 
+namespace \mbox{\hyperlink{namespace_grafica_1_1_transformations}{Grafica\+::\+Transformations}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_aba8ff645d8bdeca25ac6dc4f635ddf7d}{Grafica\+::\+Transformations\+::identity}} ()
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_a5cf8784ab03a94e57d82d37f34de1607}{Grafica\+::\+Transformations\+::uniform\+Scale}} (Coord s)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_aee93d908b473c0399f0ce032c2cf77a9}{Grafica\+::\+Transformations\+::scale}} (Coord sx, Coord sy, Coord sz)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_aa604fe18ba7e9a2105331f44fbcf8aca}{Grafica\+::\+Transformations\+::rotationX}} (Coord theta\+\_\+radians)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_abd4b5f947967f5612f157792c446323b}{Grafica\+::\+Transformations\+::rotationY}} (Coord theta\+\_\+radians)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_aad4f13c80de9dec5711fd6e3b87e674d}{Grafica\+::\+Transformations\+::rotationZ}} (Coord theta\+\_\+radians)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_a17ba6dd8a5e53f329604e4d320bc4750}{Grafica\+::\+Transformations\+::rotationA}} (Coord theta\+\_\+radians, Vector3f axis)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_ab159057f793f3531841a7e7356805629}{Grafica\+::\+Transformations\+::translate}} (Coord tx, Coord ty, Coord tz)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_adc913c90cd2fdd2ea5921ca4f4a23e74}{Grafica\+::\+Transformations\+::shearing}} (Coord xy, Coord yx, Coord xz, Coord zx, Coord yz, Coord zy)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_a92fec96f4faebc30d583f5c963e43b37}{Grafica\+::\+Transformations\+::frustum}} (Coord left, Coord right, Coord bottom, Coord top, Coord near, Coord far)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_a2d8e6ef7fc161ece4fa6f71194ff354e}{Grafica\+::\+Transformations\+::perspective}} (Coord fovy, Coord aspect, Coord near, Coord far)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_a8a4cb452355bdb8e8aa14963db811fad}{Grafica\+::\+Transformations\+::ortho}} (Coord left, Coord right, Coord bottom, Coord top, Coord near, Coord far)
+\item 
+Matrix4f \mbox{\hyperlink{namespace_grafica_1_1_transformations_acda54cc8e3c04a402b7f0181f169aae0}{Grafica\+::\+Transformations\+::look\+At}} (Vector3f const \&eye, Vector3f const \&at, Vector3f const \&up)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Convenience transformation matrices written in 3D homogeneous coordinates (i.\+e. matrices shape is 4x4). Under the hood, Eigen matrices are used. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}

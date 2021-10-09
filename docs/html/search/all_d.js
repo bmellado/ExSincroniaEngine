@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['operator_3c_3c_0',['operator&lt;&lt;',['../ex__joystick_8cpp.html#a2cf2dc18adbfd1a2fa89dc6312e693cc',1,'operator&lt;&lt;():&#160;ex_joystick.cpp'],['../namespace_grafica.html#a0abc4652d90ced3a08242aae768c8b98',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const GPUShape &amp;gpuShape)'],['../namespace_grafica.html#a49d807fde3ab3c9e3d0c5e3fec978be1',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const PerformanceMonitor &amp;perfMonitor)'],['../namespace_grafica.html#af68090c052beb267b42a53e40f989dab',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const Vertices &amp;vertices)'],['../namespace_grafica.html#ac5da2dbd8f22fc607e69c24161b27168',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const Indices &amp;indices)'],['../namespace_grafica.html#aa8a0e93837f486c4f40f7ce4ce8101b2',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const Shape &amp;shape)']]],
+  ['ortho_1',['ortho',['../namespace_grafica_1_1_transformations.html#a8a4cb452355bdb8e8aa14963db811fad',1,'Grafica::Transformations']]],
+  ['orthographic_2',['Orthographic',['../ex__projections_8cpp.html#addbdeb0c4a9113fece681e37faca81d3a03424250432f2aa71de95579d2c0eaeb',1,'ex_projections.cpp']]]
+];

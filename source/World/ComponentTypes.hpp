@@ -5,7 +5,7 @@
 #include "../Core/Common.hpp"
 
 //write the code here
-namespace Mona {
+namespace Sincronia {
 
 	enum class EComponentType : uint8_t {
 		AudioSourceComponent,

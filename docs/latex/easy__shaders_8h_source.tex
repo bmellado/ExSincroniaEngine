@@ -1,0 +1,91 @@
+\hypertarget{easy__shaders_8h_source}{}\doxysection{easy\+\_\+shaders.\+h}
+\label{easy__shaders_8h_source}\index{source/grafica/easy\_shaders.h@{source/grafica/easy\_shaders.h}}
+\mbox{\hyperlink{easy__shaders_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <filesystem>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{load__shaders_8h}{load\_shaders.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{gpu__shape_8h}{gpu\_shape.h}}"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_grafica}{Grafica}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{22 GLuint \mbox{\hyperlink{namespace_grafica_a2b0adec2589dd5136c6c360254395b6d}{textureSimpleSetup}}(}
+\DoxyCodeLine{23     \textcolor{keyword}{const} std::filesystem::path\& imgPath,}
+\DoxyCodeLine{24     GLuint sWrapMode,}
+\DoxyCodeLine{25     GLuint tWrapMode,}
+\DoxyCodeLine{26     GLuint minFilterMode,}
+\DoxyCodeLine{27     GLuint maxFilterMode);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_position_color_v_a_o}{PositionColorVAO}}}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31     GLuint \mbox{\hyperlink{struct_grafica_1_1_position_color_v_a_o_afbece5a8406b720b209f53bb37c2b780}{shaderProgram}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_color_v_a_o_a5ccecdf2d184a90458569007c88e4880}{setupVAO}}(\mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape) \textcolor{keyword}{const};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_color_v_a_o_a3ded4b449c4c4029551dc13763b51891}{drawCall}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape, GLuint mode = GL\_TRIANGLES) \textcolor{keyword}{const};}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_simple_shader_program}{SimpleShaderProgram}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_grafica_1_1_position_color_v_a_o}{PositionColorVAO}}}
+\DoxyCodeLine{39 \{}
+\DoxyCodeLine{40     \mbox{\hyperlink{struct_grafica_1_1_simple_shader_program_a32447f5b9c3752536ac012d3be18f29c}{SimpleShaderProgram}}();}
+\DoxyCodeLine{41 \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_transform_shader_program}{TransformShaderProgram}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_grafica_1_1_position_color_v_a_o}{PositionColorVAO}}}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     \mbox{\hyperlink{struct_grafica_1_1_transform_shader_program_af8047e0a5c32c04c18d988d75aa248d3}{TransformShaderProgram}}();}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_model_view_projection_shader_program}{ModelViewProjectionShaderProgram}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_grafica_1_1_position_color_v_a_o}{PositionColorVAO}}}
+\DoxyCodeLine{49 \{}
+\DoxyCodeLine{50     \mbox{\hyperlink{struct_grafica_1_1_model_view_projection_shader_program_aa01395be6a09482f0190f7a87a9b3571}{ModelViewProjectionShaderProgram}}();}
+\DoxyCodeLine{51 \};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_position_texture_v_a_o}{PositionTextureVAO}}}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     GLuint \mbox{\hyperlink{struct_grafica_1_1_position_texture_v_a_o_aa04a35be23065c6163dce9e39e710d6d}{shaderProgram}};}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_texture_v_a_o_a65aa4db9c578cc7ffc92036c3a3a781f}{setupVAO}}(\mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape) \textcolor{keyword}{const};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_texture_v_a_o_aec8071f24cc0a7c276f43bbba713cf48}{drawCall}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape, GLuint mode = GL\_TRIANGLES) \textcolor{keyword}{const};}
+\DoxyCodeLine{60 \};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_texture_transform_shader_program}{TextureTransformShaderProgram}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_grafica_1_1_position_texture_v_a_o}{PositionTextureVAO}}}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64     \mbox{\hyperlink{struct_grafica_1_1_texture_transform_shader_program_a37d817c4f84a14e9c1f9789443c695cc}{TextureTransformShaderProgram}}();}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_position_color_normal_v_a_o}{PositionColorNormalVAO}}}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69     GLuint \mbox{\hyperlink{struct_grafica_1_1_position_color_normal_v_a_o_a052b39fb8917e0d9b438cb3fd44c6064}{shaderProgram}};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_color_normal_v_a_o_adbbb4af4106d501323b95900a3b76dd5}{setupVAO}}(\mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape) \textcolor{keyword}{const};}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_color_normal_v_a_o_a4c77b6c4ae58690d3999056039ba3030}{drawCall}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape, GLuint mode = GL\_TRIANGLES) \textcolor{keyword}{const};}
+\DoxyCodeLine{74 \};}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_phong_color_shader_program}{PhongColorShaderProgram}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_grafica_1_1_position_color_normal_v_a_o}{PositionColorNormalVAO}}}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78     \mbox{\hyperlink{struct_grafica_1_1_phong_color_shader_program_aad06956d078a58f92ee3b033c826a7d2}{PhongColorShaderProgram}}();}
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_position_texture_normal_v_a_o}{PositionTextureNormalVAO}}}
+\DoxyCodeLine{82 \{}
+\DoxyCodeLine{83     GLuint \mbox{\hyperlink{struct_grafica_1_1_position_texture_normal_v_a_o_ac90efa9e608393c31fac3ae628503ca2}{shaderProgram}};}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_texture_normal_v_a_o_af3126653e6bc19a8b125fe04e71767e8}{setupVAO}}(\mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape) \textcolor{keyword}{const};}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_position_texture_normal_v_a_o_abf08512f035d509f2fe30909d2527ed8}{drawCall}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape, GLuint mode = GL\_TRIANGLES) \textcolor{keyword}{const};}
+\DoxyCodeLine{88 \};}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_phong_texture_shader_program}{PhongTextureShaderProgram}} : \textcolor{keyword}{public} \mbox{\hyperlink{struct_grafica_1_1_position_texture_normal_v_a_o}{PositionTextureNormalVAO}}}
+\DoxyCodeLine{91 \{}
+\DoxyCodeLine{92     \mbox{\hyperlink{struct_grafica_1_1_phong_texture_shader_program_abd7893dd6b745a9dbc89b838f3b48172}{PhongTextureShaderProgram}}();}
+\DoxyCodeLine{93 \};}
+\DoxyCodeLine{94     }
+\DoxyCodeLine{95 \} \textcolor{comment}{//Grafica}}
+
+\end{DoxyCode}

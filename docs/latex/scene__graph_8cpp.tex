@@ -1,0 +1,30 @@
+\hypertarget{scene__graph_8cpp}{}\doxysection{source/grafica/scene\+\_\+graph.cpp File Reference}
+\label{scene__graph_8cpp}\index{source/grafica/scene\_graph.cpp@{source/grafica/scene\_graph.cpp}}
+
+
+Convenience struct Scene\+Graph\+Node to store a hierarchy of transformations and shapes meant to be drawn with Open\+GL.  
+
+
+{\ttfamily \#include \char`\"{}scene\+\_\+graph.\+h\char`\"{}}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_grafica}{Grafica}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ Scene\+Graph\+Node\+Ptr $>$ \mbox{\hyperlink{namespace_grafica_ad104c01b56e79c2bfa4094af0d3ba086}{Grafica\+::find\+Node}} (Scene\+Graph\+Node\+Ptr node\+Ptr, const std\+::string \&name)
+\item 
+std\+::optional$<$ Matrix4f $>$ \mbox{\hyperlink{namespace_grafica_af6fe3d4cb0330f5f4d10030525818987}{Grafica\+::find\+Transform}} (Scene\+Graph\+Node\+Ptr node\+Ptr, const std\+::string \&name, const Matrix4f \&parent\+Transform)
+\item 
+std\+::optional$<$ Vector4f $>$ \mbox{\hyperlink{namespace_grafica_a51761f1cc6bcfcb94b60da91dba0613f}{Grafica\+::find\+Position}} (Scene\+Graph\+Node\+Ptr node\+Ptr, const std\+::string \&name, const Matrix4f \&parent\+Transform)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Convenience struct Scene\+Graph\+Node to store a hierarchy of transformations and shapes meant to be drawn with Open\+GL. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}

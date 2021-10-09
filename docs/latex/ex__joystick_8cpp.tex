@@ -1,0 +1,114 @@
+\hypertarget{ex__joystick_8cpp}{}\doxysection{source/examples/ex\+\_\+joystick.cpp File Reference}
+\label{ex__joystick_8cpp}\index{source/examples/ex\_joystick.cpp@{source/examples/ex\_joystick.cpp}}
+
+
+Using a joystick with GLFW.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$ciso646$>$}\newline
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/basic\+\_\+shapes.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/load\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/performance\+\_\+monitor.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/easy\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/gpu\+\_\+shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/transformations.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_joystick}{Joystick}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{ex__joystick_8cpp_a09ec58a11e1259f51c641b0c8d4cbe51}{Joystick\+Id}} = std\+::size\+\_\+t
+\item 
+using \mbox{\hyperlink{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}{Joystick\+Container}} = std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{ex__joystick_8cpp_a09ec58a11e1259f51c641b0c8d4cbe51}{Joystick\+Id}}, \mbox{\hyperlink{struct_joystick}{Joystick}} $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ex__joystick_8cpp_a286930f4e8ede059b83ff6eafa2ff718}{key\+\_\+callback}} (GLFWwindow $\ast$window, int key, int scancode, int action, int mods)
+\item 
+void \mbox{\hyperlink{ex__joystick_8cpp_a18b64478efe9833d6698e756f30b49a6}{joystick\+\_\+callback}} (int jid, int event)
+\item 
+std\+::ostream \& \mbox{\hyperlink{ex__joystick_8cpp_a2cf2dc18adbfd1a2fa89dc6312e693cc}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{struct_joystick}{Joystick}} \&joystick)
+\item 
+void \mbox{\hyperlink{ex__joystick_8cpp_ad03d16fc917cfab668627dd1f7a63c31}{poll\+Joysticks}} (\mbox{\hyperlink{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}{Joystick\+Container}} \&joysticks)
+\item 
+void \mbox{\hyperlink{ex__joystick_8cpp_ab6d7d32c2834e8efbff888c8670921ee}{draw\+Joysticks}} (const \mbox{\hyperlink{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}{Joystick\+Container}} \&joysticks, const \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{gr\+::\+GPUShape}} \&gpu\+Button\+Off, const \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{gr\+::\+GPUShape}} \&gpu\+Button\+On, const \mbox{\hyperlink{struct_grafica_1_1_transform_shader_program}{gr\+::\+Transform\+Shader\+Program}} \&pipeline)
+\item 
+int \mbox{\hyperlink{ex__joystick_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Using a joystick with GLFW. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Calderón @license MIT 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}\label{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!JoystickContainer@{JoystickContainer}}
+\index{JoystickContainer@{JoystickContainer}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{JoystickContainer}{JoystickContainer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}{Joystick\+Container}} =  std\+::unordered\+\_\+map$<$\mbox{\hyperlink{ex__joystick_8cpp_a09ec58a11e1259f51c641b0c8d4cbe51}{Joystick\+Id}}, \mbox{\hyperlink{struct_joystick}{Joystick}}$>$}
+
+\mbox{\Hypertarget{ex__joystick_8cpp_a09ec58a11e1259f51c641b0c8d4cbe51}\label{ex__joystick_8cpp_a09ec58a11e1259f51c641b0c8d4cbe51}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!JoystickId@{JoystickId}}
+\index{JoystickId@{JoystickId}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{JoystickId}{JoystickId}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{ex__joystick_8cpp_a09ec58a11e1259f51c641b0c8d4cbe51}{Joystick\+Id}} =  std\+::size\+\_\+t}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{ex__joystick_8cpp_ab6d7d32c2834e8efbff888c8670921ee}\label{ex__joystick_8cpp_ab6d7d32c2834e8efbff888c8670921ee}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!drawJoysticks@{drawJoysticks}}
+\index{drawJoysticks@{drawJoysticks}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{drawJoysticks()}{drawJoysticks()}}
+{\footnotesize\ttfamily void draw\+Joysticks (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}{Joystick\+Container}} \&}]{joysticks,  }\item[{const \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{gr\+::\+GPUShape}} \&}]{gpu\+Button\+Off,  }\item[{const \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{gr\+::\+GPUShape}} \&}]{gpu\+Button\+On,  }\item[{const \mbox{\hyperlink{struct_grafica_1_1_transform_shader_program}{gr\+::\+Transform\+Shader\+Program}} \&}]{pipeline }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__joystick_8cpp_a18b64478efe9833d6698e756f30b49a6}\label{ex__joystick_8cpp_a18b64478efe9833d6698e756f30b49a6}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!joystick\_callback@{joystick\_callback}}
+\index{joystick\_callback@{joystick\_callback}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{joystick\_callback()}{joystick\_callback()}}
+{\footnotesize\ttfamily void joystick\+\_\+callback (\begin{DoxyParamCaption}\item[{int}]{jid,  }\item[{int}]{event }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__joystick_8cpp_a286930f4e8ede059b83ff6eafa2ff718}\label{ex__joystick_8cpp_a286930f4e8ede059b83ff6eafa2ff718}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!key\_callback@{key\_callback}}
+\index{key\_callback@{key\_callback}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{key\_callback()}{key\_callback()}}
+{\footnotesize\ttfamily void key\+\_\+callback (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{window,  }\item[{int}]{key,  }\item[{int}]{scancode,  }\item[{int}]{action,  }\item[{int}]{mods }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__joystick_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{ex__joystick_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!main@{main}}
+\index{main@{main}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__joystick_8cpp_a2cf2dc18adbfd1a2fa89dc6312e693cc}\label{ex__joystick_8cpp_a2cf2dc18adbfd1a2fa89dc6312e693cc}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{struct_joystick}{Joystick}} \&}]{joystick }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ex__joystick_8cpp_ad03d16fc917cfab668627dd1f7a63c31}\label{ex__joystick_8cpp_ad03d16fc917cfab668627dd1f7a63c31}} 
+\index{ex\_joystick.cpp@{ex\_joystick.cpp}!pollJoysticks@{pollJoysticks}}
+\index{pollJoysticks@{pollJoysticks}!ex\_joystick.cpp@{ex\_joystick.cpp}}
+\doxysubsubsection{\texorpdfstring{pollJoysticks()}{pollJoysticks()}}
+{\footnotesize\ttfamily void poll\+Joysticks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}{Joystick\+Container}} \&}]{joysticks }\end{DoxyParamCaption})}
+

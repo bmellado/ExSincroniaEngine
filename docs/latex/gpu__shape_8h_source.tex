@@ -1,0 +1,59 @@
+\hypertarget{gpu__shape_8h_source}{}\doxysection{gpu\+\_\+shape.\+h}
+\label{gpu__shape_8h_source}\index{source/grafica/gpu\_shape.h@{source/grafica/gpu\_shape.h}}
+\mbox{\hyperlink{gpu__shape_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{shape_8h}{shape.h}}"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_grafica}{Grafica}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{/* We will use 32 bits data, so floats and integers have 4 bytes.}}
+\DoxyCodeLine{23 \textcolor{comment}{ * 1 byte = 8 bits}}
+\DoxyCodeLine{24 \textcolor{comment}{ */}}
+\DoxyCodeLine{25 \textcolor{keyword}{constexpr} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{namespace_grafica_a3f22286667669a79242807382534b40a}{SIZE\_IN\_BYTES}} = 4;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29     GLuint \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_ac7d2d215450c3f35ba58d5313e7111cc}{vao}}, \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_aab91809e5f1e0eea1752d9c9db16a7e0}{vbo}}, \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_a922e7af5d743eb08d479e3efb6d56fe7}{ebo}}, \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_a1d0a5c88c7ff40fcfdeb9ad2eced1584}{texture}};}
+\DoxyCodeLine{30     std::size\_t \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_ab1865d6f10716682f8e3b547f884b2b0}{size}};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{comment}{/*}}
+\DoxyCodeLine{33 \textcolor{comment}{    Convenience function for initialization of OpenGL buffers.}}
+\DoxyCodeLine{34 \textcolor{comment}{    It returns itself to enable the convenience call:}}
+\DoxyCodeLine{35 \textcolor{comment}{    gpuShape = GPUShape().initBuffers()}}
+\DoxyCodeLine{36 \textcolor{comment}{}}
+\DoxyCodeLine{37 \textcolor{comment}{    Note: this is not the default constructor as you may want}}
+\DoxyCodeLine{38 \textcolor{comment}{    to use some already existing buffers.}}
+\DoxyCodeLine{39 \textcolor{comment}{    */}}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_a80eb7a03d6c1cbea8dcdc291fe776a6b}{initBuffers}}();}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_a4c3d17326aef464d0f7f52f257f05fa4}{fillBuffers}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_shape}{Shape}}\& shape, GLuint usage);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{comment}{/* Freeing GPU memory */}}
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_a73d5f17d6e5ef88d526fe99ab28eb7fa}{clear}}();}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 std::ostream\& \mbox{\hyperlink{namespace_grafica_a0abc4652d90ced3a08242aae768c8b98}{operator<<}}(std::ostream\& os, \textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}}\& gpuShape);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{/* Convenience function to ease initialization */}}
+\DoxyCodeLine{51 \textcolor{keyword}{template} <\textcolor{keyword}{typename} PipelineT>}
+\DoxyCodeLine{52 \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}} \mbox{\hyperlink{namespace_grafica_a872a8432562fbc70bdf7ce8520a2d1ee}{toGPUShape}}(\textcolor{keyword}{const} PipelineT\& pipeline, \textcolor{keyword}{const} \mbox{\hyperlink{struct_grafica_1_1_shape}{Shape}}\& shape, GLuint usage = GL\_STATIC\_DRAW)}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54     \mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape}{GPUShape}} gpuShape;}
+\DoxyCodeLine{55     gpuShape.\mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_a80eb7a03d6c1cbea8dcdc291fe776a6b}{initBuffers}}();}
+\DoxyCodeLine{56     pipeline.setupVAO(gpuShape);}
+\DoxyCodeLine{57     gpuShape.\mbox{\hyperlink{struct_grafica_1_1_g_p_u_shape_a4c3d17326aef464d0f7f52f257f05fa4}{fillBuffers}}(shape, usage);}
+\DoxyCodeLine{58     \textcolor{keywordflow}{return} gpuShape;}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \} \textcolor{comment}{//Grafica}}
+
+\end{DoxyCode}

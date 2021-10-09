@@ -22,6 +22,11 @@
 #include <grafica/easy_shaders.h>
 #include <grafica/gpu_shape.h>
 #include <grafica/transformations.h>
+#include <grafica/simple_timer.h>
+#include <imgui.h>
+#include <examples/imgui_impl_opengl3.h>
+#include <examples/imgui_impl_glfw.h>
+
 
 namespace gr = Grafica;
 namespace tr = Grafica::Transformations;
@@ -125,7 +130,7 @@ int main()
     constexpr unsigned int SCR_HEIGHT = 600;
     std::string title = "ex_lighting_texture";
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, title.c_str(), NULL, NULL);
-    if (window == NULL)
+    if (window == nullptr)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -142,6 +147,26 @@ int main()
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
+
+    // This must be executed after loading OpenGL with GLAD
+    /* ImGui Start ---- */
+
+    // Setup Dear ImGui context
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+    // Setup Platform/Renderer backends
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 330");
+
+    // Setup Dear ImGui style
+    //ImGui::StyleColorsDark();
+    //ImGui::StyleColorsClassic();
+
+    /* ImGui End ---- */
 
     // Creating our shader programs
     gr::ModelViewProjectionShaderProgram colorPipeline;
@@ -178,6 +203,8 @@ int main()
     // glfw will swap buffers as soon as possible
     glfwSwapInterval(0);
 
+    std::vector<gr::ProfileResult> stats;
+
     // Application loop
     while (!glfwWindowShouldClose(window))
     {
@@ -193,16 +220,25 @@ int main()
         // Filling or not the shapes depending on the controller state
         glPolygonMode(GL_FRONT_AND_BACK, controller.fillPolygon ? GL_FILL : GL_LINE);
 
+        /* ImGui Start ---- */
+
+        // feed inputs to dear imgui, start new frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        /* ImGui End ---- */
+
         // Getting the time difference from the previous iteration
         t1 = glfwGetTime();
         dt = t1 - t0;
         t0 = t1;
 
         if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-            cameraTheta -= 2 * dt;
+            cameraTheta -= 20 * dt;
 
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-            cameraTheta += 2 * dt;
+            cameraTheta += 20 * dt;
 
         const gr::Vector3f viewPos(
             3 * std::sin(cameraTheta),
@@ -213,53 +249,94 @@ int main()
 
         gr::Matrix4f view = tr::lookAt(viewPos, eye, at);
 
-        //Clearing the screen in both, color and depth
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        {
+            PROFILE_SCOPE("uniforms", stats);
+            
+            //Clearing the screen in both, color and depth
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Drawing shapes with different uniforms and different shader programs
-        glUseProgram(colorPipeline.shaderProgram);
-        glUniformMatrix4fv(glGetUniformLocation(colorPipeline.shaderProgram, "projection"), 1, GL_FALSE, projection.data());
-        glUniformMatrix4fv(glGetUniformLocation(colorPipeline.shaderProgram, "view"), 1, GL_FALSE, view.data());
-        glUniformMatrix4fv(glGetUniformLocation(colorPipeline.shaderProgram, "model"), 1, GL_FALSE, tr::identity().data());
-		colorPipeline.drawCall(gpuAxis, GL_LINES);
+            // Drawing shapes with different uniforms and different shader programs
+            glUseProgram(colorPipeline.shaderProgram);
+            glUniformMatrix4fv(glGetUniformLocation(colorPipeline.shaderProgram, "projection"), 1, GL_FALSE, projection.data());
+            glUniformMatrix4fv(glGetUniformLocation(colorPipeline.shaderProgram, "view"), 1, GL_FALSE, view.data());
+            glUniformMatrix4fv(glGetUniformLocation(colorPipeline.shaderProgram, "model"), 1, GL_FALSE, tr::identity().data());
+            colorPipeline.drawCall(gpuAxis, GL_LINES);
 
 
-        glUseProgram(phongPipeline.shaderProgram);
-        glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "projection"), 1, GL_FALSE, projection.data()); 
-        glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "view"), 1, GL_FALSE, view.data());
+            glUseProgram(phongPipeline.shaderProgram);
+            glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "projection"), 1, GL_FALSE, projection.data()); 
+            glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "view"), 1, GL_FALSE, view.data());
 
-        // Sending phong lighting parameters
+            // Sending phong lighting parameters
 
-        // White light in all components: ambient, diffuse and specular.
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "La"), 1.0, 1.0, 1.0);
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ld"), 1.0, 1.0, 1.0);
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ls"), 1.0, 1.0, 1.0);
+            // White light in all components: ambient, diffuse and specular.
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "La"), 1.0, 1.0, 1.0);
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ld"), 1.0, 1.0, 1.0);
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ls"), 1.0, 1.0, 1.0);
 
-        // Object is barely visible at only ambient. Diffuse behavior is slightly red. Sparkles are white
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ka"), 0.2, 0.2, 0.2);
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Kd"), 0.9, 0.9, 0.9);
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ks"), 1.0, 1.0, 1.0);
+            // Object is barely visible at only ambient. Diffuse behavior is slightly red. Sparkles are white
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ka"), 0.2, 0.2, 0.2);
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Kd"), 0.9, 0.9, 0.9);
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "Ks"), 1.0, 1.0, 1.0);
 
-        // TO DO: Explore different parameter combinations to understand their effect!
+            // TO DO: Explore different parameter combinations to understand their effect!
 
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "lightPosition"), -5,-5, 5);
-        glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "viewPosition"), viewPos[0], viewPos[1], viewPos[2]);
-        glUniform1ui(glGetUniformLocation(phongPipeline.shaderProgram, "shininess"), 100);
-        
-        glUniform1f(glGetUniformLocation(phongPipeline.shaderProgram, "constantAttenuation"), 0.0001);
-        glUniform1f(glGetUniformLocation(phongPipeline.shaderProgram, "linearAttenuation"), 0.03);
-        glUniform1f(glGetUniformLocation(phongPipeline.shaderProgram, "quadraticAttenuation"), 0.01);
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "lightPosition"), -5,-5, 5);
+            glUniform3f(glGetUniformLocation(phongPipeline.shaderProgram, "viewPosition"), viewPos[0], viewPos[1], viewPos[2]);
+            glUniform1ui(glGetUniformLocation(phongPipeline.shaderProgram, "shininess"), 100);
+            
+            glUniform1f(glGetUniformLocation(phongPipeline.shaderProgram, "constantAttenuation"), 0.0001);
+            glUniform1f(glGetUniformLocation(phongPipeline.shaderProgram, "linearAttenuation"), 0.03);
+            glUniform1f(glGetUniformLocation(phongPipeline.shaderProgram, "quadraticAttenuation"), 0.01);
+        }
 
-        // Drawing the shape
-        glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "model"), 1, GL_FALSE, modelWhiteDice.data());
-        phongPipeline.drawCall(gpuWhiteDice);
+        {
+            PROFILE_SCOPE("draw calls", stats);
 
-        glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "model"), 1, GL_FALSE, modelBlueDice.data());
-        phongPipeline.drawCall(gpuBlueDice);
+            // Drawing the shape
+            glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "model"), 1, GL_FALSE, modelWhiteDice.data());
+            phongPipeline.drawCall(gpuWhiteDice);
 
+            glUniformMatrix4fv(glGetUniformLocation(phongPipeline.shaderProgram, "model"), 1, GL_FALSE, modelBlueDice.data());
+            phongPipeline.drawCall(gpuBlueDice);
+        }
+
+        {
+            PROFILE_SCOPE("ImGui", stats);
+
+            /* ImGui Start ---- */
+
+            // render your GUI
+            ImGui::Begin("Statistics");
+
+            for (auto result : stats)
+            {
+                std::stringstream ss;
+                ss << result;
+                const std::string resultAsString = ss.str();
+                ImGui::Text(resultAsString.c_str());
+            }
+            stats.clear();
+
+            ImGui::End();
+
+            // Render dear imgui into screen
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+            /* ImGui End ---- */
+        }
+            
         // Once the drawing is rendered, buffers are swap so an uncomplete drawing is never seen.
         glfwSwapBuffers(window);
+
     }
+    
+    /* ImGui Start ---- */
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+    /* ImGui End ---- */
 
     // freeing GPU memory
     gpuAxis.clear();

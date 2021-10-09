@@ -1,0 +1,23 @@
+\hypertarget{root__directory_8h_source}{}\doxysection{root\+\_\+directory.\+h}
+\label{root__directory_8h_source}\index{source/grafica/root\_directory.h@{source/grafica/root\_directory.h}}
+\mbox{\hyperlink{root__directory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    This field was automatically created with CMake please don't modify it}}
+\DoxyCodeLine{3 \textcolor{comment}{*/}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <filesystem>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_grafica}{Grafica}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10     }
+\DoxyCodeLine{11 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} * \textcolor{keyword}{const} source\_directory = \textcolor{stringliteral}{"{}C:/Users/blmc/Documents/SincroniaEngine/"{}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{static} std::filesystem::path getPath(\textcolor{keyword}{const} std::string \&relative\_path)\{}
+\DoxyCodeLine{14     \textcolor{keywordflow}{return} source\_directory + relative\_path;}
+\DoxyCodeLine{15 \}}
+\DoxyCodeLine{16     }
+\DoxyCodeLine{17 \} \textcolor{comment}{// Grafica}}
+
+\end{DoxyCode}
