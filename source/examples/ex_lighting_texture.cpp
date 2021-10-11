@@ -22,15 +22,15 @@
 #include <grafica/easy_shaders.h>
 #include <grafica/gpu_shape.h>
 #include <grafica/transformations.h>
-#include <grafica/simple_timer.h>
+//#include <grafica/simple_timer.h>
 #include <imgui.h>
 #include <examples/imgui_impl_opengl3.h>
 #include <examples/imgui_impl_glfw.h>
-
+#include <Time/Timer.hpp>
 
 namespace gr = Grafica;
 namespace tr = Grafica::Transformations;
-
+namespace sc = Sincronia;
 // A global variable to control the application
 struct Controller
 {
@@ -203,11 +203,14 @@ int main()
     // glfw will swap buffers as soon as possible
     glfwSwapInterval(0);
 
-    std::vector<gr::ProfileResult> stats;
+    std::vector<sc::ProfileResult> stats;
 
     // Application loop
     while (!glfwWindowShouldClose(window))
+
     {
+        PROFILE_SCOPE_STABLE("Global", stats);
+
         // Measuring performance
         performanceMonitor.update(glfwGetTime());
         std::stringstream ss;
