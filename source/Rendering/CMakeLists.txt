@@ -7,7 +7,7 @@ set(RENDERING_SOURCES
 		SpriteRenderer.cpp
 		)
 
-add_library(Rendering STATIC ${RENDERING_SOURCES} ${RENDERING_HEADERS} time.h)
+add_library(Rendering STATIC ${RENDERING_SOURCES} ${RENDERING_HEADERS} Rendering.h)
 if (MSVC)
     target_compile_options(Rendering PUBLIC /wd5033)
 endif(MSVC)
