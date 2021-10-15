@@ -28,6 +28,13 @@
 #include <examples/imgui_impl_glfw.h>
 #include <Time/Timer.hpp>
 
+
+#include "Rendering/Shader.hpp"
+#include "Rendering/Camera.hpp"
+#include "Rendering/Model.hpp"
+
+
+
 namespace gr = Grafica;
 namespace tr = Grafica::Transformations;
 namespace sc = Sincronia;

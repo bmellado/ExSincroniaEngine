@@ -1,17 +1,23 @@
 set(RENDERING_HEADERS 
-		Renderer.h
-		SprinteRenderer.hpp
+		Renderer.hpp
+		SpriteRenderer.hpp
+		Shader.hpp
+		Mesh.hpp
+		Model.hpp
+		helloworld.hpp
 		)
+
 set(RENDERING_SOURCES
 		Renderer.cpp
 		SpriteRenderer.cpp
+		
 		)
 
 add_library(Rendering STATIC ${RENDERING_SOURCES} ${RENDERING_HEADERS} Rendering.h)
 if (MSVC)
     target_compile_options(Rendering PUBLIC /wd5033)
 endif(MSVC)
-#target_include_directories(Time PRIVATE ${THIRD_PARTY_INCLUDE_DIRECTORIES} GRAFICA_INCLUDE_DIRECTORY)
-#target_link_libraries( PRIVATE ${THIRD_PARTY_LIBRARIES})
+target_include_directories(Rendering PRIVATE ${THIRD_PARTY_INCLUDE_DIRECTORIES} GRAFICA_INCLUDE_DIRECTORY)
+target_link_libraries( Rendering PRIVATE ${THIRD_PARTY_LIBRARIES})
 set_property(TARGET Rendering PROPERTY CXX_STANDARD 20)
-source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${TIME_SOURCES} ${TIME_HEADERS})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${RENDERING_SOURCES} ${RENDERING_HEADERS})

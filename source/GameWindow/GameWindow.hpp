@@ -14,6 +14,8 @@
 #include <examples/imgui_impl_glfw.h>
 #include <Time/Timer.hpp>
 
+
+
 namespace Sincronia {
 
 	//template <typename runFunction>
@@ -80,9 +82,6 @@ namespace Sincronia {
             // and which one is at the back enabling the depth testing
             glEnable(GL_DEPTH_TEST);
 
-            // Computing some transformations
-            float t0 = glfwGetTime(), t1, dt;
-            float cameraTheta = std::numbers::pi / 4;
 
             mainLoop(window);
 
@@ -125,9 +124,10 @@ namespace Sincronia {
                 ImGui_ImplGlfw_NewFrame();
                 ImGui::NewFrame();
 
+                //Clearing the screen in both, color and depth
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
                 /* ImGui End ---- */
-
-
 
                 {
                     /* ImGui Start ---- */
