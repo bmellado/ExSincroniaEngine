@@ -1,15 +1,29 @@
 #pragma once
 
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cmath>
+#include <numbers>
+#include <ciso646>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include <imgui.h>
+#include <examples/imgui_impl_opengl3.h>
+#include <examples/imgui_impl_glfw.h>
+#include <Time/Timer.hpp>
+
 namespace Sincronia {
 
-	template <class runFunction>
+	//template <typename runFunction>
 
 	class GameWindow {
 
 
-    private:
+    public:
 
-        void initWindow() {
+        int initWindow() {
 
             // glfw: initialize and configure
         // ------------------------------
@@ -36,7 +50,7 @@ namespace Sincronia {
             glfwMakeContextCurrent(window);
 
             // Connecting the callback function 'key_callback' to handle keyboard events
-            glfwSetKeyCallback(window, key_callback);
+            //glfwSetKeyCallback(window, key_callback);
 
             // Loading all OpenGL function pointers with glad
             if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -59,7 +73,85 @@ namespace Sincronia {
             ImGui_ImplGlfw_InitForOpenGL(window, true);
             ImGui_ImplOpenGL3_Init("#version 330");
 
+            // Setting up the clear screen color
+            glClearColor(0.85f, 0.85f, 0.85f, 1.0f);
+
+            // As we work in 3D, we need to check which part is in front,
+            // and which one is at the back enabling the depth testing
+            glEnable(GL_DEPTH_TEST);
+
+            // Computing some transformations
+            float t0 = glfwGetTime(), t1, dt;
+            float cameraTheta = std::numbers::pi / 4;
+
+            mainLoop(window);
+
+            /* ImGui Start ---- */
+            ImGui_ImplOpenGL3_Shutdown();
+            ImGui_ImplGlfw_Shutdown();
+            ImGui::DestroyContext();
+            /* ImGui End ---- */
+
+            // freeing GPU memory
+            //gpuAxis.clear();
+            //gpuWhiteDice.clear();
+            //gpuBlueDice.clear();
+
+            glfwTerminate();
+
+
         }
+
+    private:
+        static void mainLoop(auto window){
+            // Application loop
+            while (!glfwWindowShouldClose(window))
+
+            {
+
+                // Measuring performance
+                //performanceMonitor.update(glfwGetTime());
+                std::stringstream ss;
+                glfwSetWindowTitle(window, ss.str().c_str());
+
+                // Using GLFW to check and process input events
+                glfwPollEvents();
+
+
+                /* ImGui Start ---- */
+
+                // feed inputs to dear imgui, start new frame
+                ImGui_ImplOpenGL3_NewFrame();
+                ImGui_ImplGlfw_NewFrame();
+                ImGui::NewFrame();
+
+                /* ImGui End ---- */
+
+
+
+                {
+                    /* ImGui Start ---- */
+
+                    // render your GUI
+                    ImGui::Begin("Statistics");
+
+
+                    ImGui::End();
+
+                    // Render dear imgui into screen
+                    ImGui::Render();
+                    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+                    /* ImGui End ---- */
+                }
+
+                // Once the drawing is rendered, buffers are swap so an uncomplete drawing is never seen.
+                glfwSwapBuffers(window);
+
+            }
+        
+        }
+
 	};
 
 }
