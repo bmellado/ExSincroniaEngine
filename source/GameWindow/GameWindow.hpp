@@ -13,18 +13,18 @@
 #include <examples/imgui_impl_opengl3.h>
 #include <examples/imgui_impl_glfw.h>
 #include <Time/Timer.hpp>
-
-
+#include <functional>
 
 namespace Sincronia {
 
-	//template <typename runFunction>
 
 	class GameWindow {
 
-
     public:
+        GameWindow(){
+        }
 
+        GLFWwindow* m_window;
         int initWindow() {
 
             // glfw: initialize and configure
@@ -41,8 +41,10 @@ namespace Sincronia {
             // Creating a glfw window
             constexpr unsigned int SCR_WIDTH = 600;
             constexpr unsigned int SCR_HEIGHT = 600;
+
             std::string title = "ex_lighting_texture";
             GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, title.c_str(), NULL, NULL);
+            m_window = window;
             if (window == nullptr)
             {
                 std::cout << "Failed to create GLFW window" << std::endl;
@@ -53,6 +55,8 @@ namespace Sincronia {
 
             // Connecting the callback function 'key_callback' to handle keyboard events
             //glfwSetKeyCallback(window, key_callback);
+
+            //Call initialize function passed onn constructor
 
             // Loading all OpenGL function pointers with glad
             if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -83,8 +87,9 @@ namespace Sincronia {
             glEnable(GL_DEPTH_TEST);
 
 
-            mainLoop(window);
+        }
 
+        void finishWindow() {
             /* ImGui Start ---- */
             ImGui_ImplOpenGL3_Shutdown();
             ImGui_ImplGlfw_Shutdown();
@@ -98,20 +103,19 @@ namespace Sincronia {
 
             glfwTerminate();
 
-
         }
 
-    private:
-        static void mainLoop(auto window){
-            // Application loop
-            while (!glfwWindowShouldClose(window))
+        int shouldClose() {
+           return !glfwWindowShouldClose(m_window);
+        }
 
+        void config_init() {
             {
 
                 // Measuring performance
                 //performanceMonitor.update(glfwGetTime());
                 std::stringstream ss;
-                glfwSetWindowTitle(window, ss.str().c_str());
+                glfwSetWindowTitle(m_window, ss.str().c_str());
 
                 // Using GLFW to check and process input events
                 glfwPollEvents();
@@ -126,7 +130,6 @@ namespace Sincronia {
 
                 //Clearing the screen in both, color and depth
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
                 /* ImGui End ---- */
 
                 {
@@ -146,12 +149,14 @@ namespace Sincronia {
                 }
 
                 // Once the drawing is rendered, buffers are swap so an uncomplete drawing is never seen.
-                glfwSwapBuffers(window);
+                glfwSwapBuffers(m_window);
 
             }
-        
         }
 
+
 	};
+
+
 
 }

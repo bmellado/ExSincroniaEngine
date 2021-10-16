@@ -29,9 +29,6 @@
 #include <Time/Timer.hpp>
 
 
-#include "Rendering/Shader.hpp"
-#include "Rendering/Camera.hpp"
-#include "Rendering/Model.hpp"
 
 
 

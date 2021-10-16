@@ -4,7 +4,6 @@ set(RENDERING_HEADERS
 		Shader.hpp
 		Mesh.hpp
 		Model.hpp
-		helloworld.hpp
 		)
 
 set(RENDERING_SOURCES
@@ -18,6 +17,6 @@ if (MSVC)
     target_compile_options(Rendering PUBLIC /wd5033)
 endif(MSVC)
 target_include_directories(Rendering PRIVATE ${THIRD_PARTY_INCLUDE_DIRECTORIES} GRAFICA_INCLUDE_DIRECTORY)
-target_link_libraries( Rendering PRIVATE ${THIRD_PARTY_LIBRARIES})
+target_link_libraries( Rendering PRIVATE ${THIRD_PARTY_LIBRARIES} assimp)
 set_property(TARGET Rendering PROPERTY CXX_STANDARD 20)
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${RENDERING_SOURCES} ${RENDERING_HEADERS})
