@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['join_0',['join',['../namespace_grafica.html#af94ffcd0d45fc092427814f135ee452a',1,'Grafica']]],
-  ['joystick_1',['Joystick',['../struct_joystick.html#a2fddce90a0c11aab5118c6bc65afa497',1,'Joystick']]],
-  ['joystick_5fcallback_2',['joystick_callback',['../ex__joystick_8cpp.html#a18b64478efe9833d6698e756f30b49a6',1,'ex_joystick.cpp']]]
+  ['identity_0',['identity',['../namespace_grafica_1_1_transformations.html#aba8ff645d8bdeca25ac6dc4f635ddf7d',1,'Grafica::Transformations']]],
+  ['initbuffers_1',['initBuffers',['../struct_grafica_1_1_g_p_u_shape.html#a80eb7a03d6c1cbea8dcdc291fe776a6b',1,'Grafica::GPUShape']]],
+  ['initwindow_2',['initWindow',['../class_sincronia_1_1_game_window.html#a78e46432949c6747ff048c2ca7852680',1,'Sincronia::GameWindow']]],
+  ['interrupt_3',['interrupt',['../class_sincronia_1_1_timer.html#ad1cb1f4551f0b223536010f704b651b9',1,'Sincronia::Timer']]]
 ];

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['performancemonitor_0',['PerformanceMonitor',['../class_grafica_1_1_performance_monitor.html#a2e03f0d9e3fe5c0a0ab1d5eec9dc5946',1,'Grafica::PerformanceMonitor']]],
-  ['perspective_1',['perspective',['../namespace_grafica_1_1_transformations.html#a2d8e6ef7fc161ece4fa6f71194ff354e',1,'Grafica::Transformations']]],
-  ['phongcolorshaderprogram_2',['PhongColorShaderProgram',['../struct_grafica_1_1_phong_color_shader_program.html#aad06956d078a58f92ee3b033c826a7d2',1,'Grafica::PhongColorShaderProgram']]],
-  ['phongtextureshaderprogram_3',['PhongTextureShaderProgram',['../struct_grafica_1_1_phong_texture_shader_program.html#abd7893dd6b745a9dbc89b838f3b48172',1,'Grafica::PhongTextureShaderProgram']]],
-  ['polljoysticks_4',['pollJoysticks',['../ex__joystick_8cpp.html#ad03d16fc917cfab668627dd1f7a63c31',1,'ex_joystick.cpp']]]
+  ['operator_3c_3c_0',['operator&lt;&lt;',['../namespace_sincronia.html#a999f554032976a698d2935b430c551dc',1,'Sincronia::operator&lt;&lt;()'],['../ex__joystick_8cpp.html#a2cf2dc18adbfd1a2fa89dc6312e693cc',1,'operator&lt;&lt;():&#160;ex_joystick.cpp'],['../namespace_grafica.html#a0abc4652d90ced3a08242aae768c8b98',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const GPUShape &amp;gpuShape)'],['../namespace_grafica.html#a49d807fde3ab3c9e3d0c5e3fec978be1',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const PerformanceMonitor &amp;perfMonitor)'],['../namespace_grafica.html#af68090c052beb267b42a53e40f989dab',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const Vertices &amp;vertices)'],['../namespace_grafica.html#ac5da2dbd8f22fc607e69c24161b27168',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const Indices &amp;indices)'],['../namespace_grafica.html#aa8a0e93837f486c4f40f7ce4ce8101b2',1,'Grafica::operator&lt;&lt;(std::ostream &amp;os, const Shape &amp;shape)'],['../namespace_sincronia.html#afb1176859117c44e706289cd3fa47e11',1,'Sincronia::operator&lt;&lt;()']]],
+  ['ortho_1',['ortho',['../namespace_grafica_1_1_transformations.html#a8a4cb452355bdb8e8aa14963db811fad',1,'Grafica::Transformations']]]
 ];

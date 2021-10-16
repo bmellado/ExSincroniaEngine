@@ -1,0 +1,171 @@
+\hypertarget{_game_window_8hpp_source}{}\doxysection{Game\+Window.\+hpp}
+\label{_game_window_8hpp_source}\index{source/GameWindow/GameWindow.hpp@{source/GameWindow/GameWindow.hpp}}
+\mbox{\hyperlink{_game_window_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <numbers>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <ciso646>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <imgui.h>}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <examples/imgui\_impl\_opengl3.h>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <examples/imgui\_impl\_glfw.h>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_timer_8hpp}{Time/Timer.hpp}}>}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_sincronia}{Sincronia}} \{}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keyword}{class }\mbox{\hyperlink{class_sincronia_1_1_game_window}{GameWindow}} \{}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keyword}{public}:}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         GLFWwindow* \mbox{\hyperlink{class_sincronia_1_1_game_window_a48459b590a81f4ec5e5d7f02e322c5e4}{m\_window}};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{44         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_sincronia_1_1_game_window_a78e46432949c6747ff048c2ca7852680}{initWindow}}() \{}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46             \textcolor{comment}{// glfw: initialize and configure}}
+\DoxyCodeLine{47         \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48             glfwInit();}
+\DoxyCodeLine{49             glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MAJOR, 3);}
+\DoxyCodeLine{50             glfwWindowHint(GLFW\_CONTEXT\_VERSION\_MINOR, 3);}
+\DoxyCodeLine{51             glfwWindowHint(GLFW\_OPENGL\_PROFILE, GLFW\_OPENGL\_CORE\_PROFILE);}
+\DoxyCodeLine{52             glfwWindowHint(GLFW\_RESIZABLE, GL\_FALSE);}
+\DoxyCodeLine{53 \textcolor{preprocessor}{            \#ifdef \_\_APPLE\_\_}}
+\DoxyCodeLine{54             glfwWindowHint(GLFW\_OPENGL\_FORWARD\_COMPAT, GL\_FALSE); \textcolor{comment}{// uncomment this statement to fix compilation on OS X}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{            \#endif}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57             \textcolor{comment}{// Creating a glfw window}}
+\DoxyCodeLine{58             \textcolor{keyword}{constexpr} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} SCR\_WIDTH = 600;}
+\DoxyCodeLine{59             \textcolor{keyword}{constexpr} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} SCR\_HEIGHT = 600;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61             std::string title = \textcolor{stringliteral}{"{}ex\_lighting\_texture"{}};}
+\DoxyCodeLine{62             GLFWwindow* window = glfwCreateWindow(SCR\_WIDTH, SCR\_HEIGHT, title.c\_str(), NULL, NULL);}
+\DoxyCodeLine{63             \mbox{\hyperlink{class_sincronia_1_1_game_window_a48459b590a81f4ec5e5d7f02e322c5e4}{m\_window}} = window;}
+\DoxyCodeLine{64             \textcolor{keywordflow}{if} (window == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{65             \{}
+\DoxyCodeLine{66                 std::cout << \textcolor{stringliteral}{"{}Failed to create GLFW window"{}} << std::endl;}
+\DoxyCodeLine{67                 glfwTerminate();}
+\DoxyCodeLine{68                 \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{69             \}}
+\DoxyCodeLine{70             glfwMakeContextCurrent(window);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72             \textcolor{comment}{// Connecting the callback function 'key\_callback' to handle keyboard events}}
+\DoxyCodeLine{73             \textcolor{comment}{//glfwSetKeyCallback(window, key\_callback);}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75             \textcolor{comment}{//Call initialize function passed onn constructor}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77             \textcolor{comment}{// Loading all OpenGL function pointers with glad}}
+\DoxyCodeLine{78             \textcolor{keywordflow}{if} (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))}
+\DoxyCodeLine{79             \{}
+\DoxyCodeLine{80                 std::cout << \textcolor{stringliteral}{"{}Failed to initialize GLAD"{}} << std::endl;}
+\DoxyCodeLine{81                 \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{82             \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84             \textcolor{comment}{// This must be executed after loading OpenGL with GLAD}}
+\DoxyCodeLine{85             \textcolor{comment}{/* ImGui Start -\/-\/-\/-\/ */}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87             \textcolor{comment}{// Setup Dear ImGui context}}
+\DoxyCodeLine{88             IMGUI\_CHECKVERSION();}
+\DoxyCodeLine{89             ImGui::CreateContext();}
+\DoxyCodeLine{90             ImGuiIO\& io = ImGui::GetIO(); (void)io;}
+\DoxyCodeLine{91             \textcolor{comment}{//io.ConfigFlags |= ImGuiConfigFlags\_NavEnableKeyboard;     // Enable Keyboard Controls}}
+\DoxyCodeLine{92             \textcolor{comment}{//io.ConfigFlags |= ImGuiConfigFlags\_NavEnableGamepad;      // Enable Gamepad Controls}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94             \textcolor{comment}{// Setup Platform/Renderer backends}}
+\DoxyCodeLine{95             ImGui\_ImplGlfw\_InitForOpenGL(window, \textcolor{keyword}{true});}
+\DoxyCodeLine{96             ImGui\_ImplOpenGL3\_Init(\textcolor{stringliteral}{"{}\#version 330"{}});}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98             \textcolor{comment}{// Setting up the clear screen color}}
+\DoxyCodeLine{99             glClearColor(0.85f, 0.85f, 0.85f, 1.0f);}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101             \textcolor{comment}{// As we work in 3D, we need to check which part is in front,}}
+\DoxyCodeLine{102             \textcolor{comment}{// and which one is at the back enabling the depth testing}}
+\DoxyCodeLine{103             glEnable(GL\_DEPTH\_TEST);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106         \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{111         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sincronia_1_1_game_window_abf20ce64ed75cb885978ee85e4d23a4b}{finishWindow}}() \{}
+\DoxyCodeLine{112             \textcolor{comment}{/* ImGui Start -\/-\/-\/-\/ */}}
+\DoxyCodeLine{113             ImGui\_ImplOpenGL3\_Shutdown();}
+\DoxyCodeLine{114             ImGui\_ImplGlfw\_Shutdown();}
+\DoxyCodeLine{115             ImGui::DestroyContext();}
+\DoxyCodeLine{116             \textcolor{comment}{/* ImGui End -\/-\/-\/-\/ */}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118             \textcolor{comment}{// freeing GPU memory}}
+\DoxyCodeLine{119             \textcolor{comment}{//gpuAxis.clear();}}
+\DoxyCodeLine{120             \textcolor{comment}{//gpuWhiteDice.clear();}}
+\DoxyCodeLine{121             \textcolor{comment}{//gpuBlueDice.clear();}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123             glfwTerminate();}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125         \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{131         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_sincronia_1_1_game_window_a82d02f14865011b5b135c3bf55ac3195}{shouldClose}}() \{}
+\DoxyCodeLine{132            \textcolor{keywordflow}{return} !glfwWindowShouldClose(\mbox{\hyperlink{class_sincronia_1_1_game_window_a48459b590a81f4ec5e5d7f02e322c5e4}{m\_window}});}
+\DoxyCodeLine{133         \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{138         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sincronia_1_1_game_window_a459d39ae363ca6aa7e1d9faef5b62958}{config\_init}}() \{}
+\DoxyCodeLine{139             \{}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141                 \textcolor{comment}{// Measuring performance}}
+\DoxyCodeLine{142                 \textcolor{comment}{//performanceMonitor.update(glfwGetTime());}}
+\DoxyCodeLine{143                 std::stringstream ss;}
+\DoxyCodeLine{144                 glfwSetWindowTitle(\mbox{\hyperlink{class_sincronia_1_1_game_window_a48459b590a81f4ec5e5d7f02e322c5e4}{m\_window}}, ss.str().c\_str());}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146                 \textcolor{comment}{// Using GLFW to check and process input events}}
+\DoxyCodeLine{147                 glfwPollEvents();}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150                 \textcolor{comment}{/* ImGui Start -\/-\/-\/-\/ */}}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{152                 \textcolor{comment}{// feed inputs to dear imgui, start new frame}}
+\DoxyCodeLine{153                 ImGui\_ImplOpenGL3\_NewFrame();}
+\DoxyCodeLine{154                 ImGui\_ImplGlfw\_NewFrame();}
+\DoxyCodeLine{155                 ImGui::NewFrame();}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157                 \textcolor{comment}{//Clearing the screen in both, color and depth}}
+\DoxyCodeLine{158                 glClear(GL\_COLOR\_BUFFER\_BIT | GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{159                 \textcolor{comment}{/* ImGui End -\/-\/-\/-\/ */}}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161                 \{}
+\DoxyCodeLine{162                     \textcolor{comment}{/* ImGui Start -\/-\/-\/-\/ */}}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164                     \textcolor{comment}{// render your GUI}}
+\DoxyCodeLine{165                     ImGui::Begin(\textcolor{stringliteral}{"{}Statistics"{}});}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168                     ImGui::End();}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170                     \textcolor{comment}{// Render dear imgui into screen}}
+\DoxyCodeLine{171                     ImGui::Render();}
+\DoxyCodeLine{172                     ImGui\_ImplOpenGL3\_RenderDrawData(ImGui::GetDrawData());}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174                     \textcolor{comment}{/* ImGui End -\/-\/-\/-\/ */}}
+\DoxyCodeLine{175                 \}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177                 \textcolor{comment}{// Once the drawing is rendered, buffers are swap so an uncomplete drawing is never seen.}}
+\DoxyCodeLine{178                 glfwSwapBuffers(\mbox{\hyperlink{class_sincronia_1_1_game_window_a48459b590a81f4ec5e5d7f02e322c5e4}{m\_window}});}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180             \}}
+\DoxyCodeLine{181         \}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184     \};}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188 \}}
+
+\end{DoxyCode}

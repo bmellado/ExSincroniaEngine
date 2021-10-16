@@ -1,0 +1,104 @@
+\hypertarget{stbi__pkm_8h}{}\doxysection{source/\+Rendering/\+SOIL2/stbi\+\_\+pkm.h File Reference}
+\label{stbi__pkm_8h}\index{source/Rendering/SOIL2/stbi\_pkm.h@{source/Rendering/SOIL2/stbi\_pkm.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_a445cbbdbf774e319368c7e6220145925}{stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$buffer, int len)
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_ab88d87c4ff33248d93972a67f31a75f8}{stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$clbk, void $\ast$user)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pkm_8h_a2cde600b1f468a32b70cb9973aa5c7cd}{stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+path}} (char const $\ast$filename, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pkm_8h_afa5481c6f44db8ecb5569e8eb9f9f2a3}{stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$buffer, int len, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pkm_8h_a7689ca08c794812af4c17d67efcf4822}{stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$clbk, void $\ast$user, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_a5268fa4f5bf944029eee646218299fc0}{stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+filename}} (char const $\ast$filename)
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_a97b1faf6729a353b93b269009b8e257f}{stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+file}} (FILE $\ast$f)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pkm_8h_a4eb0c9a0b1c16c17ef9b47bbfe293aa3}{stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+file}} (FILE $\ast$f, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_a902bb02fc6941ece883624aeef903b3d}{stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$buffer, int len, int $\ast$x, int $\ast$y, int $\ast$comp)
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_a952dbecfa4e3acd7c0c864a167782dff}{stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$clbk, void $\ast$user, int $\ast$x, int $\ast$y, int $\ast$comp)
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_a46f295ba7a893310d252b3dbbf460817}{stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+path}} (char const $\ast$filename, int $\ast$x, int $\ast$y, int $\ast$comp)
+\item 
+int \mbox{\hyperlink{stbi__pkm_8h_a22df5c0d6464e77abf1176aabb396213}{stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+file}} (FILE $\ast$f, int $\ast$x, int $\ast$y, int $\ast$comp)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stbi__pkm_8h_a952dbecfa4e3acd7c0c864a167782dff}\label{stbi__pkm_8h_a952dbecfa4e3acd7c0c864a167782dff}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_info\_from\_callbacks@{stbi\_\_pkm\_info\_from\_callbacks}}
+\index{stbi\_\_pkm\_info\_from\_callbacks@{stbi\_\_pkm\_info\_from\_callbacks}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_info\_from\_callbacks()}{stbi\_\_pkm\_info\_from\_callbacks()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+callbacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$}]{clbk,  }\item[{void $\ast$}]{user,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a22df5c0d6464e77abf1176aabb396213}\label{stbi__pkm_8h_a22df5c0d6464e77abf1176aabb396213}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_info\_from\_file@{stbi\_\_pkm\_info\_from\_file}}
+\index{stbi\_\_pkm\_info\_from\_file@{stbi\_\_pkm\_info\_from\_file}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_info\_from\_file()}{stbi\_\_pkm\_info\_from\_file()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a902bb02fc6941ece883624aeef903b3d}\label{stbi__pkm_8h_a902bb02fc6941ece883624aeef903b3d}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_info\_from\_memory@{stbi\_\_pkm\_info\_from\_memory}}
+\index{stbi\_\_pkm\_info\_from\_memory@{stbi\_\_pkm\_info\_from\_memory}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_info\_from\_memory()}{stbi\_\_pkm\_info\_from\_memory()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$}]{buffer,  }\item[{int}]{len,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a46f295ba7a893310d252b3dbbf460817}\label{stbi__pkm_8h_a46f295ba7a893310d252b3dbbf460817}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_info\_from\_path@{stbi\_\_pkm\_info\_from\_path}}
+\index{stbi\_\_pkm\_info\_from\_path@{stbi\_\_pkm\_info\_from\_path}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_info\_from\_path()}{stbi\_\_pkm\_info\_from\_path()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+info\+\_\+from\+\_\+path (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a7689ca08c794812af4c17d67efcf4822}\label{stbi__pkm_8h_a7689ca08c794812af4c17d67efcf4822}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_load\_from\_callbacks@{stbi\_\_pkm\_load\_from\_callbacks}}
+\index{stbi\_\_pkm\_load\_from\_callbacks@{stbi\_\_pkm\_load\_from\_callbacks}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_load\_from\_callbacks()}{stbi\_\_pkm\_load\_from\_callbacks()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+callbacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$}]{clbk,  }\item[{void $\ast$}]{user,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a4eb0c9a0b1c16c17ef9b47bbfe293aa3}\label{stbi__pkm_8h_a4eb0c9a0b1c16c17ef9b47bbfe293aa3}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_load\_from\_file@{stbi\_\_pkm\_load\_from\_file}}
+\index{stbi\_\_pkm\_load\_from\_file@{stbi\_\_pkm\_load\_from\_file}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_load\_from\_file()}{stbi\_\_pkm\_load\_from\_file()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_afa5481c6f44db8ecb5569e8eb9f9f2a3}\label{stbi__pkm_8h_afa5481c6f44db8ecb5569e8eb9f9f2a3}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_load\_from\_memory@{stbi\_\_pkm\_load\_from\_memory}}
+\index{stbi\_\_pkm\_load\_from\_memory@{stbi\_\_pkm\_load\_from\_memory}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_load\_from\_memory()}{stbi\_\_pkm\_load\_from\_memory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$}]{buffer,  }\item[{int}]{len,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a2cde600b1f468a32b70cb9973aa5c7cd}\label{stbi__pkm_8h_a2cde600b1f468a32b70cb9973aa5c7cd}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_load\_from\_path@{stbi\_\_pkm\_load\_from\_path}}
+\index{stbi\_\_pkm\_load\_from\_path@{stbi\_\_pkm\_load\_from\_path}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_load\_from\_path()}{stbi\_\_pkm\_load\_from\_path()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pkm\+\_\+load\+\_\+from\+\_\+path (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_ab88d87c4ff33248d93972a67f31a75f8}\label{stbi__pkm_8h_ab88d87c4ff33248d93972a67f31a75f8}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_test\_callbacks@{stbi\_\_pkm\_test\_callbacks}}
+\index{stbi\_\_pkm\_test\_callbacks@{stbi\_\_pkm\_test\_callbacks}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_test\_callbacks()}{stbi\_\_pkm\_test\_callbacks()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+callbacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$}]{clbk,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a97b1faf6729a353b93b269009b8e257f}\label{stbi__pkm_8h_a97b1faf6729a353b93b269009b8e257f}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_test\_file@{stbi\_\_pkm\_test\_file}}
+\index{stbi\_\_pkm\_test\_file@{stbi\_\_pkm\_test\_file}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_test\_file()}{stbi\_\_pkm\_test\_file()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a5268fa4f5bf944029eee646218299fc0}\label{stbi__pkm_8h_a5268fa4f5bf944029eee646218299fc0}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_test\_filename@{stbi\_\_pkm\_test\_filename}}
+\index{stbi\_\_pkm\_test\_filename@{stbi\_\_pkm\_test\_filename}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_test\_filename()}{stbi\_\_pkm\_test\_filename()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+filename (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pkm_8h_a445cbbdbf774e319368c7e6220145925}\label{stbi__pkm_8h_a445cbbdbf774e319368c7e6220145925}} 
+\index{stbi\_pkm.h@{stbi\_pkm.h}!stbi\_\_pkm\_test\_memory@{stbi\_\_pkm\_test\_memory}}
+\index{stbi\_\_pkm\_test\_memory@{stbi\_\_pkm\_test\_memory}!stbi\_pkm.h@{stbi\_pkm.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pkm\_test\_memory()}{stbi\_\_pkm\_test\_memory()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pkm\+\_\+test\+\_\+memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$}]{buffer,  }\item[{int}]{len }\end{DoxyParamCaption})}
+

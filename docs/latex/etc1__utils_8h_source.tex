@@ -1,0 +1,112 @@
+\hypertarget{etc1__utils_8h_source}{}\doxysection{etc1\+\_\+utils.\+h}
+\label{etc1__utils_8h_source}\index{source/Rendering/SOIL2/etc1\_utils.h@{source/Rendering/SOIL2/etc1\_utils.h}}
+\mbox{\hyperlink{etc1__utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// Copyright 2009 Google Inc.}}
+\DoxyCodeLine{2 \textcolor{comment}{//}}
+\DoxyCodeLine{3 \textcolor{comment}{// Licensed under the Apache License, Version 2.0 (the "{}License"{});}}
+\DoxyCodeLine{4 \textcolor{comment}{// you may not use this file except in compliance with the License.}}
+\DoxyCodeLine{5 \textcolor{comment}{// You may obtain a copy of the License at}}
+\DoxyCodeLine{6 \textcolor{comment}{//}}
+\DoxyCodeLine{7 \textcolor{comment}{//     http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{8 \textcolor{comment}{//}}
+\DoxyCodeLine{9 \textcolor{comment}{// Unless required by applicable law or agreed to in writing, software}}
+\DoxyCodeLine{10 \textcolor{comment}{// distributed under the License is distributed on an "{}AS IS"{} BASIS,}}
+\DoxyCodeLine{11 \textcolor{comment}{// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.}}
+\DoxyCodeLine{12 \textcolor{comment}{// See the License for the specific language governing permissions and}}
+\DoxyCodeLine{13 \textcolor{comment}{// limitations under the License.}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#ifndef \_\_etc1\_h\_\_}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define \_\_etc1\_h\_\_}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define ETC1\_ENCODED\_BLOCK\_SIZE 8}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define ETC1\_DECODED\_BLOCK\_SIZE 48}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#ifndef ETC1\_RGB8\_OES}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define ETC1\_RGB8\_OES 0x8D64}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}};}
+\DoxyCodeLine{26 \textcolor{keyword}{typedef} \textcolor{keywordtype}{int} \mbox{\hyperlink{etc1__utils_8h_afd0c40a5fded508d4cc453dc01f73ef0}{etc1\_bool}};}
+\DoxyCodeLine{27 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{30 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{// Encode a block of pixels.}}
+\DoxyCodeLine{34 \textcolor{comment}{//}}
+\DoxyCodeLine{35 \textcolor{comment}{// pIn is a pointer to a ETC\_DECODED\_BLOCK\_SIZE array of bytes that represent a}}
+\DoxyCodeLine{36 \textcolor{comment}{// 4 x 4 square of 3-\/byte pixels in form R, G, B. Byte (3 * (x + 4 * y) is the R}}
+\DoxyCodeLine{37 \textcolor{comment}{// value of pixel (x, y).}}
+\DoxyCodeLine{38 \textcolor{comment}{//}}
+\DoxyCodeLine{39 \textcolor{comment}{// validPixelMask is a 16-\/bit mask where bit (1 << (x + y * 4)) indicates whether}}
+\DoxyCodeLine{40 \textcolor{comment}{// the corresponding (x,y) pixel is valid. Invalid pixel color values are ignored when compressing.}}
+\DoxyCodeLine{41 \textcolor{comment}{//}}
+\DoxyCodeLine{42 \textcolor{comment}{// pOut is an ETC1 compressed version of the data.}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{keywordtype}{void} \mbox{\hyperlink{etc1__utils_8h_a93b626373c36d8d40a91baa6d9246f4f}{etc1\_encode\_block}}(\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pIn, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} validPixelMask, \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pOut);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{// Decode a block of pixels.}}
+\DoxyCodeLine{47 \textcolor{comment}{//}}
+\DoxyCodeLine{48 \textcolor{comment}{// pIn is an ETC1 compressed version of the data.}}
+\DoxyCodeLine{49 \textcolor{comment}{//}}
+\DoxyCodeLine{50 \textcolor{comment}{// pOut is a pointer to a ETC\_DECODED\_BLOCK\_SIZE array of bytes that represent a}}
+\DoxyCodeLine{51 \textcolor{comment}{// 4 x 4 square of 3-\/byte pixels in form R, G, B. Byte (3 * (x + 4 * y) is the R}}
+\DoxyCodeLine{52 \textcolor{comment}{// value of pixel (x, y).}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54 \textcolor{keywordtype}{void} \mbox{\hyperlink{etc1__utils_8h_a9748732bfbc6122d813ae70853c63666}{etc1\_decode\_block}}(\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pIn, \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pOut);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{comment}{// Return the size of the encoded image data (does not include size of PKM header).}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} \mbox{\hyperlink{etc1__utils_8h_abf06c166f3909f0b7f7287eee1cac298}{etc1\_get\_encoded\_data\_size}}(\mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} width, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} height);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{// Encode an entire image.}}
+\DoxyCodeLine{61 \textcolor{comment}{// pIn -\/ pointer to the image data. Formatted such that}}
+\DoxyCodeLine{62 \textcolor{comment}{//       pixel (x,y) is at pIn + pixelSize * x + stride * y;}}
+\DoxyCodeLine{63 \textcolor{comment}{// pOut -\/ pointer to encoded data. Must be large enough to store entire encoded image.}}
+\DoxyCodeLine{64 \textcolor{comment}{// pixelSize can be 2 or 3. 2 is an GL\_UNSIGNED\_SHORT\_5\_6\_5 image, 3 is a GL\_BYTE RGB image.}}
+\DoxyCodeLine{65 \textcolor{comment}{// returns non-\/zero if there is an error.}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keywordtype}{int} \mbox{\hyperlink{etc1__utils_8h_aedee3d1ddc1c7d9f7fcf887c2ec19eaf}{etc1\_encode\_image}}(\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pIn, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} width, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} height,}
+\DoxyCodeLine{68         \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} pixelSize, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} stride, \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pOut);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{// Decode an entire image.}}
+\DoxyCodeLine{71 \textcolor{comment}{// pIn -\/ pointer to encoded data.}}
+\DoxyCodeLine{72 \textcolor{comment}{// pOut -\/ pointer to the image data. Will be written such that}}
+\DoxyCodeLine{73 \textcolor{comment}{//        pixel (x,y) is at pIn + pixelSize * x + stride * y. Must be}}
+\DoxyCodeLine{74 \textcolor{comment}{//        large enough to store entire image.}}
+\DoxyCodeLine{75 \textcolor{comment}{// pixelSize can be 2 or 3. 2 is an GL\_UNSIGNED\_SHORT\_5\_6\_5 image, 3 is a GL\_BYTE RGB image.}}
+\DoxyCodeLine{76 \textcolor{comment}{// returns non-\/zero if there is an error.}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{keywordtype}{int} \mbox{\hyperlink{etc1__utils_8h_ade22c556751a4371586b167564f83e65}{etc1\_decode\_image}}(\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pIn, \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pOut,}
+\DoxyCodeLine{79         \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} width, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} height,}
+\DoxyCodeLine{80         \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} pixelSize, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} stride);}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 \textcolor{comment}{// Size of a PKM header, in bytes.}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#define ETC\_PKM\_HEADER\_SIZE 16}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{comment}{// Format a PKM header}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{keywordtype}{void} \mbox{\hyperlink{etc1__utils_8h_a943b4a4536cbd140ab5aa3f5a144bbe9}{etc1\_pkm\_format\_header}}(\mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pHeader, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} width, \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} height);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{comment}{// Check if a PKM header is correctly formatted.}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \mbox{\hyperlink{etc1__utils_8h_afd0c40a5fded508d4cc453dc01f73ef0}{etc1\_bool}} \mbox{\hyperlink{etc1__utils_8h_a95ddd23ca5c75d22ac982f313b150622}{etc1\_pkm\_is\_valid}}(\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pHeader);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 \textcolor{comment}{// Read the image width from a PKM header}}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96 \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} \mbox{\hyperlink{etc1__utils_8h_ac4f68d3fec807e835478cf187660eb43}{etc1\_pkm\_get\_width}}(\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pHeader);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \textcolor{comment}{// Read the image height from a PKM header}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \mbox{\hyperlink{etc1__utils_8h_a9c44f4f38e357e6c8276f8fb40217472}{etc1\_uint32}} \mbox{\hyperlink{etc1__utils_8h_a23b7044f7eff1d5afe0cbf357d45a15b}{etc1\_pkm\_get\_height}}(\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}* pHeader);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{103 \}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

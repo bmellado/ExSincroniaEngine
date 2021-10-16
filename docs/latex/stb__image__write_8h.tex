@@ -1,0 +1,114 @@
+\hypertarget{stb__image__write_8h}{}\doxysection{source/\+Rendering/\+SOIL2/stb\+\_\+image\+\_\+write.h File Reference}
+\label{stb__image__write_8h}\index{source/Rendering/SOIL2/stb\_image\_write.h@{source/Rendering/SOIL2/stb\_image\_write.h}}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}}~extern
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void \mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}}(void $\ast$context, void $\ast$data, int size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_a9c03e5171f6aea47fde6dafcf3249ccf}{stbi\+\_\+write\+\_\+png}} (char const $\ast$filename, int w, int h, int comp, const void $\ast$data, int stride\+\_\+in\+\_\+bytes)
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_a4f63ec842984e5db3edf2da89f16038e}{stbi\+\_\+write\+\_\+bmp}} (char const $\ast$filename, int w, int h, int comp, const void $\ast$data)
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_ab7a84427c6d7e894090fbeae3bc8f6da}{stbi\+\_\+write\+\_\+tga}} (char const $\ast$filename, int w, int h, int comp, const void $\ast$data)
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_a21f22be0194761e08b682ed543ef6161}{stbi\+\_\+write\+\_\+hdr}} (char const $\ast$filename, int w, int h, int comp, const float $\ast$data)
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_a72dcd18698d64c92082449912c39a4e5}{stbi\+\_\+write\+\_\+png\+\_\+to\+\_\+func}} (\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$func, void $\ast$context, int w, int h, int comp, const void $\ast$data, int stride\+\_\+in\+\_\+bytes)
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_aca9573665994b2244a6a045b2a1df1ea}{stbi\+\_\+write\+\_\+bmp\+\_\+to\+\_\+func}} (\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$func, void $\ast$context, int w, int h, int comp, const void $\ast$data)
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_a5e5c6483c1d45a65fe208f52937cd315}{stbi\+\_\+write\+\_\+tga\+\_\+to\+\_\+func}} (\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$func, void $\ast$context, int w, int h, int comp, const void $\ast$data)
+\item 
+\mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int \mbox{\hyperlink{stb__image__write_8h_ac9214f775162b61a3503c76875966c11}{stbi\+\_\+write\+\_\+hdr\+\_\+to\+\_\+func}} (\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$func, void $\ast$context, int w, int h, int comp, const float $\ast$data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{stb__image__write_8h_a7aa69838d830bd1e917b2a20d2030e0c}{stbi\+\_\+write\+\_\+tga\+\_\+with\+\_\+rle}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}\label{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!STBIWDEF@{STBIWDEF}}
+\index{STBIWDEF@{STBIWDEF}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{STBIWDEF}{STBIWDEF}}
+{\footnotesize\ttfamily \#define STBIWDEF~extern}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}\label{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_func@{stbi\_write\_func}}
+\index{stbi\_write\_func@{stbi\_write\_func}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_func}{stbi\_write\_func}}
+{\footnotesize\ttfamily typedef void stbi\+\_\+write\+\_\+func(void $\ast$context, void $\ast$data, int size)}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stb__image__write_8h_a4f63ec842984e5db3edf2da89f16038e}\label{stb__image__write_8h_a4f63ec842984e5db3edf2da89f16038e}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_bmp@{stbi\_write\_bmp}}
+\index{stbi\_write\_bmp@{stbi\_write\_bmp}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_bmp()}{stbi\_write\_bmp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+bmp (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stb__image__write_8h_aca9573665994b2244a6a045b2a1df1ea}\label{stb__image__write_8h_aca9573665994b2244a6a045b2a1df1ea}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_bmp\_to\_func@{stbi\_write\_bmp\_to\_func}}
+\index{stbi\_write\_bmp\_to\_func@{stbi\_write\_bmp\_to\_func}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_bmp\_to\_func()}{stbi\_write\_bmp\_to\_func()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+bmp\+\_\+to\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$}]{func,  }\item[{void $\ast$}]{context,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stb__image__write_8h_a21f22be0194761e08b682ed543ef6161}\label{stb__image__write_8h_a21f22be0194761e08b682ed543ef6161}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_hdr@{stbi\_write\_hdr}}
+\index{stbi\_write\_hdr@{stbi\_write\_hdr}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_hdr()}{stbi\_write\_hdr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+hdr (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const float $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stb__image__write_8h_ac9214f775162b61a3503c76875966c11}\label{stb__image__write_8h_ac9214f775162b61a3503c76875966c11}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_hdr\_to\_func@{stbi\_write\_hdr\_to\_func}}
+\index{stbi\_write\_hdr\_to\_func@{stbi\_write\_hdr\_to\_func}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_hdr\_to\_func()}{stbi\_write\_hdr\_to\_func()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+hdr\+\_\+to\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$}]{func,  }\item[{void $\ast$}]{context,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const float $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stb__image__write_8h_a9c03e5171f6aea47fde6dafcf3249ccf}\label{stb__image__write_8h_a9c03e5171f6aea47fde6dafcf3249ccf}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_png@{stbi\_write\_png}}
+\index{stbi\_write\_png@{stbi\_write\_png}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_png()}{stbi\_write\_png()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+png (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const void $\ast$}]{data,  }\item[{int}]{stride\+\_\+in\+\_\+bytes }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stb__image__write_8h_a72dcd18698d64c92082449912c39a4e5}\label{stb__image__write_8h_a72dcd18698d64c92082449912c39a4e5}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_png\_to\_func@{stbi\_write\_png\_to\_func}}
+\index{stbi\_write\_png\_to\_func@{stbi\_write\_png\_to\_func}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_png\_to\_func()}{stbi\_write\_png\_to\_func()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+png\+\_\+to\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$}]{func,  }\item[{void $\ast$}]{context,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const void $\ast$}]{data,  }\item[{int}]{stride\+\_\+in\+\_\+bytes }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stb__image__write_8h_ab7a84427c6d7e894090fbeae3bc8f6da}\label{stb__image__write_8h_ab7a84427c6d7e894090fbeae3bc8f6da}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_tga@{stbi\_write\_tga}}
+\index{stbi\_write\_tga@{stbi\_write\_tga}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_tga()}{stbi\_write\_tga()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+tga (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stb__image__write_8h_a5e5c6483c1d45a65fe208f52937cd315}\label{stb__image__write_8h_a5e5c6483c1d45a65fe208f52937cd315}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_tga\_to\_func@{stbi\_write\_tga\_to\_func}}
+\index{stbi\_write\_tga\_to\_func@{stbi\_write\_tga\_to\_func}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_tga\_to\_func()}{stbi\_write\_tga\_to\_func()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image__write_8h_a1d964457ebf7cc898b8cb14e66cbfaa8}{STBIWDEF}} int stbi\+\_\+write\+\_\+tga\+\_\+to\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image__write_8h_a2326fd2fd79095b9ef34695a0bda114f}{stbi\+\_\+write\+\_\+func}} $\ast$}]{func,  }\item[{void $\ast$}]{context,  }\item[{int}]{w,  }\item[{int}]{h,  }\item[{int}]{comp,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{stb__image__write_8h_a7aa69838d830bd1e917b2a20d2030e0c}\label{stb__image__write_8h_a7aa69838d830bd1e917b2a20d2030e0c}} 
+\index{stb\_image\_write.h@{stb\_image\_write.h}!stbi\_write\_tga\_with\_rle@{stbi\_write\_tga\_with\_rle}}
+\index{stbi\_write\_tga\_with\_rle@{stbi\_write\_tga\_with\_rle}!stb\_image\_write.h@{stb\_image\_write.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_write\_tga\_with\_rle}{stbi\_write\_tga\_with\_rle}}
+{\footnotesize\ttfamily int stbi\+\_\+write\+\_\+tga\+\_\+with\+\_\+rle\hspace{0.3cm}{\ttfamily [extern]}}
+

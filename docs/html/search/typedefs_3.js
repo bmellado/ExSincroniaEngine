@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['joystickcontainer_0',['JoystickContainer',['../ex__joystick_8cpp.html#a4135f910ce9fb5d99107adf90b4ac011',1,'ex_joystick.cpp']]],
-  ['joystickid_1',['JoystickId',['../ex__joystick_8cpp.html#a09ec58a11e1259f51c641b0c8d4cbe51',1,'ex_joystick.cpp']]]
+  ['index_0',['Index',['../namespace_grafica.html#acd5f0e199e50cd26e433a8d881e20919',1,'Grafica']]],
+  ['indices_1',['Indices',['../namespace_grafica.html#a2207f4a2b46d52e03d2621bb18b96a22',1,'Grafica']]]
 ];

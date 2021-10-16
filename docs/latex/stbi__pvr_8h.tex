@@ -1,0 +1,104 @@
+\hypertarget{stbi__pvr_8h}{}\doxysection{source/\+Rendering/\+SOIL2/stbi\+\_\+pvr.h File Reference}
+\label{stbi__pvr_8h}\index{source/Rendering/SOIL2/stbi\_pvr.h@{source/Rendering/SOIL2/stbi\_pvr.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_a36defce0395d077636963ba1d05c5e35}{stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$buffer, int len)
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_aaf8f1a0b4d6ad9dbbed048cfc519a68d}{stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$clbk, void $\ast$user)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pvr_8h_a2e3ecf7085bead22974fe86053b36a25}{stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+path}} (char const $\ast$filename, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pvr_8h_afd4771a36878690cfa0ae1a514b13899}{stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$buffer, int len, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pvr_8h_a958724f257fcb40389dd88fa9f7e0275}{stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$clbk, void $\ast$user, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_a505786b34fcf1751c39b53f32ab546c9}{stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+filename}} (char const $\ast$filename)
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_a71910c569cbc4ef74c9b50d6dc49793b}{stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+file}} (FILE $\ast$f)
+\item 
+\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ \mbox{\hyperlink{stbi__pvr_8h_a34c295303f550807d31b9e745dfbd373}{stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+file}} (FILE $\ast$f, int $\ast$x, int $\ast$y, int $\ast$comp, int req\+\_\+comp)
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_a9b178bb66893f1ff2ad2fd3e88201d62}{stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$buffer, int len, int $\ast$x, int $\ast$y, int $\ast$comp, int $\ast$iscompressed)
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_af353311fee05a32ce6139bf167b7c9de}{stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$clbk, void $\ast$user, int $\ast$x, int $\ast$y, int $\ast$comp, int $\ast$iscompressed)
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_a94d7a4a48f116e3b4e00a61f6012a5e1}{stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+path}} (char const $\ast$filename, int $\ast$x, int $\ast$y, int $\ast$comp, int $\ast$iscompressed)
+\item 
+int \mbox{\hyperlink{stbi__pvr_8h_a4476cf404361d52bb0f38e9526136da9}{stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+file}} (FILE $\ast$f, int $\ast$x, int $\ast$y, int $\ast$comp, int $\ast$iscompressed)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stbi__pvr_8h_af353311fee05a32ce6139bf167b7c9de}\label{stbi__pvr_8h_af353311fee05a32ce6139bf167b7c9de}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_info\_from\_callbacks@{stbi\_\_pvr\_info\_from\_callbacks}}
+\index{stbi\_\_pvr\_info\_from\_callbacks@{stbi\_\_pvr\_info\_from\_callbacks}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_info\_from\_callbacks()}{stbi\_\_pvr\_info\_from\_callbacks()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+callbacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$}]{clbk,  }\item[{void $\ast$}]{user,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int $\ast$}]{iscompressed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a4476cf404361d52bb0f38e9526136da9}\label{stbi__pvr_8h_a4476cf404361d52bb0f38e9526136da9}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_info\_from\_file@{stbi\_\_pvr\_info\_from\_file}}
+\index{stbi\_\_pvr\_info\_from\_file@{stbi\_\_pvr\_info\_from\_file}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_info\_from\_file()}{stbi\_\_pvr\_info\_from\_file()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int $\ast$}]{iscompressed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a9b178bb66893f1ff2ad2fd3e88201d62}\label{stbi__pvr_8h_a9b178bb66893f1ff2ad2fd3e88201d62}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_info\_from\_memory@{stbi\_\_pvr\_info\_from\_memory}}
+\index{stbi\_\_pvr\_info\_from\_memory@{stbi\_\_pvr\_info\_from\_memory}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_info\_from\_memory()}{stbi\_\_pvr\_info\_from\_memory()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$}]{buffer,  }\item[{int}]{len,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int $\ast$}]{iscompressed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a94d7a4a48f116e3b4e00a61f6012a5e1}\label{stbi__pvr_8h_a94d7a4a48f116e3b4e00a61f6012a5e1}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_info\_from\_path@{stbi\_\_pvr\_info\_from\_path}}
+\index{stbi\_\_pvr\_info\_from\_path@{stbi\_\_pvr\_info\_from\_path}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_info\_from\_path()}{stbi\_\_pvr\_info\_from\_path()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+info\+\_\+from\+\_\+path (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int $\ast$}]{iscompressed }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a958724f257fcb40389dd88fa9f7e0275}\label{stbi__pvr_8h_a958724f257fcb40389dd88fa9f7e0275}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_load\_from\_callbacks@{stbi\_\_pvr\_load\_from\_callbacks}}
+\index{stbi\_\_pvr\_load\_from\_callbacks@{stbi\_\_pvr\_load\_from\_callbacks}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_load\_from\_callbacks()}{stbi\_\_pvr\_load\_from\_callbacks()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+callbacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$}]{clbk,  }\item[{void $\ast$}]{user,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a34c295303f550807d31b9e745dfbd373}\label{stbi__pvr_8h_a34c295303f550807d31b9e745dfbd373}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_load\_from\_file@{stbi\_\_pvr\_load\_from\_file}}
+\index{stbi\_\_pvr\_load\_from\_file@{stbi\_\_pvr\_load\_from\_file}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_load\_from\_file()}{stbi\_\_pvr\_load\_from\_file()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_afd4771a36878690cfa0ae1a514b13899}\label{stbi__pvr_8h_afd4771a36878690cfa0ae1a514b13899}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_load\_from\_memory@{stbi\_\_pvr\_load\_from\_memory}}
+\index{stbi\_\_pvr\_load\_from\_memory@{stbi\_\_pvr\_load\_from\_memory}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_load\_from\_memory()}{stbi\_\_pvr\_load\_from\_memory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$}]{buffer,  }\item[{int}]{len,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a2e3ecf7085bead22974fe86053b36a25}\label{stbi__pvr_8h_a2e3ecf7085bead22974fe86053b36a25}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_load\_from\_path@{stbi\_\_pvr\_load\_from\_path}}
+\index{stbi\_\_pvr\_load\_from\_path@{stbi\_\_pvr\_load\_from\_path}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_load\_from\_path()}{stbi\_\_pvr\_load\_from\_path()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} $\ast$ stbi\+\_\+\+\_\+pvr\+\_\+load\+\_\+from\+\_\+path (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y,  }\item[{int $\ast$}]{comp,  }\item[{int}]{req\+\_\+comp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_aaf8f1a0b4d6ad9dbbed048cfc519a68d}\label{stbi__pvr_8h_aaf8f1a0b4d6ad9dbbed048cfc519a68d}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_test\_callbacks@{stbi\_\_pvr\_test\_callbacks}}
+\index{stbi\_\_pvr\_test\_callbacks@{stbi\_\_pvr\_test\_callbacks}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_test\_callbacks()}{stbi\_\_pvr\_test\_callbacks()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+callbacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstbi__io__callbacks}{stbi\+\_\+io\+\_\+callbacks}} const $\ast$}]{clbk,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a71910c569cbc4ef74c9b50d6dc49793b}\label{stbi__pvr_8h_a71910c569cbc4ef74c9b50d6dc49793b}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_test\_file@{stbi\_\_pvr\_test\_file}}
+\index{stbi\_\_pvr\_test\_file@{stbi\_\_pvr\_test\_file}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_test\_file()}{stbi\_\_pvr\_test\_file()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+file (\begin{DoxyParamCaption}\item[{FILE $\ast$}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a505786b34fcf1751c39b53f32ab546c9}\label{stbi__pvr_8h_a505786b34fcf1751c39b53f32ab546c9}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_test\_filename@{stbi\_\_pvr\_test\_filename}}
+\index{stbi\_\_pvr\_test\_filename@{stbi\_\_pvr\_test\_filename}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_test\_filename()}{stbi\_\_pvr\_test\_filename()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+filename (\begin{DoxyParamCaption}\item[{char const $\ast$}]{filename }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stbi__pvr_8h_a36defce0395d077636963ba1d05c5e35}\label{stbi__pvr_8h_a36defce0395d077636963ba1d05c5e35}} 
+\index{stbi\_pvr.h@{stbi\_pvr.h}!stbi\_\_pvr\_test\_memory@{stbi\_\_pvr\_test\_memory}}
+\index{stbi\_\_pvr\_test\_memory@{stbi\_\_pvr\_test\_memory}!stbi\_pvr.h@{stbi\_pvr.h}}
+\doxysubsubsection{\texorpdfstring{stbi\_\_pvr\_test\_memory()}{stbi\_\_pvr\_test\_memory()}}
+{\footnotesize\ttfamily int stbi\+\_\+\+\_\+pvr\+\_\+test\+\_\+memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\+\_\+uc}} const $\ast$}]{buffer,  }\item[{int}]{len }\end{DoxyParamCaption})}
+

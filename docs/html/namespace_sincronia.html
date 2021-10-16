@@ -64,6 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Sincronia Namespace Reference</div></div>
@@ -74,6 +75,26 @@ $(function() {
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sincronia_1_1_dependency_list.html">DependencyList</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sincronia_1_1_game_window.html">GameWindow</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sincronia_1_1_joystick.html">Joystick</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_sincronia_1_1_joystick.html" title="Joystick structure, it initializes with a number of buttons and number of Axes">Joystick</a> structure, it initializes with a number of buttons and number of Axes  <a href="struct_sincronia_1_1_joystick.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_sincronia_1_1_profile_result.html">ProfileResult</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple structure contaning the name of timer, and the duration that passed since its initialization to destruction  <a href="struct_sincronia_1_1_profile_result.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sincronia_1_1_timer.html">Timer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is meant to manage the time, it contains a profiler that saves the time information in a vector, this class also intents to stabilize the frame rating  <a href="class_sincronia_1_1_timer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sincronia_1_1_world.html">World</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a706b02c6136f78bf02db01272e121873"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#a706b02c6136f78bf02db01272e121873">JoystickId</a> = std::size_t</td></tr>
+<tr class="separator:a706b02c6136f78bf02db01272e121873"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a897b50f5cad73b530b50e0bf748f16ed"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#a897b50f5cad73b530b50e0bf748f16ed">JoystickContainer</a> = std::unordered_map&lt; <a class="el" href="namespace_sincronia.html#a706b02c6136f78bf02db01272e121873">JoystickId</a>, <a class="el" href="struct_sincronia_1_1_joystick.html">Joystick</a> &gt;</td></tr>
+<tr class="separator:a897b50f5cad73b530b50e0bf748f16ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -84,11 +105,55 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ac335102050ee81f0d5348c03f924a5b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#ac335102050ee81f0d5348c03f924a5b6">joystick_callback</a> (int jid, int event)</td></tr>
+<tr class="memdesc:ac335102050ee81f0d5348c03f924a5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a callback method that should be passed as argument to OpenGl,  <a href="namespace_sincronia.html#ac335102050ee81f0d5348c03f924a5b6">More...</a><br /></td></tr>
+<tr class="separator:ac335102050ee81f0d5348c03f924a5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a999f554032976a698d2935b430c551dc"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#a999f554032976a698d2935b430c551dc">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="struct_sincronia_1_1_joystick.html">Joystick</a> &amp;joystick)</td></tr>
+<tr class="separator:a999f554032976a698d2935b430c551dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bb74ddcf98972267635b04b1713b587"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#a3bb74ddcf98972267635b04b1713b587">pollJoysticks</a> (<a class="el" href="namespace_sincronia.html#a897b50f5cad73b530b50e0bf748f16ed">JoystickContainer</a> &amp;joysticks)</td></tr>
+<tr class="memdesc:a3bb74ddcf98972267635b04b1713b587"><td class="mdescLeft">&#160;</td><td class="mdescRight">It checks if it a connection or a disconnection has ocurred, it has to be constantly called in the game loop  <a href="namespace_sincronia.html#a3bb74ddcf98972267635b04b1713b587">More...</a><br /></td></tr>
+<tr class="separator:a3bb74ddcf98972267635b04b1713b587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8b8106393178a2079515dc692cadb90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#ad8b8106393178a2079515dc692cadb90">setJoystickCallBack</a> ()</td></tr>
+<tr class="memdesc:ad8b8106393178a2079515dc692cadb90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Auxiliar function that sends the joystick callback to gl joystick callback  <a href="namespace_sincronia.html#ad8b8106393178a2079515dc692cadb90">More...</a><br /></td></tr>
+<tr class="separator:ad8b8106393178a2079515dc692cadb90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb1176859117c44e706289cd3fa47e11"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#afb1176859117c44e706289cd3fa47e11">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="struct_sincronia_1_1_profile_result.html">ProfileResult</a> &amp;result)</td></tr>
+<tr class="separator:afb1176859117c44e706289cd3fa47e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbe9eb54326b35fb45a69cfbb5b79036"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#adbe9eb54326b35fb45a69cfbb5b79036">getComponentIndex</a> (<a class="el" href="namespace_sincronia.html#a279af04e3d9fffe393c5e10397c2e0de">EComponentType</a> type)</td></tr>
 <tr class="separator:adbe9eb54326b35fb45a69cfbb5b79036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b4c8d472cb99ec5bc648ca6ee382fd7"><td class="memItemLeft" align="right" valign="top">constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_sincronia.html#a9b4c8d472cb99ec5bc648ca6ee382fd7">getComponentTypeCount</a> ()</td></tr>
 <tr class="separator:a9b4c8d472cb99ec5bc648ca6ee382fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p ><a class="el" href="class_sincronia_1_1_game_window.html">GameWindow</a> class, this class acts like a framework for the user to initialize a windows easily and write de logic of the program at the same time An use of example for an instanced class is window.initWindow() while(windowShouldClose()){ window.config_init() <b>write the logic</b> } window.finishWindow() </p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a897b50f5cad73b530b50e0bf748f16ed" name="a897b50f5cad73b530b50e0bf748f16ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a897b50f5cad73b530b50e0bf748f16ed">&#9670;&nbsp;</a></span>JoystickContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespace_sincronia.html#a897b50f5cad73b530b50e0bf748f16ed">Sincronia::JoystickContainer</a> = typedef std::unordered_map&lt;<a class="el" href="namespace_sincronia.html#a706b02c6136f78bf02db01272e121873">JoystickId</a>, <a class="el" href="struct_sincronia_1_1_joystick.html">Joystick</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a706b02c6136f78bf02db01272e121873" name="a706b02c6136f78bf02db01272e121873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a706b02c6136f78bf02db01272e121873">&#9670;&nbsp;</a></span>JoystickId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespace_sincronia.html#a706b02c6136f78bf02db01272e121873">Sincronia::JoystickId</a> = typedef std::size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a279af04e3d9fffe393c5e10397c2e0de" name="a279af04e3d9fffe393c5e10397c2e0de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a279af04e3d9fffe393c5e10397c2e0de">&#9670;&nbsp;</a></span>EComponentType</h2>
@@ -165,6 +230,144 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac335102050ee81f0d5348c03f924a5b6" name="ac335102050ee81f0d5348c03f924a5b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac335102050ee81f0d5348c03f924a5b6">&#9670;&nbsp;</a></span>joystick_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sincronia::joystick_callback </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>jid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This is a callback method that should be passed as argument to OpenGl, </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jid</td><td>The id assigned to that joystick</td></tr>
+    <tr><td class="paramname">event</td><td>The event associated to that joystick, i.e, connected, disconnected</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a999f554032976a698d2935b430c551dc" name="a999f554032976a698d2935b430c551dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999f554032976a698d2935b430c551dc">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; Sincronia::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_sincronia_1_1_joystick.html">Joystick</a> &amp;&#160;</td>
+          <td class="paramname"><em>joystick</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb1176859117c44e706289cd3fa47e11" name="afb1176859117c44e706289cd3fa47e11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb1176859117c44e706289cd3fa47e11">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; Sincronia::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_sincronia_1_1_profile_result.html">ProfileResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3bb74ddcf98972267635b04b1713b587" name="a3bb74ddcf98972267635b04b1713b587"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bb74ddcf98972267635b04b1713b587">&#9670;&nbsp;</a></span>pollJoysticks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sincronia::pollJoysticks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_sincronia.html#a897b50f5cad73b530b50e0bf748f16ed">JoystickContainer</a> &amp;&#160;</td>
+          <td class="paramname"><em>joysticks</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>It checks if it a connection or a disconnection has ocurred, it has to be constantly called in the game loop </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joysticks</td><td>The joystick container for all controllers connected in the moment</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad8b8106393178a2079515dc692cadb90" name="ad8b8106393178a2079515dc692cadb90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8b8106393178a2079515dc692cadb90">&#9670;&nbsp;</a></span>setJoystickCallBack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sincronia::setJoystickCallBack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Auxiliar function that sends the joystick callback to gl joystick callback </p>
 
 </div>
 </div>

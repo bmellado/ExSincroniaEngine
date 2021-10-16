@@ -1,0 +1,593 @@
+\hypertarget{stbi___d_d_s__c_8h_source}{}\doxysection{stbi\+\_\+\+DDS\+\_\+c.\+h}
+\label{stbi___d_d_s__c_8h_source}\index{source/Rendering/SOIL2/stbi\_DDS\_c.h@{source/Rendering/SOIL2/stbi\_DDS\_c.h}}
+\mbox{\hyperlink{stbi___d_d_s__c_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{image___d_x_t_8h}{image\_DXT.h}}"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{static} \textcolor{keywordtype}{int} stbi\_\_dds\_test(\mbox{\hyperlink{structstbi____context}{stbi\_\_context}} *s)}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{comment}{//  check the magic number}}
+\DoxyCodeLine{10     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'D'}) \{}
+\DoxyCodeLine{11         stbi\_\_rewind(s);}
+\DoxyCodeLine{12         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{13     \}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'D'}) \{}
+\DoxyCodeLine{16         stbi\_\_rewind(s);}
+\DoxyCodeLine{17         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{18     \}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{21         stbi\_\_rewind(s);}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{23     \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{' '}) \{}
+\DoxyCodeLine{26         stbi\_\_rewind(s);}
+\DoxyCodeLine{27         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{28     \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{comment}{//  check header size}}
+\DoxyCodeLine{31     \textcolor{keywordflow}{if} (stbi\_\_get32le(s) != 124) \{}
+\DoxyCodeLine{32         stbi\_\_rewind(s);}
+\DoxyCodeLine{33         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{comment}{// Also rewind because the loader needs to read the header}}
+\DoxyCodeLine{37     stbi\_\_rewind(s);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{40 \}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#ifndef STBI\_NO\_STDIO}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi___d_d_s__c_8h_a0e533bbcf71948e995f5a35b4c246806}{stbi\_\_dds\_test\_filename}}             (\textcolor{keywordtype}{char} \textcolor{keyword}{const} *filename)}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45    \textcolor{keywordtype}{int} r;}
+\DoxyCodeLine{46    FILE *f = fopen(filename, \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{47    \textcolor{keywordflow}{if} (!f) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{48    r = \mbox{\hyperlink{stbi___d_d_s__c_8h_ad107ae9e47476c028aac69e63cf61c29}{stbi\_\_dds\_test\_file}}(f);}
+\DoxyCodeLine{49    fclose(f);}
+\DoxyCodeLine{50    \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{51 \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi___d_d_s__c_8h_ad107ae9e47476c028aac69e63cf61c29}{stbi\_\_dds\_test\_file}}        (FILE *f)}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{56    \textcolor{keywordtype}{int} r,n = ftell(f);}
+\DoxyCodeLine{57    stbi\_\_start\_file(\&s,f);}
+\DoxyCodeLine{58    r = stbi\_\_dds\_test(\&s);}
+\DoxyCodeLine{59    fseek(f,n,SEEK\_SET);}
+\DoxyCodeLine{60    \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{61 \}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi___d_d_s__c_8h_a08f45b92017801c163e37b476ca0d11c}{stbi\_\_dds\_test\_memory}}      (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} \textcolor{keyword}{const} *buffer, \textcolor{keywordtype}{int} len)}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{67    stbi\_\_start\_mem(\&s,buffer, len);}
+\DoxyCodeLine{68    \textcolor{keywordflow}{return} stbi\_\_dds\_test(\&s);}
+\DoxyCodeLine{69 \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi___d_d_s__c_8h_a7602aa452f386e2cd741ad5a11635c04}{stbi\_\_dds\_test\_callbacks}}      (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} \textcolor{keyword}{const} *clbk, \textcolor{keywordtype}{void} *user)}
+\DoxyCodeLine{72 \{}
+\DoxyCodeLine{73    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{74    stbi\_\_start\_callbacks(\&s, (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} *) clbk, user);}
+\DoxyCodeLine{75    \textcolor{keywordflow}{return} stbi\_\_dds\_test(\&s);}
+\DoxyCodeLine{76 \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{comment}{//  helper functions}}
+\DoxyCodeLine{79 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi___d_d_s__c_8h_ae0e604b1d8dbbad05fc2d6667f37096a}{stbi\_convert\_bit\_range}}( \textcolor{keywordtype}{int} c, \textcolor{keywordtype}{int} from\_bits, \textcolor{keywordtype}{int} to\_bits )}
+\DoxyCodeLine{80 \{}
+\DoxyCodeLine{81     \textcolor{keywordtype}{int} b = (1 << (from\_bits -\/ 1)) + c * ((1 << to\_bits) -\/ 1);}
+\DoxyCodeLine{82     \textcolor{keywordflow}{return} (b + (b >> from\_bits)) >> from\_bits;}
+\DoxyCodeLine{83 \}}
+\DoxyCodeLine{84 \textcolor{keywordtype}{void} \mbox{\hyperlink{stbi___d_d_s__c_8h_a1fdd32f00cf265ec19cbedcb6f38e5f3}{stbi\_rgb\_888\_from\_565}}( \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} c, \textcolor{keywordtype}{int} *r, \textcolor{keywordtype}{int} *g, \textcolor{keywordtype}{int} *b )}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86     *r = \mbox{\hyperlink{stbi___d_d_s__c_8h_ae0e604b1d8dbbad05fc2d6667f37096a}{stbi\_convert\_bit\_range}}( (c >> 11) \& 31, 5, 8 );}
+\DoxyCodeLine{87     *g = \mbox{\hyperlink{stbi___d_d_s__c_8h_ae0e604b1d8dbbad05fc2d6667f37096a}{stbi\_convert\_bit\_range}}( (c >> 05) \& 63, 6, 8 );}
+\DoxyCodeLine{88     *b = \mbox{\hyperlink{stbi___d_d_s__c_8h_ae0e604b1d8dbbad05fc2d6667f37096a}{stbi\_convert\_bit\_range}}( (c >> 00) \& 31, 5, 8 );}
+\DoxyCodeLine{89 \}}
+\DoxyCodeLine{90 \textcolor{keywordtype}{void} \mbox{\hyperlink{stbi___d_d_s__c_8h_a111b42e298f65d3cc14bec76becee78b}{stbi\_decode\_DXT1\_block}}(}
+\DoxyCodeLine{91             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} uncompressed[16*4],}
+\DoxyCodeLine{92             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} compressed[8] )}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} next\_bit = 4*8;}
+\DoxyCodeLine{95     \textcolor{keywordtype}{int} i, r, g, b;}
+\DoxyCodeLine{96     \textcolor{keywordtype}{int} c0, c1;}
+\DoxyCodeLine{97     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} decode\_colors[4*4];}
+\DoxyCodeLine{98     \textcolor{comment}{//  find the 2 primary colors}}
+\DoxyCodeLine{99     c0 = compressed[0] + (compressed[1] << 8);}
+\DoxyCodeLine{100     c1 = compressed[2] + (compressed[3] << 8);}
+\DoxyCodeLine{101     \mbox{\hyperlink{stbi___d_d_s__c_8h_a1fdd32f00cf265ec19cbedcb6f38e5f3}{stbi\_rgb\_888\_from\_565}}( c0, \&r, \&g, \&b );}
+\DoxyCodeLine{102     decode\_colors[0] = r;}
+\DoxyCodeLine{103     decode\_colors[1] = g;}
+\DoxyCodeLine{104     decode\_colors[2] = b;}
+\DoxyCodeLine{105     decode\_colors[3] = 255;}
+\DoxyCodeLine{106     \mbox{\hyperlink{stbi___d_d_s__c_8h_a1fdd32f00cf265ec19cbedcb6f38e5f3}{stbi\_rgb\_888\_from\_565}}( c1, \&r, \&g, \&b );}
+\DoxyCodeLine{107     decode\_colors[4] = r;}
+\DoxyCodeLine{108     decode\_colors[5] = g;}
+\DoxyCodeLine{109     decode\_colors[6] = b;}
+\DoxyCodeLine{110     decode\_colors[7] = 255;}
+\DoxyCodeLine{111     \textcolor{keywordflow}{if}( c0 > c1 )}
+\DoxyCodeLine{112     \{}
+\DoxyCodeLine{113         \textcolor{comment}{//  no alpha, 2 interpolated colors}}
+\DoxyCodeLine{114         decode\_colors[8] = (2*decode\_colors[0] + decode\_colors[4]) / 3;}
+\DoxyCodeLine{115         decode\_colors[9] = (2*decode\_colors[1] + decode\_colors[5]) / 3;}
+\DoxyCodeLine{116         decode\_colors[10] = (2*decode\_colors[2] + decode\_colors[6]) / 3;}
+\DoxyCodeLine{117         decode\_colors[11] = 255;}
+\DoxyCodeLine{118         decode\_colors[12] = (decode\_colors[0] + 2*decode\_colors[4]) / 3;}
+\DoxyCodeLine{119         decode\_colors[13] = (decode\_colors[1] + 2*decode\_colors[5]) / 3;}
+\DoxyCodeLine{120         decode\_colors[14] = (decode\_colors[2] + 2*decode\_colors[6]) / 3;}
+\DoxyCodeLine{121         decode\_colors[15] = 255;}
+\DoxyCodeLine{122     \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{123     \{}
+\DoxyCodeLine{124         \textcolor{comment}{//  1 interpolated color, alpha}}
+\DoxyCodeLine{125         decode\_colors[8] = (decode\_colors[0] + decode\_colors[4]) / 2;}
+\DoxyCodeLine{126         decode\_colors[9] = (decode\_colors[1] + decode\_colors[5]) / 2;}
+\DoxyCodeLine{127         decode\_colors[10] = (decode\_colors[2] + decode\_colors[6]) / 2;}
+\DoxyCodeLine{128         decode\_colors[11] = 255;}
+\DoxyCodeLine{129         decode\_colors[12] = 0;}
+\DoxyCodeLine{130         decode\_colors[13] = 0;}
+\DoxyCodeLine{131         decode\_colors[14] = 0;}
+\DoxyCodeLine{132         decode\_colors[15] = 0;}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134     \textcolor{comment}{//  decode the block}}
+\DoxyCodeLine{135     \textcolor{keywordflow}{for}( i = 0; i < 16*4; i += 4 )}
+\DoxyCodeLine{136     \{}
+\DoxyCodeLine{137         \textcolor{keywordtype}{int} idx = ((compressed[next\_bit>>3] >> (next\_bit \& 7)) \& 3) * 4;}
+\DoxyCodeLine{138         next\_bit += 2;}
+\DoxyCodeLine{139         uncompressed[i+0] = decode\_colors[idx+0];}
+\DoxyCodeLine{140         uncompressed[i+1] = decode\_colors[idx+1];}
+\DoxyCodeLine{141         uncompressed[i+2] = decode\_colors[idx+2];}
+\DoxyCodeLine{142         uncompressed[i+3] = decode\_colors[idx+3];}
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144     \textcolor{comment}{//  done}}
+\DoxyCodeLine{145 \}}
+\DoxyCodeLine{146 \textcolor{keywordtype}{void} \mbox{\hyperlink{stbi___d_d_s__c_8h_a1f6abd9025fe1b08636ae4da3b2e2320}{stbi\_decode\_DXT23\_alpha\_block}}(}
+\DoxyCodeLine{147             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} uncompressed[16*4],}
+\DoxyCodeLine{148             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} compressed[8] )}
+\DoxyCodeLine{149 \{}
+\DoxyCodeLine{150     \textcolor{keywordtype}{int} i, next\_bit = 0;}
+\DoxyCodeLine{151     \textcolor{comment}{//  each alpha value gets 4 bits}}
+\DoxyCodeLine{152     \textcolor{keywordflow}{for}( i = 3; i < 16*4; i += 4 )}
+\DoxyCodeLine{153     \{}
+\DoxyCodeLine{154         uncompressed[i] = \mbox{\hyperlink{stbi___d_d_s__c_8h_ae0e604b1d8dbbad05fc2d6667f37096a}{stbi\_convert\_bit\_range}}(}
+\DoxyCodeLine{155                 (compressed[next\_bit>>3] >> (next\_bit\&7)) \& 15,}
+\DoxyCodeLine{156                 4, 8 );}
+\DoxyCodeLine{157         next\_bit += 4;}
+\DoxyCodeLine{158     \}}
+\DoxyCodeLine{159 \}}
+\DoxyCodeLine{160 \textcolor{keywordtype}{void} \mbox{\hyperlink{stbi___d_d_s__c_8h_ad17d1044a863fcff72d2899a5e3d8a99}{stbi\_decode\_DXT45\_alpha\_block}}(}
+\DoxyCodeLine{161             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} uncompressed[16*4],}
+\DoxyCodeLine{162             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} compressed[8] )}
+\DoxyCodeLine{163 \{}
+\DoxyCodeLine{164     \textcolor{keywordtype}{int} i, next\_bit = 8*2;}
+\DoxyCodeLine{165     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} decode\_alpha[8];}
+\DoxyCodeLine{166     \textcolor{comment}{//  each alpha value gets 3 bits, and the 1st 2 bytes are the range}}
+\DoxyCodeLine{167     decode\_alpha[0] = compressed[0];}
+\DoxyCodeLine{168     decode\_alpha[1] = compressed[1];}
+\DoxyCodeLine{169     \textcolor{keywordflow}{if}( decode\_alpha[0] > decode\_alpha[1] )}
+\DoxyCodeLine{170     \{}
+\DoxyCodeLine{171         \textcolor{comment}{//  6 step intermediate}}
+\DoxyCodeLine{172         decode\_alpha[2] = (6*decode\_alpha[0] + 1*decode\_alpha[1]) / 7;}
+\DoxyCodeLine{173         decode\_alpha[3] = (5*decode\_alpha[0] + 2*decode\_alpha[1]) / 7;}
+\DoxyCodeLine{174         decode\_alpha[4] = (4*decode\_alpha[0] + 3*decode\_alpha[1]) / 7;}
+\DoxyCodeLine{175         decode\_alpha[5] = (3*decode\_alpha[0] + 4*decode\_alpha[1]) / 7;}
+\DoxyCodeLine{176         decode\_alpha[6] = (2*decode\_alpha[0] + 5*decode\_alpha[1]) / 7;}
+\DoxyCodeLine{177         decode\_alpha[7] = (1*decode\_alpha[0] + 6*decode\_alpha[1]) / 7;}
+\DoxyCodeLine{178     \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{179     \{}
+\DoxyCodeLine{180         \textcolor{comment}{//  4 step intermediate, pluss full and none}}
+\DoxyCodeLine{181         decode\_alpha[2] = (4*decode\_alpha[0] + 1*decode\_alpha[1]) / 5;}
+\DoxyCodeLine{182         decode\_alpha[3] = (3*decode\_alpha[0] + 2*decode\_alpha[1]) / 5;}
+\DoxyCodeLine{183         decode\_alpha[4] = (2*decode\_alpha[0] + 3*decode\_alpha[1]) / 5;}
+\DoxyCodeLine{184         decode\_alpha[5] = (1*decode\_alpha[0] + 4*decode\_alpha[1]) / 5;}
+\DoxyCodeLine{185         decode\_alpha[6] = 0;}
+\DoxyCodeLine{186         decode\_alpha[7] = 255;}
+\DoxyCodeLine{187     \}}
+\DoxyCodeLine{188     \textcolor{keywordflow}{for}( i = 3; i < 16*4; i += 4 )}
+\DoxyCodeLine{189     \{}
+\DoxyCodeLine{190         \textcolor{keywordtype}{int} idx = 0, bit;}
+\DoxyCodeLine{191         bit = (compressed[next\_bit>>3] >> (next\_bit\&7)) \& 1;}
+\DoxyCodeLine{192         idx += bit << 0;}
+\DoxyCodeLine{193         ++next\_bit;}
+\DoxyCodeLine{194         bit = (compressed[next\_bit>>3] >> (next\_bit\&7)) \& 1;}
+\DoxyCodeLine{195         idx += bit << 1;}
+\DoxyCodeLine{196         ++next\_bit;}
+\DoxyCodeLine{197         bit = (compressed[next\_bit>>3] >> (next\_bit\&7)) \& 1;}
+\DoxyCodeLine{198         idx += bit << 2;}
+\DoxyCodeLine{199         ++next\_bit;}
+\DoxyCodeLine{200         uncompressed[i] = decode\_alpha[idx \& 7];}
+\DoxyCodeLine{201     \}}
+\DoxyCodeLine{202     \textcolor{comment}{//  done}}
+\DoxyCodeLine{203 \}}
+\DoxyCodeLine{204 \textcolor{keywordtype}{void} \mbox{\hyperlink{stbi___d_d_s__c_8h_a7ef44c63292c1360df8fb2069e1fbdcd}{stbi\_decode\_DXT\_color\_block}}(}
+\DoxyCodeLine{205             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} uncompressed[16*4],}
+\DoxyCodeLine{206             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} compressed[8] )}
+\DoxyCodeLine{207 \{}
+\DoxyCodeLine{208     \textcolor{keywordtype}{int} next\_bit = 4*8;}
+\DoxyCodeLine{209     \textcolor{keywordtype}{int} i, r, g, b;}
+\DoxyCodeLine{210     \textcolor{keywordtype}{int} c0, c1;}
+\DoxyCodeLine{211     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} decode\_colors[4*3];}
+\DoxyCodeLine{212     \textcolor{comment}{//  find the 2 primary colors}}
+\DoxyCodeLine{213     c0 = compressed[0] + (compressed[1] << 8);}
+\DoxyCodeLine{214     c1 = compressed[2] + (compressed[3] << 8);}
+\DoxyCodeLine{215     \mbox{\hyperlink{stbi___d_d_s__c_8h_a1fdd32f00cf265ec19cbedcb6f38e5f3}{stbi\_rgb\_888\_from\_565}}( c0, \&r, \&g, \&b );}
+\DoxyCodeLine{216     decode\_colors[0] = r;}
+\DoxyCodeLine{217     decode\_colors[1] = g;}
+\DoxyCodeLine{218     decode\_colors[2] = b;}
+\DoxyCodeLine{219     \mbox{\hyperlink{stbi___d_d_s__c_8h_a1fdd32f00cf265ec19cbedcb6f38e5f3}{stbi\_rgb\_888\_from\_565}}( c1, \&r, \&g, \&b );}
+\DoxyCodeLine{220     decode\_colors[3] = r;}
+\DoxyCodeLine{221     decode\_colors[4] = g;}
+\DoxyCodeLine{222     decode\_colors[5] = b;}
+\DoxyCodeLine{223     \textcolor{comment}{//  Like DXT1, but no choicees:}}
+\DoxyCodeLine{224     \textcolor{comment}{//  no alpha, 2 interpolated colors}}
+\DoxyCodeLine{225     decode\_colors[6] = (2*decode\_colors[0] + decode\_colors[3]) / 3;}
+\DoxyCodeLine{226     decode\_colors[7] = (2*decode\_colors[1] + decode\_colors[4]) / 3;}
+\DoxyCodeLine{227     decode\_colors[8] = (2*decode\_colors[2] + decode\_colors[5]) / 3;}
+\DoxyCodeLine{228     decode\_colors[9] = (decode\_colors[0] + 2*decode\_colors[3]) / 3;}
+\DoxyCodeLine{229     decode\_colors[10] = (decode\_colors[1] + 2*decode\_colors[4]) / 3;}
+\DoxyCodeLine{230     decode\_colors[11] = (decode\_colors[2] + 2*decode\_colors[5]) / 3;}
+\DoxyCodeLine{231     \textcolor{comment}{//  decode the block}}
+\DoxyCodeLine{232     \textcolor{keywordflow}{for}( i = 0; i < 16*4; i += 4 )}
+\DoxyCodeLine{233     \{}
+\DoxyCodeLine{234         \textcolor{keywordtype}{int} idx = ((compressed[next\_bit>>3] >> (next\_bit \& 7)) \& 3) * 3;}
+\DoxyCodeLine{235         next\_bit += 2;}
+\DoxyCodeLine{236         uncompressed[i+0] = decode\_colors[idx+0];}
+\DoxyCodeLine{237         uncompressed[i+1] = decode\_colors[idx+1];}
+\DoxyCodeLine{238         uncompressed[i+2] = decode\_colors[idx+2];}
+\DoxyCodeLine{239     \}}
+\DoxyCodeLine{240     \textcolor{comment}{//  done}}
+\DoxyCodeLine{241 \}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{keyword}{static} \textcolor{keywordtype}{int} stbi\_\_dds\_info( \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} *s, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} *iscompressed ) \{}
+\DoxyCodeLine{244     \textcolor{keywordtype}{int} flags,is\_compressed,has\_alpha;}
+\DoxyCodeLine{245     \mbox{\hyperlink{struct_d_d_s__header}{DDS\_header}} header=\{0\};}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247     \textcolor{keywordflow}{if}( \textcolor{keyword}{sizeof}( \mbox{\hyperlink{struct_d_d_s__header}{DDS\_header}} ) != 128 )}
+\DoxyCodeLine{248     \{}
+\DoxyCodeLine{249         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{250     \}}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252     stbi\_\_getn( s, (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}}*)(\&header), 128 );}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     \textcolor{keywordflow}{if}( header.\mbox{\hyperlink{struct_d_d_s__header_ae92b8a57c39f167862e6fc963bbe3a22}{dwMagic}} != ((\textcolor{charliteral}{'D'} << 0) | (\textcolor{charliteral}{'D'} << 8) | (\textcolor{charliteral}{'S'} << 16) | (\textcolor{charliteral}{' '} << 24)) ) \{}
+\DoxyCodeLine{255        stbi\_\_rewind( s );}
+\DoxyCodeLine{256        \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{257     \}}
+\DoxyCodeLine{258     \textcolor{keywordflow}{if}( header.\mbox{\hyperlink{struct_d_d_s__header_a0547c8dec53be12586207d350a66ee67}{dwSize}} != 124 ) \{}
+\DoxyCodeLine{259        stbi\_\_rewind( s );}
+\DoxyCodeLine{260        \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{261     \}}
+\DoxyCodeLine{262     flags = \mbox{\hyperlink{image___d_x_t_8h_adb89cdf9d31f73fc93628e33055e4a55}{DDSD\_CAPS}} | \mbox{\hyperlink{image___d_x_t_8h_a419b97aadbcd31092bbd20cfa86bc6b7}{DDSD\_HEIGHT}} | \mbox{\hyperlink{image___d_x_t_8h_a059d0f45051be842d94d0168b710970c}{DDSD\_WIDTH}} | \mbox{\hyperlink{image___d_x_t_8h_a13e411299ebd20b6fb2f18dd7e3843d2}{DDSD\_PIXELFORMAT}};}
+\DoxyCodeLine{263     \textcolor{keywordflow}{if}( (header.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& flags) != flags ) \{}
+\DoxyCodeLine{264        stbi\_\_rewind( s );}
+\DoxyCodeLine{265        \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{266     \}}
+\DoxyCodeLine{267     \textcolor{keywordflow}{if}( header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a0547c8dec53be12586207d350a66ee67}{dwSize}} != 32 ) \{}
+\DoxyCodeLine{268        stbi\_\_rewind( s );}
+\DoxyCodeLine{269        \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{270     \}}
+\DoxyCodeLine{271     flags = \mbox{\hyperlink{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}{DDPF\_FOURCC}} | \mbox{\hyperlink{image___d_x_t_8h_a88bb1ae9e9ae6422311c641b7ec9a212}{DDPF\_RGB}};}
+\DoxyCodeLine{272     \textcolor{keywordflow}{if}( (header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& flags) == 0 ) \{}
+\DoxyCodeLine{273        stbi\_\_rewind( s );}
+\DoxyCodeLine{274        \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{275     \}}
+\DoxyCodeLine{276     \textcolor{keywordflow}{if}( (header.\mbox{\hyperlink{struct_d_d_s__header_a1d6949a789ae7c5556f6186222ac0c79}{sCaps}}.\mbox{\hyperlink{struct_d_d_s__header_a449d945474e5ab417a18cdad14196b5c}{dwCaps1}} \& \mbox{\hyperlink{image___d_x_t_8h_ad09c16f5d1f52249e260e08c9edaee13}{DDSCAPS\_TEXTURE}}) == 0 ) \{}
+\DoxyCodeLine{277        stbi\_\_rewind( s );}
+\DoxyCodeLine{278        \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{279     \}}
+\DoxyCodeLine{280 }
+\DoxyCodeLine{281     is\_compressed = (header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& \mbox{\hyperlink{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}{DDPF\_FOURCC}}) / \mbox{\hyperlink{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}{DDPF\_FOURCC}};}
+\DoxyCodeLine{282     has\_alpha = (header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& \mbox{\hyperlink{image___d_x_t_8h_ac42b3220dbc31fe683fe8d6954723fc5}{DDPF\_ALPHAPIXELS}}) / \mbox{\hyperlink{image___d_x_t_8h_ac42b3220dbc31fe683fe8d6954723fc5}{DDPF\_ALPHAPIXELS}};}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{284     *x = header.\mbox{\hyperlink{struct_d_d_s__header_a91d4282a7b838a8f691a7504e56223f0}{dwWidth}};}
+\DoxyCodeLine{285     *y = header.\mbox{\hyperlink{struct_d_d_s__header_a70fb20dd52718b1334b3a9c9ca70145f}{dwHeight}};}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{287     \textcolor{keywordflow}{if} ( !is\_compressed ) \{}
+\DoxyCodeLine{288         *comp = 3;}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290         \textcolor{keywordflow}{if} ( has\_alpha )}
+\DoxyCodeLine{291             *comp = 4;}
+\DoxyCodeLine{292     \}}
+\DoxyCodeLine{293     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{294         *comp = 4;}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{296     \textcolor{keywordflow}{if} ( iscompressed )}
+\DoxyCodeLine{297         *iscompressed = is\_compressed;}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{299     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{300 \}}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{302 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi___d_d_s__c_8h_a2feb51678b1df0f04e3b633ae9fe775e}{stbi\_\_dds\_info\_from\_memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} \textcolor{keyword}{const} *buffer, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} *iscompressed)}
+\DoxyCodeLine{303 \{}
+\DoxyCodeLine{304     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{305     stbi\_\_start\_mem(\&s,buffer, len);}
+\DoxyCodeLine{306     \textcolor{keywordflow}{return} stbi\_\_dds\_info( \&s, x, y, comp, iscompressed );}
+\DoxyCodeLine{307 \}}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{309 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi___d_d_s__c_8h_aed069f84d628f9bfe97114d0ac56c1c0}{stbi\_\_dds\_info\_from\_callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} \textcolor{keyword}{const} *clbk, \textcolor{keywordtype}{void} *user, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} *iscompressed)}
+\DoxyCodeLine{310 \{}
+\DoxyCodeLine{311     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{312     stbi\_\_start\_callbacks(\&s, (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} *) clbk, user);}
+\DoxyCodeLine{313     \textcolor{keywordflow}{return} stbi\_\_dds\_info( \&s, x, y, comp, iscompressed );}
+\DoxyCodeLine{314 \}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316 \textcolor{preprocessor}{\#ifndef STBI\_NO\_STDIO}}
+\DoxyCodeLine{317 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi___d_d_s__c_8h_a3000ef645ff34bc50f1ad89eb01ae8a0}{stbi\_\_dds\_info\_from\_path}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const} *filename,     \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} *iscompressed)}
+\DoxyCodeLine{318 \{}
+\DoxyCodeLine{319    \textcolor{keywordtype}{int} res;}
+\DoxyCodeLine{320    FILE *f = fopen(filename, \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{321    \textcolor{keywordflow}{if} (!f) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{322    res = \mbox{\hyperlink{stbi___d_d_s__c_8h_a69df31af378008d4d702d00ee17bcf6f}{stbi\_\_dds\_info\_from\_file}}( f, x, y, comp, iscompressed );}
+\DoxyCodeLine{323    fclose(f);}
+\DoxyCodeLine{324    \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{325 \}}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi___d_d_s__c_8h_a69df31af378008d4d702d00ee17bcf6f}{stbi\_\_dds\_info\_from\_file}}(FILE *f,                  \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} *iscompressed)}
+\DoxyCodeLine{328 \{}
+\DoxyCodeLine{329    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{330    \textcolor{keywordtype}{int} res;}
+\DoxyCodeLine{331    \textcolor{keywordtype}{long} n = ftell(f);}
+\DoxyCodeLine{332    stbi\_\_start\_file(\&s, f);}
+\DoxyCodeLine{333    res = stbi\_\_dds\_info(\&s, x, y, comp, iscompressed);}
+\DoxyCodeLine{334    fseek(f, n, SEEK\_SET);}
+\DoxyCodeLine{335    \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{336 \}}
+\DoxyCodeLine{337 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339 \textcolor{keyword}{static} \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} * stbi\_\_dds\_load(\mbox{\hyperlink{structstbi____context}{stbi\_\_context}} *s, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{340 \{}
+\DoxyCodeLine{341     \textcolor{comment}{//  all variables go up front}}
+\DoxyCodeLine{342     \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *dds\_data = NULL;}
+\DoxyCodeLine{343     \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} block[16*4];}
+\DoxyCodeLine{344     \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} compressed[8];}
+\DoxyCodeLine{345     \textcolor{keywordtype}{int} flags, DXT\_family;}
+\DoxyCodeLine{346     \textcolor{keywordtype}{int} has\_alpha, has\_mipmap;}
+\DoxyCodeLine{347     \textcolor{keywordtype}{int} is\_compressed, cubemap\_faces;}
+\DoxyCodeLine{348     \textcolor{keywordtype}{int} block\_pitch, num\_blocks;}
+\DoxyCodeLine{349     \mbox{\hyperlink{struct_d_d_s__header}{DDS\_header}} header=\{0\};}
+\DoxyCodeLine{350     \textcolor{keywordtype}{int} i, sz, cf;}
+\DoxyCodeLine{351     \textcolor{comment}{//  load the header}}
+\DoxyCodeLine{352     \textcolor{keywordflow}{if}( \textcolor{keyword}{sizeof}( \mbox{\hyperlink{struct_d_d_s__header}{DDS\_header}} ) != 128 )}
+\DoxyCodeLine{353     \{}
+\DoxyCodeLine{354         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{355     \}}
+\DoxyCodeLine{356     stbi\_\_getn( s, (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}}*)(\&header), 128 );}
+\DoxyCodeLine{357     \textcolor{comment}{//  and do some checking}}
+\DoxyCodeLine{358     \textcolor{keywordflow}{if}( header.\mbox{\hyperlink{struct_d_d_s__header_ae92b8a57c39f167862e6fc963bbe3a22}{dwMagic}} != ((\textcolor{charliteral}{'D'} << 0) | (\textcolor{charliteral}{'D'} << 8) | (\textcolor{charliteral}{'S'} << 16) | (\textcolor{charliteral}{' '} << 24)) ) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{359     \textcolor{keywordflow}{if}( header.\mbox{\hyperlink{struct_d_d_s__header_a0547c8dec53be12586207d350a66ee67}{dwSize}} != 124 ) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{360     flags = \mbox{\hyperlink{image___d_x_t_8h_adb89cdf9d31f73fc93628e33055e4a55}{DDSD\_CAPS}} | \mbox{\hyperlink{image___d_x_t_8h_a419b97aadbcd31092bbd20cfa86bc6b7}{DDSD\_HEIGHT}} | \mbox{\hyperlink{image___d_x_t_8h_a059d0f45051be842d94d0168b710970c}{DDSD\_WIDTH}} | \mbox{\hyperlink{image___d_x_t_8h_a13e411299ebd20b6fb2f18dd7e3843d2}{DDSD\_PIXELFORMAT}};}
+\DoxyCodeLine{361     \textcolor{keywordflow}{if}( (header.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& flags) != flags ) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{362     \textcolor{comment}{/*  According to the MSDN spec, the dwFlags should contain}}
+\DoxyCodeLine{363 \textcolor{comment}{        DDSD\_LINEARSIZE if it's compressed, or DDSD\_PITCH if}}
+\DoxyCodeLine{364 \textcolor{comment}{        uncompressed.  Some DDS writers do not conform to the}}
+\DoxyCodeLine{365 \textcolor{comment}{        spec, so I need to make my reader more tolerant */}}
+\DoxyCodeLine{366     \textcolor{keywordflow}{if}( header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a0547c8dec53be12586207d350a66ee67}{dwSize}} != 32 ) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{367     flags = \mbox{\hyperlink{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}{DDPF\_FOURCC}} | \mbox{\hyperlink{image___d_x_t_8h_a88bb1ae9e9ae6422311c641b7ec9a212}{DDPF\_RGB}};}
+\DoxyCodeLine{368     \textcolor{keywordflow}{if}( (header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& flags) == 0 ) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{369     \textcolor{keywordflow}{if}( (header.\mbox{\hyperlink{struct_d_d_s__header_a1d6949a789ae7c5556f6186222ac0c79}{sCaps}}.\mbox{\hyperlink{struct_d_d_s__header_a449d945474e5ab417a18cdad14196b5c}{dwCaps1}} \& \mbox{\hyperlink{image___d_x_t_8h_ad09c16f5d1f52249e260e08c9edaee13}{DDSCAPS\_TEXTURE}}) == 0 ) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{370     \textcolor{comment}{//  get the image data}}
+\DoxyCodeLine{371     s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} = header.\mbox{\hyperlink{struct_d_d_s__header_a91d4282a7b838a8f691a7504e56223f0}{dwWidth}};}
+\DoxyCodeLine{372     s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} = header.\mbox{\hyperlink{struct_d_d_s__header_a70fb20dd52718b1334b3a9c9ca70145f}{dwHeight}};}
+\DoxyCodeLine{373     s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} = 4;}
+\DoxyCodeLine{374     is\_compressed = (header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& \mbox{\hyperlink{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}{DDPF\_FOURCC}}) / \mbox{\hyperlink{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}{DDPF\_FOURCC}};}
+\DoxyCodeLine{375     has\_alpha = (header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}} \& \mbox{\hyperlink{image___d_x_t_8h_ac42b3220dbc31fe683fe8d6954723fc5}{DDPF\_ALPHAPIXELS}}) / \mbox{\hyperlink{image___d_x_t_8h_ac42b3220dbc31fe683fe8d6954723fc5}{DDPF\_ALPHAPIXELS}};}
+\DoxyCodeLine{376     has\_mipmap = (header.\mbox{\hyperlink{struct_d_d_s__header_a1d6949a789ae7c5556f6186222ac0c79}{sCaps}}.\mbox{\hyperlink{struct_d_d_s__header_a449d945474e5ab417a18cdad14196b5c}{dwCaps1}} \& \mbox{\hyperlink{image___d_x_t_8h_a3b2cabc9b4d5aec2c4ea94a7585b3868}{DDSCAPS\_MIPMAP}}) \&\& (header.\mbox{\hyperlink{struct_d_d_s__header_a82dc7ae0f612d81d2aa69c3b5f83dd2d}{dwMipMapCount}} > 1);}
+\DoxyCodeLine{377     cubemap\_faces = (header.\mbox{\hyperlink{struct_d_d_s__header_a1d6949a789ae7c5556f6186222ac0c79}{sCaps}}.\mbox{\hyperlink{struct_d_d_s__header_aaf64690ad918cab3b8f2c8879dd0548d}{dwCaps2}} \& \mbox{\hyperlink{image___d_x_t_8h_a916b2ec3ed47a503039c68ce0be6c97b}{DDSCAPS2\_CUBEMAP}}) / \mbox{\hyperlink{image___d_x_t_8h_a916b2ec3ed47a503039c68ce0be6c97b}{DDSCAPS2\_CUBEMAP}};}
+\DoxyCodeLine{378     \textcolor{comment}{/*  I need cubemaps to have square faces    */}}
+\DoxyCodeLine{379     cubemap\_faces \&= (s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} == s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}});}
+\DoxyCodeLine{380     cubemap\_faces *= 5;}
+\DoxyCodeLine{381     cubemap\_faces += 1;}
+\DoxyCodeLine{382     block\_pitch = (s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}}+3) >> 2;}
+\DoxyCodeLine{383     num\_blocks = block\_pitch * ((s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}}+3) >> 2);}
+\DoxyCodeLine{384     \textcolor{comment}{/*  let the user know what's going on   */}}
+\DoxyCodeLine{385     *x = s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}};}
+\DoxyCodeLine{386     *y = s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}};}
+\DoxyCodeLine{387     *comp = s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}};}
+\DoxyCodeLine{388     \textcolor{comment}{/*  is this uncompressed?   */}}
+\DoxyCodeLine{389     \textcolor{keywordflow}{if}( is\_compressed )}
+\DoxyCodeLine{390     \{}
+\DoxyCodeLine{391         \textcolor{comment}{/*  compressed  */}}
+\DoxyCodeLine{392         \textcolor{comment}{//  note: header.sPixelFormat.dwFourCC is something like (('D'<<0)|('X'<<8)|('T'<<16)|('1'<<24))}}
+\DoxyCodeLine{393         DXT\_family = 1 + (header.\mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}}.\mbox{\hyperlink{struct_d_d_s__header_ad5b5fc72da6e7d1dbd21d44a631c593e}{dwFourCC}} >> 24) -\/ \textcolor{charliteral}{'1'};}
+\DoxyCodeLine{394         \textcolor{keywordflow}{if}( (DXT\_family < 1) || (DXT\_family > 5) ) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{395         \textcolor{comment}{/*  check the expected size...oops, nevermind...}}
+\DoxyCodeLine{396 \textcolor{comment}{            those non-\/compliant writers leave}}
+\DoxyCodeLine{397 \textcolor{comment}{            dwPitchOrLinearSize == 0    */}}
+\DoxyCodeLine{398         \textcolor{comment}{//  passed all the tests, get the RAM for decoding}}
+\DoxyCodeLine{399         sz = (s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}})*(s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}})*4*cubemap\_faces;}
+\DoxyCodeLine{400         dds\_data = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)malloc( sz );}
+\DoxyCodeLine{401         \textcolor{comment}{/*  do this once for each face  */}}
+\DoxyCodeLine{402         \textcolor{keywordflow}{for}( cf = 0; cf < cubemap\_faces; ++ cf )}
+\DoxyCodeLine{403         \{}
+\DoxyCodeLine{404             \textcolor{comment}{//  now read and decode all the blocks}}
+\DoxyCodeLine{405             \textcolor{keywordflow}{for}( i = 0; i < num\_blocks; ++i )}
+\DoxyCodeLine{406             \{}
+\DoxyCodeLine{407                 \textcolor{comment}{//  where are we?}}
+\DoxyCodeLine{408                 \textcolor{keywordtype}{int} bx, by, bw=4, bh=4;}
+\DoxyCodeLine{409                 \textcolor{keywordtype}{int} ref\_x = 4 * (i \% block\_pitch);}
+\DoxyCodeLine{410                 \textcolor{keywordtype}{int} ref\_y = 4 * (i / block\_pitch);}
+\DoxyCodeLine{411                 \textcolor{comment}{//  get the next block's worth of compressed data, and decompress it}}
+\DoxyCodeLine{412                 \textcolor{keywordflow}{if}( DXT\_family == 1 )}
+\DoxyCodeLine{413                 \{}
+\DoxyCodeLine{414                     \textcolor{comment}{//  DXT1}}
+\DoxyCodeLine{415                     stbi\_\_getn( s, compressed, 8 );}
+\DoxyCodeLine{416                     \mbox{\hyperlink{stbi___d_d_s__c_8h_a111b42e298f65d3cc14bec76becee78b}{stbi\_decode\_DXT1\_block}}( block, compressed );}
+\DoxyCodeLine{417                 \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( DXT\_family < 4 )}
+\DoxyCodeLine{418                 \{}
+\DoxyCodeLine{419                     \textcolor{comment}{//  DXT2/3}}
+\DoxyCodeLine{420                     stbi\_\_getn( s, compressed, 8 );}
+\DoxyCodeLine{421                     \mbox{\hyperlink{stbi___d_d_s__c_8h_a1f6abd9025fe1b08636ae4da3b2e2320}{stbi\_decode\_DXT23\_alpha\_block}} ( block, compressed );}
+\DoxyCodeLine{422                     stbi\_\_getn( s, compressed, 8 );}
+\DoxyCodeLine{423                     \mbox{\hyperlink{stbi___d_d_s__c_8h_a7ef44c63292c1360df8fb2069e1fbdcd}{stbi\_decode\_DXT\_color\_block}} ( block, compressed );}
+\DoxyCodeLine{424                 \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{425                 \{}
+\DoxyCodeLine{426                     \textcolor{comment}{//  DXT4/5}}
+\DoxyCodeLine{427                     stbi\_\_getn( s, compressed, 8 );}
+\DoxyCodeLine{428                     \mbox{\hyperlink{stbi___d_d_s__c_8h_ad17d1044a863fcff72d2899a5e3d8a99}{stbi\_decode\_DXT45\_alpha\_block}} ( block, compressed );}
+\DoxyCodeLine{429                     stbi\_\_getn( s, compressed, 8 );}
+\DoxyCodeLine{430                     \mbox{\hyperlink{stbi___d_d_s__c_8h_a7ef44c63292c1360df8fb2069e1fbdcd}{stbi\_decode\_DXT\_color\_block}} ( block, compressed );}
+\DoxyCodeLine{431                 \}}
+\DoxyCodeLine{432                 \textcolor{comment}{//  is this a partial block?}}
+\DoxyCodeLine{433                 \textcolor{keywordflow}{if}( ref\_x + 4 > (\textcolor{keywordtype}{int})s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} )}
+\DoxyCodeLine{434                 \{}
+\DoxyCodeLine{435                     bw = s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} -\/ ref\_x;}
+\DoxyCodeLine{436                 \}}
+\DoxyCodeLine{437                 \textcolor{keywordflow}{if}( ref\_y + 4 > (\textcolor{keywordtype}{int})s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} )}
+\DoxyCodeLine{438                 \{}
+\DoxyCodeLine{439                     bh = s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} -\/ ref\_y;}
+\DoxyCodeLine{440                 \}}
+\DoxyCodeLine{441                 \textcolor{comment}{//  now drop our decompressed data into the buffer}}
+\DoxyCodeLine{442                 \textcolor{keywordflow}{for}( by = 0; by < bh; ++by )}
+\DoxyCodeLine{443                 \{}
+\DoxyCodeLine{444                     \textcolor{keywordtype}{int} idx = 4*((ref\_y+by+cf*s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}})*s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} + ref\_x);}
+\DoxyCodeLine{445                     \textcolor{keywordflow}{for}( bx = 0; bx < bw*4; ++bx )}
+\DoxyCodeLine{446                     \{}
+\DoxyCodeLine{447 }
+\DoxyCodeLine{448                         dds\_data[idx+bx] = block[by*16+bx];}
+\DoxyCodeLine{449                     \}}
+\DoxyCodeLine{450                 \}}
+\DoxyCodeLine{451             \}}
+\DoxyCodeLine{452             \textcolor{comment}{/*  done reading and decoding the main image...}}
+\DoxyCodeLine{453 \textcolor{comment}{                stbi\_\_skip MIPmaps if present   */}}
+\DoxyCodeLine{454             \textcolor{keywordflow}{if}( has\_mipmap )}
+\DoxyCodeLine{455             \{}
+\DoxyCodeLine{456                 \textcolor{keywordtype}{int} block\_size = 16;}
+\DoxyCodeLine{457                 \textcolor{keywordflow}{if}( DXT\_family == 1 )}
+\DoxyCodeLine{458                 \{}
+\DoxyCodeLine{459                     block\_size = 8;}
+\DoxyCodeLine{460                 \}}
+\DoxyCodeLine{461                 \textcolor{keywordflow}{for}( i = 1; i < (int)header.\mbox{\hyperlink{struct_d_d_s__header_a82dc7ae0f612d81d2aa69c3b5f83dd2d}{dwMipMapCount}}; ++i )}
+\DoxyCodeLine{462                 \{}
+\DoxyCodeLine{463                     \textcolor{keywordtype}{int} mx = s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} >> (i + 2);}
+\DoxyCodeLine{464                     \textcolor{keywordtype}{int} my = s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} >> (i + 2);}
+\DoxyCodeLine{465                     \textcolor{keywordflow}{if}( mx < 1 )}
+\DoxyCodeLine{466                     \{}
+\DoxyCodeLine{467                         mx = 1;}
+\DoxyCodeLine{468                     \}}
+\DoxyCodeLine{469                     \textcolor{keywordflow}{if}( my < 1 )}
+\DoxyCodeLine{470                     \{}
+\DoxyCodeLine{471                         my = 1;}
+\DoxyCodeLine{472                     \}}
+\DoxyCodeLine{473                     stbi\_\_skip( s, mx*my*block\_size );}
+\DoxyCodeLine{474                 \}}
+\DoxyCodeLine{475             \}}
+\DoxyCodeLine{476         \}\textcolor{comment}{/* per cubemap face */}}
+\DoxyCodeLine{477     \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{478     \{}
+\DoxyCodeLine{479         \textcolor{comment}{/*  uncompressed    */}}
+\DoxyCodeLine{480         DXT\_family = 0;}
+\DoxyCodeLine{481         s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} = 3;}
+\DoxyCodeLine{482         \textcolor{keywordflow}{if}( has\_alpha )}
+\DoxyCodeLine{483         \{}
+\DoxyCodeLine{484             s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} = 4;}
+\DoxyCodeLine{485         \}}
+\DoxyCodeLine{486         *comp = s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}};}
+\DoxyCodeLine{487         sz = s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}}*s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}}*s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}}*cubemap\_faces;}
+\DoxyCodeLine{488         dds\_data = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)malloc( sz );}
+\DoxyCodeLine{489         \textcolor{comment}{/*  do this once for each face  */}}
+\DoxyCodeLine{490         \textcolor{keywordflow}{for}( cf = 0; cf < cubemap\_faces; ++ cf )}
+\DoxyCodeLine{491         \{}
+\DoxyCodeLine{492             \textcolor{comment}{/*  read the main image for this face   */}}
+\DoxyCodeLine{493             stbi\_\_getn( s, \&dds\_data[cf*s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}}*s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}}*s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}}], s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}}*s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}}*s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} );}
+\DoxyCodeLine{494             \textcolor{comment}{/*  done reading and decoding the main image...}}
+\DoxyCodeLine{495 \textcolor{comment}{                stbi\_\_skip MIPmaps if present   */}}
+\DoxyCodeLine{496             \textcolor{keywordflow}{if}( has\_mipmap )}
+\DoxyCodeLine{497             \{}
+\DoxyCodeLine{498                 \textcolor{keywordflow}{for}( i = 1; i < (int)header.\mbox{\hyperlink{struct_d_d_s__header_a82dc7ae0f612d81d2aa69c3b5f83dd2d}{dwMipMapCount}}; ++i )}
+\DoxyCodeLine{499                 \{}
+\DoxyCodeLine{500                     \textcolor{keywordtype}{int} mx = s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} >> i;}
+\DoxyCodeLine{501                     \textcolor{keywordtype}{int} my = s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} >> i;}
+\DoxyCodeLine{502                     \textcolor{keywordflow}{if}( mx < 1 )}
+\DoxyCodeLine{503                     \{}
+\DoxyCodeLine{504                         mx = 1;}
+\DoxyCodeLine{505                     \}}
+\DoxyCodeLine{506                     \textcolor{keywordflow}{if}( my < 1 )}
+\DoxyCodeLine{507                     \{}
+\DoxyCodeLine{508                         my = 1;}
+\DoxyCodeLine{509                     \}}
+\DoxyCodeLine{510                     stbi\_\_skip( s, mx*my*s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} );}
+\DoxyCodeLine{511                 \}}
+\DoxyCodeLine{512             \}}
+\DoxyCodeLine{513         \}}
+\DoxyCodeLine{514         \textcolor{comment}{/*  data was BGR, I need it RGB */}}
+\DoxyCodeLine{515         \textcolor{keywordflow}{for}( i = 0; i < sz; i += s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} )}
+\DoxyCodeLine{516         \{}
+\DoxyCodeLine{517             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} temp = dds\_data[i];}
+\DoxyCodeLine{518             dds\_data[i] = dds\_data[i+2];}
+\DoxyCodeLine{519             dds\_data[i+2] = temp;}
+\DoxyCodeLine{520         \}}
+\DoxyCodeLine{521     \}}
+\DoxyCodeLine{522     \textcolor{comment}{/*  finished decompressing into RGBA,}}
+\DoxyCodeLine{523 \textcolor{comment}{        adjust the y size if we have a cubemap}}
+\DoxyCodeLine{524 \textcolor{comment}{        note: sz is already up to date  */}}
+\DoxyCodeLine{525     s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} *= cubemap\_faces;}
+\DoxyCodeLine{526     *y = s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}};}
+\DoxyCodeLine{527     \textcolor{comment}{//  did the user want something else, or}}
+\DoxyCodeLine{528     \textcolor{comment}{//  see if all the alpha values are 255 (i.e. no transparency)}}
+\DoxyCodeLine{529     has\_alpha = 0;}
+\DoxyCodeLine{530     \textcolor{keywordflow}{if}( s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} == 4)}
+\DoxyCodeLine{531     \{}
+\DoxyCodeLine{532         \textcolor{keywordflow}{for}( i = 3; (i < sz) \&\& (has\_alpha == 0); i += 4 )}
+\DoxyCodeLine{533         \{}
+\DoxyCodeLine{534             has\_alpha |= (dds\_data[i] < 255);}
+\DoxyCodeLine{535         \}}
+\DoxyCodeLine{536     \}}
+\DoxyCodeLine{537     \textcolor{keywordflow}{if}( (req\_comp <= 4) \&\& (req\_comp >= 1) )}
+\DoxyCodeLine{538     \{}
+\DoxyCodeLine{539         \textcolor{comment}{//  user has some requirements, meet them}}
+\DoxyCodeLine{540         \textcolor{keywordflow}{if}( req\_comp != s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} )}
+\DoxyCodeLine{541         \{}
+\DoxyCodeLine{542             dds\_data = stbi\_\_convert\_format( dds\_data, s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}}, req\_comp, s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}}, s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} );}
+\DoxyCodeLine{543             *comp = req\_comp;}
+\DoxyCodeLine{544         \}}
+\DoxyCodeLine{545     \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{546     \{}
+\DoxyCodeLine{547         \textcolor{comment}{//  user had no requirements, only drop to RGB is no alpha}}
+\DoxyCodeLine{548         \textcolor{keywordflow}{if}( (has\_alpha == 0) \&\& (s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} == 4) )}
+\DoxyCodeLine{549         \{}
+\DoxyCodeLine{550             dds\_data = stbi\_\_convert\_format( dds\_data, 4, 3, s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}}, s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} );}
+\DoxyCodeLine{551             *comp = 3;}
+\DoxyCodeLine{552         \}}
+\DoxyCodeLine{553     \}}
+\DoxyCodeLine{554     \textcolor{comment}{//  OK, done}}
+\DoxyCodeLine{555     \textcolor{keywordflow}{return} dds\_data;}
+\DoxyCodeLine{556 \}}
+\DoxyCodeLine{557 }
+\DoxyCodeLine{558 \textcolor{preprocessor}{\#ifndef STBI\_NO\_STDIO}}
+\DoxyCodeLine{559 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi___d_d_s__c_8h_a9c53143f7dc0214a381b15bb9c01dab9}{stbi\_\_dds\_load\_from\_file}}   (FILE *f,                  \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{560 \{}
+\DoxyCodeLine{561     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{562     stbi\_\_start\_file(\&s,f);}
+\DoxyCodeLine{563     \textcolor{keywordflow}{return} stbi\_\_dds\_load(\&s,x,y,comp,req\_comp);}
+\DoxyCodeLine{564 \}}
+\DoxyCodeLine{565 }
+\DoxyCodeLine{566 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi___d_d_s__c_8h_a75fe209187dd18e077ab5f3b875f99ad}{stbi\_\_dds\_load\_from\_path}}             (\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,           \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{567 \{}
+\DoxyCodeLine{568    \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *data;}
+\DoxyCodeLine{569    FILE *f = fopen(filename, \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{570    \textcolor{keywordflow}{if} (!f) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{571    data = \mbox{\hyperlink{stbi___d_d_s__c_8h_a9c53143f7dc0214a381b15bb9c01dab9}{stbi\_\_dds\_load\_from\_file}}(f,x,y,comp,req\_comp);}
+\DoxyCodeLine{572    fclose(f);}
+\DoxyCodeLine{573    \textcolor{keywordflow}{return} data;}
+\DoxyCodeLine{574 \}}
+\DoxyCodeLine{575 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{576 }
+\DoxyCodeLine{577 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi___d_d_s__c_8h_ad4693fb0c8930eb32f81ae4a55d582d3}{stbi\_\_dds\_load\_from\_memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} \textcolor{keyword}{const} *buffer, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{578 \{}
+\DoxyCodeLine{579     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{580    stbi\_\_start\_mem(\&s,buffer, len);}
+\DoxyCodeLine{581    \textcolor{keywordflow}{return} stbi\_\_dds\_load(\&s,x,y,comp,req\_comp);}
+\DoxyCodeLine{582 \}}
+\DoxyCodeLine{583 }
+\DoxyCodeLine{584 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi___d_d_s__c_8h_a58d015f1be1129e7007d5b14ffe58064}{stbi\_\_dds\_load\_from\_callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} \textcolor{keyword}{const} *clbk, \textcolor{keywordtype}{void} *user, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{585 \{}
+\DoxyCodeLine{586     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{587    stbi\_\_start\_callbacks(\&s, (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} *) clbk, user);}
+\DoxyCodeLine{588    \textcolor{keywordflow}{return} stbi\_\_dds\_load(\&s,x,y,comp,req\_comp);}
+\DoxyCodeLine{589 \}}
+
+\end{DoxyCode}

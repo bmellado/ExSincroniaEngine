@@ -1,8 +1,27 @@
 var searchData=
 [
-  ['identity_0',['identity',['../namespace_grafica_1_1_transformations.html#aba8ff645d8bdeca25ac6dc4f635ddf7d',1,'Grafica::Transformations']]],
-  ['index_1',['Index',['../namespace_grafica.html#acd5f0e199e50cd26e433a8d881e20919',1,'Grafica']]],
-  ['indices_2',['indices',['../struct_grafica_1_1_shape.html#afca089aa58103ea691ca156f25fa2087',1,'Grafica::Shape']]],
-  ['indices_3',['Indices',['../namespace_grafica.html#a2207f4a2b46d52e03d2621bb18b96a22',1,'Grafica']]],
-  ['initbuffers_4',['initBuffers',['../struct_grafica_1_1_g_p_u_shape.html#a80eb7a03d6c1cbea8dcdc291fe776a6b',1,'Grafica::GPUShape']]]
+  ['gameobject_2ehpp_0',['GameObject.hpp',['../_game_object_8hpp.html',1,'']]],
+  ['gameobjectmanager_2ecpp_1',['GameObjectManager.cpp',['../_game_object_manager_8cpp.html',1,'']]],
+  ['gameobjectmanager_2ehpp_2',['GameObjectManager.hpp',['../_game_object_manager_8hpp.html',1,'']]],
+  ['gamewindow_3',['GameWindow',['../class_sincronia_1_1_game_window.html',1,'Sincronia']]],
+  ['gamewindow_2ecpp_4',['GameWindow.cpp',['../_game_window_8cpp.html',1,'']]],
+  ['gamewindow_2ehpp_5',['GameWindow.hpp',['../_game_window_8hpp.html',1,'']]],
+  ['getcomponentindex_6',['getComponentIndex',['../namespace_sincronia.html#adbe9eb54326b35fb45a69cfbb5b79036',1,'Sincronia']]],
+  ['getcomponenttypecount_7',['getComponentTypeCount',['../namespace_sincronia.html#a9b4c8d472cb99ec5bc648ca6ee382fd7',1,'Sincronia']]],
+  ['getfps_8',['getFPS',['../class_grafica_1_1_performance_monitor.html#a3d253dbbb111eb406dbdaa337f0385b0',1,'Grafica::PerformanceMonitor']]],
+  ['getfront_9',['GetFront',['../class_camera.html#ae1416b8d57afd6e6b557b62db6828d29',1,'Camera']]],
+  ['getms_10',['getMS',['../class_grafica_1_1_performance_monitor.html#af32e6f981d88e6909855aada1ad9b217',1,'Grafica::PerformanceMonitor']]],
+  ['getposition_11',['GetPosition',['../class_camera.html#a7166b8466c94d0b5c127fc74c7881beb',1,'Camera']]],
+  ['getviewmatrix_12',['GetViewMatrix',['../class_camera.html#affa333055635aed96518c4c66be9a70c',1,'Camera']]],
+  ['getzoom_13',['GetZoom',['../class_camera.html#a3f4dc60e5efbd49c84e174dcaec72a68',1,'Camera']]],
+  ['gl_5fbgra_14',['GL_BGRA',['../_s_o_i_l2_8c.html#a56707576fd3e2da55343c25da155294d',1,'SOIL2.c']]],
+  ['gl_5frg_15',['GL_RG',['../_s_o_i_l2_8c.html#a803fc7170509942b49a9de277c9445a4',1,'SOIL2.c']]],
+  ['gpu_5fshape_2ecpp_16',['gpu_shape.cpp',['../gpu__shape_8cpp.html',1,'']]],
+  ['gpu_5fshape_2eh_17',['gpu_shape.h',['../gpu__shape_8h.html',1,'']]],
+  ['gpushape_18',['GPUShape',['../struct_grafica_1_1_g_p_u_shape.html',1,'Grafica']]],
+  ['gpushapemaybe_19',['gpuShapeMaybe',['../class_grafica_1_1_scene_graph_node.html#a6b932c5f5f41fcb3547ac09136a3b446',1,'Grafica::SceneGraphNode']]],
+  ['gpushapeptr_20',['GPUShapePtr',['../namespace_grafica.html#a223d0e13fd19168c288ac988fe6d88ff',1,'Grafica']]],
+  ['grafica_21',['Grafica',['../namespace_grafica.html',1,'']]],
+  ['grafica_2eh_22',['grafica.h',['../grafica_8h.html',1,'']]],
+  ['transformations_23',['Transformations',['../namespace_grafica_1_1_transformations.html',1,'Grafica']]]
 ];

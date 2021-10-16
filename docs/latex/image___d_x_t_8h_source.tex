@@ -1,0 +1,117 @@
+\hypertarget{image___d_x_t_8h_source}{}\doxysection{image\+\_\+\+DXT.\+h}
+\label{image___d_x_t_8h_source}\index{source/Rendering/SOIL2/image\_DXT.h@{source/Rendering/SOIL2/image\_DXT.h}}
+\mbox{\hyperlink{image___d_x_t_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Jonathan Dummer}}
+\DoxyCodeLine{3 \textcolor{comment}{    2007-\/07-\/31-\/10.32}}
+\DoxyCodeLine{4 \textcolor{comment}{}}
+\DoxyCodeLine{5 \textcolor{comment}{    simple DXT compression / decompression code}}
+\DoxyCodeLine{6 \textcolor{comment}{}}
+\DoxyCodeLine{7 \textcolor{comment}{    public domain}}
+\DoxyCodeLine{8 \textcolor{comment}{*/}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifndef HEADER\_IMAGE\_DXT}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define HEADER\_IMAGE\_DXT}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{18 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{19 \mbox{\hyperlink{image___d_x_t_8h_af02dc8b928fbb3014cab9643bb7c3c79}{save\_image\_as\_DDS}}}
+\DoxyCodeLine{20 (}
+\DoxyCodeLine{21     \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{23     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} data}
+\DoxyCodeLine{24 );}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{29 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*}
+\DoxyCodeLine{30 \mbox{\hyperlink{image___d_x_t_8h_a32051d16a6712f2ea662b1ea7de153f2}{convert\_image\_to\_DXT1}}}
+\DoxyCodeLine{31 (}
+\DoxyCodeLine{32     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} uncompressed,}
+\DoxyCodeLine{33     \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{34     \textcolor{keywordtype}{int} *out\_size}
+\DoxyCodeLine{35 );}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{40 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*}
+\DoxyCodeLine{41 \mbox{\hyperlink{image___d_x_t_8h_a2cfd6ff9d22040acf190e13f1d63ffba}{convert\_image\_to\_DXT5}}}
+\DoxyCodeLine{42 (}
+\DoxyCodeLine{43     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} uncompressed,}
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{45     \textcolor{keywordtype}{int} *out\_size}
+\DoxyCodeLine{46 );}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{49 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{50 \{}
+\DoxyCodeLine{51     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_ae92b8a57c39f167862e6fc963bbe3a22}{dwMagic}};}
+\DoxyCodeLine{52     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a0547c8dec53be12586207d350a66ee67}{dwSize}};}
+\DoxyCodeLine{53     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a7703db822d8a22fa9a1f806e9ec2d6d9}{dwFlags}};}
+\DoxyCodeLine{54     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a70fb20dd52718b1334b3a9c9ca70145f}{dwHeight}};}
+\DoxyCodeLine{55     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a91d4282a7b838a8f691a7504e56223f0}{dwWidth}};}
+\DoxyCodeLine{56     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a679fd9c7706adab8eb5b9470616a90a9}{dwPitchOrLinearSize}};}
+\DoxyCodeLine{57     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_ab458ba3768aa3aed2899e947946131c6}{dwDepth}};}
+\DoxyCodeLine{58     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a82dc7ae0f612d81d2aa69c3b5f83dd2d}{dwMipMapCount}};}
+\DoxyCodeLine{59     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    dwReserved1[ 11 ];}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{comment}{/*  DDPIXELFORMAT   */}}
+\DoxyCodeLine{62     \textcolor{keyword}{struct}}
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    dwSize;}
+\DoxyCodeLine{65         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    dwFlags;}
+\DoxyCodeLine{66         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_ad5b5fc72da6e7d1dbd21d44a631c593e}{dwFourCC}};}
+\DoxyCodeLine{67         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_aa7182f3d477b4146a6ea2bd380e12343}{dwRGBBitCount}};}
+\DoxyCodeLine{68         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a2d3f4395bd9a1382ca00df827ff96c3f}{dwRBitMask}};}
+\DoxyCodeLine{69         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a29a5c7b1ae2bac94b919986c6b1887dd}{dwGBitMask}};}
+\DoxyCodeLine{70         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a960622af444650695e6714fca3b9dd91}{dwBBitMask}};}
+\DoxyCodeLine{71         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a8b76af28a7317ab7b55ba48b864a026f}{dwAlphaBitMask}};}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73     \mbox{\hyperlink{struct_d_d_s__header_ac68cf6a16ed0cc134a5f970a545e2325}{sPixelFormat}};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{comment}{/*  DDCAPS2 */}}
+\DoxyCodeLine{76     \textcolor{keyword}{struct}}
+\DoxyCodeLine{77     \{}
+\DoxyCodeLine{78         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a449d945474e5ab417a18cdad14196b5c}{dwCaps1}};}
+\DoxyCodeLine{79         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_aaf64690ad918cab3b8f2c8879dd0548d}{dwCaps2}};}
+\DoxyCodeLine{80         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a7b7893820bcf53bb7aeabcd7bcab50ec}{dwDDSX}};}
+\DoxyCodeLine{81         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a593578f0051baf5b4fc9308c0c29b093}{dwReserved}};}
+\DoxyCodeLine{82     \}}
+\DoxyCodeLine{83     \mbox{\hyperlink{struct_d_d_s__header_a1d6949a789ae7c5556f6186222ac0c79}{sCaps}};}
+\DoxyCodeLine{84     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}    \mbox{\hyperlink{struct_d_d_s__header_a6e5dccfc3d1826f8415458b99725fe42}{dwReserved2}};}
+\DoxyCodeLine{85 \}}
+\DoxyCodeLine{86 \mbox{\hyperlink{struct_d_d_s__header}{DDS\_header}} ;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{comment}{/*  the following constants were copied directly off the MSDN website   */}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 \textcolor{comment}{/*  The dwFlags member of the original DDSURFACEDESC2 structure}}
+\DoxyCodeLine{91 \textcolor{comment}{    can be set to one or more of the following values.  */}}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define DDSD\_CAPS   0x00000001}}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define DDSD\_HEIGHT 0x00000002}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#define DDSD\_WIDTH  0x00000004}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define DDSD\_PITCH  0x00000008}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define DDSD\_PIXELFORMAT    0x00001000}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define DDSD\_MIPMAPCOUNT    0x00020000}}
+\DoxyCodeLine{98 \textcolor{preprocessor}{\#define DDSD\_LINEARSIZE 0x00080000}}
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define DDSD\_DEPTH  0x00800000}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{comment}{/*  DirectDraw Pixel Format */}}
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define DDPF\_ALPHAPIXELS    0x00000001}}
+\DoxyCodeLine{103 \textcolor{preprocessor}{\#define DDPF\_FOURCC 0x00000004}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define DDPF\_RGB    0x00000040}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{comment}{/*  The dwCaps1 member of the DDSCAPS2 structure can be}}
+\DoxyCodeLine{107 \textcolor{comment}{    set to one or more of the following values. */}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define DDSCAPS\_COMPLEX 0x00000008}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define DDSCAPS\_TEXTURE 0x00001000}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#define DDSCAPS\_MIPMAP  0x00400000}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{comment}{/*  The dwCaps2 member of the DDSCAPS2 structure can be}}
+\DoxyCodeLine{113 \textcolor{comment}{    set to one or more of the following values.     */}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define DDSCAPS2\_CUBEMAP    0x00000200}}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#define DDSCAPS2\_CUBEMAP\_POSITIVEX  0x00000400}}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#define DDSCAPS2\_CUBEMAP\_NEGATIVEX  0x00000800}}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#define DDSCAPS2\_CUBEMAP\_POSITIVEY  0x00001000}}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#define DDSCAPS2\_CUBEMAP\_NEGATIVEY  0x00002000}}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#define DDSCAPS2\_CUBEMAP\_POSITIVEZ  0x00004000}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#define DDSCAPS2\_CUBEMAP\_NEGATIVEZ  0x00008000}}
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#define DDSCAPS2\_VOLUME 0x00200000}}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* HEADER\_IMAGE\_DXT  */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

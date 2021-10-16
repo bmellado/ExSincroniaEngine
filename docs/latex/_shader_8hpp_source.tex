@@ -1,0 +1,106 @@
+\hypertarget{_shader_8hpp_source}{}\doxysection{Shader.\+hpp}
+\label{_shader_8hpp_source}\index{source/Rendering/Shader.hpp@{source/Rendering/Shader.hpp}}
+\mbox{\hyperlink{_shader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef SHADER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define SHADER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{//\#include <GL/glew.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_shader}{Shader}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     GLuint \mbox{\hyperlink{class_shader_a51b23253846bc84dcc2ef06612679012}{Program}};}
+\DoxyCodeLine{17     \textcolor{comment}{// Constructor generates the shader on the fly}}
+\DoxyCodeLine{18     \mbox{\hyperlink{class_shader_a03421a8419cdad4b84cf58ecdb156879}{Shader}}(\textcolor{keyword}{const} GLchar* vertexPath, \textcolor{keyword}{const} GLchar* fragmentPath)}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         \textcolor{comment}{// 1. Retrieve the vertex/fragment source code from filePath}}
+\DoxyCodeLine{21         std::string vertexCode;}
+\DoxyCodeLine{22         std::string fragmentCode;}
+\DoxyCodeLine{23         std::ifstream vShaderFile;}
+\DoxyCodeLine{24         std::ifstream fShaderFile;}
+\DoxyCodeLine{25         \textcolor{comment}{// ensures ifstream objects can throw exceptions:}}
+\DoxyCodeLine{26         vShaderFile.exceptions(std::ifstream::badbit);}
+\DoxyCodeLine{27         fShaderFile.exceptions(std::ifstream::badbit);}
+\DoxyCodeLine{28         \textcolor{keywordflow}{try}}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             \textcolor{comment}{// Open files}}
+\DoxyCodeLine{31             vShaderFile.open(vertexPath);}
+\DoxyCodeLine{32             fShaderFile.open(fragmentPath);}
+\DoxyCodeLine{33             std::stringstream vShaderStream, fShaderStream;}
+\DoxyCodeLine{34             \textcolor{comment}{// Read file's buffer contents into streams}}
+\DoxyCodeLine{35             vShaderStream << vShaderFile.rdbuf();}
+\DoxyCodeLine{36             fShaderStream << fShaderFile.rdbuf();}
+\DoxyCodeLine{37             \textcolor{comment}{// close file handlers}}
+\DoxyCodeLine{38             vShaderFile.close();}
+\DoxyCodeLine{39             fShaderFile.close();}
+\DoxyCodeLine{40             \textcolor{comment}{// Convert stream into string}}
+\DoxyCodeLine{41             vertexCode = vShaderStream.str();}
+\DoxyCodeLine{42             fragmentCode = fShaderStream.str();}
+\DoxyCodeLine{43         \}}
+\DoxyCodeLine{44         \textcolor{keywordflow}{catch} (std::ifstream::failure e)}
+\DoxyCodeLine{45         \{}
+\DoxyCodeLine{46             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::FILE\_NOT\_SUCCESFULLY\_READ"{}} << std::endl;}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48         \textcolor{keyword}{const} GLchar* vShaderCode = vertexCode.c\_str();}
+\DoxyCodeLine{49         \textcolor{keyword}{const} GLchar* fShaderCode = fragmentCode.c\_str();}
+\DoxyCodeLine{50         \textcolor{comment}{// 2. Compile shaders}}
+\DoxyCodeLine{51         GLuint vertex, fragment;}
+\DoxyCodeLine{52         GLint success;}
+\DoxyCodeLine{53         GLchar infoLog[512];}
+\DoxyCodeLine{54         \textcolor{comment}{// Vertex Shader}}
+\DoxyCodeLine{55         vertex = glCreateShader(GL\_VERTEX\_SHADER);}
+\DoxyCodeLine{56         glShaderSource(vertex, 1, \&vShaderCode, NULL);}
+\DoxyCodeLine{57         glCompileShader(vertex);}
+\DoxyCodeLine{58         \textcolor{comment}{// Print compile errors if any}}
+\DoxyCodeLine{59         glGetShaderiv(vertex, GL\_COMPILE\_STATUS, \&success);}
+\DoxyCodeLine{60         \textcolor{keywordflow}{if} (!success)}
+\DoxyCodeLine{61         \{}
+\DoxyCodeLine{62             glGetShaderInfoLog(vertex, 512, NULL, infoLog);}
+\DoxyCodeLine{63             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::VERTEX::COMPILATION\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{64         \}}
+\DoxyCodeLine{65         \textcolor{comment}{// Fragment Shader}}
+\DoxyCodeLine{66         fragment = glCreateShader(GL\_FRAGMENT\_SHADER);}
+\DoxyCodeLine{67         glShaderSource(fragment, 1, \&fShaderCode, NULL);}
+\DoxyCodeLine{68         glCompileShader(fragment);}
+\DoxyCodeLine{69         \textcolor{comment}{// Print compile errors if any}}
+\DoxyCodeLine{70         glGetShaderiv(fragment, GL\_COMPILE\_STATUS, \&success);}
+\DoxyCodeLine{71         \textcolor{keywordflow}{if} (!success)}
+\DoxyCodeLine{72         \{}
+\DoxyCodeLine{73             glGetShaderInfoLog(fragment, 512, NULL, infoLog);}
+\DoxyCodeLine{74             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::FRAGMENT::COMPILATION\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76         \textcolor{comment}{// Shader Program}}
+\DoxyCodeLine{77         this-\/>Program = glCreateProgram();}
+\DoxyCodeLine{78         glAttachShader(this-\/>Program, vertex);}
+\DoxyCodeLine{79         glAttachShader(this-\/>Program, fragment);}
+\DoxyCodeLine{80         glLinkProgram(this-\/>Program);}
+\DoxyCodeLine{81         \textcolor{comment}{// Print linking errors if any}}
+\DoxyCodeLine{82         glGetProgramiv(this-\/>Program, GL\_LINK\_STATUS, \&success);}
+\DoxyCodeLine{83         \textcolor{keywordflow}{if} (!success)}
+\DoxyCodeLine{84         \{}
+\DoxyCodeLine{85             glGetProgramInfoLog(this-\/>Program, 512, NULL, infoLog);}
+\DoxyCodeLine{86             std::cout << \textcolor{stringliteral}{"{}ERROR::SHADER::PROGRAM::LINKING\_FAILED\(\backslash\)n"{}} << infoLog << std::endl;}
+\DoxyCodeLine{87         \}}
+\DoxyCodeLine{88         \textcolor{comment}{// Delete the shaders as they're linked into our program now and no longer necessery}}
+\DoxyCodeLine{89         glDeleteShader(vertex);}
+\DoxyCodeLine{90         glDeleteShader(fragment);}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \}}
+\DoxyCodeLine{93     \textcolor{comment}{// Uses the current shader}}
+\DoxyCodeLine{94     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shader_a6b11327cff651ffdb22988b6917b1650}{Use}}()}
+\DoxyCodeLine{95     \{}
+\DoxyCodeLine{96         glUseProgram(this-\/>Program);}
+\DoxyCodeLine{97     \}}
+\DoxyCodeLine{98 \};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

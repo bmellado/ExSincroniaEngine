@@ -1,0 +1,80 @@
+\hypertarget{stbi__ext__c_8h_source}{}\doxysection{stbi\+\_\+ext\+\_\+c.\+h}
+\label{stbi__ext__c_8h_source}\index{source/Rendering/SOIL2/stbi\_ext\_c.h@{source/Rendering/SOIL2/stbi\_ext\_c.h}}
+\mbox{\hyperlink{stbi__ext__c_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{keyword}{static} \textcolor{keywordtype}{int} stbi\_test\_main(\mbox{\hyperlink{structstbi____context}{stbi\_\_context}} *s)}
+\DoxyCodeLine{3 \{}
+\DoxyCodeLine{4 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_JPEG}}
+\DoxyCodeLine{5    \textcolor{keywordflow}{if} (stbi\_\_jpeg\_test(s)) \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8a6065678dc1ced9dd32177f213742eb2a}{STBI\_jpeg}};}
+\DoxyCodeLine{6 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_PNG}}
+\DoxyCodeLine{8    \textcolor{keywordflow}{if} (stbi\_\_png\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8a239ac0053c034fdffc6cbdfdea2c7008}{STBI\_png}};}
+\DoxyCodeLine{9 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_BMP}}
+\DoxyCodeLine{11    \textcolor{keywordflow}{if} (stbi\_\_bmp\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8af692fe87f687dea6f11c92d32a108d39}{STBI\_bmp}};}
+\DoxyCodeLine{12 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_GIF}}
+\DoxyCodeLine{14    \textcolor{keywordflow}{if} (stbi\_\_gif\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8a1756499c010308d2515a666a6fb1d11d}{STBI\_gif}};}
+\DoxyCodeLine{15 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_PSD}}
+\DoxyCodeLine{17    \textcolor{keywordflow}{if} (stbi\_\_psd\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8ae5df5f7e693124b1b1f2567a9285be32}{STBI\_psd}};}
+\DoxyCodeLine{18 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_PIC}}
+\DoxyCodeLine{20    \textcolor{keywordflow}{if} (stbi\_\_pic\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8afd58058d13cf62d99987499c7ee0d631}{STBI\_pic}};}
+\DoxyCodeLine{21 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_PNM}}
+\DoxyCodeLine{23    \textcolor{keywordflow}{if} (stbi\_\_pnm\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8a3353d2680db8c4d39c6817538cab3937}{STBI\_pnm}};}
+\DoxyCodeLine{24 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_DDS}}
+\DoxyCodeLine{26    \textcolor{keywordflow}{if} (stbi\_\_dds\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8ad546b1cf52156048664e4df3de7654ce}{STBI\_dds}};}
+\DoxyCodeLine{27 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_PVR}}
+\DoxyCodeLine{29    \textcolor{keywordflow}{if} (stbi\_\_pvr\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8acaa8d647d54b9463d6f157abf3bcab81}{STBI\_pvr}};}
+\DoxyCodeLine{30 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_PKM}}
+\DoxyCodeLine{32    \textcolor{keywordflow}{if} (stbi\_\_pkm\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8ab85e0a0dbc1789aa574df7f602ef18de}{STBI\_pkm}};}
+\DoxyCodeLine{33 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_HDR}}
+\DoxyCodeLine{35    \textcolor{keywordflow}{if} (stbi\_\_hdr\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8a789e4bc5ad60e37b5e7c676baae00f22}{STBI\_hdr}};}
+\DoxyCodeLine{36 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{   \#ifndef STBI\_NO\_TGA}}
+\DoxyCodeLine{38    \textcolor{keywordflow}{if} (stbi\_\_tga\_test(s))  \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8ac6f38aef03703093fb26fb3866a490f0}{STBI\_tga}};}
+\DoxyCodeLine{39 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{40    \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8aa416525789a09c7e9181d59952746689}{STBI\_unknown}};}
+\DoxyCodeLine{41 \}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#ifndef STBI\_NO\_STDIO}}
+\DoxyCodeLine{44 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__ext__c_8h_ad084f620af0a96e32994177435a24236}{stbi\_test\_from\_file}}(FILE *f)}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{47    stbi\_\_start\_file(\&s,f);}
+\DoxyCodeLine{48    \textcolor{keywordflow}{return} stbi\_test\_main(\&s);}
+\DoxyCodeLine{49 \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__ext__c_8h_a09a037854175e05e693c9db0e41206c7}{stbi\_test}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const} *filename)}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53    FILE *f = fopen(filename, \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{54    \textcolor{keywordtype}{int} result;}
+\DoxyCodeLine{55    \textcolor{keywordflow}{if} (!f) \textcolor{keywordflow}{return} \mbox{\hyperlink{stbi__ext_8h_ac36f475ca5b446f4fde4c9b90bec77c8aa416525789a09c7e9181d59952746689}{STBI\_unknown}};}
+\DoxyCodeLine{56    result = \mbox{\hyperlink{stbi__ext__c_8h_ad084f620af0a96e32994177435a24236}{stbi\_test\_from\_file}}(f);}
+\DoxyCodeLine{57    fclose(f);}
+\DoxyCodeLine{58    \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#endif }}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__ext__c_8h_aa06e3a4c2e0903461cd1ef8a0aad95a4}{stbi\_test\_from\_memory}}(\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} \textcolor{keyword}{const} *buffer, \textcolor{keywordtype}{int} len)}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{65    stbi\_\_start\_mem(\&s,buffer,len);}
+\DoxyCodeLine{66    \textcolor{keywordflow}{return} stbi\_test\_main(\&s);}
+\DoxyCodeLine{67 \}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__ext__c_8h_a0d264b199ebff6fd5dd484e8fe30dee2}{stbi\_test\_from\_callbacks}}(\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} \textcolor{keyword}{const} *clbk, \textcolor{keywordtype}{void} *user)}
+\DoxyCodeLine{70 \{}
+\DoxyCodeLine{71    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{72    stbi\_\_start\_callbacks(\&s, (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} *) clbk, user);}
+\DoxyCodeLine{73    \textcolor{keywordflow}{return} stbi\_test\_main(\&s);}
+\DoxyCodeLine{74 \}}
+
+\end{DoxyCode}

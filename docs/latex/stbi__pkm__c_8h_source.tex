@@ -1,0 +1,233 @@
+\hypertarget{stbi__pkm__c_8h_source}{}\doxysection{stbi\+\_\+pkm\+\_\+c.\+h}
+\label{stbi__pkm__c_8h_source}\index{source/Rendering/SOIL2/stbi\_pkm\_c.h@{source/Rendering/SOIL2/stbi\_pkm\_c.h}}
+\mbox{\hyperlink{stbi__pkm__c_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{pkm__helper_8h}{pkm\_helper.h}}"{}}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{etc1__utils_8h}{etc1\_utils.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{static} \textcolor{keywordtype}{int} stbi\_\_pkm\_test(\mbox{\hyperlink{structstbi____context}{stbi\_\_context}} *s)}
+\DoxyCodeLine{5 \{}
+\DoxyCodeLine{6     \textcolor{comment}{//  check the magic number}}
+\DoxyCodeLine{7     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'P'}) \{}
+\DoxyCodeLine{8         stbi\_\_rewind(s);}
+\DoxyCodeLine{9         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{10     \}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'K'}) \{}
+\DoxyCodeLine{13         stbi\_\_rewind(s);}
+\DoxyCodeLine{14         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{15     \}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'M'}) \{}
+\DoxyCodeLine{18         stbi\_\_rewind(s);}
+\DoxyCodeLine{19         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{20     \}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{' '}) \{}
+\DoxyCodeLine{23         stbi\_\_rewind(s);}
+\DoxyCodeLine{24         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'1'}) \{}
+\DoxyCodeLine{28         stbi\_\_rewind(s);}
+\DoxyCodeLine{29         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{30     \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keywordflow}{if} (stbi\_\_get8(s) != \textcolor{charliteral}{'0'}) \{}
+\DoxyCodeLine{33         stbi\_\_rewind(s);}
+\DoxyCodeLine{34         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     stbi\_\_rewind(s);}
+\DoxyCodeLine{38     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{39 \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#ifndef STBI\_NO\_STDIO}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi__pkm__c_8h_a5268fa4f5bf944029eee646218299fc0}{stbi\_\_pkm\_test\_filename}}             (\textcolor{keywordtype}{char} \textcolor{keyword}{const} *filename)}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45    \textcolor{keywordtype}{int} r;}
+\DoxyCodeLine{46    FILE *f = fopen(filename, \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{47    \textcolor{keywordflow}{if} (!f) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{48    r = \mbox{\hyperlink{stbi__pkm__c_8h_a97b1faf6729a353b93b269009b8e257f}{stbi\_\_pkm\_test\_file}}(f);}
+\DoxyCodeLine{49    fclose(f);}
+\DoxyCodeLine{50    \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{51 \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi__pkm__c_8h_a97b1faf6729a353b93b269009b8e257f}{stbi\_\_pkm\_test\_file}}        (FILE *f)}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{56    \textcolor{keywordtype}{int} r,n = ftell(f);}
+\DoxyCodeLine{57    stbi\_\_start\_file(\&s,f);}
+\DoxyCodeLine{58    r = stbi\_\_pkm\_test(\&s);}
+\DoxyCodeLine{59    fseek(f,n,SEEK\_SET);}
+\DoxyCodeLine{60    \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{61 \}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi__pkm__c_8h_a445cbbdbf774e319368c7e6220145925}{stbi\_\_pkm\_test\_memory}}      (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} \textcolor{keyword}{const} *buffer, \textcolor{keywordtype}{int} len)}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{67    stbi\_\_start\_mem(\&s,buffer, len);}
+\DoxyCodeLine{68    \textcolor{keywordflow}{return} stbi\_\_pkm\_test(\&s);}
+\DoxyCodeLine{69 \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{keywordtype}{int}      \mbox{\hyperlink{stbi__pkm__c_8h_ab88d87c4ff33248d93972a67f31a75f8}{stbi\_\_pkm\_test\_callbacks}}      (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} \textcolor{keyword}{const} *clbk, \textcolor{keywordtype}{void} *user)}
+\DoxyCodeLine{72 \{}
+\DoxyCodeLine{73    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{74    stbi\_\_start\_callbacks(\&s, (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} *) clbk, user);}
+\DoxyCodeLine{75    \textcolor{keywordflow}{return} stbi\_\_pkm\_test(\&s);}
+\DoxyCodeLine{76 \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78 \textcolor{keyword}{static} \textcolor{keywordtype}{int} stbi\_\_pkm\_info(\mbox{\hyperlink{structstbi____context}{stbi\_\_context}} *s, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp )}
+\DoxyCodeLine{79 \{}
+\DoxyCodeLine{80     \mbox{\hyperlink{struct_p_k_m_header}{PKMHeader}} header;}
+\DoxyCodeLine{81     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width, height;}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     stbi\_\_getn( s, (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}}*)(\&header), \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_p_k_m_header}{PKMHeader}}) );}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordflow}{if} ( 0 != strcmp( header.\mbox{\hyperlink{struct_p_k_m_header_aa63dcfbb2d2c971131f85533d37f5fa6}{aName}}, \textcolor{stringliteral}{"{}PKM 10"{}} ) ) \{}
+\DoxyCodeLine{86         stbi\_\_rewind(s);}
+\DoxyCodeLine{87         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     width = (header.\mbox{\hyperlink{struct_p_k_m_header_a83a297a42042a6ad3c9ceafd826db765}{iWidthMSB}} << 8) | header.\mbox{\hyperlink{struct_p_k_m_header_a4353a7e54b3984d05f1104ce04da1ec9}{iWidthLSB}};}
+\DoxyCodeLine{91     height = (header.\mbox{\hyperlink{struct_p_k_m_header_a2e0e8365f007fece8ecedf06191f94be}{iHeightMSB}} << 8) | header.\mbox{\hyperlink{struct_p_k_m_header_ab380751b9568b253084bf445a2ad7e07}{iHeightLSB}};}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     *x = s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} = width;}
+\DoxyCodeLine{94     *y = s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} = height;}
+\DoxyCodeLine{95     *comp = s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} = 3;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     stbi\_\_rewind(s);}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{100 \}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__pkm__c_8h_a902bb02fc6941ece883624aeef903b3d}{stbi\_\_pkm\_info\_from\_memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} \textcolor{keyword}{const} *buffer, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp )}
+\DoxyCodeLine{103 \{}
+\DoxyCodeLine{104     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{105     stbi\_\_start\_mem(\&s,buffer, len);}
+\DoxyCodeLine{106     \textcolor{keywordflow}{return} stbi\_\_pkm\_info( \&s, x, y, comp );}
+\DoxyCodeLine{107 \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__pkm__c_8h_a952dbecfa4e3acd7c0c864a167782dff}{stbi\_\_pkm\_info\_from\_callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} \textcolor{keyword}{const} *clbk, \textcolor{keywordtype}{void} *user, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp)}
+\DoxyCodeLine{110 \{}
+\DoxyCodeLine{111     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{112     stbi\_\_start\_callbacks(\&s, (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} *) clbk, user);}
+\DoxyCodeLine{113     \textcolor{keywordflow}{return} stbi\_\_pkm\_info( \&s, x, y, comp );}
+\DoxyCodeLine{114 \}}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#ifndef STBI\_NO\_STDIO}}
+\DoxyCodeLine{117 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__pkm__c_8h_a46f295ba7a893310d252b3dbbf460817}{stbi\_\_pkm\_info\_from\_path}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const} *filename,     \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp)}
+\DoxyCodeLine{118 \{}
+\DoxyCodeLine{119    \textcolor{keywordtype}{int} res;}
+\DoxyCodeLine{120    FILE *f = fopen(filename, \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{121    \textcolor{keywordflow}{if} (!f) \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{122    res = \mbox{\hyperlink{stbi__pkm__c_8h_a22df5c0d6464e77abf1176aabb396213}{stbi\_\_pkm\_info\_from\_file}}( f, x, y, comp );}
+\DoxyCodeLine{123    fclose(f);}
+\DoxyCodeLine{124    \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{125 \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127 \textcolor{keywordtype}{int} \mbox{\hyperlink{stbi__pkm__c_8h_a22df5c0d6464e77abf1176aabb396213}{stbi\_\_pkm\_info\_from\_file}}(FILE *f,                  \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp)}
+\DoxyCodeLine{128 \{}
+\DoxyCodeLine{129    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{130    \textcolor{keywordtype}{int} res;}
+\DoxyCodeLine{131    \textcolor{keywordtype}{long} n = ftell(f);}
+\DoxyCodeLine{132    stbi\_\_start\_file(\&s, f);}
+\DoxyCodeLine{133    res = stbi\_\_pkm\_info(\&s, x, y, comp);}
+\DoxyCodeLine{134    fseek(f, n, SEEK\_SET);}
+\DoxyCodeLine{135    \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{136 \}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139 \textcolor{keyword}{static} \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} * stbi\_\_pkm\_load(\mbox{\hyperlink{structstbi____context}{stbi\_\_context}} *s, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{140 \{}
+\DoxyCodeLine{141     \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *pkm\_data = NULL;}
+\DoxyCodeLine{142     \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *pkm\_res\_data = NULL;}
+\DoxyCodeLine{143     \mbox{\hyperlink{struct_p_k_m_header}{PKMHeader}} header;}
+\DoxyCodeLine{144     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} width;}
+\DoxyCodeLine{145     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} height;}
+\DoxyCodeLine{146     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} align = 0;}
+\DoxyCodeLine{147     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} bpr;}
+\DoxyCodeLine{148     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size;}
+\DoxyCodeLine{149     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} compressedSize;}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     \textcolor{keywordtype}{int} res;}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     stbi\_\_getn( s, (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}}*)(\&header), \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_p_k_m_header}{PKMHeader}}) );}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155     \textcolor{keywordflow}{if} ( 0 != strcmp( header.\mbox{\hyperlink{struct_p_k_m_header_aa63dcfbb2d2c971131f85533d37f5fa6}{aName}}, \textcolor{stringliteral}{"{}PKM 10"{}} ) ) \{}
+\DoxyCodeLine{156         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{157     \}}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     width = (header.\mbox{\hyperlink{struct_p_k_m_header_a83a297a42042a6ad3c9ceafd826db765}{iWidthMSB}} << 8) | header.\mbox{\hyperlink{struct_p_k_m_header_a4353a7e54b3984d05f1104ce04da1ec9}{iWidthLSB}};}
+\DoxyCodeLine{160     height = (header.\mbox{\hyperlink{struct_p_k_m_header_a2e0e8365f007fece8ecedf06191f94be}{iHeightMSB}} << 8) | header.\mbox{\hyperlink{struct_p_k_m_header_ab380751b9568b253084bf445a2ad7e07}{iHeightLSB}};}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162     *x = s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}} = width;}
+\DoxyCodeLine{163     *y = s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} = height;}
+\DoxyCodeLine{164     *comp = s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} = 3;}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166     compressedSize = \mbox{\hyperlink{etc1__utils_8c_abf06c166f3909f0b7f7287eee1cac298}{etc1\_get\_encoded\_data\_size}}(width, height);}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168     pkm\_data = (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *)malloc(compressedSize);}
+\DoxyCodeLine{169     stbi\_\_getn( s, pkm\_data, compressedSize );}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171     bpr = ((width * 3) + align) \& \string~align;}
+\DoxyCodeLine{172     size = bpr * height;}
+\DoxyCodeLine{173     pkm\_res\_data = (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *)malloc(size);}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175     res = \mbox{\hyperlink{etc1__utils_8c_ade22c556751a4371586b167564f83e65}{etc1\_decode\_image}}((\textcolor{keyword}{const} \mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}*)pkm\_data, (\mbox{\hyperlink{etc1__utils_8h_a51490d41d23b0336c4a7f603019f0a75}{etc1\_byte}}*)pkm\_res\_data, width, height, 3, bpr);}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     free( pkm\_data );}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179     \textcolor{keywordflow}{if} ( 0 == res ) \{}
+\DoxyCodeLine{180         \textcolor{keywordflow}{if}( (req\_comp <= 4) \&\& (req\_comp >= 1) ) \{}
+\DoxyCodeLine{181             \textcolor{comment}{//  user has some requirements, meet them}}
+\DoxyCodeLine{182             \textcolor{keywordflow}{if}( req\_comp != s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}} ) \{}
+\DoxyCodeLine{183                 pkm\_res\_data = stbi\_\_convert\_format( pkm\_res\_data, s-\/>\mbox{\hyperlink{structstbi____context_afc068268e1f91a33627f2e7ce3b84e26}{img\_n}}, req\_comp, s-\/>\mbox{\hyperlink{structstbi____context_a1ef0d00dcf3fbc9ea468995b1b53fbeb}{img\_x}}, s-\/>\mbox{\hyperlink{structstbi____context_a5392767d41a587c3773d70ad2f8f33be}{img\_y}} );}
+\DoxyCodeLine{184                 *comp = req\_comp;}
+\DoxyCodeLine{185             \}}
+\DoxyCodeLine{186         \}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188         \textcolor{keywordflow}{return} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *)pkm\_res\_data;}
+\DoxyCodeLine{189     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{190         free( pkm\_res\_data );}
+\DoxyCodeLine{191     \}}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{194 \}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{preprocessor}{\#ifndef STBI\_NO\_STDIO}}
+\DoxyCodeLine{197 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi__pkm__c_8h_a4eb0c9a0b1c16c17ef9b47bbfe293aa3}{stbi\_\_pkm\_load\_from\_file}}   (FILE *f,                  \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{200     stbi\_\_start\_file(\&s,f);}
+\DoxyCodeLine{201     \textcolor{keywordflow}{return} stbi\_\_pkm\_load(\&s,x,y,comp,req\_comp);}
+\DoxyCodeLine{202 \}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi__pkm__c_8h_a2cde600b1f468a32b70cb9973aa5c7cd}{stbi\_\_pkm\_load\_from\_path}}             (\textcolor{keywordtype}{char} \textcolor{keyword}{const}*filename,           \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206    \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *data;}
+\DoxyCodeLine{207    FILE *f = fopen(filename, \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{208    \textcolor{keywordflow}{if} (!f) \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{209    data = \mbox{\hyperlink{stbi__pkm__c_8h_a4eb0c9a0b1c16c17ef9b47bbfe293aa3}{stbi\_\_pkm\_load\_from\_file}}(f,x,y,comp,req\_comp);}
+\DoxyCodeLine{210    fclose(f);}
+\DoxyCodeLine{211    \textcolor{keywordflow}{return} data;}
+\DoxyCodeLine{212 \}}
+\DoxyCodeLine{213 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi__pkm__c_8h_afa5481c6f44db8ecb5569e8eb9f9f2a3}{stbi\_\_pkm\_load\_from\_memory}} (\mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} \textcolor{keyword}{const} *buffer, \textcolor{keywordtype}{int} len, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{216 \{}
+\DoxyCodeLine{217    \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{218    stbi\_\_start\_mem(\&s,buffer, len);}
+\DoxyCodeLine{219    \textcolor{keywordflow}{return} stbi\_\_pkm\_load(\&s,x,y,comp,req\_comp);}
+\DoxyCodeLine{220 \}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222 \mbox{\hyperlink{stb__image_8h_a28eb51a1512ce382ee50f20e1d04d50d}{stbi\_uc}} *\mbox{\hyperlink{stbi__pkm__c_8h_a7689ca08c794812af4c17d67efcf4822}{stbi\_\_pkm\_load\_from\_callbacks}} (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} \textcolor{keyword}{const} *clbk, \textcolor{keywordtype}{void} *user, \textcolor{keywordtype}{int} *x, \textcolor{keywordtype}{int} *y, \textcolor{keywordtype}{int} *comp, \textcolor{keywordtype}{int} req\_comp)}
+\DoxyCodeLine{223 \{}
+\DoxyCodeLine{224     \mbox{\hyperlink{structstbi____context}{stbi\_\_context}} s;}
+\DoxyCodeLine{225    stbi\_\_start\_callbacks(\&s, (\mbox{\hyperlink{structstbi__io__callbacks}{stbi\_io\_callbacks}} *) clbk, user);}
+\DoxyCodeLine{226    \textcolor{keywordflow}{return} stbi\_\_pkm\_load(\&s,x,y,comp,req\_comp);}
+\DoxyCodeLine{227 \}}
+
+\end{DoxyCode}

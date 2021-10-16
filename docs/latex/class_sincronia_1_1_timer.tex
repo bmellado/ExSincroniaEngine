@@ -1,0 +1,90 @@
+\hypertarget{class_sincronia_1_1_timer}{}\doxysection{Sincronia\+::Timer\texorpdfstring{$<$}{<} Log\+Profile\+Function \texorpdfstring{$>$}{>} Class Template Reference}
+\label{class_sincronia_1_1_timer}\index{Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}}
+
+
+This class is meant to manage the time, it contains a profiler that saves the time information in a vector, this class also intents to stabilize the frame rating  
+
+
+
+
+{\ttfamily \#include $<$Timer.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sincronia_1_1_timer_a071966516b8fc9a3d29e46af0c73ce53}{Timer}} (const char $\ast$name, Log\+Profile\+Function \&\&log\+Profile\+Function, bool stabilize=false)
+\item 
+\mbox{\hyperlink{class_sincronia_1_1_timer_a47cdd4befda7110489e4d8f99f104fbd}{$\sim$\+Timer}} ()
+\item 
+void \mbox{\hyperlink{class_sincronia_1_1_timer_a27f5d7ccf868de9b84168ad40afe49dc}{stop}} ()
+\begin{DoxyCompactList}\small\item\em When called, this calculates the time that has passed from the initialization of the instanced class, if stabilize param is true, then applies a delay with the difference of time remaining as wished. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sincronia_1_1_timer_ad1cb1f4551f0b223536010f704b651b9}{interrupt}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Log\+Profile\+Function$>$\newline
+class Sincronia\+::\+Timer$<$ Log\+Profile\+Function $>$}
+This class is meant to manage the time, it contains a profiler that saves the time information in a vector, this class also intents to stabilize the frame rating 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Log\+Profile\+Function} & Template function that is meant to save the information of timing\\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sincronia_1_1_timer_a071966516b8fc9a3d29e46af0c73ce53}\label{class_sincronia_1_1_timer_a071966516b8fc9a3d29e46af0c73ce53}} 
+\index{Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}!Timer@{Timer}}
+\index{Timer@{Timer}!Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}}
+{\footnotesize\ttfamily template$<$typename Log\+Profile\+Function $>$ \\
+\mbox{\hyperlink{class_sincronia_1_1_timer}{Sincronia\+::\+Timer}}$<$ Log\+Profile\+Function $>$\+::\mbox{\hyperlink{class_sincronia_1_1_timer}{Timer}} (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{Log\+Profile\+Function \&\&}]{log\+Profile\+Function,  }\item[{bool}]{stabilize = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name that indicates what scope is being timed\\
+\hline
+{\em log\+Profile\+Function} & A function that is meant to save the information of timing\\
+\hline
+{\em stabilize} & A parameter that decides whether the timing is gonna be stabilized to 60 FPS\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sincronia_1_1_timer_a47cdd4befda7110489e4d8f99f104fbd}\label{class_sincronia_1_1_timer_a47cdd4befda7110489e4d8f99f104fbd}} 
+\index{Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}!````~Timer@{$\sim$Timer}}
+\index{````~Timer@{$\sim$Timer}!Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Timer()}{~Timer()}}
+{\footnotesize\ttfamily template$<$typename Log\+Profile\+Function $>$ \\
+\mbox{\hyperlink{class_sincronia_1_1_timer}{Sincronia\+::\+Timer}}$<$ Log\+Profile\+Function $>$\+::$\sim$\mbox{\hyperlink{class_sincronia_1_1_timer}{Timer}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sincronia_1_1_timer_ad1cb1f4551f0b223536010f704b651b9}\label{class_sincronia_1_1_timer_ad1cb1f4551f0b223536010f704b651b9}} 
+\index{Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}!interrupt@{interrupt}}
+\index{interrupt@{interrupt}!Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}}
+\doxysubsubsection{\texorpdfstring{interrupt()}{interrupt()}}
+{\footnotesize\ttfamily template$<$typename Log\+Profile\+Function $>$ \\
+void \mbox{\hyperlink{class_sincronia_1_1_timer}{Sincronia\+::\+Timer}}$<$ Log\+Profile\+Function $>$\+::interrupt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_sincronia_1_1_timer_a27f5d7ccf868de9b84168ad40afe49dc}\label{class_sincronia_1_1_timer_a27f5d7ccf868de9b84168ad40afe49dc}} 
+\index{Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}!stop@{stop}}
+\index{stop@{stop}!Sincronia::Timer$<$ LogProfileFunction $>$@{Sincronia::Timer$<$ LogProfileFunction $>$}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily template$<$typename Log\+Profile\+Function $>$ \\
+void \mbox{\hyperlink{class_sincronia_1_1_timer}{Sincronia\+::\+Timer}}$<$ Log\+Profile\+Function $>$\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+When called, this calculates the time that has passed from the initialization of the instanced class, if stabilize param is true, then applies a delay with the difference of time remaining as wished. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Time/\mbox{\hyperlink{_timer_8hpp}{Timer.\+hpp}}\end{DoxyCompactItemize}

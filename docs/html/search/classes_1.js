@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['dependencylist_0',['DependencyList',['../struct_sincronia_1_1_dependency_list.html',1,'Sincronia']]]
+  ['camera_0',['Camera',['../class_camera.html',1,'']]],
+  ['controller_1',['Controller',['../struct_controller.html',1,'']]]
 ];

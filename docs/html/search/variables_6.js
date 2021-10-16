@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['indices_0',['indices',['../struct_grafica_1_1_shape.html#afca089aa58103ea691ca156f25fa2087',1,'Grafica::Shape']]]
+  ['gpushapemaybe_0',['gpuShapeMaybe',['../class_grafica_1_1_scene_graph_node.html#a6b932c5f5f41fcb3547ac09136a3b446',1,'Grafica::SceneGraphNode']]]
 ];

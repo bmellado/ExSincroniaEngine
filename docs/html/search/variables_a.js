@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['texture_0',['texture',['../struct_grafica_1_1_g_p_u_shape.html#a1d0a5c88c7ff40fcfdeb9ad2eced1584',1,'Grafica::GPUShape::texture()'],['../struct_grafica_1_1_shape.html#af67c44326f3cd123a63f0474e762931c',1,'Grafica::Shape::texture()']]],
-  ['transform_1',['transform',['../class_grafica_1_1_scene_graph_node.html#a4181c0ce77470bccca7cc3a179652e58',1,'Grafica::SceneGraphNode']]],
-  ['type_2',['type',['../struct_grafica_1_1_shader_code.html#ad2137f0af267cc9aa77d69430892e407',1,'Grafica::ShaderCode::type()'],['../struct_grafica_1_1_shader_file.html#a7b819802f24873e8bcb2f03a0d42c69b',1,'Grafica::ShaderFile::type()']]]
+  ['m_5fwindow_0',['m_window',['../class_sincronia_1_1_game_window.html#a48459b590a81f4ec5e5d7f02e322c5e4',1,'Sincronia::GameWindow']]],
+  ['marker_1',['marker',['../structstbi____jpeg.html#a36a53176d6134d68272fa32cb8afc740',1,'stbi__jpeg']]],
+  ['max_5fx_2',['max_x',['../structstbi____gif.html#a3d1c32dbf7501745bf171dd1352f5342',1,'stbi__gif']]],
+  ['max_5fy_3',['max_y',['../structstbi____gif.html#ad7f06feba8837656a05cd6b9825864de',1,'stbi__gif']]],
+  ['maxcode_4',['maxcode',['../structstbi____huffman.html#a1033bf96ad4bebcfea94749bc1928b7b',1,'stbi__huffman::maxcode()'],['../structstbi____zhuffman.html#a4152ce34e14ffbac4ec0a812a47c7be3',1,'stbi__zhuffman::maxcode()']]]
 ];

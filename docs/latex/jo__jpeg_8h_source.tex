@@ -1,0 +1,346 @@
+\hypertarget{jo__jpeg_8h_source}{}\doxysection{jo\+\_\+jpeg.\+h}
+\label{jo__jpeg_8h_source}\index{source/Rendering/SOIL2/jo\_jpeg.h@{source/Rendering/SOIL2/jo\_jpeg.h}}
+\mbox{\hyperlink{jo__jpeg_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/* public domain Simple, Minimalistic JPEG writer -\/ http://jonolick.com}}
+\DoxyCodeLine{2 \textcolor{comment}{ *}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Quick Notes:}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Based on a javascript jpeg writer}}
+\DoxyCodeLine{5 \textcolor{comment}{ *  JPEG baseline (no JPEG progressive)}}
+\DoxyCodeLine{6 \textcolor{comment}{ *  Supports 1, 3 or 4 component input. (luminance, RGB or RGBX)}}
+\DoxyCodeLine{7 \textcolor{comment}{ *}}
+\DoxyCodeLine{8 \textcolor{comment}{ * Latest revisions:}}
+\DoxyCodeLine{9 \textcolor{comment}{ *  1.53 (2016-\/07-\/08) Added support to compile as plain C code.}}
+\DoxyCodeLine{10 \textcolor{comment}{ *  1.52 (2012-\/22-\/11) Added support for specifying Luminance, RGB, or RGBA via comp(onents) argument (1, 3 and 4 respectively). }}
+\DoxyCodeLine{11 \textcolor{comment}{ *  1.51 (2012-\/19-\/11) Fixed some warnings}}
+\DoxyCodeLine{12 \textcolor{comment}{ *  1.50 (2012-\/18-\/11) MT safe. Simplified. Optimized. Reduced memory requirements. Zero allocations. No namespace polution. Approx 340 lines code.}}
+\DoxyCodeLine{13 \textcolor{comment}{ *  1.10 (2012-\/16-\/11) compile fixes, added docs,}}
+\DoxyCodeLine{14 \textcolor{comment}{ *      changed from .h to .cpp (simpler to bootstrap), etc}}
+\DoxyCodeLine{15 \textcolor{comment}{ *  1.00 (2012-\/02-\/02) initial release}}
+\DoxyCodeLine{16 \textcolor{comment}{ *}}
+\DoxyCodeLine{17 \textcolor{comment}{ * Basic usage:}}
+\DoxyCodeLine{18 \textcolor{comment}{ *  char *foo = new char[128*128*4]; // 4 component. RGBX format, where X is unused }}
+\DoxyCodeLine{19 \textcolor{comment}{ *  jo\_write\_jpg("{}foo.jpg"{}, foo, 128, 128, 4, 90); // comp can be 1, 3, or 4. Lum, RGB, or RGBX respectively.}}
+\DoxyCodeLine{20 \textcolor{comment}{ *  }}
+\DoxyCodeLine{21 \textcolor{comment}{ * */}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#ifndef JO\_INCLUDE\_JPEG\_H}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define JO\_INCLUDE\_JPEG\_H}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{// To get a header file for this, either cut and paste the header,}}
+\DoxyCodeLine{27 \textcolor{comment}{// or create jo\_jpeg.h, \#define JO\_JPEG\_HEADER\_FILE\_ONLY, and}}
+\DoxyCodeLine{28 \textcolor{comment}{// then include jo\_jpeg.c from it.}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{comment}{// Returns false on failure}}
+\DoxyCodeLine{31 \textcolor{keyword}{extern} \textcolor{keywordtype}{int} \mbox{\hyperlink{jo__jpeg_8h_ab33e2e815aea12ae390f933415e29de0}{jo\_write\_jpg}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} comp, \textcolor{keywordtype}{int} quality);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// JO\_INCLUDE\_JPEG\_H}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#ifndef JO\_JPEG\_HEADER\_FILE\_ONLY}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#if defined(\_MSC\_VER) \&\& \_MSC\_VER >= 0x1400}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define \_CRT\_SECURE\_NO\_WARNINGS }\textcolor{comment}{// suppress warnings about fopen()}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} s\_jo\_ZigZag[] = \{ 0,1,5,6,14,15,27,28,2,4,7,13,16,26,29,42,3,8,12,17,25,30,41,43,9,11,18,24,31,40,44,53,10,19,23,32,39,45,52,54,20,22,33,38,46,51,55,60,21,34,37,47,50,56,59,61,35,36,48,49,57,58,62,63 \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{static} \textcolor{keywordtype}{void} jo\_writeBits(FILE *fp, \textcolor{keywordtype}{int} *bitBuf, \textcolor{keywordtype}{int} *bitCnt, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} *bs) \{}
+\DoxyCodeLine{48     *bitCnt += bs[1];}
+\DoxyCodeLine{49     *bitBuf |= bs[0] << (24 -\/ *bitCnt);}
+\DoxyCodeLine{50     \textcolor{keywordflow}{while}(*bitCnt >= 8) \{}
+\DoxyCodeLine{51         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c = (*bitBuf >> 16) \& 255;}
+\DoxyCodeLine{52         putc(c, fp);}
+\DoxyCodeLine{53         \textcolor{keywordflow}{if}(c == 255) \{}
+\DoxyCodeLine{54             putc(0, fp);}
+\DoxyCodeLine{55         \}}
+\DoxyCodeLine{56         *bitBuf <<= 8;}
+\DoxyCodeLine{57         *bitCnt -\/= 8;}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{keyword}{static} \textcolor{keywordtype}{void} jo\_DCT(\textcolor{keywordtype}{float} *d0, \textcolor{keywordtype}{float} *d1, \textcolor{keywordtype}{float} *d2, \textcolor{keywordtype}{float} *d3, \textcolor{keywordtype}{float} *d4, \textcolor{keywordtype}{float} *d5, \textcolor{keywordtype}{float} *d6, \textcolor{keywordtype}{float} *d7) \{}
+\DoxyCodeLine{62     \textcolor{keywordtype}{float} tmp0 = *d0 + *d7;}
+\DoxyCodeLine{63     \textcolor{keywordtype}{float} tmp7 = *d0 -\/ *d7;}
+\DoxyCodeLine{64     \textcolor{keywordtype}{float} tmp1 = *d1 + *d6;}
+\DoxyCodeLine{65     \textcolor{keywordtype}{float} tmp6 = *d1 -\/ *d6;}
+\DoxyCodeLine{66     \textcolor{keywordtype}{float} tmp2 = *d2 + *d5;}
+\DoxyCodeLine{67     \textcolor{keywordtype}{float} tmp5 = *d2 -\/ *d5;}
+\DoxyCodeLine{68     \textcolor{keywordtype}{float} tmp3 = *d3 + *d4;}
+\DoxyCodeLine{69     \textcolor{keywordtype}{float} tmp4 = *d3 -\/ *d4;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \textcolor{comment}{// Even part}}
+\DoxyCodeLine{72     \textcolor{keywordtype}{float} tmp10 = tmp0 + tmp3;  \textcolor{comment}{// phase 2}}
+\DoxyCodeLine{73     \textcolor{keywordtype}{float} tmp13 = tmp0 -\/ tmp3;}
+\DoxyCodeLine{74     \textcolor{keywordtype}{float} tmp11 = tmp1 + tmp2;}
+\DoxyCodeLine{75     \textcolor{keywordtype}{float} tmp12 = tmp1 -\/ tmp2;}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     *d0 = tmp10 + tmp11;        \textcolor{comment}{// phase 3}}
+\DoxyCodeLine{78     *d4 = tmp10 -\/ tmp11;}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     \textcolor{keywordtype}{float} z1 = (tmp12 + tmp13) * 0.707106781f; \textcolor{comment}{// c4}}
+\DoxyCodeLine{81     *d2 = tmp13 + z1;       \textcolor{comment}{// phase 5}}
+\DoxyCodeLine{82     *d6 = tmp13 -\/ z1;}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{comment}{// Odd part}}
+\DoxyCodeLine{85     tmp10 = tmp4 + tmp5;        \textcolor{comment}{// phase 2}}
+\DoxyCodeLine{86     tmp11 = tmp5 + tmp6;}
+\DoxyCodeLine{87     tmp12 = tmp6 + tmp7;}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89     \textcolor{comment}{// The rotator is modified from fig 4-\/8 to avoid extra negations.}}
+\DoxyCodeLine{90     \textcolor{keywordtype}{float} z5 = (tmp10 -\/ tmp12) * 0.382683433f; \textcolor{comment}{// c6}}
+\DoxyCodeLine{91     \textcolor{keywordtype}{float} z2 = tmp10 * 0.541196100f + z5; \textcolor{comment}{// c2-\/c6}}
+\DoxyCodeLine{92     \textcolor{keywordtype}{float} z4 = tmp12 * 1.306562965f + z5; \textcolor{comment}{// c2+c6}}
+\DoxyCodeLine{93     \textcolor{keywordtype}{float} z3 = tmp11 * 0.707106781f; \textcolor{comment}{// c4}}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95     \textcolor{keywordtype}{float} z11 = tmp7 + z3;      \textcolor{comment}{// phase 5}}
+\DoxyCodeLine{96     \textcolor{keywordtype}{float} z13 = tmp7 -\/ z3;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     *d5 = z13 + z2;         \textcolor{comment}{// phase 6}}
+\DoxyCodeLine{99     *d3 = z13 -\/ z2;}
+\DoxyCodeLine{100     *d1 = z11 + z4;}
+\DoxyCodeLine{101     *d7 = z11 -\/ z4;}
+\DoxyCodeLine{102 \} }
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{keyword}{static} \textcolor{keywordtype}{void} jo\_calcBits(\textcolor{keywordtype}{int} val, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} bits[2]) \{}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} tmp1 = val < 0 ? -\/val : val;}
+\DoxyCodeLine{106     val = val < 0 ? val-\/1 : val;}
+\DoxyCodeLine{107     bits[1] = 1;}
+\DoxyCodeLine{108     \textcolor{keywordflow}{while}(tmp1 >>= 1) \{}
+\DoxyCodeLine{109         ++bits[1];}
+\DoxyCodeLine{110     \}}
+\DoxyCodeLine{111     bits[0] = val \& ((1<<bits[1])-\/1);}
+\DoxyCodeLine{112 \}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114 \textcolor{keyword}{static} \textcolor{keywordtype}{int} jo\_processDU(FILE *fp, \textcolor{keywordtype}{int} *bitBuf, \textcolor{keywordtype}{int} *bitCnt, \textcolor{keywordtype}{float} *CDU, \textcolor{keywordtype}{float} *fdtbl, \textcolor{keywordtype}{int} DC, \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} HTDC[256][2], \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} HTAC[256][2]) \{}
+\DoxyCodeLine{115     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} EOB[2] = \{ HTAC[0x00][0], HTAC[0x00][1] \};}
+\DoxyCodeLine{116     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} M16zeroes[2] = \{ HTAC[0xF0][0], HTAC[0xF0][1] \};}
+\DoxyCodeLine{117     \textcolor{keywordtype}{int} dataOff, i, nrmarker;}
+\DoxyCodeLine{118     }
+\DoxyCodeLine{119     \textcolor{comment}{// DCT rows}}
+\DoxyCodeLine{120     \textcolor{keywordflow}{for}(dataOff=0; dataOff<64; dataOff+=8) \{}
+\DoxyCodeLine{121         jo\_DCT(\&CDU[dataOff], \&CDU[dataOff+1], \&CDU[dataOff+2], \&CDU[dataOff+3], \&CDU[dataOff+4], \&CDU[dataOff+5], \&CDU[dataOff+6], \&CDU[dataOff+7]);}
+\DoxyCodeLine{122     \}}
+\DoxyCodeLine{123     \textcolor{comment}{// DCT columns}}
+\DoxyCodeLine{124     \textcolor{keywordflow}{for}(dataOff=0; dataOff<8; ++dataOff) \{}
+\DoxyCodeLine{125         jo\_DCT(\&CDU[dataOff], \&CDU[dataOff+8], \&CDU[dataOff+16], \&CDU[dataOff+24], \&CDU[dataOff+32], \&CDU[dataOff+40], \&CDU[dataOff+48], \&CDU[dataOff+56]);}
+\DoxyCodeLine{126     \}}
+\DoxyCodeLine{127     \textcolor{comment}{// Quantize/descale/zigzag the coefficients}}
+\DoxyCodeLine{128     \textcolor{keywordtype}{int} DU[64];}
+\DoxyCodeLine{129     \textcolor{keywordflow}{for}(i=0; i<64; ++i) \{}
+\DoxyCodeLine{130         \textcolor{keywordtype}{float} v = CDU[i]*fdtbl[i];}
+\DoxyCodeLine{131         DU[s\_jo\_ZigZag[i]] = (int)(v < 0 ? ceilf(v -\/ 0.5f) : floorf(v + 0.5f));}
+\DoxyCodeLine{132     \}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{comment}{// Encode DC}}
+\DoxyCodeLine{135     \textcolor{keywordtype}{int} diff = DU[0] -\/ DC; }
+\DoxyCodeLine{136     \textcolor{keywordflow}{if} (diff == 0) \{}
+\DoxyCodeLine{137         jo\_writeBits(fp, bitBuf, bitCnt, HTDC[0]);}
+\DoxyCodeLine{138     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{139         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} bits[2];}
+\DoxyCodeLine{140         jo\_calcBits(diff, bits);}
+\DoxyCodeLine{141         jo\_writeBits(fp, bitBuf, bitCnt, HTDC[bits[1]]);}
+\DoxyCodeLine{142         jo\_writeBits(fp, bitBuf, bitCnt, bits);}
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144     \textcolor{comment}{// Encode ACs}}
+\DoxyCodeLine{145     \textcolor{keywordtype}{int} end0pos = 63;}
+\DoxyCodeLine{146     \textcolor{keywordflow}{for}(; (end0pos>0)\&\&(DU[end0pos]==0); -\/-\/end0pos) \{}
+\DoxyCodeLine{147     \}}
+\DoxyCodeLine{148     \textcolor{comment}{// end0pos = first element in reverse order !=0}}
+\DoxyCodeLine{149     \textcolor{keywordflow}{if}(end0pos == 0) \{}
+\DoxyCodeLine{150         jo\_writeBits(fp, bitBuf, bitCnt, EOB);}
+\DoxyCodeLine{151         \textcolor{keywordflow}{return} DU[0];}
+\DoxyCodeLine{152     \}}
+\DoxyCodeLine{153     \textcolor{keywordflow}{for}(i = 1; i <= end0pos; ++i) \{}
+\DoxyCodeLine{154         \textcolor{keywordtype}{int} startpos = i;}
+\DoxyCodeLine{155         \textcolor{keywordflow}{for} (; DU[i]==0 \&\& i<=end0pos; ++i) \{}
+\DoxyCodeLine{156         \}}
+\DoxyCodeLine{157         \textcolor{keywordtype}{int} nrzeroes = i-\/startpos;}
+\DoxyCodeLine{158         \textcolor{keywordflow}{if} ( nrzeroes >= 16 ) \{}
+\DoxyCodeLine{159             \textcolor{keywordtype}{int} lng = nrzeroes>>4;}
+\DoxyCodeLine{160             \textcolor{keywordflow}{for} (nrmarker=1; nrmarker <= lng; ++nrmarker)}
+\DoxyCodeLine{161                 jo\_writeBits(fp, bitBuf, bitCnt, M16zeroes);}
+\DoxyCodeLine{162             nrzeroes \&= 15;}
+\DoxyCodeLine{163         \}}
+\DoxyCodeLine{164         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} bits[2];}
+\DoxyCodeLine{165         jo\_calcBits(DU[i], bits);}
+\DoxyCodeLine{166         jo\_writeBits(fp, bitBuf, bitCnt, HTAC[(nrzeroes<<4)+bits[1]]);}
+\DoxyCodeLine{167         jo\_writeBits(fp, bitBuf, bitCnt, bits);}
+\DoxyCodeLine{168     \}}
+\DoxyCodeLine{169     \textcolor{keywordflow}{if}(end0pos != 63) \{}
+\DoxyCodeLine{170         jo\_writeBits(fp, bitBuf, bitCnt, EOB);}
+\DoxyCodeLine{171     \}}
+\DoxyCodeLine{172     \textcolor{keywordflow}{return} DU[0];}
+\DoxyCodeLine{173 \}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{keywordtype}{int} \mbox{\hyperlink{jo__jpeg_8h_ab33e2e815aea12ae390f933415e29de0}{jo\_write\_jpg}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *data, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} comp, \textcolor{keywordtype}{int} quality) \{}
+\DoxyCodeLine{176     \textcolor{comment}{// Constants that don't pollute global namespace}}
+\DoxyCodeLine{177     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_dc\_luminance\_nrcodes[] = \{0,0,1,5,1,1,1,1,1,1,0,0,0,0,0,0,0\};}
+\DoxyCodeLine{178     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_dc\_luminance\_values[] = \{0,1,2,3,4,5,6,7,8,9,10,11\};}
+\DoxyCodeLine{179     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_ac\_luminance\_nrcodes[] = \{0,0,2,1,3,3,2,4,3,5,5,4,4,0,0,1,0x7d\};}
+\DoxyCodeLine{180     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_ac\_luminance\_values[] = \{}
+\DoxyCodeLine{181         0x01,0x02,0x03,0x00,0x04,0x11,0x05,0x12,0x21,0x31,0x41,0x06,0x13,0x51,0x61,0x07,0x22,0x71,0x14,0x32,0x81,0x91,0xa1,0x08,}
+\DoxyCodeLine{182         0x23,0x42,0xb1,0xc1,0x15,0x52,0xd1,0xf0,0x24,0x33,0x62,0x72,0x82,0x09,0x0a,0x16,0x17,0x18,0x19,0x1a,0x25,0x26,0x27,0x28,}
+\DoxyCodeLine{183         0x29,0x2a,0x34,0x35,0x36,0x37,0x38,0x39,0x3a,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x4a,0x53,0x54,0x55,0x56,0x57,0x58,0x59,}
+\DoxyCodeLine{184         0x5a,0x63,0x64,0x65,0x66,0x67,0x68,0x69,0x6a,0x73,0x74,0x75,0x76,0x77,0x78,0x79,0x7a,0x83,0x84,0x85,0x86,0x87,0x88,0x89,}
+\DoxyCodeLine{185         0x8a,0x92,0x93,0x94,0x95,0x96,0x97,0x98,0x99,0x9a,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xb2,0xb3,0xb4,0xb5,0xb6,}
+\DoxyCodeLine{186         0xb7,0xb8,0xb9,0xba,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xd2,0xd3,0xd4,0xd5,0xd6,0xd7,0xd8,0xd9,0xda,0xe1,0xe2,}
+\DoxyCodeLine{187         0xe3,0xe4,0xe5,0xe6,0xe7,0xe8,0xe9,0xea,0xf1,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,0xf9,0xfa}
+\DoxyCodeLine{188     \};}
+\DoxyCodeLine{189     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_dc\_chrominance\_nrcodes[] = \{0,0,3,1,1,1,1,1,1,1,1,1,0,0,0,0,0\};}
+\DoxyCodeLine{190     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_dc\_chrominance\_values[] = \{0,1,2,3,4,5,6,7,8,9,10,11\};}
+\DoxyCodeLine{191     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_ac\_chrominance\_nrcodes[] = \{0,0,2,1,2,4,4,3,4,7,5,4,4,0,1,2,0x77\};}
+\DoxyCodeLine{192     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} std\_ac\_chrominance\_values[] = \{}
+\DoxyCodeLine{193         0x00,0x01,0x02,0x03,0x11,0x04,0x05,0x21,0x31,0x06,0x12,0x41,0x51,0x07,0x61,0x71,0x13,0x22,0x32,0x81,0x08,0x14,0x42,0x91,}
+\DoxyCodeLine{194         0xa1,0xb1,0xc1,0x09,0x23,0x33,0x52,0xf0,0x15,0x62,0x72,0xd1,0x0a,0x16,0x24,0x34,0xe1,0x25,0xf1,0x17,0x18,0x19,0x1a,0x26,}
+\DoxyCodeLine{195         0x27,0x28,0x29,0x2a,0x35,0x36,0x37,0x38,0x39,0x3a,0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x4a,0x53,0x54,0x55,0x56,0x57,0x58,}
+\DoxyCodeLine{196         0x59,0x5a,0x63,0x64,0x65,0x66,0x67,0x68,0x69,0x6a,0x73,0x74,0x75,0x76,0x77,0x78,0x79,0x7a,0x82,0x83,0x84,0x85,0x86,0x87,}
+\DoxyCodeLine{197         0x88,0x89,0x8a,0x92,0x93,0x94,0x95,0x96,0x97,0x98,0x99,0x9a,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xb2,0xb3,0xb4,}
+\DoxyCodeLine{198         0xb5,0xb6,0xb7,0xb8,0xb9,0xba,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xd2,0xd3,0xd4,0xd5,0xd6,0xd7,0xd8,0xd9,0xda,}
+\DoxyCodeLine{199         0xe2,0xe3,0xe4,0xe5,0xe6,0xe7,0xe8,0xe9,0xea,0xf2,0xf3,0xf4,0xf5,0xf6,0xf7,0xf8,0xf9,0xfa}
+\DoxyCodeLine{200     \};}
+\DoxyCodeLine{201     \textcolor{comment}{// Huffman tables}}
+\DoxyCodeLine{202     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} YDC\_HT[256][2] = \{ \{0,2\},\{2,3\},\{3,3\},\{4,3\},\{5,3\},\{6,3\},\{14,4\},\{30,5\},\{62,6\},\{126,7\},\{254,8\},\{510,9\}\};}
+\DoxyCodeLine{203     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} UVDC\_HT[256][2] = \{ \{0,2\},\{1,2\},\{2,2\},\{6,3\},\{14,4\},\{30,5\},\{62,6\},\{126,7\},\{254,8\},\{510,9\},\{1022,10\},\{2046,11\}\};}
+\DoxyCodeLine{204     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} YAC\_HT[256][2] = \{ }
+\DoxyCodeLine{205         \{10,4\},\{0,2\},\{1,2\},\{4,3\},\{11,4\},\{26,5\},\{120,7\},\{248,8\},\{1014,10\},\{65410,16\},\{65411,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{206         \{12,4\},\{27,5\},\{121,7\},\{502,9\},\{2038,11\},\{65412,16\},\{65413,16\},\{65414,16\},\{65415,16\},\{65416,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{207         \{28,5\},\{249,8\},\{1015,10\},\{4084,12\},\{65417,16\},\{65418,16\},\{65419,16\},\{65420,16\},\{65421,16\},\{65422,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{208         \{58,6\},\{503,9\},\{4085,12\},\{65423,16\},\{65424,16\},\{65425,16\},\{65426,16\},\{65427,16\},\{65428,16\},\{65429,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{209         \{59,6\},\{1016,10\},\{65430,16\},\{65431,16\},\{65432,16\},\{65433,16\},\{65434,16\},\{65435,16\},\{65436,16\},\{65437,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{210         \{122,7\},\{2039,11\},\{65438,16\},\{65439,16\},\{65440,16\},\{65441,16\},\{65442,16\},\{65443,16\},\{65444,16\},\{65445,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{211         \{123,7\},\{4086,12\},\{65446,16\},\{65447,16\},\{65448,16\},\{65449,16\},\{65450,16\},\{65451,16\},\{65452,16\},\{65453,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{212         \{250,8\},\{4087,12\},\{65454,16\},\{65455,16\},\{65456,16\},\{65457,16\},\{65458,16\},\{65459,16\},\{65460,16\},\{65461,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{213         \{504,9\},\{32704,15\},\{65462,16\},\{65463,16\},\{65464,16\},\{65465,16\},\{65466,16\},\{65467,16\},\{65468,16\},\{65469,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{214         \{505,9\},\{65470,16\},\{65471,16\},\{65472,16\},\{65473,16\},\{65474,16\},\{65475,16\},\{65476,16\},\{65477,16\},\{65478,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{215         \{506,9\},\{65479,16\},\{65480,16\},\{65481,16\},\{65482,16\},\{65483,16\},\{65484,16\},\{65485,16\},\{65486,16\},\{65487,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{216         \{1017,10\},\{65488,16\},\{65489,16\},\{65490,16\},\{65491,16\},\{65492,16\},\{65493,16\},\{65494,16\},\{65495,16\},\{65496,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{217         \{1018,10\},\{65497,16\},\{65498,16\},\{65499,16\},\{65500,16\},\{65501,16\},\{65502,16\},\{65503,16\},\{65504,16\},\{65505,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{218         \{2040,11\},\{65506,16\},\{65507,16\},\{65508,16\},\{65509,16\},\{65510,16\},\{65511,16\},\{65512,16\},\{65513,16\},\{65514,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{219         \{65515,16\},\{65516,16\},\{65517,16\},\{65518,16\},\{65519,16\},\{65520,16\},\{65521,16\},\{65522,16\},\{65523,16\},\{65524,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{220         \{2041,11\},\{65525,16\},\{65526,16\},\{65527,16\},\{65528,16\},\{65529,16\},\{65530,16\},\{65531,16\},\{65532,16\},\{65533,16\},\{65534,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\}}
+\DoxyCodeLine{221     \};}
+\DoxyCodeLine{222     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} UVAC\_HT[256][2] = \{ }
+\DoxyCodeLine{223         \{0,2\},\{1,2\},\{4,3\},\{10,4\},\{24,5\},\{25,5\},\{56,6\},\{120,7\},\{500,9\},\{1014,10\},\{4084,12\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{224         \{11,4\},\{57,6\},\{246,8\},\{501,9\},\{2038,11\},\{4085,12\},\{65416,16\},\{65417,16\},\{65418,16\},\{65419,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{225         \{26,5\},\{247,8\},\{1015,10\},\{4086,12\},\{32706,15\},\{65420,16\},\{65421,16\},\{65422,16\},\{65423,16\},\{65424,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{226         \{27,5\},\{248,8\},\{1016,10\},\{4087,12\},\{65425,16\},\{65426,16\},\{65427,16\},\{65428,16\},\{65429,16\},\{65430,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{227         \{58,6\},\{502,9\},\{65431,16\},\{65432,16\},\{65433,16\},\{65434,16\},\{65435,16\},\{65436,16\},\{65437,16\},\{65438,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{228         \{59,6\},\{1017,10\},\{65439,16\},\{65440,16\},\{65441,16\},\{65442,16\},\{65443,16\},\{65444,16\},\{65445,16\},\{65446,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{229         \{121,7\},\{2039,11\},\{65447,16\},\{65448,16\},\{65449,16\},\{65450,16\},\{65451,16\},\{65452,16\},\{65453,16\},\{65454,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{230         \{122,7\},\{2040,11\},\{65455,16\},\{65456,16\},\{65457,16\},\{65458,16\},\{65459,16\},\{65460,16\},\{65461,16\},\{65462,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{231         \{249,8\},\{65463,16\},\{65464,16\},\{65465,16\},\{65466,16\},\{65467,16\},\{65468,16\},\{65469,16\},\{65470,16\},\{65471,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{232         \{503,9\},\{65472,16\},\{65473,16\},\{65474,16\},\{65475,16\},\{65476,16\},\{65477,16\},\{65478,16\},\{65479,16\},\{65480,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{233         \{504,9\},\{65481,16\},\{65482,16\},\{65483,16\},\{65484,16\},\{65485,16\},\{65486,16\},\{65487,16\},\{65488,16\},\{65489,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{234         \{505,9\},\{65490,16\},\{65491,16\},\{65492,16\},\{65493,16\},\{65494,16\},\{65495,16\},\{65496,16\},\{65497,16\},\{65498,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{235         \{506,9\},\{65499,16\},\{65500,16\},\{65501,16\},\{65502,16\},\{65503,16\},\{65504,16\},\{65505,16\},\{65506,16\},\{65507,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{236         \{2041,11\},\{65508,16\},\{65509,16\},\{65510,16\},\{65511,16\},\{65512,16\},\{65513,16\},\{65514,16\},\{65515,16\},\{65516,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{237         \{16352,14\},\{65517,16\},\{65518,16\},\{65519,16\},\{65520,16\},\{65521,16\},\{65522,16\},\{65523,16\},\{65524,16\},\{65525,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},}
+\DoxyCodeLine{238         \{1018,10\},\{32707,15\},\{65526,16\},\{65527,16\},\{65528,16\},\{65529,16\},\{65530,16\},\{65531,16\},\{65532,16\},\{65533,16\},\{65534,16\},\{0,0\},\{0,0\},\{0,0\},\{0,0\},\{0,0\}}
+\DoxyCodeLine{239     \};}
+\DoxyCodeLine{240     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} YQT[] = \{16,11,10,16,24,40,51,61,12,12,14,19,26,58,60,55,14,13,16,24,40,57,69,56,14,17,22,29,51,87,80,62,18,22,37,56,68,109,103,77,24,35,55,64,81,104,113,92,49,64,78,87,103,121,120,101,72,92,95,98,112,100,103,99\};}
+\DoxyCodeLine{241     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} UVQT[] = \{17,18,24,47,99,99,99,99,18,21,26,66,99,99,99,99,24,26,56,99,99,99,99,99,47,66,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99\};}
+\DoxyCodeLine{242     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{float} aasf[] = \{ 1.0f * 2.828427125f, 1.387039845f * 2.828427125f, 1.306562965f * 2.828427125f, 1.175875602f * 2.828427125f, 1.0f * 2.828427125f, 0.785694958f * 2.828427125f, 0.541196100f * 2.828427125f, 0.275899379f * 2.828427125f \};}
+\DoxyCodeLine{243     \textcolor{keywordtype}{int} i, row, col, x, y, k, pos;}
+\DoxyCodeLine{244     }
+\DoxyCodeLine{245     \textcolor{keywordflow}{if}(!data || !filename || !width || !height || comp > 4 || comp < 1 || comp == 2) \{}
+\DoxyCodeLine{246         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{247     \}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249     FILE *fp = fopen(filename, \textcolor{stringliteral}{"{}wb"{}});}
+\DoxyCodeLine{250     \textcolor{keywordflow}{if}(!fp) \{}
+\DoxyCodeLine{251         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{252     \}}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     quality = quality ? quality : 90;}
+\DoxyCodeLine{255     quality = quality < 1 ? 1 : quality > 100 ? 100 : quality;}
+\DoxyCodeLine{256     quality = quality < 50 ? 5000 / quality : 200 -\/ quality * 2;}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} YTable[64], UVTable[64];}
+\DoxyCodeLine{259     \textcolor{keywordflow}{for}(i = 0; i < 64; ++i) \{}
+\DoxyCodeLine{260         \textcolor{keywordtype}{int} yti = (YQT[i]*quality+50)/100;}
+\DoxyCodeLine{261         YTable[s\_jo\_ZigZag[i]] = yti < 1 ? 1 : yti > 255 ? 255 : yti;}
+\DoxyCodeLine{262         \textcolor{keywordtype}{int} uvti  = (UVQT[i]*quality+50)/100;}
+\DoxyCodeLine{263         UVTable[s\_jo\_ZigZag[i]] = uvti < 1 ? 1 : uvti > 255 ? 255 : uvti;}
+\DoxyCodeLine{264     \}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266     \textcolor{keywordtype}{float} fdtbl\_Y[64], fdtbl\_UV[64];}
+\DoxyCodeLine{267     \textcolor{keywordflow}{for}(row = 0, k = 0; row < 8; ++row) \{}
+\DoxyCodeLine{268         \textcolor{keywordflow}{for}(col = 0; col < 8; ++col, ++k) \{}
+\DoxyCodeLine{269             fdtbl\_Y[k]  = 1 / (YTable [s\_jo\_ZigZag[k]] * aasf[row] * aasf[col]);}
+\DoxyCodeLine{270             fdtbl\_UV[k] = 1 / (UVTable[s\_jo\_ZigZag[k]] * aasf[row] * aasf[col]);}
+\DoxyCodeLine{271         \}}
+\DoxyCodeLine{272     \}}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274     \textcolor{comment}{// Write Headers}}
+\DoxyCodeLine{275     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} head0[] = \{ 0xFF,0xD8,0xFF,0xE0,0,0x10,\textcolor{charliteral}{'J'},\textcolor{charliteral}{'F'},\textcolor{charliteral}{'I'},\textcolor{charliteral}{'F'},0,1,1,0,0,1,0,1,0,0,0xFF,0xDB,0,0x84,0 \};}
+\DoxyCodeLine{276     fwrite(head0, \textcolor{keyword}{sizeof}(head0), 1, fp);}
+\DoxyCodeLine{277     fwrite(YTable, \textcolor{keyword}{sizeof}(YTable), 1, fp);}
+\DoxyCodeLine{278     putc(1, fp);}
+\DoxyCodeLine{279     fwrite(UVTable, \textcolor{keyword}{sizeof}(UVTable), 1, fp);}
+\DoxyCodeLine{280     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} head1[] = \{ 0xFF,0xC0,0,0x11,8,(\textcolor{keywordtype}{unsigned} char)(height>>8),(\textcolor{keywordtype}{unsigned} char)(height\&0xFF),(\textcolor{keywordtype}{unsigned} char)(width>>8),(\textcolor{keywordtype}{unsigned} char)(width\&0xFF),3,1,0x11,0,2,0x11,1,3,0x11,1,0xFF,0xC4,0x01,0xA2,0 \};}
+\DoxyCodeLine{281     fwrite(head1, \textcolor{keyword}{sizeof}(head1), 1, fp);}
+\DoxyCodeLine{282     fwrite(std\_dc\_luminance\_nrcodes+1, \textcolor{keyword}{sizeof}(std\_dc\_luminance\_nrcodes)-\/1, 1, fp);}
+\DoxyCodeLine{283     fwrite(std\_dc\_luminance\_values, \textcolor{keyword}{sizeof}(std\_dc\_luminance\_values), 1, fp);}
+\DoxyCodeLine{284     putc(0x10, fp); \textcolor{comment}{// HTYACinfo}}
+\DoxyCodeLine{285     fwrite(std\_ac\_luminance\_nrcodes+1, \textcolor{keyword}{sizeof}(std\_ac\_luminance\_nrcodes)-\/1, 1, fp);}
+\DoxyCodeLine{286     fwrite(std\_ac\_luminance\_values, \textcolor{keyword}{sizeof}(std\_ac\_luminance\_values), 1, fp);}
+\DoxyCodeLine{287     putc(1, fp); \textcolor{comment}{// HTUDCinfo}}
+\DoxyCodeLine{288     fwrite(std\_dc\_chrominance\_nrcodes+1, \textcolor{keyword}{sizeof}(std\_dc\_chrominance\_nrcodes)-\/1, 1, fp);}
+\DoxyCodeLine{289     fwrite(std\_dc\_chrominance\_values, \textcolor{keyword}{sizeof}(std\_dc\_chrominance\_values), 1, fp);}
+\DoxyCodeLine{290     putc(0x11, fp); \textcolor{comment}{// HTUACinfo}}
+\DoxyCodeLine{291     fwrite(std\_ac\_chrominance\_nrcodes+1, \textcolor{keyword}{sizeof}(std\_ac\_chrominance\_nrcodes)-\/1, 1, fp);}
+\DoxyCodeLine{292     fwrite(std\_ac\_chrominance\_values, \textcolor{keyword}{sizeof}(std\_ac\_chrominance\_values), 1, fp);}
+\DoxyCodeLine{293     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} head2[] = \{ 0xFF,0xDA,0,0xC,3,1,0,2,0x11,3,0x11,0,0x3F,0 \};}
+\DoxyCodeLine{294     fwrite(head2, \textcolor{keyword}{sizeof}(head2), 1, fp);}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{296     \textcolor{comment}{// Encode 8x8 macroblocks}}
+\DoxyCodeLine{297     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *imageData = (\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *)data;}
+\DoxyCodeLine{298     \textcolor{keywordtype}{int} DCY=0, DCU=0, DCV=0;}
+\DoxyCodeLine{299     \textcolor{keywordtype}{int} bitBuf=0, bitCnt=0;}
+\DoxyCodeLine{300     \textcolor{keywordtype}{int} ofsG = comp > 1 ? 1 : 0, ofsB = comp > 1 ? 2 : 0;}
+\DoxyCodeLine{301     \textcolor{keywordflow}{for}(y = 0; y < height; y += 8) \{}
+\DoxyCodeLine{302         \textcolor{keywordflow}{for}(x = 0; x < width; x += 8) \{}
+\DoxyCodeLine{303             \textcolor{keywordtype}{float} YDU[64], UDU[64], VDU[64];}
+\DoxyCodeLine{304             \textcolor{keywordflow}{for}(row = y, pos = 0; row < y+8; ++row) \{}
+\DoxyCodeLine{305                 \textcolor{keywordflow}{for}(col = x; col < x+8; ++col, ++pos) \{}
+\DoxyCodeLine{306                     \textcolor{keywordtype}{int} p = row*width*comp + col*comp;}
+\DoxyCodeLine{307                     \textcolor{keywordflow}{if}(row >= height) \{}
+\DoxyCodeLine{308                         p -\/= width*comp*(row+1 -\/ height);}
+\DoxyCodeLine{309                     \}}
+\DoxyCodeLine{310                     \textcolor{keywordflow}{if}(col >= width) \{}
+\DoxyCodeLine{311                         p -\/= comp*(col+1 -\/ width);}
+\DoxyCodeLine{312                     \}}
+\DoxyCodeLine{313 }
+\DoxyCodeLine{314                     \textcolor{keywordtype}{float} r = imageData[p+0], g = imageData[p+ofsG], b = imageData[p+ofsB];}
+\DoxyCodeLine{315                     YDU[pos]=+0.29900f*r+0.58700f*g+0.11400f*b-\/128;}
+\DoxyCodeLine{316                     UDU[pos]=-\/0.16874f*r-\/0.33126f*g+0.50000f*b;}
+\DoxyCodeLine{317                     VDU[pos]=+0.50000f*r-\/0.41869f*g-\/0.08131f*b;}
+\DoxyCodeLine{318                 \}}
+\DoxyCodeLine{319             \}}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{321             DCY = jo\_processDU(fp, \&bitBuf, \&bitCnt, YDU, fdtbl\_Y, DCY, YDC\_HT, YAC\_HT);}
+\DoxyCodeLine{322             DCU = jo\_processDU(fp, \&bitBuf, \&bitCnt, UDU, fdtbl\_UV, DCU, UVDC\_HT, UVAC\_HT);}
+\DoxyCodeLine{323             DCV = jo\_processDU(fp, \&bitBuf, \&bitCnt, VDU, fdtbl\_UV, DCV, UVDC\_HT, UVAC\_HT);}
+\DoxyCodeLine{324         \}}
+\DoxyCodeLine{325     \}}
+\DoxyCodeLine{326     }
+\DoxyCodeLine{327     \textcolor{comment}{// Do the bit alignment of the EOI marker}}
+\DoxyCodeLine{328     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} fillBits[] = \{0x7F, 7\};}
+\DoxyCodeLine{329     jo\_writeBits(fp, \&bitBuf, \&bitCnt, fillBits);}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331     \textcolor{comment}{// EOI}}
+\DoxyCodeLine{332     putc(0xFF, fp);}
+\DoxyCodeLine{333     putc(0xD9, fp);}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{335     fclose(fp);}
+\DoxyCodeLine{336     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{337 \}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{340 }
+
+\end{DoxyCode}

@@ -1,0 +1,172 @@
+\hypertarget{_camera_8hpp_source}{}\doxysection{Camera.\+hpp}
+\label{_camera_8hpp_source}\index{source/Rendering/Camera.hpp@{source/Rendering/Camera.hpp}}
+\mbox{\hyperlink{_camera_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{comment}{// Std. Includes}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{// GL Includes}}
+\DoxyCodeLine{7 \textcolor{comment}{//\#define GLEW\_STATIC}}
+\DoxyCodeLine{8 \textcolor{comment}{//\#include <GL/glew.h>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{// Defines several possible options for camera movement. Used as abstraction to stay away from window-\/system specific input methods}}
+\DoxyCodeLine{17 \textcolor{keyword}{enum} \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcb}{Camera\_Movement}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaa26736999186daf8146f809e863712a1}{FORWARD}},}
+\DoxyCodeLine{20     \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbafed2fca77e454294d6b8bda1bf2c9fd6}{BACKWARD}},}
+\DoxyCodeLine{21     \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbadb45120aafd37a973140edee24708065}{LEFT}},}
+\DoxyCodeLine{22     \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}}
+\DoxyCodeLine{23 \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{comment}{// Default camera values}}
+\DoxyCodeLine{26 \textcolor{keyword}{const} GLfloat \mbox{\hyperlink{_camera_8hpp_aad8ef0922adf3ff721892dfc8eb806d6}{YAW}} = -\/90.0f;}
+\DoxyCodeLine{27 \textcolor{keyword}{const} GLfloat \mbox{\hyperlink{_camera_8hpp_a4ce864ea1227b9e112d693f8c282290c}{PITCH}} = 0.0f;}
+\DoxyCodeLine{28 \textcolor{keyword}{const} GLfloat \mbox{\hyperlink{_camera_8hpp_aba924f5d1202a01928a09a6e9aefae8d}{SPEED}} = 6.0f;}
+\DoxyCodeLine{29 \textcolor{keyword}{const} GLfloat \mbox{\hyperlink{_camera_8hpp_a368f8a5badad28150797d883a5716cd0}{SENSITIVTY}} = 0.25f;}
+\DoxyCodeLine{30 \textcolor{keyword}{const} GLfloat \mbox{\hyperlink{_camera_8hpp_a2d1ba9c31f83438f305a5b773a0d8ab8}{ZOOM}} = 45.0f;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{comment}{// An abstract camera class that processes input and calculates the corresponding Eular Angles, Vectors and Matrices for use in OpenGL}}
+\DoxyCodeLine{33 \textcolor{keyword}{class }\mbox{\hyperlink{class_camera}{Camera}}}
+\DoxyCodeLine{34 \{}
+\DoxyCodeLine{35 \textcolor{keyword}{public}:}
+\DoxyCodeLine{36     \textcolor{comment}{// Constructor with vectors}}
+\DoxyCodeLine{37     \mbox{\hyperlink{class_camera_a535f3a2413a88c2f1e7d1147bec0039c}{Camera}}(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = \mbox{\hyperlink{_camera_8hpp_aad8ef0922adf3ff721892dfc8eb806d6}{YAW}}, GLfloat pitch = \mbox{\hyperlink{_camera_8hpp_a4ce864ea1227b9e112d693f8c282290c}{PITCH}}) : front(glm::vec3(0.0f, 0.0f, -\/1.0f)), movementSpeed(\mbox{\hyperlink{_camera_8hpp_aba924f5d1202a01928a09a6e9aefae8d}{SPEED}}), mouseSensitivity(\mbox{\hyperlink{_camera_8hpp_a368f8a5badad28150797d883a5716cd0}{SENSITIVTY}}), zoom(\mbox{\hyperlink{_camera_8hpp_a2d1ba9c31f83438f305a5b773a0d8ab8}{ZOOM}})}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         this-\/>position = position;}
+\DoxyCodeLine{40         this-\/>worldUp = up;}
+\DoxyCodeLine{41         this-\/>yaw = yaw;}
+\DoxyCodeLine{42         this-\/>pitch = pitch;}
+\DoxyCodeLine{43         this-\/>updateCameraVectors();}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{comment}{// Constructor with scalar values}}
+\DoxyCodeLine{47     \mbox{\hyperlink{class_camera_a1efd973829c22d5fe15a26ede3357ee5}{Camera}}(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) : front(glm::vec3(0.0f, 0.0f, -\/1.0f)), movementSpeed(\mbox{\hyperlink{_camera_8hpp_aba924f5d1202a01928a09a6e9aefae8d}{SPEED}}), mouseSensitivity(\mbox{\hyperlink{_camera_8hpp_a368f8a5badad28150797d883a5716cd0}{SENSITIVTY}}), zoom(\mbox{\hyperlink{_camera_8hpp_a2d1ba9c31f83438f305a5b773a0d8ab8}{ZOOM}})}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49         this-\/>position = glm::vec3(posX, posY, posZ);}
+\DoxyCodeLine{50         this-\/>worldUp = glm::vec3(upX, upY, upZ);}
+\DoxyCodeLine{51         this-\/>yaw = yaw;}
+\DoxyCodeLine{52         this-\/>pitch = pitch;}
+\DoxyCodeLine{53         this-\/>updateCameraVectors();}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{comment}{// Returns the view matrix calculated using Eular Angles and the LookAt Matrix}}
+\DoxyCodeLine{57     glm::mat4 \mbox{\hyperlink{class_camera_affa333055635aed96518c4c66be9a70c}{GetViewMatrix}}()}
+\DoxyCodeLine{58     \{}
+\DoxyCodeLine{59         \textcolor{keywordflow}{return} \mbox{\hyperlink{namespace_grafica_1_1_transformations_acda54cc8e3c04a402b7f0181f169aae0}{glm::lookAt}}(this-\/>position, this-\/>position + this-\/>front, this-\/>up);}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{comment}{// Processes input received from any keyboard-\/like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)}}
+\DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_ac7e9a7f3e63c670fd695a8f03d02dbdf}{ProcessKeyboard}}(\mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcb}{Camera\_Movement}} direction, GLfloat deltaTime)}
+\DoxyCodeLine{64     \{}
+\DoxyCodeLine{65         GLfloat velocity = this-\/>movementSpeed * deltaTime;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \textcolor{keywordflow}{if} (direction == \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaa26736999186daf8146f809e863712a1}{FORWARD}})}
+\DoxyCodeLine{68         \{}
+\DoxyCodeLine{69             this-\/>position += this-\/>front * velocity;}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72         \textcolor{keywordflow}{if} (direction == \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbafed2fca77e454294d6b8bda1bf2c9fd6}{BACKWARD}})}
+\DoxyCodeLine{73         \{}
+\DoxyCodeLine{74             this-\/>position -\/= this-\/>front * velocity;}
+\DoxyCodeLine{75         \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77         \textcolor{keywordflow}{if} (direction == \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbadb45120aafd37a973140edee24708065}{LEFT}})}
+\DoxyCodeLine{78         \{}
+\DoxyCodeLine{79             this-\/>position -\/= this-\/>right * velocity;}
+\DoxyCodeLine{80         \}}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82         \textcolor{keywordflow}{if} (direction == \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaec8379af7490bb9eaaf579cf17876f38}{RIGHT}})}
+\DoxyCodeLine{83         \{}
+\DoxyCodeLine{84             this-\/>position += this-\/>right * velocity;}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     \textcolor{comment}{// Processes input received from a mouse input system. Expects the offset value in both the x and y direction.}}
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_a7ed3036b1db2bc7bf27f1e03acc55df8}{ProcessMouseMovement}}(GLfloat xOffset, GLfloat yOffset, GLboolean constrainPitch = \textcolor{keyword}{true})}
+\DoxyCodeLine{90     \{}
+\DoxyCodeLine{91         xOffset *= this-\/>mouseSensitivity;}
+\DoxyCodeLine{92         yOffset *= this-\/>mouseSensitivity;}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94         this-\/>yaw += xOffset;}
+\DoxyCodeLine{95         this-\/>pitch += yOffset;}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97         \textcolor{comment}{// Make sure that when pitch is out of bounds, screen doesn't get flipped}}
+\DoxyCodeLine{98         \textcolor{keywordflow}{if} (constrainPitch)}
+\DoxyCodeLine{99         \{}
+\DoxyCodeLine{100             \textcolor{keywordflow}{if} (this-\/>pitch > 89.0f)}
+\DoxyCodeLine{101             \{}
+\DoxyCodeLine{102                 this-\/>pitch = 89.0f;}
+\DoxyCodeLine{103             \}}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105             \textcolor{keywordflow}{if} (this-\/>pitch < -\/89.0f)}
+\DoxyCodeLine{106             \{}
+\DoxyCodeLine{107                 this-\/>pitch = -\/89.0f;}
+\DoxyCodeLine{108             \}}
+\DoxyCodeLine{109         \}}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111         \textcolor{comment}{// Update Front, Right and Up Vectors using the updated Eular angles}}
+\DoxyCodeLine{112         this-\/>updateCameraVectors();}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{comment}{// Processes input received from a mouse scroll-\/wheel event. Only requires input on the vertical wheel-\/axis}}
+\DoxyCodeLine{116     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_camera_a70b8364d53d5851210baacf35b7bd837}{ProcessMouseScroll}}(GLfloat yOffset)}
+\DoxyCodeLine{117     \{}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     \}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121     GLfloat \mbox{\hyperlink{class_camera_a3f4dc60e5efbd49c84e174dcaec72a68}{GetZoom}}()}
+\DoxyCodeLine{122     \{}
+\DoxyCodeLine{123         \textcolor{keywordflow}{return} this-\/>zoom;}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     glm::vec3 \mbox{\hyperlink{class_camera_a7166b8466c94d0b5c127fc74c7881beb}{GetPosition}}()}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         \textcolor{keywordflow}{return} this-\/>position;}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     glm::vec3 \mbox{\hyperlink{class_camera_ae1416b8d57afd6e6b557b62db6828d29}{GetFront}}()}
+\DoxyCodeLine{132     \{}
+\DoxyCodeLine{133         \textcolor{keywordflow}{return} this-\/>front;}
+\DoxyCodeLine{134     \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136 \textcolor{keyword}{private}:}
+\DoxyCodeLine{137     \textcolor{comment}{// Camera Attributes}}
+\DoxyCodeLine{138     glm::vec3 position;}
+\DoxyCodeLine{139     glm::vec3 front;}
+\DoxyCodeLine{140     glm::vec3 up;}
+\DoxyCodeLine{141     glm::vec3 right;}
+\DoxyCodeLine{142     glm::vec3 worldUp;}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     \textcolor{comment}{// Eular Angles}}
+\DoxyCodeLine{145     GLfloat yaw;}
+\DoxyCodeLine{146     GLfloat pitch;}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     \textcolor{comment}{// Camera options}}
+\DoxyCodeLine{149     GLfloat movementSpeed;}
+\DoxyCodeLine{150     GLfloat mouseSensitivity;}
+\DoxyCodeLine{151     GLfloat zoom;}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     \textcolor{comment}{// Calculates the front vector from the Camera's (updated) Eular Angles}}
+\DoxyCodeLine{154     \textcolor{keywordtype}{void} updateCameraVectors()}
+\DoxyCodeLine{155     \{}
+\DoxyCodeLine{156         \textcolor{comment}{// Calculate the new Front vector}}
+\DoxyCodeLine{157         glm::vec3 front;}
+\DoxyCodeLine{158         front.x = cos(glm::radians(this-\/>yaw)) * cos(glm::radians(this-\/>pitch));}
+\DoxyCodeLine{159         front.y = sin(glm::radians(this-\/>pitch));}
+\DoxyCodeLine{160         front.z = sin(glm::radians(this-\/>yaw)) * cos(glm::radians(this-\/>pitch));}
+\DoxyCodeLine{161         this-\/>front = glm::normalize(front);}
+\DoxyCodeLine{162         \textcolor{comment}{// Also re-\/calculate the Right and Up vector}}
+\DoxyCodeLine{163         this-\/>right = glm::normalize(glm::cross(this-\/>front, this-\/>worldUp));  \textcolor{comment}{// Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.}}
+\DoxyCodeLine{164         this-\/>up = glm::normalize(glm::cross(this-\/>right, this-\/>front));}
+\DoxyCodeLine{165     \}}
+\DoxyCodeLine{166 \};}
+
+\end{DoxyCode}

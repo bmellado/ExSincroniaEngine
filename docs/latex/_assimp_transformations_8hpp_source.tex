@@ -1,0 +1,44 @@
+\hypertarget{_assimp_transformations_8hpp_source}{}\doxysection{Assimp\+Transformations.\+hpp}
+\label{_assimp_transformations_8hpp_source}\index{source/Rendering/AssimpTransformations.hpp@{source/Rendering/AssimpTransformations.hpp}}
+\mbox{\hyperlink{_assimp_transformations_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef ASSIMPTRANSFORMATIONS\_HPP}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define ASSIMPTRANSFORMATIONS\_HPP}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <glm/gtx/quaternion.hpp>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <assimp/quaternion.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <assimp/matrix4x4.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <assimp/vector3.h>}}
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_mona}{Mona}} \{}
+\DoxyCodeLine{10     \textcolor{keyword}{inline} glm::mat4 \mbox{\hyperlink{namespace_mona_ab8de00aae23941ea492d203cea97a91d}{AssimpToGlmMatrix}}(\textcolor{keyword}{const} aiMatrix4x4\& mat)}
+\DoxyCodeLine{11     \{}
+\DoxyCodeLine{12         glm::mat4 m;}
+\DoxyCodeLine{13         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} y = 0; y < 4; y++)}
+\DoxyCodeLine{14         \{}
+\DoxyCodeLine{15             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} x = 0; x < 4; x++)}
+\DoxyCodeLine{16             \{}
+\DoxyCodeLine{17                 m[x][y] = mat[y][x];}
+\DoxyCodeLine{18             \}}
+\DoxyCodeLine{19         \}}
+\DoxyCodeLine{20         \textcolor{keywordflow}{return} m;}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keyword}{inline} glm::vec3 \mbox{\hyperlink{namespace_mona_af5a5c0ac9fc8014a8818e60fd0ce1b9b}{AssimpToGlmVec3}}(\textcolor{keyword}{const} aiVector3D\& vec)}
+\DoxyCodeLine{24     \{}
+\DoxyCodeLine{25         \textcolor{keywordflow}{return} glm::vec3(vec.x, vec.y, vec.z);}
+\DoxyCodeLine{26     \}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keyword}{inline} glm::fquat \mbox{\hyperlink{namespace_mona_a40166e4a8e22c07aa1e52ea8932fe497}{AssimpToGlmQuat}}(\textcolor{keyword}{const} aiQuaternion\& quat) \{}
+\DoxyCodeLine{29         glm::fquat q;}
+\DoxyCodeLine{30         q.x = quat.x;}
+\DoxyCodeLine{31         q.y = quat.y;}
+\DoxyCodeLine{32         q.z = quat.z;}
+\DoxyCodeLine{33         q.w = quat.w;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \textcolor{keywordflow}{return} q;}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37 \}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

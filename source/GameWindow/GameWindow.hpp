@@ -1,3 +1,15 @@
+/// GameWindow class, this class acts like a framework for the user to initialize a windows easily
+/// and write de logic of the program at the same time
+/// An use of example for an instanced class is
+/// window.initWindow()
+/// while(windowShouldClose()){
+///  window.config_init()
+/// **write the logic**
+/// }
+/// window.finishWindow()
+/// 
+
+
 #pragma once
 
 #include <iostream>
@@ -21,10 +33,14 @@ namespace Sincronia {
 	class GameWindow {
 
     public:
-        GameWindow(){
-        }
+
 
         GLFWwindow* m_window;
+
+        /// <summary>
+        /// This method initializes and launches a window using OpenGl and ImGui
+        /// </summary>
+        /// <returns>an integer indicating the succes of the initialization</returns>
         int initWindow() {
 
             // glfw: initialize and configure
@@ -89,6 +105,9 @@ namespace Sincronia {
 
         }
 
+        /// <summary>
+        /// This function shuts down the window initialized
+        /// </summary>
         void finishWindow() {
             /* ImGui Start ---- */
             ImGui_ImplOpenGL3_Shutdown();
@@ -105,10 +124,17 @@ namespace Sincronia {
 
         }
 
+        /// <summary>
+        /// Returns if window should be closed or not
+        /// </summary>
+        /// <returns>1 when should close, 0 instead.</returns>
         int shouldClose() {
            return !glfwWindowShouldClose(m_window);
         }
 
+        /// <summary>
+        /// This method does some configurations that should be inside the main loop
+        /// </summary>
         void config_init() {
             {
 

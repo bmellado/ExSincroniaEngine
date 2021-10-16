@@ -20,6 +20,13 @@
 
 namespace Sincronia {
 
+
+    /// <summary>
+    /// This is a callback method that should be passed as argument to OpenGl, 
+    /// </summary>
+    /// <param name="jid">The id assigned to that joystick</param>
+    /// <param name="event">The event associated to that joystick, i.e, connected, disconnected</param>
+
     void joystick_callback(int jid, int event)
     {
         if (event == GLFW_CONNECTED)
@@ -34,7 +41,9 @@ namespace Sincronia {
         }
     }
 
-    /* A simple struct handling all axes and button inputs of a joystick. */
+    /// <summary>
+    /// Joystick structure, it initializes with a number of buttons and number of Axes
+    /// </summary>
     struct Joystick
     {
         std::vector<bool> buttons;
@@ -69,7 +78,10 @@ namespace Sincronia {
      * This way, to use an std::vector would require additional logic. */
     using JoystickContainer = std::unordered_map<JoystickId, Joystick>;
 
-    /* joysticks is not const as we detect connections and disconnections of joystics. */
+    /// <summary>
+    /// It checks if it a connection or a disconnection has ocurred, it has to be constantly called in the game loop
+    /// </summary>
+    /// <param name="joysticks"> The joystick container for all controllers connected in the moment</param>
     void pollJoysticks(JoystickContainer& joysticks)
     {
         for (int joystickId = GLFW_JOYSTICK_1; joystickId < GLFW_JOYSTICK_LAST; ++joystickId)
@@ -121,6 +133,9 @@ namespace Sincronia {
         }
     }
 
+    /// <summary>
+    /// Auxiliar function that sends the joystick callback to gl joystick callback
+    /// </summary>
     void setJoystickCallBack() {
         glfwSetJoystickCallback(joystick_callback);
     }

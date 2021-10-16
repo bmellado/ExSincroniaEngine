@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['matrix34f_0',['Matrix34f',['../namespace_grafica.html#aa5c049162076e3e8d29fa31d004fe02c',1,'Grafica']]],
-  ['matrix4f_1',['Matrix4f',['../namespace_grafica.html#a762c3a0582df5e367952ed3044333584',1,'Grafica']]]
+  ['joystickcontainer_0',['JoystickContainer',['../namespace_sincronia.html#a897b50f5cad73b530b50e0bf748f16ed',1,'Sincronia::JoystickContainer()'],['../ex__joystick_8cpp.html#a4135f910ce9fb5d99107adf90b4ac011',1,'JoystickContainer():&#160;ex_joystick.cpp']]],
+  ['joystickid_1',['JoystickId',['../namespace_sincronia.html#a706b02c6136f78bf02db01272e121873',1,'Sincronia::JoystickId()'],['../ex__joystick_8cpp.html#a09ec58a11e1259f51c641b0c8d4cbe51',1,'JoystickId():&#160;ex_joystick.cpp']]]
 ];

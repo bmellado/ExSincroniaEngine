@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['projectiontype_0',['ProjectionType',['../ex__projections_8cpp.html#addbdeb0c4a9113fece681e37faca81d3',1,'ex_projections.cpp']]]
+  ['ecomponenttype_0',['EComponentType',['../namespace_sincronia.html#a279af04e3d9fffe393c5e10397c2e0de',1,'Sincronia']]]
 ];

@@ -1,0 +1,244 @@
+\hypertarget{_model_8hpp_source}{}\doxysection{Model.\+hpp}
+\label{_model_8hpp_source}\index{source/Rendering/Model.hpp@{source/Rendering/Model.hpp}}
+\mbox{\hyperlink{_model_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{//\#include <GL/glew.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_s_o_i_l2_8h}{SOIL2/SOIL2.h}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <assimp/Importer.hpp>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <assimp/scene.h>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <assimp/postprocess.h>}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_mesh_8hpp}{Mesh.hpp}}"{}}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 GLint \mbox{\hyperlink{_model_8hpp_aa9b4559fc7bbe605d04833f6c7371fd7}{TextureFromFile}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* path, \textcolor{keywordtype}{string} directory);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{class }\mbox{\hyperlink{class_model}{Model}}}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29 \textcolor{keyword}{public}:}
+\DoxyCodeLine{30     \textcolor{comment}{/*  Functions   */}}
+\DoxyCodeLine{31     \textcolor{comment}{// Constructor, expects a filepath to a 3D model.}}
+\DoxyCodeLine{32     \mbox{\hyperlink{class_model_ac1aaf3ae95e438c200eb3dfcb4a22073}{Model}}(GLchar* path)}
+\DoxyCodeLine{33     \{}
+\DoxyCodeLine{34         this-\/>loadModel(path);}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{comment}{// Draws the model, and thus all its meshes}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_model_a191a00d937b9e911bf4881ea14d79b6c}{Draw}}(\mbox{\hyperlink{class_shader}{Shader}} shader)}
+\DoxyCodeLine{39     \{}
+\DoxyCodeLine{40         \textcolor{keywordflow}{for} (GLuint i = 0; i < this-\/>meshes.size(); i++)}
+\DoxyCodeLine{41         \{}
+\DoxyCodeLine{42             this-\/>meshes[i].Draw(shader);}
+\DoxyCodeLine{43         \}}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{private}:}
+\DoxyCodeLine{47     \textcolor{comment}{/*  Model Data  */}}
+\DoxyCodeLine{48     vector<Mesh> meshes;}
+\DoxyCodeLine{49     \textcolor{keywordtype}{string} directory;}
+\DoxyCodeLine{50     vector<Texture> textures\_loaded;    \textcolor{comment}{// Stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{comment}{/*  Functions   */}}
+\DoxyCodeLine{53     \textcolor{comment}{// Loads a model with supported ASSIMP extensions from file and stores the resulting meshes in the meshes vector.}}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} loadModel(\textcolor{keywordtype}{string} path)}
+\DoxyCodeLine{55     \{}
+\DoxyCodeLine{56         \textcolor{comment}{// Read file via ASSIMP}}
+\DoxyCodeLine{57         Assimp::Importer importer;}
+\DoxyCodeLine{58         \textcolor{keyword}{const} aiScene* scene = importer.ReadFile(path, aiProcess\_Triangulate | aiProcess\_FlipUVs);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60         \textcolor{comment}{// Check for errors}}
+\DoxyCodeLine{61         \textcolor{keywordflow}{if} (!scene || scene-\/>mFlags == AI\_SCENE\_FLAGS\_INCOMPLETE || !scene-\/>mRootNode) \textcolor{comment}{// if is Not Zero}}
+\DoxyCodeLine{62         \{}
+\DoxyCodeLine{63             cout << \textcolor{stringliteral}{"{}ERROR::ASSIMP:: "{}} << importer.GetErrorString() << endl;}
+\DoxyCodeLine{64             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{65         \}}
+\DoxyCodeLine{66         \textcolor{comment}{// Retrieve the directory path of the filepath}}
+\DoxyCodeLine{67         this-\/>directory = path.substr(0, path.find\_last\_of(\textcolor{charliteral}{'/'}));}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69         \textcolor{comment}{// Process ASSIMP's root node recursively}}
+\DoxyCodeLine{70         this-\/>processNode(scene-\/>mRootNode, scene);}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{// Processes a node in a recursive fashion. Processes each individual mesh located at the node and repeats this process on its children nodes (if any).}}
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} processNode(aiNode* node, \textcolor{keyword}{const} aiScene* scene)}
+\DoxyCodeLine{75     \{}
+\DoxyCodeLine{76         \textcolor{comment}{// Process each mesh located at the current node}}
+\DoxyCodeLine{77         \textcolor{keywordflow}{for} (GLuint i = 0; i < node-\/>mNumMeshes; i++)}
+\DoxyCodeLine{78         \{}
+\DoxyCodeLine{79             \textcolor{comment}{// The node object only contains indices to index the actual objects in the scene.}}
+\DoxyCodeLine{80             \textcolor{comment}{// The scene contains all the data, node is just to keep stuff organized (like relations between nodes).}}
+\DoxyCodeLine{81             aiMesh* mesh = scene-\/>mMeshes[node-\/>mMeshes[i]];}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83             this-\/>meshes.push\_back(this-\/>processMesh(mesh, scene));}
+\DoxyCodeLine{84         \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86         \textcolor{comment}{// After we've processed all of the meshes (if any) we then recursively process each of the children nodes}}
+\DoxyCodeLine{87         \textcolor{keywordflow}{for} (GLuint i = 0; i < node-\/>mNumChildren; i++)}
+\DoxyCodeLine{88         \{}
+\DoxyCodeLine{89             this-\/>processNode(node-\/>mChildren[i], scene);}
+\DoxyCodeLine{90         \}}
+\DoxyCodeLine{91     \}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \mbox{\hyperlink{class_mesh}{Mesh}} processMesh(aiMesh* mesh, \textcolor{keyword}{const} aiScene* scene)}
+\DoxyCodeLine{94     \{}
+\DoxyCodeLine{95         \textcolor{comment}{// Data to fill}}
+\DoxyCodeLine{96         vector<Vertex> vertices;}
+\DoxyCodeLine{97         vector<GLuint> indices;}
+\DoxyCodeLine{98         vector<Texture> textures;}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100         \textcolor{comment}{// Walk through each of the mesh's vertices}}
+\DoxyCodeLine{101         \textcolor{keywordflow}{for} (GLuint i = 0; i < mesh-\/>mNumVertices; i++)}
+\DoxyCodeLine{102         \{}
+\DoxyCodeLine{103             \mbox{\hyperlink{struct_vertex}{Vertex}} vertex;}
+\DoxyCodeLine{104             glm::vec3 vector; \textcolor{comment}{// We declare a placeholder vector since assimp uses its own vector class that doesn't directly convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106             \textcolor{comment}{// Positions}}
+\DoxyCodeLine{107             vector.x = mesh-\/>mVertices[i].x;}
+\DoxyCodeLine{108             vector.y = mesh-\/>mVertices[i].y;}
+\DoxyCodeLine{109             vector.z = mesh-\/>mVertices[i].z;}
+\DoxyCodeLine{110             vertex.\mbox{\hyperlink{struct_vertex_abb3cfacd96b5955b0cec9359840ee49f}{Position}} = vector;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112             \textcolor{comment}{// Normals}}
+\DoxyCodeLine{113             vector.x = mesh-\/>mNormals[i].x;}
+\DoxyCodeLine{114             vector.y = mesh-\/>mNormals[i].y;}
+\DoxyCodeLine{115             vector.z = mesh-\/>mNormals[i].z;}
+\DoxyCodeLine{116             vertex.\mbox{\hyperlink{struct_vertex_a9ab4dc431b41509f0b1bb1a4bf09d4e2}{Normal}} = vector;}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{118             \textcolor{comment}{// Texture Coordinates}}
+\DoxyCodeLine{119             \textcolor{keywordflow}{if} (mesh-\/>mTextureCoords[0]) \textcolor{comment}{// Does the mesh contain texture coordinates?}}
+\DoxyCodeLine{120             \{}
+\DoxyCodeLine{121                 glm::vec2 vec;}
+\DoxyCodeLine{122                 \textcolor{comment}{// A vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't}}
+\DoxyCodeLine{123                 \textcolor{comment}{// use models where a vertex can have multiple texture coordinates so we always take the first set (0).}}
+\DoxyCodeLine{124                 vec.x = mesh-\/>mTextureCoords[0][i].x;}
+\DoxyCodeLine{125                 vec.y = mesh-\/>mTextureCoords[0][i].y;}
+\DoxyCodeLine{126                 vertex.\mbox{\hyperlink{struct_vertex_a921a513c1e6d1e63e99d477fa837a317}{TexCoords}} = vec;}
+\DoxyCodeLine{127             \}}
+\DoxyCodeLine{128             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{129             \{}
+\DoxyCodeLine{130                 vertex.\mbox{\hyperlink{struct_vertex_a921a513c1e6d1e63e99d477fa837a317}{TexCoords}} = glm::vec2(0.0f, 0.0f);}
+\DoxyCodeLine{131             \}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133             vertices.push\_back(vertex);}
+\DoxyCodeLine{134         \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136         \textcolor{comment}{// Now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex indices.}}
+\DoxyCodeLine{137         \textcolor{keywordflow}{for} (GLuint i = 0; i < mesh-\/>mNumFaces; i++)}
+\DoxyCodeLine{138         \{}
+\DoxyCodeLine{139             aiFace face = mesh-\/>mFaces[i];}
+\DoxyCodeLine{140             \textcolor{comment}{// Retrieve all indices of the face and store them in the indices vector}}
+\DoxyCodeLine{141             \textcolor{keywordflow}{for} (GLuint j = 0; j < face.mNumIndices; j++)}
+\DoxyCodeLine{142             \{}
+\DoxyCodeLine{143                 indices.push\_back(face.mIndices[j]);}
+\DoxyCodeLine{144             \}}
+\DoxyCodeLine{145         \}}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147         \textcolor{comment}{// Process materials}}
+\DoxyCodeLine{148         \textcolor{keywordflow}{if} (mesh-\/>mMaterialIndex >= 0)}
+\DoxyCodeLine{149         \{}
+\DoxyCodeLine{150             aiMaterial* material = scene-\/>mMaterials[mesh-\/>mMaterialIndex];}
+\DoxyCodeLine{151             \textcolor{comment}{// We assume a convention for sampler names in the shaders. Each diffuse texture should be named}}
+\DoxyCodeLine{152             \textcolor{comment}{// as 'texture\_diffuseN' where N is a sequential number ranging from 1 to MAX\_SAMPLER\_NUMBER.}}
+\DoxyCodeLine{153             \textcolor{comment}{// Same applies to other texture as the following list summarizes:}}
+\DoxyCodeLine{154             \textcolor{comment}{// Diffuse: texture\_diffuseN}}
+\DoxyCodeLine{155             \textcolor{comment}{// Specular: texture\_specularN}}
+\DoxyCodeLine{156             \textcolor{comment}{// Normal: texture\_normalN}}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158             \textcolor{comment}{// 1. Diffuse maps}}
+\DoxyCodeLine{159             vector<Texture> diffuseMaps = this-\/>loadMaterialTextures(material, aiTextureType\_DIFFUSE, \textcolor{stringliteral}{"{}texture\_diffuse"{}});}
+\DoxyCodeLine{160             textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162             \textcolor{comment}{// 2. Specular maps}}
+\DoxyCodeLine{163             vector<Texture> specularMaps = this-\/>loadMaterialTextures(material, aiTextureType\_SPECULAR, \textcolor{stringliteral}{"{}texture\_specular"{}});}
+\DoxyCodeLine{164             textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());}
+\DoxyCodeLine{165         \}}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167         \textcolor{comment}{// Return a mesh object created from the extracted mesh data}}
+\DoxyCodeLine{168         \textcolor{keywordflow}{return} \mbox{\hyperlink{class_mesh}{Mesh}}(vertices, indices, textures);}
+\DoxyCodeLine{169     \}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171     \textcolor{comment}{// Checks all material textures of a given type and loads the textures if they're not loaded yet.}}
+\DoxyCodeLine{172     \textcolor{comment}{// The required info is returned as a Texture struct.}}
+\DoxyCodeLine{173     vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, \textcolor{keywordtype}{string} typeName)}
+\DoxyCodeLine{174     \{}
+\DoxyCodeLine{175         vector<Texture> textures;}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177         \textcolor{keywordflow}{for} (GLuint i = 0; i < mat-\/>GetTextureCount(type); i++)}
+\DoxyCodeLine{178         \{}
+\DoxyCodeLine{179             aiString str;}
+\DoxyCodeLine{180             mat-\/>GetTexture(type, i, \&str);}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182             \textcolor{comment}{// Check if texture was loaded before and if so, continue to next iteration: skip loading a new texture}}
+\DoxyCodeLine{183             GLboolean skip = \textcolor{keyword}{false};}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185             \textcolor{keywordflow}{for} (GLuint j = 0; j < textures\_loaded.size(); j++)}
+\DoxyCodeLine{186             \{}
+\DoxyCodeLine{187                 \textcolor{keywordflow}{if} (textures\_loaded[j].path == str)}
+\DoxyCodeLine{188                 \{}
+\DoxyCodeLine{189                     textures.push\_back(textures\_loaded[j]);}
+\DoxyCodeLine{190                     skip = \textcolor{keyword}{true}; \textcolor{comment}{// A texture with the same filepath has already been loaded, continue to next one. (optimization)}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{193                 \}}
+\DoxyCodeLine{194             \}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196             \textcolor{keywordflow}{if} (!skip)}
+\DoxyCodeLine{197             \{   \textcolor{comment}{// If texture hasn't been loaded already, load it}}
+\DoxyCodeLine{198                 \mbox{\hyperlink{struct_texture}{Texture}} texture;}
+\DoxyCodeLine{199                 texture.\mbox{\hyperlink{struct_texture_af848138d72c1fc995ab414a71ab10d47}{id}} = \mbox{\hyperlink{_model_8hpp_aa9b4559fc7bbe605d04833f6c7371fd7}{TextureFromFile}}(str.C\_Str(), this-\/>directory);}
+\DoxyCodeLine{200                 texture.\mbox{\hyperlink{struct_texture_adacb495ed5140ec76a09cd130e7d5c32}{type}} = typeName;}
+\DoxyCodeLine{201                 texture.\mbox{\hyperlink{struct_texture_a88893bf81a4d4529c70da39f07f53ddb}{path}} = str;}
+\DoxyCodeLine{202                 textures.push\_back(texture);}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204                 this-\/>textures\_loaded.push\_back(texture);  \textcolor{comment}{// Store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.}}
+\DoxyCodeLine{205             \}}
+\DoxyCodeLine{206         \}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208         \textcolor{keywordflow}{return} textures;}
+\DoxyCodeLine{209     \}}
+\DoxyCodeLine{210 \};}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212 GLint \mbox{\hyperlink{_model_8hpp_aa9b4559fc7bbe605d04833f6c7371fd7}{TextureFromFile}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* path, \textcolor{keywordtype}{string} directory)}
+\DoxyCodeLine{213 \{}
+\DoxyCodeLine{214     \textcolor{comment}{//Generate texture ID and load texture data}}
+\DoxyCodeLine{215     \textcolor{keywordtype}{string} filename = string(path);}
+\DoxyCodeLine{216     filename = directory + \textcolor{charliteral}{'/'} + filename;}
+\DoxyCodeLine{217     GLuint textureID;}
+\DoxyCodeLine{218     glGenTextures(1, \&textureID);}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220     \textcolor{keywordtype}{int} width, height;}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* image = \mbox{\hyperlink{_s_o_i_l2_8c_a6714549ec3eb871533ae5930accfa652}{SOIL\_load\_image}}(filename.c\_str(), \&width, \&height, 0, \mbox{\hyperlink{_s_o_i_l2_8h_abc6126af1d45847bc59afa0aa3216b04ae3b112adfea8f3f20c916c98cd9ab617}{SOIL\_LOAD\_RGB}});}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224     \textcolor{comment}{// Assign texture to ID}}
+\DoxyCodeLine{225     glBindTexture(GL\_TEXTURE\_2D, textureID);}
+\DoxyCodeLine{226     glTexImage2D(GL\_TEXTURE\_2D, 0, GL\_RGB, width, height, 0, GL\_RGB, GL\_UNSIGNED\_BYTE, image);}
+\DoxyCodeLine{227     glGenerateMipmap(GL\_TEXTURE\_2D);}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229     \textcolor{comment}{// Parameters}}
+\DoxyCodeLine{230     glTexParameteri(GL\_TEXTURE\_2D, GL\_TEXTURE\_WRAP\_S, GL\_REPEAT);}
+\DoxyCodeLine{231     glTexParameteri(GL\_TEXTURE\_2D, GL\_TEXTURE\_WRAP\_T, GL\_REPEAT);}
+\DoxyCodeLine{232     glTexParameteri(GL\_TEXTURE\_2D, GL\_TEXTURE\_MIN\_FILTER, GL\_LINEAR\_MIPMAP\_LINEAR);}
+\DoxyCodeLine{233     glTexParameteri(GL\_TEXTURE\_2D, GL\_TEXTURE\_MAG\_FILTER, GL\_LINEAR);}
+\DoxyCodeLine{234     glBindTexture(GL\_TEXTURE\_2D, 0);}
+\DoxyCodeLine{235     \mbox{\hyperlink{_s_o_i_l2_8c_acd82ef0d8148f5b18f413a59440dafdd}{SOIL\_free\_image\_data}}(image);}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237     \textcolor{keywordflow}{return} textureID;}
+\DoxyCodeLine{238 \}}
+
+\end{DoxyCode}

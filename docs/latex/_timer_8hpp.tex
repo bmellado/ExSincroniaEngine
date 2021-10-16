@@ -1,0 +1,39 @@
+\hypertarget{_timer_8hpp}{}\doxysection{source/\+Time/\+Timer.hpp File Reference}
+\label{_timer_8hpp}\index{source/Time/Timer.hpp@{source/Time/Timer.hpp}}
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_sincronia_1_1_timer}{Sincronia\+::\+Timer$<$ Log\+Profile\+Function $>$}}
+\begin{DoxyCompactList}\small\item\em This class is meant to manage the time, it contains a profiler that saves the time information in a vector, this class also intents to stabilize the frame rating \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_sincronia_1_1_profile_result}{Sincronia\+::\+Profile\+Result}}
+\begin{DoxyCompactList}\small\item\em A simple structure contaning the name of timer, and the duration that passed since its initialization to destruction \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_sincronia}{Sincronia}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_timer_8hpp_aca2d5c04dc806b955e648edaed0cc3e3}{PROFILE\+\_\+\+SCOPE}}(name,  stats)~\mbox{\hyperlink{class_sincronia_1_1_timer}{Sincronia\+::\+Timer}} timer\#\#\+\_\+\+\_\+\+LINE\+\_\+\+\_\+(name, \mbox{[}\&stats\mbox{]}(const \mbox{\hyperlink{struct_sincronia_1_1_profile_result}{Sincronia\+::\+Profile\+Result}}\& profile\+Result) \{ stats.\+push\+\_\+back(profile\+Result); \})
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespace_sincronia_afb1176859117c44e706289cd3fa47e11}{Sincronia\+::operator$<$$<$}} (std\+::ostream \&os, const Profile\+Result \&result)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_timer_8hpp_aca2d5c04dc806b955e648edaed0cc3e3}\label{_timer_8hpp_aca2d5c04dc806b955e648edaed0cc3e3}} 
+\index{Timer.hpp@{Timer.hpp}!PROFILE\_SCOPE@{PROFILE\_SCOPE}}
+\index{PROFILE\_SCOPE@{PROFILE\_SCOPE}!Timer.hpp@{Timer.hpp}}
+\doxysubsubsection{\texorpdfstring{PROFILE\_SCOPE}{PROFILE\_SCOPE}}
+{\footnotesize\ttfamily \#define PROFILE\+\_\+\+SCOPE(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{stats }\end{DoxyParamCaption})~\mbox{\hyperlink{class_sincronia_1_1_timer}{Sincronia\+::\+Timer}} timer\#\#\+\_\+\+\_\+\+LINE\+\_\+\+\_\+(name, \mbox{[}\&stats\mbox{]}(const \mbox{\hyperlink{struct_sincronia_1_1_profile_result}{Sincronia\+::\+Profile\+Result}}\& profile\+Result) \{ stats.\+push\+\_\+back(profile\+Result); \})}
+

@@ -1,0 +1,222 @@
+\hypertarget{image___d_x_t_8h}{}\doxysection{source/\+Rendering/\+SOIL2/image\+\_\+\+DXT.h File Reference}
+\label{image___d_x_t_8h}\index{source/Rendering/SOIL2/image\_DXT.h@{source/Rendering/SOIL2/image\_DXT.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_d_d_s__header}{DDS\+\_\+header}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_adb89cdf9d31f73fc93628e33055e4a55}{DDSD\+\_\+\+CAPS}}~0x00000001
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a419b97aadbcd31092bbd20cfa86bc6b7}{DDSD\+\_\+\+HEIGHT}}~0x00000002
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a059d0f45051be842d94d0168b710970c}{DDSD\+\_\+\+WIDTH}}~0x00000004
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a1f88be8cd0ecaf30aae840646638e459}{DDSD\+\_\+\+PITCH}}~0x00000008
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a13e411299ebd20b6fb2f18dd7e3843d2}{DDSD\+\_\+\+PIXELFORMAT}}~0x00001000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a2bf6ae2290cc0a63b69be52871fe82d1}{DDSD\+\_\+\+MIPMAPCOUNT}}~0x00020000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_ab417eeb93698f05d4fdca77d1d1ed934}{DDSD\+\_\+\+LINEARSIZE}}~0x00080000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_af3aec8ae7fbc5870091082a124d68f02}{DDSD\+\_\+\+DEPTH}}~0x00800000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_ac42b3220dbc31fe683fe8d6954723fc5}{DDPF\+\_\+\+ALPHAPIXELS}}~0x00000001
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}{DDPF\+\_\+\+FOURCC}}~0x00000004
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a88bb1ae9e9ae6422311c641b7ec9a212}{DDPF\+\_\+\+RGB}}~0x00000040
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_afbc5ed75d018b3b325a67a55a2272198}{DDSCAPS\+\_\+\+COMPLEX}}~0x00000008
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_ad09c16f5d1f52249e260e08c9edaee13}{DDSCAPS\+\_\+\+TEXTURE}}~0x00001000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a3b2cabc9b4d5aec2c4ea94a7585b3868}{DDSCAPS\+\_\+\+MIPMAP}}~0x00400000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a916b2ec3ed47a503039c68ce0be6c97b}{DDSCAPS2\+\_\+\+CUBEMAP}}~0x00000200
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a3b023d0c239ac3f774b80f295837e66a}{DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+POSITIVEX}}~0x00000400
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_ac2340c54d8e7c38c5ba6cfd8cfaba4bd}{DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+NEGATIVEX}}~0x00000800
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_ac026308ac4b28c480f5cbcd60cbc26fe}{DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+POSITIVEY}}~0x00001000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_aaa600a7972b5fc27b59335fd34e1d7b7}{DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+NEGATIVEY}}~0x00002000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_acb1ba86a9e579dc62b25829ee5c6c3a9}{DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+POSITIVEZ}}~0x00004000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_a0831096915d3af29fb9b1d2ed99e09d7}{DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+NEGATIVEZ}}~0x00008000
+\item 
+\#define \mbox{\hyperlink{image___d_x_t_8h_af4c51bb6d9e6dfdf1797bbb797d4468d}{DDSCAPS2\+\_\+\+VOLUME}}~0x00200000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{image___d_x_t_8h_af02dc8b928fbb3014cab9643bb7c3c79}{save\+\_\+image\+\_\+as\+\_\+\+DDS}} (const char $\ast$filename, int width, int height, int channels, const unsigned char $\ast$const data)
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{image___d_x_t_8h_a32051d16a6712f2ea662b1ea7de153f2}{convert\+\_\+image\+\_\+to\+\_\+\+DXT1}} (const unsigned char $\ast$const uncompressed, int width, int height, int channels, int $\ast$out\+\_\+size)
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{image___d_x_t_8h_a2cfd6ff9d22040acf190e13f1d63ffba}{convert\+\_\+image\+\_\+to\+\_\+\+DXT5}} (const unsigned char $\ast$const uncompressed, int width, int height, int channels, int $\ast$out\+\_\+size)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{image___d_x_t_8h_ac42b3220dbc31fe683fe8d6954723fc5}\label{image___d_x_t_8h_ac42b3220dbc31fe683fe8d6954723fc5}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDPF\_ALPHAPIXELS@{DDPF\_ALPHAPIXELS}}
+\index{DDPF\_ALPHAPIXELS@{DDPF\_ALPHAPIXELS}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDPF\_ALPHAPIXELS}{DDPF\_ALPHAPIXELS}}
+{\footnotesize\ttfamily \#define DDPF\+\_\+\+ALPHAPIXELS~0x00000001}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}\label{image___d_x_t_8h_a7e6d33fd53b55830608464e4404197a6}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDPF\_FOURCC@{DDPF\_FOURCC}}
+\index{DDPF\_FOURCC@{DDPF\_FOURCC}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDPF\_FOURCC}{DDPF\_FOURCC}}
+{\footnotesize\ttfamily \#define DDPF\+\_\+\+FOURCC~0x00000004}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a88bb1ae9e9ae6422311c641b7ec9a212}\label{image___d_x_t_8h_a88bb1ae9e9ae6422311c641b7ec9a212}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDPF\_RGB@{DDPF\_RGB}}
+\index{DDPF\_RGB@{DDPF\_RGB}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDPF\_RGB}{DDPF\_RGB}}
+{\footnotesize\ttfamily \#define DDPF\+\_\+\+RGB~0x00000040}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a916b2ec3ed47a503039c68ce0be6c97b}\label{image___d_x_t_8h_a916b2ec3ed47a503039c68ce0be6c97b}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_CUBEMAP@{DDSCAPS2\_CUBEMAP}}
+\index{DDSCAPS2\_CUBEMAP@{DDSCAPS2\_CUBEMAP}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_CUBEMAP}{DDSCAPS2\_CUBEMAP}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+CUBEMAP~0x00000200}
+
+\mbox{\Hypertarget{image___d_x_t_8h_ac2340c54d8e7c38c5ba6cfd8cfaba4bd}\label{image___d_x_t_8h_ac2340c54d8e7c38c5ba6cfd8cfaba4bd}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_CUBEMAP\_NEGATIVEX@{DDSCAPS2\_CUBEMAP\_NEGATIVEX}}
+\index{DDSCAPS2\_CUBEMAP\_NEGATIVEX@{DDSCAPS2\_CUBEMAP\_NEGATIVEX}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_CUBEMAP\_NEGATIVEX}{DDSCAPS2\_CUBEMAP\_NEGATIVEX}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+NEGATIVEX~0x00000800}
+
+\mbox{\Hypertarget{image___d_x_t_8h_aaa600a7972b5fc27b59335fd34e1d7b7}\label{image___d_x_t_8h_aaa600a7972b5fc27b59335fd34e1d7b7}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_CUBEMAP\_NEGATIVEY@{DDSCAPS2\_CUBEMAP\_NEGATIVEY}}
+\index{DDSCAPS2\_CUBEMAP\_NEGATIVEY@{DDSCAPS2\_CUBEMAP\_NEGATIVEY}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_CUBEMAP\_NEGATIVEY}{DDSCAPS2\_CUBEMAP\_NEGATIVEY}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+NEGATIVEY~0x00002000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a0831096915d3af29fb9b1d2ed99e09d7}\label{image___d_x_t_8h_a0831096915d3af29fb9b1d2ed99e09d7}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_CUBEMAP\_NEGATIVEZ@{DDSCAPS2\_CUBEMAP\_NEGATIVEZ}}
+\index{DDSCAPS2\_CUBEMAP\_NEGATIVEZ@{DDSCAPS2\_CUBEMAP\_NEGATIVEZ}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_CUBEMAP\_NEGATIVEZ}{DDSCAPS2\_CUBEMAP\_NEGATIVEZ}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+NEGATIVEZ~0x00008000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a3b023d0c239ac3f774b80f295837e66a}\label{image___d_x_t_8h_a3b023d0c239ac3f774b80f295837e66a}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_CUBEMAP\_POSITIVEX@{DDSCAPS2\_CUBEMAP\_POSITIVEX}}
+\index{DDSCAPS2\_CUBEMAP\_POSITIVEX@{DDSCAPS2\_CUBEMAP\_POSITIVEX}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_CUBEMAP\_POSITIVEX}{DDSCAPS2\_CUBEMAP\_POSITIVEX}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+POSITIVEX~0x00000400}
+
+\mbox{\Hypertarget{image___d_x_t_8h_ac026308ac4b28c480f5cbcd60cbc26fe}\label{image___d_x_t_8h_ac026308ac4b28c480f5cbcd60cbc26fe}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_CUBEMAP\_POSITIVEY@{DDSCAPS2\_CUBEMAP\_POSITIVEY}}
+\index{DDSCAPS2\_CUBEMAP\_POSITIVEY@{DDSCAPS2\_CUBEMAP\_POSITIVEY}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_CUBEMAP\_POSITIVEY}{DDSCAPS2\_CUBEMAP\_POSITIVEY}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+POSITIVEY~0x00001000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_acb1ba86a9e579dc62b25829ee5c6c3a9}\label{image___d_x_t_8h_acb1ba86a9e579dc62b25829ee5c6c3a9}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_CUBEMAP\_POSITIVEZ@{DDSCAPS2\_CUBEMAP\_POSITIVEZ}}
+\index{DDSCAPS2\_CUBEMAP\_POSITIVEZ@{DDSCAPS2\_CUBEMAP\_POSITIVEZ}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_CUBEMAP\_POSITIVEZ}{DDSCAPS2\_CUBEMAP\_POSITIVEZ}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+CUBEMAP\+\_\+\+POSITIVEZ~0x00004000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_af4c51bb6d9e6dfdf1797bbb797d4468d}\label{image___d_x_t_8h_af4c51bb6d9e6dfdf1797bbb797d4468d}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS2\_VOLUME@{DDSCAPS2\_VOLUME}}
+\index{DDSCAPS2\_VOLUME@{DDSCAPS2\_VOLUME}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS2\_VOLUME}{DDSCAPS2\_VOLUME}}
+{\footnotesize\ttfamily \#define DDSCAPS2\+\_\+\+VOLUME~0x00200000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_afbc5ed75d018b3b325a67a55a2272198}\label{image___d_x_t_8h_afbc5ed75d018b3b325a67a55a2272198}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS\_COMPLEX@{DDSCAPS\_COMPLEX}}
+\index{DDSCAPS\_COMPLEX@{DDSCAPS\_COMPLEX}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS\_COMPLEX}{DDSCAPS\_COMPLEX}}
+{\footnotesize\ttfamily \#define DDSCAPS\+\_\+\+COMPLEX~0x00000008}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a3b2cabc9b4d5aec2c4ea94a7585b3868}\label{image___d_x_t_8h_a3b2cabc9b4d5aec2c4ea94a7585b3868}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS\_MIPMAP@{DDSCAPS\_MIPMAP}}
+\index{DDSCAPS\_MIPMAP@{DDSCAPS\_MIPMAP}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS\_MIPMAP}{DDSCAPS\_MIPMAP}}
+{\footnotesize\ttfamily \#define DDSCAPS\+\_\+\+MIPMAP~0x00400000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_ad09c16f5d1f52249e260e08c9edaee13}\label{image___d_x_t_8h_ad09c16f5d1f52249e260e08c9edaee13}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSCAPS\_TEXTURE@{DDSCAPS\_TEXTURE}}
+\index{DDSCAPS\_TEXTURE@{DDSCAPS\_TEXTURE}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSCAPS\_TEXTURE}{DDSCAPS\_TEXTURE}}
+{\footnotesize\ttfamily \#define DDSCAPS\+\_\+\+TEXTURE~0x00001000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_adb89cdf9d31f73fc93628e33055e4a55}\label{image___d_x_t_8h_adb89cdf9d31f73fc93628e33055e4a55}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_CAPS@{DDSD\_CAPS}}
+\index{DDSD\_CAPS@{DDSD\_CAPS}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_CAPS}{DDSD\_CAPS}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+CAPS~0x00000001}
+
+\mbox{\Hypertarget{image___d_x_t_8h_af3aec8ae7fbc5870091082a124d68f02}\label{image___d_x_t_8h_af3aec8ae7fbc5870091082a124d68f02}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_DEPTH@{DDSD\_DEPTH}}
+\index{DDSD\_DEPTH@{DDSD\_DEPTH}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_DEPTH}{DDSD\_DEPTH}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+DEPTH~0x00800000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a419b97aadbcd31092bbd20cfa86bc6b7}\label{image___d_x_t_8h_a419b97aadbcd31092bbd20cfa86bc6b7}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_HEIGHT@{DDSD\_HEIGHT}}
+\index{DDSD\_HEIGHT@{DDSD\_HEIGHT}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_HEIGHT}{DDSD\_HEIGHT}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+HEIGHT~0x00000002}
+
+\mbox{\Hypertarget{image___d_x_t_8h_ab417eeb93698f05d4fdca77d1d1ed934}\label{image___d_x_t_8h_ab417eeb93698f05d4fdca77d1d1ed934}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_LINEARSIZE@{DDSD\_LINEARSIZE}}
+\index{DDSD\_LINEARSIZE@{DDSD\_LINEARSIZE}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_LINEARSIZE}{DDSD\_LINEARSIZE}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+LINEARSIZE~0x00080000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a2bf6ae2290cc0a63b69be52871fe82d1}\label{image___d_x_t_8h_a2bf6ae2290cc0a63b69be52871fe82d1}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_MIPMAPCOUNT@{DDSD\_MIPMAPCOUNT}}
+\index{DDSD\_MIPMAPCOUNT@{DDSD\_MIPMAPCOUNT}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_MIPMAPCOUNT}{DDSD\_MIPMAPCOUNT}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+MIPMAPCOUNT~0x00020000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a1f88be8cd0ecaf30aae840646638e459}\label{image___d_x_t_8h_a1f88be8cd0ecaf30aae840646638e459}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_PITCH@{DDSD\_PITCH}}
+\index{DDSD\_PITCH@{DDSD\_PITCH}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_PITCH}{DDSD\_PITCH}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+PITCH~0x00000008}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a13e411299ebd20b6fb2f18dd7e3843d2}\label{image___d_x_t_8h_a13e411299ebd20b6fb2f18dd7e3843d2}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_PIXELFORMAT@{DDSD\_PIXELFORMAT}}
+\index{DDSD\_PIXELFORMAT@{DDSD\_PIXELFORMAT}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_PIXELFORMAT}{DDSD\_PIXELFORMAT}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+PIXELFORMAT~0x00001000}
+
+\mbox{\Hypertarget{image___d_x_t_8h_a059d0f45051be842d94d0168b710970c}\label{image___d_x_t_8h_a059d0f45051be842d94d0168b710970c}} 
+\index{image\_DXT.h@{image\_DXT.h}!DDSD\_WIDTH@{DDSD\_WIDTH}}
+\index{DDSD\_WIDTH@{DDSD\_WIDTH}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{DDSD\_WIDTH}{DDSD\_WIDTH}}
+{\footnotesize\ttfamily \#define DDSD\+\_\+\+WIDTH~0x00000004}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{image___d_x_t_8h_a32051d16a6712f2ea662b1ea7de153f2}\label{image___d_x_t_8h_a32051d16a6712f2ea662b1ea7de153f2}} 
+\index{image\_DXT.h@{image\_DXT.h}!convert\_image\_to\_DXT1@{convert\_image\_to\_DXT1}}
+\index{convert\_image\_to\_DXT1@{convert\_image\_to\_DXT1}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{convert\_image\_to\_DXT1()}{convert\_image\_to\_DXT1()}}
+{\footnotesize\ttfamily unsigned char $\ast$ convert\+\_\+image\+\_\+to\+\_\+\+DXT1 (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$const}]{uncompressed,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{channels,  }\item[{int $\ast$}]{out\+\_\+size }\end{DoxyParamCaption})}
+
+take an image and convert it to DXT1 (no alpha) \mbox{\Hypertarget{image___d_x_t_8h_a2cfd6ff9d22040acf190e13f1d63ffba}\label{image___d_x_t_8h_a2cfd6ff9d22040acf190e13f1d63ffba}} 
+\index{image\_DXT.h@{image\_DXT.h}!convert\_image\_to\_DXT5@{convert\_image\_to\_DXT5}}
+\index{convert\_image\_to\_DXT5@{convert\_image\_to\_DXT5}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{convert\_image\_to\_DXT5()}{convert\_image\_to\_DXT5()}}
+{\footnotesize\ttfamily unsigned char $\ast$ convert\+\_\+image\+\_\+to\+\_\+\+DXT5 (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$const}]{uncompressed,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{channels,  }\item[{int $\ast$}]{out\+\_\+size }\end{DoxyParamCaption})}
+
+take an image and convert it to DXT5 (with alpha) \mbox{\Hypertarget{image___d_x_t_8h_af02dc8b928fbb3014cab9643bb7c3c79}\label{image___d_x_t_8h_af02dc8b928fbb3014cab9643bb7c3c79}} 
+\index{image\_DXT.h@{image\_DXT.h}!save\_image\_as\_DDS@{save\_image\_as\_DDS}}
+\index{save\_image\_as\_DDS@{save\_image\_as\_DDS}!image\_DXT.h@{image\_DXT.h}}
+\doxysubsubsection{\texorpdfstring{save\_image\_as\_DDS()}{save\_image\_as\_DDS()}}
+{\footnotesize\ttfamily int save\+\_\+image\+\_\+as\+\_\+\+DDS (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{channels,  }\item[{const unsigned char $\ast$const}]{data }\end{DoxyParamCaption})}
+
+Converts an image from an array of unsigned chars (RGB or RGBA) to DXT1 or DXT5, then saves the converted image to disk. \begin{DoxyReturn}{Returns}
+0 if failed, otherwise returns 1 
+\end{DoxyReturn}

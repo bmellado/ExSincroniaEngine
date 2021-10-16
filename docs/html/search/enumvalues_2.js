@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frustum_0',['Frustum',['../ex__projections_8cpp.html#addbdeb0c4a9113fece681e37faca81d3a6662e570aa6f4c7113c69b4c240dab96',1,'ex_projections.cpp']]]
+  ['componenttypecount_0',['ComponentTypeCount',['../namespace_sincronia.html#a279af04e3d9fffe393c5e10397c2e0dea0baeee38806666f812b9e2e5d1e28564',1,'Sincronia']]]
 ];

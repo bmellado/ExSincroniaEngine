@@ -1,0 +1,94 @@
+\hypertarget{_camera_8hpp}{}\doxysection{source/\+Rendering/\+Camera.hpp File Reference}
+\label{_camera_8hpp}\index{source/Rendering/Camera.hpp@{source/Rendering/Camera.hpp}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/matrix\+\_\+transform.\+hpp$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_camera}{Camera}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcb}{Camera\+\_\+\+Movement}} \{ \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaa26736999186daf8146f809e863712a1}{FORWARD}}
+, \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbafed2fca77e454294d6b8bda1bf2c9fd6}{BACKWARD}}
+, \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbadb45120aafd37a973140edee24708065}{LEFT}}
+, \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const GLfloat \mbox{\hyperlink{_camera_8hpp_aad8ef0922adf3ff721892dfc8eb806d6}{YAW}} = -\/90.\+0f
+\item 
+const GLfloat \mbox{\hyperlink{_camera_8hpp_a4ce864ea1227b9e112d693f8c282290c}{PITCH}} = 0.\+0f
+\item 
+const GLfloat \mbox{\hyperlink{_camera_8hpp_aba924f5d1202a01928a09a6e9aefae8d}{SPEED}} = 6.\+0f
+\item 
+const GLfloat \mbox{\hyperlink{_camera_8hpp_a368f8a5badad28150797d883a5716cd0}{SENSITIVTY}} = 0.\+25f
+\item 
+const GLfloat \mbox{\hyperlink{_camera_8hpp_a2d1ba9c31f83438f305a5b773a0d8ab8}{ZOOM}} = 45.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcb}\label{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcb}} 
+\index{Camera.hpp@{Camera.hpp}!Camera\_Movement@{Camera\_Movement}}
+\index{Camera\_Movement@{Camera\_Movement}!Camera.hpp@{Camera.hpp}}
+\doxysubsubsection{\texorpdfstring{Camera\_Movement}{Camera\_Movement}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcb}{Camera\+\_\+\+Movement}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FORWARD@{FORWARD}!Camera.hpp@{Camera.hpp}}\index{Camera.hpp@{Camera.hpp}!FORWARD@{FORWARD}}}\mbox{\Hypertarget{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaa26736999186daf8146f809e863712a1}\label{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaa26736999186daf8146f809e863712a1}} 
+FORWARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BACKWARD@{BACKWARD}!Camera.hpp@{Camera.hpp}}\index{Camera.hpp@{Camera.hpp}!BACKWARD@{BACKWARD}}}\mbox{\Hypertarget{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbafed2fca77e454294d6b8bda1bf2c9fd6}\label{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbafed2fca77e454294d6b8bda1bf2c9fd6}} 
+BACKWARD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!Camera.hpp@{Camera.hpp}}\index{Camera.hpp@{Camera.hpp}!LEFT@{LEFT}}}\mbox{\Hypertarget{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbadb45120aafd37a973140edee24708065}\label{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbadb45120aafd37a973140edee24708065}} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!Camera.hpp@{Camera.hpp}}\index{Camera.hpp@{Camera.hpp}!RIGHT@{RIGHT}}}\mbox{\Hypertarget{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaec8379af7490bb9eaaf579cf17876f38}\label{_camera_8hpp_a605494501af59c9191e7e4d6f9a0ebcbaec8379af7490bb9eaaf579cf17876f38}} 
+RIGHT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_camera_8hpp_a4ce864ea1227b9e112d693f8c282290c}\label{_camera_8hpp_a4ce864ea1227b9e112d693f8c282290c}} 
+\index{Camera.hpp@{Camera.hpp}!PITCH@{PITCH}}
+\index{PITCH@{PITCH}!Camera.hpp@{Camera.hpp}}
+\doxysubsubsection{\texorpdfstring{PITCH}{PITCH}}
+{\footnotesize\ttfamily const GLfloat PITCH = 0.\+0f}
+
+\mbox{\Hypertarget{_camera_8hpp_a368f8a5badad28150797d883a5716cd0}\label{_camera_8hpp_a368f8a5badad28150797d883a5716cd0}} 
+\index{Camera.hpp@{Camera.hpp}!SENSITIVTY@{SENSITIVTY}}
+\index{SENSITIVTY@{SENSITIVTY}!Camera.hpp@{Camera.hpp}}
+\doxysubsubsection{\texorpdfstring{SENSITIVTY}{SENSITIVTY}}
+{\footnotesize\ttfamily const GLfloat SENSITIVTY = 0.\+25f}
+
+\mbox{\Hypertarget{_camera_8hpp_aba924f5d1202a01928a09a6e9aefae8d}\label{_camera_8hpp_aba924f5d1202a01928a09a6e9aefae8d}} 
+\index{Camera.hpp@{Camera.hpp}!SPEED@{SPEED}}
+\index{SPEED@{SPEED}!Camera.hpp@{Camera.hpp}}
+\doxysubsubsection{\texorpdfstring{SPEED}{SPEED}}
+{\footnotesize\ttfamily const GLfloat SPEED = 6.\+0f}
+
+\mbox{\Hypertarget{_camera_8hpp_aad8ef0922adf3ff721892dfc8eb806d6}\label{_camera_8hpp_aad8ef0922adf3ff721892dfc8eb806d6}} 
+\index{Camera.hpp@{Camera.hpp}!YAW@{YAW}}
+\index{YAW@{YAW}!Camera.hpp@{Camera.hpp}}
+\doxysubsubsection{\texorpdfstring{YAW}{YAW}}
+{\footnotesize\ttfamily const GLfloat YAW = -\/90.\+0f}
+
+\mbox{\Hypertarget{_camera_8hpp_a2d1ba9c31f83438f305a5b773a0d8ab8}\label{_camera_8hpp_a2d1ba9c31f83438f305a5b773a0d8ab8}} 
+\index{Camera.hpp@{Camera.hpp}!ZOOM@{ZOOM}}
+\index{ZOOM@{ZOOM}!Camera.hpp@{Camera.hpp}}
+\doxysubsubsection{\texorpdfstring{ZOOM}{ZOOM}}
+{\footnotesize\ttfamily const GLfloat ZOOM = 45.\+0f}
+

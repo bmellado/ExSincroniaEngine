@@ -1,0 +1,102 @@
+\hypertarget{_timer_8hpp_source}{}\doxysection{Timer.\+hpp}
+\label{_timer_8hpp_source}\index{source/Time/Timer.hpp@{source/Time/Timer.hpp}}
+\mbox{\hyperlink{_timer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <windows.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_sincronia}{Sincronia}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{template} <\textcolor{keyword}{typename} LogProfileFunction>}
+\DoxyCodeLine{19     }
+\DoxyCodeLine{25     \textcolor{keyword}{class }\mbox{\hyperlink{class_sincronia_1_1_timer}{Timer}}}
+\DoxyCodeLine{26     \{}
+\DoxyCodeLine{27         }
+\DoxyCodeLine{28     \textcolor{keyword}{public}:}
+\DoxyCodeLine{35         \mbox{\hyperlink{class_sincronia_1_1_timer_a071966516b8fc9a3d29e46af0c73ce53}{Timer}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* name, LogProfileFunction\&\& logProfileFunction, \textcolor{keywordtype}{bool} stabilize = \textcolor{keyword}{false}) :}
+\DoxyCodeLine{36             \_name(name),}
+\DoxyCodeLine{37             \_logProfileFunction(logProfileFunction),}
+\DoxyCodeLine{38             \_stopped(false),}
+\DoxyCodeLine{39             \_stabilize(stabilize),}
+\DoxyCodeLine{40             \_FPS(60),}
+\DoxyCodeLine{41             \_frameDelay(1000.0 / \_FPS)}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \{}
+\DoxyCodeLine{45             \_startTime = std::chrono::steady\_clock::now();}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47         }
+\DoxyCodeLine{48         \mbox{\hyperlink{class_sincronia_1_1_timer_a47cdd4befda7110489e4d8f99f104fbd}{\string~Timer}}()}
+\DoxyCodeLine{49         \{}
+\DoxyCodeLine{50             \textcolor{keywordflow}{if} (!\_stopped)}
+\DoxyCodeLine{51             \{}
+\DoxyCodeLine{52                 \mbox{\hyperlink{class_sincronia_1_1_timer_a27f5d7ccf868de9b84168ad40afe49dc}{stop}}();}
+\DoxyCodeLine{53             \}}
+\DoxyCodeLine{54         \};}
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sincronia_1_1_timer_a27f5d7ccf868de9b84168ad40afe49dc}{stop}}() \{}
+\DoxyCodeLine{60             }
+\DoxyCodeLine{61                 std::chrono::time\_point<std::chrono::steady\_clock> endTime = std::chrono::steady\_clock::now();}
+\DoxyCodeLine{62                 std::chrono::duration<float, std::milli> duration = endTime -\/ \_startTime;}
+\DoxyCodeLine{63                 \textcolor{keywordtype}{float} durationAsFloat = duration.count();}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65                 \_stopped = \textcolor{keyword}{true};}
+\DoxyCodeLine{66                 }
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68                 \textcolor{keywordflow}{if} (\_stabilize) \{}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70                     \textcolor{keywordflow}{if} (\_frameDelay > durationAsFloat) \{}
+\DoxyCodeLine{71                         }
+\DoxyCodeLine{72                         \textcolor{comment}{//Try better options, this is not accurate}}
+\DoxyCodeLine{73                         std::this\_thread::sleep\_for(std::chrono::duration<float, std::milli>(\_frameDelay -\/ durationAsFloat));}
+\DoxyCodeLine{74                     \}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76                     }
+\DoxyCodeLine{77                     endTime = std::chrono::steady\_clock::now();}
+\DoxyCodeLine{78                     duration = endTime -\/ \_startTime;}
+\DoxyCodeLine{79                     durationAsFloat = duration.count();}
+\DoxyCodeLine{80                     }
+\DoxyCodeLine{81                     }
+\DoxyCodeLine{82                 \}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84                 \_logProfileFunction(\{ \_name , durationAsFloat \});}
+\DoxyCodeLine{85             }
+\DoxyCodeLine{86         \}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sincronia_1_1_timer_ad1cb1f4551f0b223536010f704b651b9}{interrupt}}();}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{keyword}{private}:}
+\DoxyCodeLine{92         \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \_name;}
+\DoxyCodeLine{93         LogProfileFunction \_logProfileFunction;}
+\DoxyCodeLine{94         \textcolor{keywordtype}{bool} \_stopped;}
+\DoxyCodeLine{95         std::chrono::time\_point<std::chrono::steady\_clock> \_startTime;}
+\DoxyCodeLine{96         \textcolor{keywordtype}{int} \_FPS;}
+\DoxyCodeLine{97         \textcolor{keywordtype}{float} \_frameDelay;}
+\DoxyCodeLine{98         \textcolor{keywordtype}{bool} \_stabilize;}
+\DoxyCodeLine{99     \};}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{104     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sincronia_1_1_profile_result}{ProfileResult}}}
+\DoxyCodeLine{105     \{}
+\DoxyCodeLine{106         std::string \mbox{\hyperlink{struct_sincronia_1_1_profile_result_aa27e6bad093c1e5de1f98a6f8d0a1bee}{timerName}};}
+\DoxyCodeLine{107         \textcolor{keywordtype}{float} \mbox{\hyperlink{struct_sincronia_1_1_profile_result_a0e63b5a9eed7fa20994d7449c2e55649}{duration}};}
+\DoxyCodeLine{108     \};}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     std::ostream\& \mbox{\hyperlink{namespace_sincronia_a999f554032976a698d2935b430c551dc}{operator<<}}(std::ostream\& os, \textcolor{keyword}{const} \mbox{\hyperlink{struct_sincronia_1_1_profile_result}{ProfileResult}}\& result)}
+\DoxyCodeLine{113     \{}
+\DoxyCodeLine{114         \textcolor{keywordflow}{return} os << std::fixed << std::setprecision(3) << std::setw(2) << result.\mbox{\hyperlink{struct_sincronia_1_1_profile_result_a0e63b5a9eed7fa20994d7449c2e55649}{duration}} << \textcolor{stringliteral}{"{}ms "{}} << result.\mbox{\hyperlink{struct_sincronia_1_1_profile_result_aa27e6bad093c1e5de1f98a6f8d0a1bee}{timerName}};}
+\DoxyCodeLine{115     \}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \} \textcolor{comment}{// Sincronia}}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#define PROFILE\_SCOPE(name, stats) Sincronia::Timer timer\#\#\_\_LINE\_\_(name, [\&stats](const Sincronia::ProfileResult\& profileResult) \{ stats.push\_back(profileResult); \})}}
+\DoxyCodeLine{120 \textcolor{preprocessor}{\#define PROFILE\_SCOPE\_STABLE(name, stats) Sincronia::Timer timer\#\#\_\_LINE\_\_(name, [\&stats](const Sincronia::ProfileResult\& profileResult) \{ stats.push\_back(profileResult); \}, true)}}
+
+\end{DoxyCode}

@@ -2,5 +2,144 @@
 \label{_mesh_8hpp_source}\index{source/Rendering/Mesh.hpp@{source/Rendering/Mesh.hpp}}
 \mbox{\hyperlink{_mesh_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{//\#include <GL/glew.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <glm/glm.hpp>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <glm/gtc/matrix\_transform.hpp>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <glad/glad.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <GLFW/glfw3.h>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vertex}{Vertex}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{comment}{// Position}}
+\DoxyCodeLine{20     glm::vec3 \mbox{\hyperlink{struct_vertex_abb3cfacd96b5955b0cec9359840ee49f}{Position}};}
+\DoxyCodeLine{21     \textcolor{comment}{// Normal}}
+\DoxyCodeLine{22     glm::vec3 \mbox{\hyperlink{struct_vertex_a9ab4dc431b41509f0b1bb1a4bf09d4e2}{Normal}};}
+\DoxyCodeLine{23     \textcolor{comment}{// TexCoords}}
+\DoxyCodeLine{24     glm::vec2 \mbox{\hyperlink{struct_vertex_a921a513c1e6d1e63e99d477fa837a317}{TexCoords}};}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_texture}{Texture}}}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29     GLuint \mbox{\hyperlink{struct_texture_af848138d72c1fc995ab414a71ab10d47}{id}};}
+\DoxyCodeLine{30     \textcolor{keywordtype}{string} \mbox{\hyperlink{struct_texture_adacb495ed5140ec76a09cd130e7d5c32}{type}};}
+\DoxyCodeLine{31     aiString \mbox{\hyperlink{struct_texture_a88893bf81a4d4529c70da39f07f53ddb}{path}};}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{class }\mbox{\hyperlink{class_mesh}{Mesh}}}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{36 \textcolor{keyword}{public}:}
+\DoxyCodeLine{37     \textcolor{comment}{/*  Mesh Data  */}}
+\DoxyCodeLine{38     vector<Vertex> \mbox{\hyperlink{class_mesh_abe5c05c224e47ba1e8b6393759798a9b}{vertices}};}
+\DoxyCodeLine{39     vector<GLuint> \mbox{\hyperlink{class_mesh_a233e40975b5ddafda502c8c31b77db2c}{indices}};}
+\DoxyCodeLine{40     vector<Texture> \mbox{\hyperlink{class_mesh_a09bf4e8307bf7717c56501ca6293c6c0}{textures}};}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{comment}{/*  Functions  */}}
+\DoxyCodeLine{43     \textcolor{comment}{// Constructor}}
+\DoxyCodeLine{44     \mbox{\hyperlink{class_mesh_a106df0a29578f3aa05a7ee3e4912b5d9}{Mesh}}(vector<Vertex> \mbox{\hyperlink{class_mesh_abe5c05c224e47ba1e8b6393759798a9b}{vertices}}, vector<GLuint> \mbox{\hyperlink{class_mesh_a233e40975b5ddafda502c8c31b77db2c}{indices}}, vector<Texture> \mbox{\hyperlink{class_mesh_a09bf4e8307bf7717c56501ca6293c6c0}{textures}})}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         this-\/>vertices = \mbox{\hyperlink{class_mesh_abe5c05c224e47ba1e8b6393759798a9b}{vertices}};}
+\DoxyCodeLine{47         this-\/>indices = \mbox{\hyperlink{class_mesh_a233e40975b5ddafda502c8c31b77db2c}{indices}};}
+\DoxyCodeLine{48         this-\/>textures = \mbox{\hyperlink{class_mesh_a09bf4e8307bf7717c56501ca6293c6c0}{textures}};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50         \textcolor{comment}{// Now that we have all the required data, set the vertex buffers and its attribute pointers.}}
+\DoxyCodeLine{51         this-\/>setupMesh();}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{comment}{// Render the mesh}}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mesh_a143c8d7c179801c6377853db26d4a19f}{Draw}}(\mbox{\hyperlink{class_shader}{Shader}} shader)}
+\DoxyCodeLine{56     \{}
+\DoxyCodeLine{57         \textcolor{comment}{// Bind appropriate textures}}
+\DoxyCodeLine{58         GLuint diffuseNr = 1;}
+\DoxyCodeLine{59         GLuint specularNr = 1;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61         \textcolor{keywordflow}{for} (GLuint i = 0; i < this-\/>textures.size(); i++)}
+\DoxyCodeLine{62         \{}
+\DoxyCodeLine{63             glActiveTexture(GL\_TEXTURE0 + i); \textcolor{comment}{// Active proper texture unit before binding}}
+\DoxyCodeLine{64             \textcolor{comment}{// Retrieve texture number (the N in diffuse\_textureN)}}
+\DoxyCodeLine{65             stringstream ss;}
+\DoxyCodeLine{66             \textcolor{keywordtype}{string} number;}
+\DoxyCodeLine{67             \textcolor{keywordtype}{string} name = this-\/>textures[i].type;}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69             \textcolor{keywordflow}{if} (name == \textcolor{stringliteral}{"{}texture\_diffuse"{}})}
+\DoxyCodeLine{70             \{}
+\DoxyCodeLine{71                 ss << diffuseNr++; \textcolor{comment}{// Transfer GLuint to stream}}
+\DoxyCodeLine{72             \}}
+\DoxyCodeLine{73             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (name == \textcolor{stringliteral}{"{}texture\_specular"{}})}
+\DoxyCodeLine{74             \{}
+\DoxyCodeLine{75                 ss << specularNr++; \textcolor{comment}{// Transfer GLuint to stream}}
+\DoxyCodeLine{76             \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78             number = ss.str();}
+\DoxyCodeLine{79             \textcolor{comment}{// Now set the sampler to the correct texture unit}}
+\DoxyCodeLine{80             glUniform1i(glGetUniformLocation(shader.\mbox{\hyperlink{class_shader_a51b23253846bc84dcc2ef06612679012}{Program}}, (name + number).c\_str()), i);}
+\DoxyCodeLine{81             \textcolor{comment}{// And finally bind the texture}}
+\DoxyCodeLine{82             glBindTexture(GL\_TEXTURE\_2D, this-\/>textures[i].\textcolor{keywordtype}{id});}
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85         \textcolor{comment}{// Also set each mesh's shininess property to a default value (if you want you could extend this to another mesh property and possibly change this value)}}
+\DoxyCodeLine{86         glUniform1f(glGetUniformLocation(shader.\mbox{\hyperlink{class_shader_a51b23253846bc84dcc2ef06612679012}{Program}}, \textcolor{stringliteral}{"{}material.shininess"{}}), 16.0f);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         \textcolor{comment}{// Draw mesh}}
+\DoxyCodeLine{89         glBindVertexArray(this-\/>VAO);}
+\DoxyCodeLine{90         glDrawElements(GL\_TRIANGLES, this-\/>indices.size(), GL\_UNSIGNED\_INT, 0);}
+\DoxyCodeLine{91         glBindVertexArray(0);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93         \textcolor{comment}{// Always good practice to set everything back to defaults once configured.}}
+\DoxyCodeLine{94         \textcolor{keywordflow}{for} (GLuint i = 0; i < this-\/>textures.size(); i++)}
+\DoxyCodeLine{95         \{}
+\DoxyCodeLine{96             glActiveTexture(GL\_TEXTURE0 + i);}
+\DoxyCodeLine{97             glBindTexture(GL\_TEXTURE\_2D, 0);}
+\DoxyCodeLine{98         \}}
+\DoxyCodeLine{99     \}}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{101 \textcolor{keyword}{private}:}
+\DoxyCodeLine{102     \textcolor{comment}{/*  Render data  */}}
+\DoxyCodeLine{103     GLuint VAO, VBO, EBO;}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{105     \textcolor{comment}{/*  Functions    */}}
+\DoxyCodeLine{106     \textcolor{comment}{// Initializes all the buffer objects/arrays}}
+\DoxyCodeLine{107     \textcolor{keywordtype}{void} setupMesh()}
+\DoxyCodeLine{108     \{}
+\DoxyCodeLine{109         \textcolor{comment}{// Create buffers/arrays}}
+\DoxyCodeLine{110         glGenVertexArrays(1, \&this-\/>VAO);}
+\DoxyCodeLine{111         glGenBuffers(1, \&this-\/>VBO);}
+\DoxyCodeLine{112         glGenBuffers(1, \&this-\/>EBO);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114         glBindVertexArray(this-\/>VAO);}
+\DoxyCodeLine{115         \textcolor{comment}{// Load data into vertex buffers}}
+\DoxyCodeLine{116         glBindBuffer(GL\_ARRAY\_BUFFER, this-\/>VBO);}
+\DoxyCodeLine{117         \textcolor{comment}{// A great thing about structs is that their memory layout is sequential for all its items.}}
+\DoxyCodeLine{118         \textcolor{comment}{// The effect is that we can simply pass a pointer to the struct and it translates perfectly to a glm::vec3/2 array which}}
+\DoxyCodeLine{119         \textcolor{comment}{// again translates to 3/2 floats which translates to a byte array.}}
+\DoxyCodeLine{120         glBufferData(GL\_ARRAY\_BUFFER, this-\/>vertices.size() * \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_vertex}{Vertex}}), \&this-\/>vertices[0], GL\_STATIC\_DRAW);}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122         glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER, this-\/>EBO);}
+\DoxyCodeLine{123         glBufferData(GL\_ELEMENT\_ARRAY\_BUFFER, this-\/>indices.size() * \textcolor{keyword}{sizeof}(GLuint), \&this-\/>indices[0], GL\_STATIC\_DRAW);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125         \textcolor{comment}{// Set the vertex attribute pointers}}
+\DoxyCodeLine{126         \textcolor{comment}{// Vertex Positions}}
+\DoxyCodeLine{127         glEnableVertexAttribArray(0);}
+\DoxyCodeLine{128         glVertexAttribPointer(0, 3, GL\_FLOAT, GL\_FALSE, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_vertex}{Vertex}}), (GLvoid*)0);}
+\DoxyCodeLine{129         \textcolor{comment}{// Vertex Normals}}
+\DoxyCodeLine{130         glEnableVertexAttribArray(1);}
+\DoxyCodeLine{131         glVertexAttribPointer(1, 3, GL\_FLOAT, GL\_FALSE, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_vertex}{Vertex}}), (GLvoid*)offsetof(\mbox{\hyperlink{struct_vertex}{Vertex}}, Normal));}
+\DoxyCodeLine{132         \textcolor{comment}{// Vertex Texture Coords}}
+\DoxyCodeLine{133         glEnableVertexAttribArray(2);}
+\DoxyCodeLine{134         glVertexAttribPointer(2, 2, GL\_FLOAT, GL\_FALSE, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_vertex}{Vertex}}), (GLvoid*)offsetof(\mbox{\hyperlink{struct_vertex}{Vertex}}, TexCoords));}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136         glBindVertexArray(0);}
+\DoxyCodeLine{137     \}}
+\DoxyCodeLine{138 \};}
+\DoxyCodeLine{139 }
 
 \end{DoxyCode}

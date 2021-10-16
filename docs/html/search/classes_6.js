@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['scenegraphnode_0',['SceneGraphNode',['../class_grafica_1_1_scene_graph_node.html',1,'Grafica']]],
-  ['shadercode_1',['ShaderCode',['../struct_grafica_1_1_shader_code.html',1,'Grafica']]],
-  ['shaderfile_2',['ShaderFile',['../struct_grafica_1_1_shader_file.html',1,'Grafica']]],
-  ['shape_3',['Shape',['../struct_grafica_1_1_shape.html',1,'Grafica']]],
-  ['simpleshaderprogram_4',['SimpleShaderProgram',['../struct_grafica_1_1_simple_shader_program.html',1,'Grafica']]]
+  ['mesh_0',['Mesh',['../class_mesh.html',1,'']]],
+  ['model_1',['Model',['../class_model.html',1,'']]],
+  ['modelviewprojectionshaderprogram_2',['ModelViewProjectionShaderProgram',['../struct_grafica_1_1_model_view_projection_shader_program.html',1,'Grafica']]]
 ];

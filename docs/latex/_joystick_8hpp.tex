@@ -1,0 +1,48 @@
+\hypertarget{_joystick_8hpp}{}\doxysection{source/\+Devices/\+Joystick.hpp File Reference}
+\label{_joystick_8hpp}\index{source/Devices/Joystick.hpp@{source/Devices/Joystick.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$ciso646$>$}\newline
+{\ttfamily \#include $<$glad/glad.\+h$>$}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/basic\+\_\+shapes.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/load\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/performance\+\_\+monitor.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/easy\+\_\+shaders.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/gpu\+\_\+shape.\+h$>$}\newline
+{\ttfamily \#include $<$grafica/transformations.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_sincronia_1_1_joystick}{Sincronia\+::\+Joystick}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_sincronia_1_1_joystick}{Joystick}} structure, it initializes with a number of buttons and number of Axes \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_sincronia}{Sincronia}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespace_sincronia_a706b02c6136f78bf02db01272e121873}{Sincronia\+::\+Joystick\+Id}} = std\+::size\+\_\+t
+\item 
+using \mbox{\hyperlink{namespace_sincronia_a897b50f5cad73b530b50e0bf748f16ed}{Sincronia\+::\+Joystick\+Container}} = std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{ex__joystick_8cpp_a09ec58a11e1259f51c641b0c8d4cbe51}{Joystick\+Id}}, \mbox{\hyperlink{struct_joystick}{Joystick}} $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_sincronia_ac335102050ee81f0d5348c03f924a5b6}{Sincronia\+::joystick\+\_\+callback}} (int jid, int event)
+\begin{DoxyCompactList}\small\item\em This is a callback method that should be passed as argument to Open\+Gl, \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{namespace_sincronia_a999f554032976a698d2935b430c551dc}{Sincronia\+::operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{struct_joystick}{Joystick}} \&joystick)
+\item 
+void \mbox{\hyperlink{namespace_sincronia_a3bb74ddcf98972267635b04b1713b587}{Sincronia\+::poll\+Joysticks}} (\mbox{\hyperlink{ex__joystick_8cpp_a4135f910ce9fb5d99107adf90b4ac011}{Joystick\+Container}} \&joysticks)
+\begin{DoxyCompactList}\small\item\em It checks if it a connection or a disconnection has ocurred, it has to be constantly called in the game loop \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_sincronia_ad8b8106393178a2079515dc692cadb90}{Sincronia\+::set\+Joystick\+Call\+Back}} ()
+\begin{DoxyCompactList}\small\item\em Auxiliar function that sends the joystick callback to gl joystick callback \end{DoxyCompactList}\end{DoxyCompactItemize}

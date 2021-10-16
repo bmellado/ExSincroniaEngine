@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['joystick_0',['Joystick',['../struct_joystick.html',1,'']]]
+  ['etc_5fcompressed_0',['etc_compressed',['../structetc__compressed.html',1,'']]]
 ];

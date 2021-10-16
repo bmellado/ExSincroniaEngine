@@ -1,0 +1,81 @@
+\hypertarget{image__helper_8h_source}{}\doxysection{image\+\_\+helper.\+h}
+\label{image__helper_8h_source}\index{source/Rendering/SOIL2/image\_helper.h@{source/Rendering/SOIL2/image\_helper.h}}
+\mbox{\hyperlink{image__helper_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Jonathan Dummer}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    Image helper functions}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{    MIT license}}
+\DoxyCodeLine{7 \textcolor{comment}{*/}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#ifndef HEADER\_IMAGE\_HELPER}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define HEADER\_IMAGE\_HELPER}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{13 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{22 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{23     \mbox{\hyperlink{image__helper_8h_ac7c214f2228eb4e92bf5a61caca5c98f}{up\_scale\_image}}}
+\DoxyCodeLine{24     (}
+\DoxyCodeLine{25         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} orig,}
+\DoxyCodeLine{26         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{27         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* resampled,}
+\DoxyCodeLine{28         \textcolor{keywordtype}{int} resampled\_width, \textcolor{keywordtype}{int} resampled\_height}
+\DoxyCodeLine{29     );}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{37 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{38     \mbox{\hyperlink{image__helper_8h_a24b70c49f373fbc42e2fb32ff7f0139d}{mipmap\_image}}}
+\DoxyCodeLine{39     (}
+\DoxyCodeLine{40         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* \textcolor{keyword}{const} orig,}
+\DoxyCodeLine{41         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{42         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* resampled,}
+\DoxyCodeLine{43         \textcolor{keywordtype}{int} block\_size\_x, \textcolor{keywordtype}{int} block\_size\_y}
+\DoxyCodeLine{44     );}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{53 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{54     \mbox{\hyperlink{image__helper_8h_a222857dd9c71ab6aeb1fadbce6ac48e8}{scale\_image\_RGB\_to\_NTSC\_safe}}}
+\DoxyCodeLine{55     (}
+\DoxyCodeLine{56         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* orig,}
+\DoxyCodeLine{57         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels}
+\DoxyCodeLine{58     );}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{67 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{68     \mbox{\hyperlink{image__helper_8h_a7b8dd37ed77de5266cf7d43fecdaff7e}{convert\_RGB\_to\_YCoCg}}}
+\DoxyCodeLine{69     (}
+\DoxyCodeLine{70         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* orig,}
+\DoxyCodeLine{71         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels}
+\DoxyCodeLine{72     );}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{78 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{79     \mbox{\hyperlink{image__helper_8h_ace3ce2a5b009f3b01a5eb59aeb3bdeaa}{convert\_YCoCg\_to\_RGB}}}
+\DoxyCodeLine{80     (}
+\DoxyCodeLine{81         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}* orig,}
+\DoxyCodeLine{82         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels}
+\DoxyCodeLine{83     );}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{90 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{91     \mbox{\hyperlink{image__helper_8h_a10478e32cd0e54e7ea300738a475e6e5}{RGBE\_to\_RGBdivA}}}
+\DoxyCodeLine{92     (}
+\DoxyCodeLine{93         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *image,}
+\DoxyCodeLine{94         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height,}
+\DoxyCodeLine{95         \textcolor{keywordtype}{int} rescale\_to\_max}
+\DoxyCodeLine{96     );}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{103 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{104     \mbox{\hyperlink{image__helper_8h_ac03eb90e8670d99b2a0d9849c2466891}{RGBE\_to\_RGBdivA2}}}
+\DoxyCodeLine{105     (}
+\DoxyCodeLine{106         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *image,}
+\DoxyCodeLine{107         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height,}
+\DoxyCodeLine{108         \textcolor{keywordtype}{int} rescale\_to\_max}
+\DoxyCodeLine{109     );}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{112 \}}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* HEADER\_IMAGE\_HELPER   */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

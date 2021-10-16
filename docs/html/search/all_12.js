@@ -1,5 +1,27 @@
 var searchData=
 [
-  ['uniformscale_0',['uniformScale',['../namespace_grafica_1_1_transformations.html#a5cf8784ab03a94e57d82d37f34de1607',1,'Grafica::Transformations']]],
-  ['update_1',['update',['../class_grafica_1_1_performance_monitor.html#a0cafe9f913a660145e149070c5446065',1,'Grafica::PerformanceMonitor']]]
+  ['ratio_0',['ratio',['../structstbi____gif.html#aaa916cafa9b17ea26960b219d3459702',1,'stbi__gif']]],
+  ['raw_5fcoeff_1',['raw_coeff',['../structstbi____jpeg.html#a34e5f94c6aa3761812f6b1d6fcaeadbd',1,'stbi__jpeg']]],
+  ['raw_5fdata_2',['raw_data',['../structstbi____jpeg.html#a367e9836870bfb329cacd984bf520456',1,'stbi__jpeg']]],
+  ['read_3',['read',['../structstbi__io__callbacks.html#a623e46b3a2a019611601409926283a88',1,'stbi_io_callbacks']]],
+  ['read_5ffrom_5fcallbacks_4',['read_from_callbacks',['../structstbi____context.html#ac8add53b6eed43af69052f871fdebe3c',1,'stbi__context']]],
+  ['readshaderfile_5',['readShaderFile',['../namespace_grafica.html#a2a08d69a64112fc75d1a3c0fb6878d66',1,'Grafica']]],
+  ['renderer_2ecpp_6',['Renderer.cpp',['../_renderer_8cpp.html',1,'']]],
+  ['renderer_2ehpp_7',['Renderer.hpp',['../_renderer_8hpp.html',1,'']]],
+  ['rendering_2eh_8',['Rendering.h',['../_rendering_8h.html',1,'']]],
+  ['resample_9',['resample',['../structstbi____resample.html#acc70724d6b732a2d80a2d2ea376a1379',1,'stbi__resample']]],
+  ['resample_5frow_5ffunc_10',['resample_row_func',['../stb__image_8h.html#adf7279cdde465980cea1d8b9351d4c54',1,'stb_image.h']]],
+  ['resample_5frow_5fhv_5f2_5fkernel_11',['resample_row_hv_2_kernel',['../structstbi____jpeg.html#acc0b39da0f92f6500164fb27d75ea2d7',1,'stbi__jpeg']]],
+  ['restart_5finterval_12',['restart_interval',['../structstbi____jpeg.html#ae2caa61baf3d6b9f0349c530470e0c99',1,'stbi__jpeg']]],
+  ['result_5fstring_5fpointer_13',['result_string_pointer',['../_s_o_i_l2_8c.html#a99007891d83c62c3f41192fc85136f06',1,'SOIL2.c']]],
+  ['rgb_5f888_5ffrom_5f565_14',['rgb_888_from_565',['../image___d_x_t_8c.html#a3438481c796d9c50c8de2840b13b5a41',1,'image_DXT.c']]],
+  ['rgb_5fto_5f565_15',['rgb_to_565',['../image___d_x_t_8c.html#a210e6ef74fbbfd0d65fb1f8724ad024e',1,'image_DXT.c']]],
+  ['rgbe_5fto_5frgbdiva_16',['RGBE_to_RGBdivA',['../image__helper_8c.html#a10478e32cd0e54e7ea300738a475e6e5',1,'RGBE_to_RGBdivA(unsigned char *image, int width, int height, int rescale_to_max):&#160;image_helper.c'],['../image__helper_8h.html#a10478e32cd0e54e7ea300738a475e6e5',1,'RGBE_to_RGBdivA(unsigned char *image, int width, int height, int rescale_to_max):&#160;image_helper.c']]],
+  ['rgbe_5fto_5frgbdiva2_17',['RGBE_to_RGBdivA2',['../image__helper_8c.html#ac03eb90e8670d99b2a0d9849c2466891',1,'RGBE_to_RGBdivA2(unsigned char *image, int width, int height, int rescale_to_max):&#160;image_helper.c'],['../image__helper_8h.html#ac03eb90e8670d99b2a0d9849c2466891',1,'RGBE_to_RGBdivA2(unsigned char *image, int width, int height, int rescale_to_max):&#160;image_helper.c']]],
+  ['right_18',['RIGHT',['../_camera_8hpp.html#a605494501af59c9191e7e4d6f9a0ebcbaec8379af7490bb9eaaf579cf17876f38',1,'Camera.hpp']]],
+  ['root_5fdirectory_2eh_19',['root_directory.h',['../root__directory_8h.html',1,'']]],
+  ['rotationa_20',['rotationA',['../namespace_grafica_1_1_transformations.html#a17ba6dd8a5e53f329604e4d320bc4750',1,'Grafica::Transformations']]],
+  ['rotationx_21',['rotationX',['../namespace_grafica_1_1_transformations.html#aa604fe18ba7e9a2105331f44fbcf8aca',1,'Grafica::Transformations']]],
+  ['rotationy_22',['rotationY',['../namespace_grafica_1_1_transformations.html#abd4b5f947967f5612f157792c446323b',1,'Grafica::Transformations']]],
+  ['rotationz_23',['rotationZ',['../namespace_grafica_1_1_transformations.html#aad4f13c80de9dec5711fd6e3b87e674d',1,'Grafica::Transformations']]]
 ];

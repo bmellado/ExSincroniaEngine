@@ -1,0 +1,276 @@
+\hypertarget{_s_o_i_l2_8h_source}{}\doxysection{SOIL2.\+h}
+\label{_s_o_i_l2_8h_source}\index{source/Rendering/SOIL2/SOIL2.h@{source/Rendering/SOIL2/SOIL2.h}}
+\mbox{\hyperlink{_s_o_i_l2_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifndef HEADER\_SIMPLE\_OPENGL\_IMAGE\_LIBRARY}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define HEADER\_SIMPLE\_OPENGL\_IMAGE\_LIBRARY}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{49 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{60 \textcolor{keyword}{enum}}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62     \mbox{\hyperlink{_s_o_i_l2_8h_abc6126af1d45847bc59afa0aa3216b04afe6257f50808b248f33beaa04c93c390}{SOIL\_LOAD\_AUTO}} = 0,}
+\DoxyCodeLine{63     \mbox{\hyperlink{_s_o_i_l2_8h_abc6126af1d45847bc59afa0aa3216b04a237888ce980f5dbcff11da40ac3a82e8}{SOIL\_LOAD\_L}} = 1,}
+\DoxyCodeLine{64     \mbox{\hyperlink{_s_o_i_l2_8h_abc6126af1d45847bc59afa0aa3216b04a6a2f5c5bf81cd551e2b70f0c865275b6}{SOIL\_LOAD\_LA}} = 2,}
+\DoxyCodeLine{65     \mbox{\hyperlink{_s_o_i_l2_8h_abc6126af1d45847bc59afa0aa3216b04ae3b112adfea8f3f20c916c98cd9ab617}{SOIL\_LOAD\_RGB}} = 3,}
+\DoxyCodeLine{66     \mbox{\hyperlink{_s_o_i_l2_8h_abc6126af1d45847bc59afa0aa3216b04a3d9435690603a97a36e769828111ac19}{SOIL\_LOAD\_RGBA}} = 4}
+\DoxyCodeLine{67 \};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{76 \textcolor{keyword}{enum}}
+\DoxyCodeLine{77 \{}
+\DoxyCodeLine{78     \mbox{\hyperlink{_s_o_i_l2_8h_adc29c2ff13d900c2f185ee95427fb06ca8ae8078c60ebbc285cb566972f489984}{SOIL\_CREATE\_NEW\_ID}} = 0}
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{101 \textcolor{keyword}{enum}}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ead59ade6f44dfd5e14fb1d5c633632be1}{SOIL\_FLAG\_POWER\_OF\_TWO}} = 1,}
+\DoxyCodeLine{104     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9eabff8a150d443bb1a501ab673f3a9f884}{SOIL\_FLAG\_MIPMAPS}} = 2,}
+\DoxyCodeLine{105     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea6f94ed08474c101cb84175af8aaf19e3}{SOIL\_FLAG\_TEXTURE\_REPEATS}} = 4,}
+\DoxyCodeLine{106     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9eaa40474f55b63c7a1059649a1a6d48fc7}{SOIL\_FLAG\_MULTIPLY\_ALPHA}} = 8,}
+\DoxyCodeLine{107     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea5f2e5610804695419de4326f73acdc38}{SOIL\_FLAG\_INVERT\_Y}} = 16,}
+\DoxyCodeLine{108     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea3448ab1c9197d92258b6207be556dc11}{SOIL\_FLAG\_COMPRESS\_TO\_DXT}} = 32,}
+\DoxyCodeLine{109     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea61e6602d6630f47fac26f03fe4640004}{SOIL\_FLAG\_DDS\_LOAD\_DIRECT}} = 64,}
+\DoxyCodeLine{110     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9eaf31ec5d1ca2d66e44d264837f54d28ff}{SOIL\_FLAG\_NTSC\_SAFE\_RGB}} = 128,}
+\DoxyCodeLine{111     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ead11ebd5a53267a5a3fabae72c381353a}{SOIL\_FLAG\_CoCg\_Y}} = 256,}
+\DoxyCodeLine{112     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea54c9668c7e0e5720f7bb71dd7df3985a}{SOIL\_FLAG\_TEXTURE\_RECTANGLE}} = 512,}
+\DoxyCodeLine{113     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea213762f8414f505d379f896cd4465588}{SOIL\_FLAG\_PVR\_LOAD\_DIRECT}} = 1024,}
+\DoxyCodeLine{114     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea20800cfebbb82a0df7446826635f9d46}{SOIL\_FLAG\_ETC1\_LOAD\_DIRECT}} = 2048,}
+\DoxyCodeLine{115     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9ea15f5ec7fc5a0bc3c49dc494e80332501}{SOIL\_FLAG\_GL\_MIPMAPS}} = 4096,}
+\DoxyCodeLine{116     \mbox{\hyperlink{_s_o_i_l2_8h_a61dadd085c1777f559549e05962b2c9eaadb353a1489b8ecb0f352eaf377930de}{SOIL\_FLAG\_SRGB\_COLOR\_SPACE}} = 8192}
+\DoxyCodeLine{117 \};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{126 \textcolor{keyword}{enum}}
+\DoxyCodeLine{127 \{}
+\DoxyCodeLine{128     \mbox{\hyperlink{_s_o_i_l2_8h_a726ca809ffd3d67ab4b8476646f26635ab2bc5c3a693d359b4c8ffbc3a44fb8bd}{SOIL\_SAVE\_TYPE\_TGA}} = 0,}
+\DoxyCodeLine{129     \mbox{\hyperlink{_s_o_i_l2_8h_a726ca809ffd3d67ab4b8476646f26635a6763f349b67a51dbe8f41a4d3273972a}{SOIL\_SAVE\_TYPE\_BMP}} = 1,}
+\DoxyCodeLine{130     \mbox{\hyperlink{_s_o_i_l2_8h_a726ca809ffd3d67ab4b8476646f26635a8c8e93b8658a76f9115894656c04e085}{SOIL\_SAVE\_TYPE\_PNG}} = 2,}
+\DoxyCodeLine{131     \mbox{\hyperlink{_s_o_i_l2_8h_a726ca809ffd3d67ab4b8476646f26635a430109e8be857c9d24641e2392f8e1cd}{SOIL\_SAVE\_TYPE\_DDS}} = 3,}
+\DoxyCodeLine{132     \mbox{\hyperlink{_s_o_i_l2_8h_a726ca809ffd3d67ab4b8476646f26635ad57dafddbbf89bcf33a4345d6c8d793b}{SOIL\_SAVE\_TYPE\_JPG}} = 4}
+\DoxyCodeLine{133 \};}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{141 \textcolor{preprocessor}{\#define SOIL\_DDS\_CUBEMAP\_FACE\_ORDER "{}EWUDNS"{}}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{150 \textcolor{keyword}{enum}}
+\DoxyCodeLine{151 \{}
+\DoxyCodeLine{152     \mbox{\hyperlink{_s_o_i_l2_8h_a0411cd49bb5b71852cecd93bcbf0ca2dadd5943d5b83df286fb1f8724c2d9b018}{SOIL\_HDR\_RGBE}} = 0,}
+\DoxyCodeLine{153     \mbox{\hyperlink{_s_o_i_l2_8h_a0411cd49bb5b71852cecd93bcbf0ca2da93cbed3c123308e882bcbcc614eff434}{SOIL\_HDR\_RGBdivA}} = 1,}
+\DoxyCodeLine{154     \mbox{\hyperlink{_s_o_i_l2_8h_a0411cd49bb5b71852cecd93bcbf0ca2da5e0bce1801dcf8a18ada49f50aee5d9b}{SOIL\_HDR\_RGBdivA2}} = 2}
+\DoxyCodeLine{155 \};}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{165 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{166     \mbox{\hyperlink{_s_o_i_l2_8h_a67332563e7bbbabb1fc194ffadbb9a46}{SOIL\_load\_OGL\_texture}}}
+\DoxyCodeLine{167     (}
+\DoxyCodeLine{168         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{169         \textcolor{keywordtype}{int} force\_channels,}
+\DoxyCodeLine{170         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{171         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{172     );}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{187 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{188     \mbox{\hyperlink{_s_o_i_l2_8h_af7696abc4c7a08046d134b9298f56912}{SOIL\_load\_OGL\_cubemap}}}
+\DoxyCodeLine{189     (}
+\DoxyCodeLine{190         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *x\_pos\_file,}
+\DoxyCodeLine{191         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *x\_neg\_file,}
+\DoxyCodeLine{192         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *y\_pos\_file,}
+\DoxyCodeLine{193         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *y\_neg\_file,}
+\DoxyCodeLine{194         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *z\_pos\_file,}
+\DoxyCodeLine{195         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *z\_neg\_file,}
+\DoxyCodeLine{196         \textcolor{keywordtype}{int} force\_channels,}
+\DoxyCodeLine{197         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{198         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{199     );}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{210 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{211     \mbox{\hyperlink{_s_o_i_l2_8h_a4d0d9be497a367f8f5a7220810070a5b}{SOIL\_load\_OGL\_single\_cubemap}}}
+\DoxyCodeLine{212     (}
+\DoxyCodeLine{213         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{214         \textcolor{keyword}{const} \textcolor{keywordtype}{char} face\_order[6],}
+\DoxyCodeLine{215         \textcolor{keywordtype}{int} force\_channels,}
+\DoxyCodeLine{216         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{217         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{218     );}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{228 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{229     \mbox{\hyperlink{_s_o_i_l2_8h_a4220f2dc1a1dcffb9628165626854231}{SOIL\_load\_OGL\_HDR\_texture}}}
+\DoxyCodeLine{230     (}
+\DoxyCodeLine{231         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{232         \textcolor{keywordtype}{int} fake\_HDR\_format,}
+\DoxyCodeLine{233         \textcolor{keywordtype}{int} rescale\_to\_max,}
+\DoxyCodeLine{234         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{235         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{236     );}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{247 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{248     \mbox{\hyperlink{_s_o_i_l2_8h_aa5bce2b445500ec50658258c5149e7b3}{SOIL\_load\_OGL\_texture\_from\_memory}}}
+\DoxyCodeLine{249     (}
+\DoxyCodeLine{250         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} buffer,}
+\DoxyCodeLine{251         \textcolor{keywordtype}{int} buffer\_length,}
+\DoxyCodeLine{252         \textcolor{keywordtype}{int} force\_channels,}
+\DoxyCodeLine{253         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{254         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{255     );}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{276 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{277     \mbox{\hyperlink{_s_o_i_l2_8h_a78b856b61ebe281e04f0ef7e31eba62f}{SOIL\_load\_OGL\_cubemap\_from\_memory}}}
+\DoxyCodeLine{278     (}
+\DoxyCodeLine{279         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} x\_pos\_buffer,}
+\DoxyCodeLine{280         \textcolor{keywordtype}{int} x\_pos\_buffer\_length,}
+\DoxyCodeLine{281         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} x\_neg\_buffer,}
+\DoxyCodeLine{282         \textcolor{keywordtype}{int} x\_neg\_buffer\_length,}
+\DoxyCodeLine{283         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} y\_pos\_buffer,}
+\DoxyCodeLine{284         \textcolor{keywordtype}{int} y\_pos\_buffer\_length,}
+\DoxyCodeLine{285         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} y\_neg\_buffer,}
+\DoxyCodeLine{286         \textcolor{keywordtype}{int} y\_neg\_buffer\_length,}
+\DoxyCodeLine{287         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} z\_pos\_buffer,}
+\DoxyCodeLine{288         \textcolor{keywordtype}{int} z\_pos\_buffer\_length,}
+\DoxyCodeLine{289         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} z\_neg\_buffer,}
+\DoxyCodeLine{290         \textcolor{keywordtype}{int} z\_neg\_buffer\_length,}
+\DoxyCodeLine{291         \textcolor{keywordtype}{int} force\_channels,}
+\DoxyCodeLine{292         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{293         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{294     );}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{306 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{307     \mbox{\hyperlink{_s_o_i_l2_8h_ab5ac6a8205b2f028e8446ab324299a4c}{SOIL\_load\_OGL\_single\_cubemap\_from\_memory}}}
+\DoxyCodeLine{308     (}
+\DoxyCodeLine{309         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} buffer,}
+\DoxyCodeLine{310         \textcolor{keywordtype}{int} buffer\_length,}
+\DoxyCodeLine{311         \textcolor{keyword}{const} \textcolor{keywordtype}{char} face\_order[6],}
+\DoxyCodeLine{312         \textcolor{keywordtype}{int} force\_channels,}
+\DoxyCodeLine{313         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{314         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{315     );}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{328 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{329     \mbox{\hyperlink{_s_o_i_l2_8h_afdfc7cc2cf2e5afbc4d41c139747866b}{SOIL\_create\_OGL\_texture}}}
+\DoxyCodeLine{330     (}
+\DoxyCodeLine{331         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} data,}
+\DoxyCodeLine{332         \textcolor{keywordtype}{int} *width, \textcolor{keywordtype}{int} *height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{333         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{334         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{335     );}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{348 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{349     \mbox{\hyperlink{_s_o_i_l2_8h_afddd2bf49325dbc6651a91a711c21e2b}{SOIL\_create\_OGL\_single\_cubemap}}}
+\DoxyCodeLine{350     (}
+\DoxyCodeLine{351         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} data,}
+\DoxyCodeLine{352         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{353         \textcolor{keyword}{const} \textcolor{keywordtype}{char} face\_order[6],}
+\DoxyCodeLine{354         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{355         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} flags}
+\DoxyCodeLine{356     );}
+\DoxyCodeLine{357 }
+\DoxyCodeLine{362 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{363     \mbox{\hyperlink{_s_o_i_l2_8h_a7a6f690a1ecde64938acd89d568f10f7}{SOIL\_save\_screenshot}}}
+\DoxyCodeLine{364     (}
+\DoxyCodeLine{365         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{366         \textcolor{keywordtype}{int} image\_type,}
+\DoxyCodeLine{367         \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y,}
+\DoxyCodeLine{368         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height}
+\DoxyCodeLine{369     );}
+\DoxyCodeLine{370 }
+\DoxyCodeLine{380 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*}
+\DoxyCodeLine{381     \mbox{\hyperlink{_s_o_i_l2_8h_a6714549ec3eb871533ae5930accfa652}{SOIL\_load\_image}}}
+\DoxyCodeLine{382     (}
+\DoxyCodeLine{383         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{384         \textcolor{keywordtype}{int} *width, \textcolor{keywordtype}{int} *height, \textcolor{keywordtype}{int} *channels,}
+\DoxyCodeLine{385         \textcolor{keywordtype}{int} force\_channels}
+\DoxyCodeLine{386     );}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{397 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*}
+\DoxyCodeLine{398     \mbox{\hyperlink{_s_o_i_l2_8h_a5de6ad856ab21b77d7f95020f1dfa006}{SOIL\_load\_image\_from\_memory}}}
+\DoxyCodeLine{399     (}
+\DoxyCodeLine{400         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} buffer,}
+\DoxyCodeLine{401         \textcolor{keywordtype}{int} buffer\_length,}
+\DoxyCodeLine{402         \textcolor{keywordtype}{int} *width, \textcolor{keywordtype}{int} *height, \textcolor{keywordtype}{int} *channels,}
+\DoxyCodeLine{403         \textcolor{keywordtype}{int} force\_channels}
+\DoxyCodeLine{404     );}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{411 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{412     \mbox{\hyperlink{_s_o_i_l2_8h_abc063a545c910a1cac07785533aa7875}{SOIL\_save\_image\_quality}}}
+\DoxyCodeLine{413     (}
+\DoxyCodeLine{414         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{415         \textcolor{keywordtype}{int} image\_type,}
+\DoxyCodeLine{416         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{417         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} data,}
+\DoxyCodeLine{418         \textcolor{keywordtype}{int} quality}
+\DoxyCodeLine{419     );}
+\DoxyCodeLine{420 }
+\DoxyCodeLine{421 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{422     \mbox{\hyperlink{_s_o_i_l2_8h_a6a90a5aa17ca3ef1de1d87e1ed365d11}{SOIL\_save\_image}}}
+\DoxyCodeLine{423     (}
+\DoxyCodeLine{424         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{425         \textcolor{keywordtype}{int} image\_type,}
+\DoxyCodeLine{426         \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{int} channels,}
+\DoxyCodeLine{427         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} data}
+\DoxyCodeLine{428     );}
+\DoxyCodeLine{429 }
+\DoxyCodeLine{435 \textcolor{keywordtype}{void}}
+\DoxyCodeLine{436     \mbox{\hyperlink{_s_o_i_l2_8h_acd82ef0d8148f5b18f413a59440dafdd}{SOIL\_free\_image\_data}}}
+\DoxyCodeLine{437     (}
+\DoxyCodeLine{438         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *img\_data}
+\DoxyCodeLine{439     );}
+\DoxyCodeLine{440 }
+\DoxyCodeLine{446 \textcolor{keyword}{const} \textcolor{keywordtype}{char}*}
+\DoxyCodeLine{447     \mbox{\hyperlink{_s_o_i_l2_8h_af6b7f8d45137666ac61a24fc0b65f80a}{SOIL\_last\_result}}}
+\DoxyCodeLine{448     (}
+\DoxyCodeLine{449         \textcolor{keywordtype}{void}}
+\DoxyCodeLine{450     );}
+\DoxyCodeLine{451 }
+\DoxyCodeLine{453 \textcolor{keywordtype}{void} *}
+\DoxyCodeLine{454     \mbox{\hyperlink{_s_o_i_l2_8h_a41c42a65a02da9786dee71cf4b3cd2d8}{SOIL\_GL\_GetProcAddress}}}
+\DoxyCodeLine{455     (}
+\DoxyCodeLine{456         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *proc}
+\DoxyCodeLine{457     );}
+\DoxyCodeLine{458 }
+\DoxyCodeLine{460 \textcolor{keywordtype}{int}}
+\DoxyCodeLine{461     \mbox{\hyperlink{_s_o_i_l2_8h_a1208840c12dd8c51f3eb041739bd3eeb}{SOIL\_GL\_ExtensionSupported}}}
+\DoxyCodeLine{462     (}
+\DoxyCodeLine{463         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *extension}
+\DoxyCodeLine{464     );}
+\DoxyCodeLine{465 }
+\DoxyCodeLine{467 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{_s_o_i_l2_8h_a9e2e6ccef1ab50e6e2844ccd4d60d403}{SOIL\_direct\_load\_DDS}}(}
+\DoxyCodeLine{468         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{469         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{470         \textcolor{keywordtype}{int} flags,}
+\DoxyCodeLine{471         \textcolor{keywordtype}{int} loading\_as\_cubemap );}
+\DoxyCodeLine{472 }
+\DoxyCodeLine{474 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{_s_o_i_l2_8h_a1a03e763ce3b0b4dcc236ccdf26478f8}{SOIL\_direct\_load\_DDS\_from\_memory}}(}
+\DoxyCodeLine{475         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} buffer,}
+\DoxyCodeLine{476         \textcolor{keywordtype}{int} buffer\_length,}
+\DoxyCodeLine{477         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{478         \textcolor{keywordtype}{int} flags,}
+\DoxyCodeLine{479         \textcolor{keywordtype}{int} loading\_as\_cubemap );}
+\DoxyCodeLine{480 }
+\DoxyCodeLine{482 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{_s_o_i_l2_8h_ab6443b22d9d9dc0304fadbfb180e39a1}{SOIL\_direct\_load\_PVR}}(}
+\DoxyCodeLine{483         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{484         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{485         \textcolor{keywordtype}{int} flags,}
+\DoxyCodeLine{486         \textcolor{keywordtype}{int} loading\_as\_cubemap );}
+\DoxyCodeLine{487 }
+\DoxyCodeLine{489 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{_s_o_i_l2_8h_a5ae9724e3cb6cd5898ce6dbd81c4000b}{SOIL\_direct\_load\_PVR\_from\_memory}}(}
+\DoxyCodeLine{490         \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} buffer,}
+\DoxyCodeLine{491         \textcolor{keywordtype}{int} buffer\_length,}
+\DoxyCodeLine{492         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{493         \textcolor{keywordtype}{int} flags,}
+\DoxyCodeLine{494         \textcolor{keywordtype}{int} loading\_as\_cubemap );}
+\DoxyCodeLine{495 }
+\DoxyCodeLine{497 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{_s_o_i_l2_8h_aedc0a5f9b31c1b382acd0ecd72738bff}{SOIL\_direct\_load\_ETC1}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,}
+\DoxyCodeLine{498         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{499         \textcolor{keywordtype}{int} flags );}
+\DoxyCodeLine{500 }
+\DoxyCodeLine{502 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{_s_o_i_l2_8h_a67d6e355ccc19f3d3bf4602a2da42168}{SOIL\_direct\_load\_ETC1\_from\_memory}}(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} buffer,}
+\DoxyCodeLine{503         \textcolor{keywordtype}{int} buffer\_length,}
+\DoxyCodeLine{504         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} reuse\_texture\_ID,}
+\DoxyCodeLine{505         \textcolor{keywordtype}{int} flags );}
+\DoxyCodeLine{506 }
+\DoxyCodeLine{507 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{508 \}}
+\DoxyCodeLine{509 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{510 }
+\DoxyCodeLine{511 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* HEADER\_SIMPLE\_OPENGL\_IMAGE\_LIBRARY    */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

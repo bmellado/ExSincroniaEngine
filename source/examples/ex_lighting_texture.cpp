@@ -209,7 +209,7 @@ int main()
     while (!glfwWindowShouldClose(window))
 
     {
-        PROFILE_SCOPE_STABLE("Global", stats);
+        PROFILE_SCOPE("Global", stats);
 
         // Measuring performance
         performanceMonitor.update(glfwGetTime());

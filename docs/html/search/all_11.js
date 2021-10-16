@@ -1,15 +1,11 @@
 var searchData=
 [
-  ['texture_0',['texture',['../struct_grafica_1_1_g_p_u_shape.html#a1d0a5c88c7ff40fcfdeb9ad2eced1584',1,'Grafica::GPUShape::texture()'],['../struct_grafica_1_1_shape.html#af67c44326f3cd123a63f0474e762931c',1,'Grafica::Shape::texture()']]],
-  ['texture_2ecpp_1',['Texture.cpp',['../_texture_8cpp.html',1,'']]],
-  ['texture_2ehpp_2',['Texture.hpp',['../_texture_8hpp.html',1,'']]],
-  ['texturesimplesetup_3',['textureSimpleSetup',['../namespace_grafica.html#a2b0adec2589dd5136c6c360254395b6d',1,'Grafica']]],
-  ['texturetransformshaderprogram_4',['TextureTransformShaderProgram',['../struct_grafica_1_1_texture_transform_shader_program.html',1,'Grafica::TextureTransformShaderProgram'],['../struct_grafica_1_1_texture_transform_shader_program.html#a37d817c4f84a14e9c1f9789443c695cc',1,'Grafica::TextureTransformShaderProgram::TextureTransformShaderProgram()']]],
-  ['togpushape_5',['toGPUShape',['../namespace_grafica.html#a872a8432562fbc70bdf7ce8520a2d1ee',1,'Grafica']]],
-  ['transform_6',['transform',['../class_grafica_1_1_scene_graph_node.html#a4181c0ce77470bccca7cc3a179652e58',1,'Grafica::SceneGraphNode']]],
-  ['transformations_2ecpp_7',['transformations.cpp',['../transformations_8cpp.html',1,'']]],
-  ['transformations_2eh_8',['transformations.h',['../transformations_8h.html',1,'']]],
-  ['transformshaderprogram_9',['TransformShaderProgram',['../struct_grafica_1_1_transform_shader_program.html',1,'Grafica::TransformShaderProgram'],['../struct_grafica_1_1_transform_shader_program.html#af8047e0a5c32c04c18d988d75aa248d3',1,'Grafica::TransformShaderProgram::TransformShaderProgram()']]],
-  ['translate_10',['translate',['../namespace_grafica_1_1_transformations.html#ab159057f793f3531841a7e7356805629',1,'Grafica::Transformations']]],
-  ['type_11',['type',['../struct_grafica_1_1_shader_code.html#ad2137f0af267cc9aa77d69430892e407',1,'Grafica::ShaderCode::type()'],['../struct_grafica_1_1_shader_file.html#a7b819802f24873e8bcb2f03a0d42c69b',1,'Grafica::ShaderFile::type()']]]
+  ['query_5fbgra8888_5fcapability_0',['query_BGRA8888_capability',['../_s_o_i_l2_8c.html#ac3d04f7ccbd7c5381cd8571e76dfbba8',1,'SOIL2.c']]],
+  ['query_5fcubemap_5fcapability_1',['query_cubemap_capability',['../_s_o_i_l2_8c.html#a07bd4fa2d6ed44d28218fde2d222dfd7',1,'SOIL2.c']]],
+  ['query_5fdxt_5fcapability_2',['query_DXT_capability',['../_s_o_i_l2_8c.html#a555122dec7c72eb8ca53ce00d08fb0f5',1,'SOIL2.c']]],
+  ['query_5fetc1_5fcapability_3',['query_ETC1_capability',['../_s_o_i_l2_8c.html#a1dd6dc14f7ee42d5a742997e37eff985',1,'SOIL2.c']]],
+  ['query_5fnpot_5fcapability_4',['query_NPOT_capability',['../_s_o_i_l2_8c.html#acd8a0a5e4c1465f6553c3e15c36e5499',1,'SOIL2.c']]],
+  ['query_5fpvr_5fcapability_5',['query_PVR_capability',['../_s_o_i_l2_8c.html#ad27d1b33daea9552ac715efe04f9e50a',1,'SOIL2.c']]],
+  ['query_5fsrgb_5fcapability_6',['query_sRGB_capability',['../_s_o_i_l2_8c.html#abd8e468d7de59cc67789e4da51eeac46',1,'SOIL2.c']]],
+  ['query_5ftex_5frectangle_5fcapability_7',['query_tex_rectangle_capability',['../_s_o_i_l2_8c.html#afb18f89ef93ab9767338d0ab6941d452',1,'SOIL2.c']]]
 ];

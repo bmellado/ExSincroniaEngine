@@ -1,10 +1,4 @@
-/**
- * @file simple_timer.h
- * @brief Some functionality to implement a basic profiler
- *
- * @author Daniel Calderón
- * @license MIT
-*/
+
 #pragma once
 #include <chrono>
 #include <iostream>
@@ -17,9 +11,21 @@ namespace Sincronia
 {
     template <typename LogProfileFunction>
     
+    /// <summary>
+    /// This class is meant to manage the time, it contains a profiler that saves the time information in a vector,
+    /// this class also intents to stabilize the frame rating
+    /// </summary>
+    /// <typeparam name="LogProfileFunction">Template function that is meant to save the information of timing</typeparam>
     class Timer
     {
+        
     public:
+        /// <summary>
+        /// Timer constructor
+        /// </summary>
+        /// <param name="name">Name that indicates what scope is being timed</param>
+        /// <param name="logProfileFunction">A function that is meant to save the information of timing</param>
+        /// <param name="stabilize">A parameter that decides whether the timing is gonna be stabilized to 60 FPS</param>
         Timer(const char* name, LogProfileFunction&& logProfileFunction, bool stabilize = false) :
             _name(name),
             _logProfileFunction(logProfileFunction),
@@ -32,7 +38,7 @@ namespace Sincronia
         {
             _startTime = std::chrono::steady_clock::now();
         }
-
+        
         ~Timer()
         {
             if (!_stopped)
@@ -40,7 +46,10 @@ namespace Sincronia
                 stop();
             }
         };
-
+        /// <summary>
+        /// When called, this calculates the time that has passed from the initialization of the instanced class,
+        /// if stabilize param is true, then applies a delay with the difference of time remaining as wished.
+        /// </summary>
         void stop() {
             
                 std::chrono::time_point<std::chrono::steady_clock> endTime = std::chrono::steady_clock::now();
@@ -83,6 +92,9 @@ namespace Sincronia
         bool _stabilize;
     };
 
+    /// <summary>
+    /// A simple structure contaning the name of timer, and the duration that passed since its initialization to destruction
+    /// </summary>
     struct ProfileResult
     {
         std::string timerName;

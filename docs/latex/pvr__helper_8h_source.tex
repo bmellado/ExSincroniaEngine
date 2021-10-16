@@ -1,0 +1,270 @@
+\hypertarget{pvr__helper_8h_source}{}\doxysection{pvr\+\_\+helper.\+h}
+\label{pvr__helper_8h_source}\index{source/Rendering/SOIL2/pvr\_helper.h@{source/Rendering/SOIL2/pvr\_helper.h}}
+\mbox{\hyperlink{pvr__helper_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PVR\_HELPER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PVR\_HELPER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// Taken from PowerVR SDK}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{comment}{/*!***************************************************************************}}
+\DoxyCodeLine{7 \textcolor{comment}{ Describes the header of a PVR header-\/texture}}
+\DoxyCodeLine{8 \textcolor{comment}{ *****************************************************************************/}}
+\DoxyCodeLine{9 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a1b70d66c96e4291a170028d0ba6bac0e}{dwHeaderSize}};          }
+\DoxyCodeLine{12     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a5c9d7a15be622005fae8247ea1d593df}{dwHeight}};              }
+\DoxyCodeLine{13     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a35506d49c7fb8fe89cf2d35ec1727bdd}{dwWidth}};                }
+\DoxyCodeLine{14     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a40241f20ad91369c72a9f7285b8c4ff5}{dwMipMapCount}};            }
+\DoxyCodeLine{15     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_ab89dc74cf18383d2d41397e2e839faeb}{dwpfFlags}};                }
+\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_ad2a7eea61233461d085191891734177f}{dwTextureDataSize}};        }
+\DoxyCodeLine{17     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_adc064257d63a00e00e131c7d93728067}{dwBitCount}};          }
+\DoxyCodeLine{18     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a94f02eef9ff95c18c3922ce84b3e59da}{dwRBitMask}};          }
+\DoxyCodeLine{19     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a2acd87653ac81f7d304112b48e92bec8}{dwGBitMask}};          }
+\DoxyCodeLine{20     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a9f60e62a5fb60d092357965c265d723d}{dwBBitMask}};          }
+\DoxyCodeLine{21     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a63720b915d8a00edd8d918c91e533cd3}{dwAlphaBitMask}};      }
+\DoxyCodeLine{22     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_a1aa3e8921cb7576374622129a952dd72}{dwPVR}};                    }
+\DoxyCodeLine{23     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_p_v_r___texture___header_ab5a48ebff7ae60e21b335fb7f8d1c2e3}{dwNumSurfs}};          }
+\DoxyCodeLine{24 \} \mbox{\hyperlink{struct_p_v_r___texture___header}{PVR\_Texture\_Header}};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{comment}{/*****************************************************************************}}
+\DoxyCodeLine{27 \textcolor{comment}{ * ENUMS}}
+\DoxyCodeLine{28 \textcolor{comment}{ *****************************************************************************/}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{enum} \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3d}{PixelType}}}
+\DoxyCodeLine{31 \{}
+\DoxyCodeLine{32     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da2ec68f5c03f32b24922c4c18ff294313}{MGLPT\_ARGB\_4444}} = 0x00,}
+\DoxyCodeLine{33     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daddbb5d4182c091294b0a64e53c87524b}{MGLPT\_ARGB\_1555}},}
+\DoxyCodeLine{34     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da3cd1a58039ec733711340b7d75868354}{MGLPT\_RGB\_565}},}
+\DoxyCodeLine{35     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da43c842ec9f6d30d79f6ecd39d0ae7078}{MGLPT\_RGB\_555}},}
+\DoxyCodeLine{36     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab6862b0f11e136685f12872ee0ec4300}{MGLPT\_RGB\_888}},}
+\DoxyCodeLine{37     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daeec68b94677e077fca819e126cedfe90}{MGLPT\_ARGB\_8888}},}
+\DoxyCodeLine{38     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da7679dae95f95147a90f123bab5f71596}{MGLPT\_ARGB\_8332}},}
+\DoxyCodeLine{39     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daebffed16abd405ea0b281ba17eae1aa2}{MGLPT\_I\_8}},}
+\DoxyCodeLine{40     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dace00ad4c8722e9470edd8e7687b9582b}{MGLPT\_AI\_88}},}
+\DoxyCodeLine{41     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dac62bc5d41f22e5606e5c4fcda42f9c10}{MGLPT\_1\_BPP}},}
+\DoxyCodeLine{42     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da2482c8a458670d090014c9cb5afc21db}{MGLPT\_VY1UY0}},}
+\DoxyCodeLine{43     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad17afc5da103e770ae268cca45404e72}{MGLPT\_Y1VY0U}},}
+\DoxyCodeLine{44     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da6833e82e56d943b9c637e3bed796ad8e}{MGLPT\_PVRTC2}},}
+\DoxyCodeLine{45     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da9956130e7d8c741a92c2011fafa1eacd}{MGLPT\_PVRTC4}},}
+\DoxyCodeLine{46     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da33123b83459909fd6ea1757a42a2decc}{MGLPT\_PVRTC2\_2}},}
+\DoxyCodeLine{47     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da374a1de23caa59102cdcb6927fb29048}{MGLPT\_PVRTC2\_4}},}
+\DoxyCodeLine{48     }
+\DoxyCodeLine{49     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da4a7dd3e4d68a93bb9f3eebbfb71f6bdf}{OGL\_RGBA\_4444}}= 0x10,}
+\DoxyCodeLine{50     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da9632cdc28718895d0470ba7306b19546}{OGL\_RGBA\_5551}},}
+\DoxyCodeLine{51     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da1f7fd9d8c860667adb5a60ea4fb2aa43}{OGL\_RGBA\_8888}},}
+\DoxyCodeLine{52     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da4409cb1d0e3ddfa4bf4bfb8308f27632}{OGL\_RGB\_565}},}
+\DoxyCodeLine{53     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa01f1871147a252d5d979f98d2d37e1f}{OGL\_RGB\_555}},}
+\DoxyCodeLine{54     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dae8a8e5d8c477b94fccb55da1f44ebfa5}{OGL\_RGB\_888}},}
+\DoxyCodeLine{55     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da1bcb380c3b68d541e46ceb0cef4e3b65}{OGL\_I\_8}},}
+\DoxyCodeLine{56     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da349513ba96fc8b71a2c116d3ebe8623e}{OGL\_AI\_88}},}
+\DoxyCodeLine{57     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da38367577de4271e8bd818ca4e03f5722}{OGL\_PVRTC2}},}
+\DoxyCodeLine{58     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad833a496a6fd87dcb555687f22c7e954}{OGL\_PVRTC4}},}
+\DoxyCodeLine{59     }
+\DoxyCodeLine{60     \textcolor{comment}{// OGL\_BGRA\_8888 extension}}
+\DoxyCodeLine{61     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daee4b5c727a7dacbc8a95900a4b48fd91}{OGL\_BGRA\_8888}},}
+\DoxyCodeLine{62     }
+\DoxyCodeLine{63     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da607e3919aa3f85c1ccddbdaa60c9a16f}{D3D\_DXT1}} = 0x20,}
+\DoxyCodeLine{64     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dadeee4d725f1e23cea8382ce1662b82d8}{D3D\_DXT2}},}
+\DoxyCodeLine{65     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab4eea102360f76c5c896ed410daa599f}{D3D\_DXT3}},}
+\DoxyCodeLine{66     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dac9c21d1b7d2b0a3bf2feddb3ce6fdd4f}{D3D\_DXT4}},}
+\DoxyCodeLine{67     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da24c1735fd6e13f7268f364da6b98e934}{D3D\_DXT5}},}
+\DoxyCodeLine{68     }
+\DoxyCodeLine{69     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da387fb8a6c479cf234ff74c72d173b495}{D3D\_RGB\_332}},}
+\DoxyCodeLine{70     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da3259f74e4235f05889304b465bd7f63e}{D3D\_AI\_44}},}
+\DoxyCodeLine{71     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da0fb5b7a2c6c93f65d0f468ad256e7d1e}{D3D\_LVU\_655}},}
+\DoxyCodeLine{72     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da98e1f8c8e8dcf6f99e78aedb4e122fc5}{D3D\_XLVU\_8888}},}
+\DoxyCodeLine{73     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da7e7837fc28ed22957af8e20eb896941d}{D3D\_QWVU\_8888}},}
+\DoxyCodeLine{74     }
+\DoxyCodeLine{75     \textcolor{comment}{//10 bits per channel}}
+\DoxyCodeLine{76     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da452a17f50c0fb7ac57601d245ae42437}{D3D\_ABGR\_2101010}},}
+\DoxyCodeLine{77     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dafe3812a650a121ced8d35536fb783b5e}{D3D\_ARGB\_2101010}},}
+\DoxyCodeLine{78     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa3a1d5308e5f9808891b398351558897}{D3D\_AWVU\_2101010}},}
+\DoxyCodeLine{79     }
+\DoxyCodeLine{80     \textcolor{comment}{//16 bits per channel}}
+\DoxyCodeLine{81     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da8e177c5b0ed4ef92ebb545f7d31ef271}{D3D\_GR\_1616}},}
+\DoxyCodeLine{82     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5f23bc9a1e734fae9050be6b68cc22cb}{D3D\_VU\_1616}},}
+\DoxyCodeLine{83     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dafe2364c6a3a8c5858b8e1a651c9392ea}{D3D\_ABGR\_16161616}},}
+\DoxyCodeLine{84     }
+\DoxyCodeLine{85     \textcolor{comment}{//HDR formats}}
+\DoxyCodeLine{86     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da171e89d242862b90fc3f781250f5b73f}{D3D\_R16F}},}
+\DoxyCodeLine{87     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da83d0590123857fb08a14d8957de0ade2}{D3D\_GR\_1616F}},}
+\DoxyCodeLine{88     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da597c07167f9da3b75af853ef82b772cb}{D3D\_ABGR\_16161616F}},}
+\DoxyCodeLine{89     }
+\DoxyCodeLine{90     \textcolor{comment}{//32 bits per channel}}
+\DoxyCodeLine{91     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dabcf7bba96e7419630bd5a8b1923a1795}{D3D\_R32F}},}
+\DoxyCodeLine{92     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da187d6b783f8f85486392f95766be0b9d}{D3D\_GR\_3232F}},}
+\DoxyCodeLine{93     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da83248de81d819235df8c63303c51b7f1}{D3D\_ABGR\_32323232F}},}
+\DoxyCodeLine{94     }
+\DoxyCodeLine{95     \textcolor{comment}{// Ericsson}}
+\DoxyCodeLine{96     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da570face1f5e770bb2336acea49326001}{ETC\_RGB\_4BPP}},}
+\DoxyCodeLine{97     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da2e835b98b7621df649859b13618ea8c3}{ETC\_RGBA\_EXPLICIT}},}
+\DoxyCodeLine{98     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da91d9f468d6c6ada0a0bdbba4c48b6d9b}{ETC\_RGBA\_INTERPOLATED}},}
+\DoxyCodeLine{99     }
+\DoxyCodeLine{100     \textcolor{comment}{// DX10}}
+\DoxyCodeLine{101     }
+\DoxyCodeLine{102     }
+\DoxyCodeLine{103     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dabb6994216850e7fd24c335a89aafb7aa}{ePT\_DX10\_R32G32B32A32\_FLOAT}}= 0x50,}
+\DoxyCodeLine{104     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa03b56f138a19e8141b1c6437965d8f9}{ePT\_DX10\_R32G32B32A32\_UINT}} ,}
+\DoxyCodeLine{105     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5d5946480223bd156a1976c1fb227265}{ePT\_DX10\_R32G32B32A32\_SINT}},}
+\DoxyCodeLine{106     }
+\DoxyCodeLine{107     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da348a65576d992b9a100ae39992cc4627}{ePT\_DX10\_R32G32B32\_FLOAT}},}
+\DoxyCodeLine{108     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da960e7a3ea8d0560b9b44047036308949}{ePT\_DX10\_R32G32B32\_UINT}},}
+\DoxyCodeLine{109     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daf6526b4a4ebb43ca4e59458650d60464}{ePT\_DX10\_R32G32B32\_SINT}},}
+\DoxyCodeLine{110     }
+\DoxyCodeLine{111     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5b484d320d89ad56a478ed8f9d10aa3e}{ePT\_DX10\_R16G16B16A16\_FLOAT}} ,}
+\DoxyCodeLine{112     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da66ace9175f7ef6e2b5db25131c69811d}{ePT\_DX10\_R16G16B16A16\_UNORM}},}
+\DoxyCodeLine{113     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa8121306b8dfad342db19b5a448eca22}{ePT\_DX10\_R16G16B16A16\_UINT}} ,}
+\DoxyCodeLine{114     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da254b013233625da5fd84518e22c56884}{ePT\_DX10\_R16G16B16A16\_SNORM}} ,}
+\DoxyCodeLine{115     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5ff256aef4d88f0624bbb8ad763766a4}{ePT\_DX10\_R16G16B16A16\_SINT}} ,}
+\DoxyCodeLine{116     }
+\DoxyCodeLine{117     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5dff5673f41126db80f69e20d574de47}{ePT\_DX10\_R32G32\_FLOAT}} ,}
+\DoxyCodeLine{118     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daef1e2a26638edad88bc51f07f4c8d8cb}{ePT\_DX10\_R32G32\_UINT}} ,}
+\DoxyCodeLine{119     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da78d6f67baad1cb876e57970bd621da58}{ePT\_DX10\_R32G32\_SINT}} ,}
+\DoxyCodeLine{120     }
+\DoxyCodeLine{121     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da65f0c122b56e05badfe56eea5bf39739}{ePT\_DX10\_R10G10B10A2\_UNORM}} ,}
+\DoxyCodeLine{122     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da6ae7eb1764291e727b00167476b44557}{ePT\_DX10\_R10G10B10A2\_UINT}} ,}
+\DoxyCodeLine{123     }
+\DoxyCodeLine{124     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da4f8a8d3caef40e88b33df7f1f655faff}{ePT\_DX10\_R11G11B10\_FLOAT}} ,}
+\DoxyCodeLine{125     }
+\DoxyCodeLine{126     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da3687af01055e7cfd3b260fc9324cd27c}{ePT\_DX10\_R8G8B8A8\_UNORM}} ,}
+\DoxyCodeLine{127     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dadee3fdb6923d6007c339f35daa90d44f}{ePT\_DX10\_R8G8B8A8\_UNORM\_SRGB}} ,}
+\DoxyCodeLine{128     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da92b35fd668440da4524b532d41899c4d}{ePT\_DX10\_R8G8B8A8\_UINT}} ,}
+\DoxyCodeLine{129     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da270da557906c208761d303fcb8302b38}{ePT\_DX10\_R8G8B8A8\_SNORM}} ,}
+\DoxyCodeLine{130     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da89635fa8253aa20d3b47cecd65c14a2f}{ePT\_DX10\_R8G8B8A8\_SINT}} ,}
+\DoxyCodeLine{131     }
+\DoxyCodeLine{132     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dae9f2d305149f2d1432ddefb1e6621d70}{ePT\_DX10\_R16G16\_FLOAT}} ,}
+\DoxyCodeLine{133     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da9733b7cfd654c909212e204e12d20ab8}{ePT\_DX10\_R16G16\_UNORM}} ,}
+\DoxyCodeLine{134     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dac5775cc296542a10a50c465681a0611c}{ePT\_DX10\_R16G16\_UINT}} ,}
+\DoxyCodeLine{135     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad4f408e6767ec565b4a37336bad860cb}{ePT\_DX10\_R16G16\_SNORM}} ,}
+\DoxyCodeLine{136     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da9da730097b285ee2f2bb724faae2ce27}{ePT\_DX10\_R16G16\_SINT}} ,}
+\DoxyCodeLine{137     }
+\DoxyCodeLine{138     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da74277828c240e50e19ee315591e7043d}{ePT\_DX10\_R32\_FLOAT}} ,}
+\DoxyCodeLine{139     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dafedd95a7f22142290c3da51972c5809a}{ePT\_DX10\_R32\_UINT}} ,}
+\DoxyCodeLine{140     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da1cc53798f8a06efda52a4ea7696e8684}{ePT\_DX10\_R32\_SINT}} ,}
+\DoxyCodeLine{141     }
+\DoxyCodeLine{142     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da3f14df75c9a41997303ceee9df299995}{ePT\_DX10\_R8G8\_UNORM}} ,}
+\DoxyCodeLine{143     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dabd95e570eb197c76e19841c25d707792}{ePT\_DX10\_R8G8\_UINT}} ,}
+\DoxyCodeLine{144     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab593621eb2cc30e38efaf9d4edb78b3b}{ePT\_DX10\_R8G8\_SNORM}} ,}
+\DoxyCodeLine{145     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da8fa639f96078ff193cea6a1f2b202afe}{ePT\_DX10\_R8G8\_SINT}} ,}
+\DoxyCodeLine{146     }
+\DoxyCodeLine{147     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab0f0f727bce353395f1712c661ac52d1}{ePT\_DX10\_R16\_FLOAT}} ,}
+\DoxyCodeLine{148     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daae5257a93f57525f848d79f7e5a55e82}{ePT\_DX10\_R16\_UNORM}} ,}
+\DoxyCodeLine{149     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da01d8d51258b7b1dec96aa0afefe88c78}{ePT\_DX10\_R16\_UINT}} ,}
+\DoxyCodeLine{150     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dacbb113e996496b4e9879990959581bb9}{ePT\_DX10\_R16\_SNORM}} ,}
+\DoxyCodeLine{151     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dacf82e6369f498276fe1ea59037f1c281}{ePT\_DX10\_R16\_SINT}} ,}
+\DoxyCodeLine{152     }
+\DoxyCodeLine{153     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da90afebad47acdef4ad5800c2d3737bf2}{ePT\_DX10\_R8\_UNORM}},}
+\DoxyCodeLine{154     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad06dc2fff162a07bbad5a3b6488dec74}{ePT\_DX10\_R8\_UINT}},}
+\DoxyCodeLine{155     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da782b2d3afec5548530a7840498d3b1b8}{ePT\_DX10\_R8\_SNORM}},}
+\DoxyCodeLine{156     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da025baf0cd89435c8566af37c0dd9cb9f}{ePT\_DX10\_R8\_SINT}},}
+\DoxyCodeLine{157     }
+\DoxyCodeLine{158     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daad1529707016ea12e172920811cdf623}{ePT\_DX10\_A8\_UNORM}},}
+\DoxyCodeLine{159     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da7fe186692e704a26f0e4ff0765838d80}{ePT\_DX10\_R1\_UNORM}},}
+\DoxyCodeLine{160     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daeb1007619c79e1dfa3f4d52773318e46}{ePT\_DX10\_R9G9B9E5\_SHAREDEXP}},}
+\DoxyCodeLine{161     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da55c03cc2556b750fba628425cc8ef902}{ePT\_DX10\_R8G8\_B8G8\_UNORM}},}
+\DoxyCodeLine{162     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad10a1124c6856a1b4aaf9741219b6c89}{ePT\_DX10\_G8R8\_G8B8\_UNORM}},}
+\DoxyCodeLine{163     }
+\DoxyCodeLine{164     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da06742b16bca5d7c02f9bfd7deb2431d1}{ePT\_DX10\_BC1\_UNORM}},}
+\DoxyCodeLine{165     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da2afaa3da04fd24d6c5d039ea71208f02}{ePT\_DX10\_BC1\_UNORM\_SRGB}},}
+\DoxyCodeLine{166     }
+\DoxyCodeLine{167     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad51cb4ba52a4f5d5fe4d02ee4fb6e96f}{ePT\_DX10\_BC2\_UNORM}},}
+\DoxyCodeLine{168     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab8029273e9dd751866e9260ff2699d39}{ePT\_DX10\_BC2\_UNORM\_SRGB}},}
+\DoxyCodeLine{169     }
+\DoxyCodeLine{170     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da36f3250613774b6021ed89b4d85de259}{ePT\_DX10\_BC3\_UNORM}},}
+\DoxyCodeLine{171     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab7a3e5b9451cb425a5c780b1b7e4e78b}{ePT\_DX10\_BC3\_UNORM\_SRGB}},}
+\DoxyCodeLine{172     }
+\DoxyCodeLine{173     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da78529281b9ea102dc123eda0ebd8db0b}{ePT\_DX10\_BC4\_UNORM}},}
+\DoxyCodeLine{174     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5132636ec63ac8fce9ace28758ad2440}{ePT\_DX10\_BC4\_SNORM}},}
+\DoxyCodeLine{175     }
+\DoxyCodeLine{176     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da70a7485aee2fb8a0cb9836d709106719}{ePT\_DX10\_BC5\_UNORM}},}
+\DoxyCodeLine{177     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad4ec4faeb9226fa18498aa27fb568fd3}{ePT\_DX10\_BC5\_SNORM}},}
+\DoxyCodeLine{178     }
+\DoxyCodeLine{179     \textcolor{comment}{//ePT\_DX10\_B5G6R5\_UNORM,            // defined but obsolete -\/ won't actually load in DX10}}
+\DoxyCodeLine{180     \textcolor{comment}{//ePT\_DX10\_B5G5R5A1\_UNORM,}}
+\DoxyCodeLine{181     \textcolor{comment}{//ePT\_DX10\_B8G8R8A8\_UNORM,}}
+\DoxyCodeLine{182     \textcolor{comment}{//ePT\_DX10\_B8G8R8X8\_UNORM,}}
+\DoxyCodeLine{183     }
+\DoxyCodeLine{184     \textcolor{comment}{// OpenVG}}
+\DoxyCodeLine{185     }
+\DoxyCodeLine{186     \textcolor{comment}{/* RGB\{A,X\} channel ordering */}}
+\DoxyCodeLine{187     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa9c70239330643fec021732134ec54c0}{ePT\_VG\_sRGBX\_8888}}  = 0x90,}
+\DoxyCodeLine{188     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da52943df52941e65cd3f8d97d8713e863}{ePT\_VG\_sRGBA\_8888}},}
+\DoxyCodeLine{189     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab8acf90c1e4185cb54ab75f8abb382a4}{ePT\_VG\_sRGBA\_8888\_PRE}},}
+\DoxyCodeLine{190     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da7434820a42ba2b1fc1591e42a3d49786}{ePT\_VG\_sRGB\_565}},}
+\DoxyCodeLine{191     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dac8f3987bbda653ae4b0f8e4139861627}{ePT\_VG\_sRGBA\_5551}},}
+\DoxyCodeLine{192     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa600d5ee161c4e6c7fdb31746d69957d}{ePT\_VG\_sRGBA\_4444}},}
+\DoxyCodeLine{193     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da79602e2f886ba588dad4259d32d9a1b0}{ePT\_VG\_sL\_8}},}
+\DoxyCodeLine{194     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da51512b2b9bbb7d12a6effec16bba8e5d}{ePT\_VG\_lRGBX\_8888}},}
+\DoxyCodeLine{195     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad62f36a955441bb9252c2d5bd1827c3e}{ePT\_VG\_lRGBA\_8888}},}
+\DoxyCodeLine{196     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da8d7d1d078a3728be8162a5bad2a2d50c}{ePT\_VG\_lRGBA\_8888\_PRE}},}
+\DoxyCodeLine{197     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dacf56bdf9c3460da8a43384b29b7d5337}{ePT\_VG\_lL\_8}},}
+\DoxyCodeLine{198     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da84fed987cc01c2c02f824b2944e5c78a}{ePT\_VG\_A\_8}},}
+\DoxyCodeLine{199     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da1b2dd1d9d61a21638cfc882e50c95740}{ePT\_VG\_BW\_1}},}
+\DoxyCodeLine{200     }
+\DoxyCodeLine{201     \textcolor{comment}{/* \{A,X\}RGB channel ordering */}}
+\DoxyCodeLine{202     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da3c034fa5597934efea70f40c86b432be}{ePT\_VG\_sXRGB\_8888}},}
+\DoxyCodeLine{203     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dac089037eddfdc71d469e11531019e984}{ePT\_VG\_sARGB\_8888}},}
+\DoxyCodeLine{204     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da0afa75b7d81faa8b264f7efd2cedb6f6}{ePT\_VG\_sARGB\_8888\_PRE}},}
+\DoxyCodeLine{205     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daafa3658e47f5d79417b7fda6866183d9}{ePT\_VG\_sARGB\_1555}},}
+\DoxyCodeLine{206     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dadb60549c5e7c34fbcf0adadd3984e3f6}{ePT\_VG\_sARGB\_4444}},}
+\DoxyCodeLine{207     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daeb74f64580c08d10aec8701c36e223a9}{ePT\_VG\_lXRGB\_8888}},}
+\DoxyCodeLine{208     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dab1f95e9337c185ff3ca1d8edef6ea8d3}{ePT\_VG\_lARGB\_8888}},}
+\DoxyCodeLine{209     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da69e23ee8f255ded60a17ffa5859fa79e}{ePT\_VG\_lARGB\_8888\_PRE}},}
+\DoxyCodeLine{210     }
+\DoxyCodeLine{211     \textcolor{comment}{/* BGR\{A,X\} channel ordering */}}
+\DoxyCodeLine{212     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da667ad89a0dfa99a391dea5d5d8bcf365}{ePT\_VG\_sBGRX\_8888}},}
+\DoxyCodeLine{213     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dada063b6e46b37d69734faeaf46e4eef6}{ePT\_VG\_sBGRA\_8888}},}
+\DoxyCodeLine{214     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da24fd49f888d55c2e7a3c54d825904d3f}{ePT\_VG\_sBGRA\_8888\_PRE}},}
+\DoxyCodeLine{215     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da65f9340c27a7d51a8c8bf903846728e6}{ePT\_VG\_sBGR\_565}},}
+\DoxyCodeLine{216     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daea786078755b6143fe446e94130e3668}{ePT\_VG\_sBGRA\_5551}},}
+\DoxyCodeLine{217     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da3c707248101dee58ce1eb3505338c7eb}{ePT\_VG\_sBGRA\_4444}},}
+\DoxyCodeLine{218     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa39da44028154e074f6a4b1609ad41aa}{ePT\_VG\_lBGRX\_8888}},}
+\DoxyCodeLine{219     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da7b9b4879995f38e6ada01d04cd504a6a}{ePT\_VG\_lBGRA\_8888}},}
+\DoxyCodeLine{220     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daabc009c227c70b230951e468a939d95f}{ePT\_VG\_lBGRA\_8888\_PRE}},}
+\DoxyCodeLine{221     }
+\DoxyCodeLine{222     \textcolor{comment}{/* \{A,X\}BGR channel ordering */}}
+\DoxyCodeLine{223     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da40c5a7a1d449e59825465ab894c098a9}{ePT\_VG\_sXBGR\_8888}},}
+\DoxyCodeLine{224     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da0e28ab79700b0c7d39525c00e3bfc592}{ePT\_VG\_sABGR\_8888}} ,}
+\DoxyCodeLine{225     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5549d534a20360103cbc90734fec7f40}{ePT\_VG\_sABGR\_8888\_PRE}},}
+\DoxyCodeLine{226     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da2884ac129add1fcce29b79fc0b99159a}{ePT\_VG\_sABGR\_1555}},}
+\DoxyCodeLine{227     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dad32c006b686247313f1d62fd5e77d62d}{ePT\_VG\_sABGR\_4444}},}
+\DoxyCodeLine{228     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daa4e27dfc155814ca0718779c108c022f}{ePT\_VG\_lXBGR\_8888}},}
+\DoxyCodeLine{229     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3dae3aeb2209e8d1479edf8144c1e6e53dd}{ePT\_VG\_lABGR\_8888}},}
+\DoxyCodeLine{230     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da77ddaa95af5d3bb04b10835b9c633742}{ePT\_VG\_lABGR\_8888\_PRE}},}
+\DoxyCodeLine{231     }
+\DoxyCodeLine{232     \textcolor{comment}{// max cap for iterating}}
+\DoxyCodeLine{233     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3daf6ee039a6e6c41312186dd556cd2c12f}{END\_OF\_PIXEL\_TYPES}},}
+\DoxyCodeLine{234     }
+\DoxyCodeLine{235     \mbox{\hyperlink{pvr__helper_8h_a37140413518dff2aa63096a2e31b9b3da5c569436647751fd42b532453224ae03}{MGLPT\_NOTYPE}} = 0xff}
+\DoxyCodeLine{236     }
+\DoxyCodeLine{237 \};}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{comment}{/*****************************************************************************}}
+\DoxyCodeLine{240 \textcolor{comment}{ * constants}}
+\DoxyCodeLine{241 \textcolor{comment}{ *****************************************************************************/}}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243 \textcolor{preprocessor}{\#define PVRTEX\_MIPMAP       (1<<8)      }\textcolor{comment}{// has mip map levels}}
+\DoxyCodeLine{244 \textcolor{preprocessor}{\#define PVRTEX\_TWIDDLE      (1<<9)      }\textcolor{comment}{// is twiddled}}
+\DoxyCodeLine{245 \textcolor{preprocessor}{\#define PVRTEX\_BUMPMAP      (1<<10)     }\textcolor{comment}{// has normals encoded for a bump map}}
+\DoxyCodeLine{246 \textcolor{preprocessor}{\#define PVRTEX\_TILING       (1<<11)     }\textcolor{comment}{// is bordered for tiled pvr}}
+\DoxyCodeLine{247 \textcolor{preprocessor}{\#define PVRTEX\_CUBEMAP      (1<<12)     }\textcolor{comment}{// is a cubemap/skybox}}
+\DoxyCodeLine{248 \textcolor{preprocessor}{\#define PVRTEX\_FALSEMIPCOL  (1<<13)     }\textcolor{comment}{//}}
+\DoxyCodeLine{249 \textcolor{preprocessor}{\#define PVRTEX\_VOLUME       (1<<14)}}
+\DoxyCodeLine{250 \textcolor{preprocessor}{\#define PVRTEX\_PIXELTYPE    0xff            }\textcolor{comment}{// pixel type is always in the last 16bits of the flags}}
+\DoxyCodeLine{251 \textcolor{preprocessor}{\#define PVRTEX\_IDENTIFIER   0x21525650  }\textcolor{comment}{// the pvr identifier is the characters 'P','V','R'}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 \textcolor{preprocessor}{\#define PVRTEX\_V1\_HEADER\_SIZE 44            }\textcolor{comment}{// old header size was 44 for identification purposes}}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 \textcolor{preprocessor}{\#define PVRTC2\_MIN\_TEXWIDTH     16}}
+\DoxyCodeLine{256 \textcolor{preprocessor}{\#define PVRTC2\_MIN\_TEXHEIGHT    8}}
+\DoxyCodeLine{257 \textcolor{preprocessor}{\#define PVRTC4\_MIN\_TEXWIDTH     8}}
+\DoxyCodeLine{258 \textcolor{preprocessor}{\#define PVRTC4\_MIN\_TEXHEIGHT    8}}
+\DoxyCodeLine{259 \textcolor{preprocessor}{\#define ETC\_MIN\_TEXWIDTH        4}}
+\DoxyCodeLine{260 \textcolor{preprocessor}{\#define ETC\_MIN\_TEXHEIGHT       4}}
+\DoxyCodeLine{261 \textcolor{preprocessor}{\#define DXT\_MIN\_TEXWIDTH        4}}
+\DoxyCodeLine{262 \textcolor{preprocessor}{\#define DXT\_MIN\_TEXHEIGHT       4}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
